@@ -1,22 +1,25 @@
 body {
-	font-family: motiva-sans, sans-serif;
-	background-color: rgb(230, 238, 255);
-	margin: 0px 30% 0px 25%;
-}
-.mainParagraph {
-	font-family: mrs-eaves-xl-serif, serif;
-	font-size: 1.2em;
+	font-family: 'Montserrat', sans-serif;
+	background-color: rgb(22, 28, 37);
+	margin: 0px 27% 0px 27%;
+	font-size: 1.35em;
+	color: rgb(218, 218, 218);
 }
 #title {
 	text-align: center;
-	font-size: 4.8em;
-	height: 8%;
+	font-size: 4em;
+	height: 1.2em;
 	position: fixed;
-	background-color: rgb(102, 153, 255);
+	background-color: rgb(24, 42, 77);
 	left: 0px;
 	width: 100%;
 	color: white;
-	font-family: bebas-neue-semirounded, sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+}
+li {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 #bottom {
 	text-align: center;
@@ -32,12 +35,22 @@ p {
 	margin-bottom: 50px;
 }
 h2 {
-	font-family: semplicitapro, sans-serif;
-	font-size: 2em;
+	font-family: "Montserrat", sans-serif;
+	font-size: 3em;
+	font-weight: 900;
+	text-align: center;
 }
 h3 {
-	font-size: 1.7em;
-	background-color: rgb(230, 238, 255);
+	font-size: 1.9em;
+	font-weight: 600;
+}
+h4 {
+	font-size: 2em;
+	font-weight: 300;
+	text-align: center;
+}
+h5 {
+	font-size: 1.3em;
 }
 .line {
 	border-top-style: solid;
@@ -68,4 +81,32 @@ h3 {
 }
 .smallSpace {
 	min-height: 50px;
+}
+.buttonURL {
+	background-color: rgba(0, 0, 0, 0);
+	border: rgba(0, 0, 0, 0);
+	color: rgb(24, 126, 243);
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: none;
+	font-size: 1em;
+	cursor:pointer;
+	margin: 0% 0% 0% 0%;
+}
+.buttonURL:hover {
+	color: rgb(24, 126, 243);
+	text-decoration: underline;
+	font-size: 1em;
+	margin: 0% 0% 0% 0%;
+}
+.imageDescription {
+font-size: 0.8em;
+}
+.centre {
+	margin: auto;
+	display: block;
+}
+.code {
+	font-family: 'Consolas', Courier, monospace;
+	background-color: rgba(0, 0, 0, 0.1);
+	font-size: 0.9em;
 }
