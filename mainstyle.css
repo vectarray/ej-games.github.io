@@ -28,7 +28,14 @@ li {
 	color: white;
 }
 a {
-	color: rgb(200,140,235);
+	color: rgb(24, 126, 243);
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: none;
+}
+a:hover {
+	color: rgb(24, 126, 243);
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: underline;
 }
 p {
 	margin-top: 50px;
