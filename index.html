@@ -12,10 +12,23 @@
 		rel="stylesheet">
 	<style>
 	</style>
+	
+	<script>
+		
+		function CheckFormatting()
+		{
+			var userAgent = navigator.userAgent.toLowerCase();
+			//userAgent = "iphone";
+			if (userAgent.indexOf("iphone") != -1)
+			{
+				document.body.style.margin = "0% 5% 0% 5%";
+			}
+		}
+	</script>
 
 </head>
 
-<body>
+<body onload="CheckFormatting()">
 	<div id="title">EJGames</div>
 	<div class="space"></div>
 	<h2>Homepage</h2>
