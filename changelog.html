@@ -1,86 +1,260 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>EJGames: Locked In</title>
-<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
-<link rel="stylesheet" href="https://ejwebsites.github.io/mainstyle.css">
-<style>
-body {
-	font-family: motiva-sans, sans-serif;
-	margin: 0px 30% 0px 25%;
-}
-.mainParagraph {
-	font-size: 1.2em;
-}
-h2 {
-	font-family: semplicitapro, sans-serif;
-}
-#title {
-	font-family: bebas-neue-semirounded, sans-serif;
-	font-size: 4.8em;
-}
-.fullImage {
-	left: 20%;
-	width: 111.1%;
-}
-.space {
-	min-height: 100px;
-}
-.smallSpace {
-	min-height: 50px;
-}
-</style>
+	<title>Locked In Changelog</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<style>
+
+		#showold {
+			background-color: rgba(0, 0, 0, 0);
+			border: rgba(0, 0, 0, 0);
+			color: rgb(24, 126, 243);
+			font-family: 'Montserrat', sans-serif;
+			text-decoration: none;
+			font-size: 1em;
+			cursor: pointer;
+		}
+
+		#showold:hover {
+			color: rgb(24, 126, 243);
+			text-decoration: underline;
+			font-size: 1em;
+		}
+	</style>
+	<script>
+		function OpenOlder()
+		{
+			document.getElementById("old").style.display = "block";
+			document.getElementById("showold").onclick = CloseOlder;
+			document.getElementById("showold").innerHTML = "Hide older versions";
+		}
+		function CloseOlder()
+		{
+			document.getElementById("old").style.display = "none";
+			document.getElementById("showold").onclick = OpenOlder;
+			document.getElementById("showold").innerHTML = "Show older versions";
+		}
+
+
+		function ShowExtraInfo(infoId, buttonId)
+		{
+			document.getElementById(infoId).style.display = "block";
+			document.getElementById(buttonId).innerHTML = "Hide info";
+			function Hide()
+			{
+				HideExtraInfo(infoId, buttonId);
+			}
+			document.getElementById(buttonId).onclick = Hide
+		}
+		function HideExtraInfo(infoId, buttonId)
+		{
+			document.getElementById(infoId).style.display = "none";
+			document.getElementById(buttonId).innerHTML = "Show info";
+			function Show()
+			{
+				ShowExtraInfo(infoId, buttonId);
+			}
+			document.getElementById(buttonId).onclick = Show;
+		}
+		function CheckFormatting()
+		{
+			var userAgent = navigator.userAgent.toLowerCase();
+			//userAgent = "iphone";
+			if (userAgent.indexOf("iphone") != -1)
+			{
+				document.body.style.margin = "0% 5% 0% 5%";
+			}
+		}
+	</script>
 
 </head>
-<body>
-<div id="title">EJGames</div>
-<div class="space"></div>
-<h2>Locked In Downloads</h2>
-EJ<br>
-14th December 2021
-<div class="smallSpace"></div>
-<br>
-<div class="mainParagraph">
-These are all the updates made to Locked In so far.
-<br><br>
-<!DOCTYPE html>
-<html>
-<h4>V3 (Latest)</h4>
-<ul>
-<li>In this update, we added bosses! Specifically a bee called Wannabee!
-<ul>
-<li>Has multiple different phases</li>
-<li>Spawns in an exclusive enemy (small bee)</li>
-<li>Gives a secret new weapon when defeated!</li>
-</ul>
-</li>
-<br>
-<li>New gun: LMG
-<ul>
-<li>Fires as quick as an AR</li>
-<li>Long time before lots of shake</li>
-<li>Kills pretty quickly!</li>
-</ul>
-</li>
-<br>
-<li>New gun: Kar98k
-<ul>
-<li>Does 150 damage in one shot</li>
-<li>Pierces enemies</li>
-<li>Takes time to aim in before shooting</li>
-<li>Kills a lot of things instantly!</li>
-</ul>
-</li>
-<br>
-<li>Added a few tiny changes and bug fixes
-<ul>
-<li>Your head now moves before your body and gun</li>
-<li>Added a movement counter, and darkness speed indicator</li>
-<li>The gun now goes under your head and over your arms, instead of being on top of both</li>
-<li>A few other teeny tiny ones that I can't remember off the top of my head</li>
-</ul>
-</li>
-</ul>
-</html>
-</div>
+
+<body onload="CheckFormatting()">
+	<div id="title">EJGames</div>
+	<div class="space"></div>
+	<h2>Locked In Changelog</h2>
+	<div class="mainParagraph">
+		These are all the updates made to Locked In so far.<br><br>
+		<button type="button" class="buttonURL" id="keyButton" onclick="ShowExtraInfo('updateKey', 'keyButton')">Show
+			info</button>about update types
+		<br>
+		<span id="updateKey" style="display: none;">
+			<ul>
+				<li>Feature update: adds new features, like, for example, classes (added in Alpha V4) and bosses (added
+					in Alpha V3). Alpha V4 is a feature update.</li>
+				<li>Content update: adds new content, like more guns, bosses and sections. Alpha V3 is a feature update.
+				</li>
+				<li>Fix update: fixes major bugs, or just a lot of bugs. Expect more of these in the future. Alpha V2
+					could be classed as a fix update.</li>
+				<li>Pre-update: before a proper update is released, Locked In will have a "pre-update" (named something
+					like "Pre-V4"), which just allows for people to play the game with the new update, and report bugs,
+					and have them fixed in the next update.</li>
+			</ul>
+			<br><br>
+		</span>
+		<!DOCTYPE html>
+		<h3>V4-P - Pre-feature update</h3>
+		<div class="line"></div>
+		<h4>New feature: classes!</h4>
+		Classes can be chosen by opening the main menu (escape) and choosing "Select Class".
+		<br><br><img src="lockedinclasses.png" width="70%" class="centre">
+		<div class="smallSpace"></div>
+		There are currently 5 classes, each with a <i>passive</i> and a <i>spell</i>:
+		<ul>
+			<li><b>Frost</b>: the spell is "Frostwind" and the passive is "Cold shots"<br> <button type="button"
+					class="buttonURL" id="frost-button" onclick="ShowExtraInfo('frost-info', 'frost-button')">Show
+					info</button>
+				<ul id="frost-info" style="display: none;">
+					<li>Frostwind: "Sends a gust of wind at the enemies, knocking them back and freezing them for 5
+						seconds."</li>
+					<li>Cold shots: "Hitting an enemy can slow it for 5 seconds."</li>
+				</ul>
+			</li>
+			<li><b>Fire</b>: the spell is "Firewall" and the passive is "Flaming bullets"<br> <button type="button"
+					class="buttonURL" id="fire-button" onclick="ShowExtraInfo('fire-info', 'fire-button')">Show
+					info</button>
+				<ul id="fire-info" style="display:	none;">
+					<li>Firewall: "Sends a wall of flames towards the enemies, damaging them and setting them on fire
+						for 10 seconds."</li>
+					<li>Flaming bullets: "Each shot has a chance of setting the enemy on fire for 5 seconds."</li>
+				</ul>
+			</li>
+			<li><b>Magic</b>: the spell is "Teleport" and the passive is "Defence impulse"<br> <button type="button"
+					class="buttonURL" id="magic-button" onclick="ShowExtraInfo('magic-info', 'magic-button')">Show
+					info</button>
+				<ul id="magic-info" style="display:	none;">
+					<li>Teleport: "Allows instant teleportation through walls to the mouse's position."</li>
+					<li>Defence impulse: "When below 25% health, a small magic impulse is sent out, dealing damage to
+						all enemies in range."</li>
+				</ul>
+			</li>
+			<li><b>Life</b>: the spell is "Heal" and the passive is "Restoration"<br> <button type="button"
+					class="buttonURL" id="life-button" onclick="ShowExtraInfo('life-info', 'life-button')">Show
+					info</button>
+				<ul id="life-info" style="display:	none;">
+					<li>Heal: "Instantly heals for half of your maximum health."</li>
+					<li>Defence impulse: "Passive healing is twice as fast, and activates 25% quicker."</li>
+				</ul>
+			</li>
+			<li><b>Light</b>: the spell is "Snapshot" and the passive is "Insight"<br> <button type="button"
+					class="buttonURL" id="light-button" onclick="ShowExtraInfo('light-info', 'light-button')">Show
+					info</button>
+				<ul id="light-info" style="display:	none;">
+					<li>Snapshot: "Reveals the direction of all enemies, and shows the way forward."</li>
+					<li>Defence impulse: "The closer the darkness gets, the brighter the area."</li>
+				</ul>
+			</li>
+		</ul>
+		Well, that was a lot of information!
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4>NPCs and Quests</h4>
+		Specifically a mechanic, who goes by the name... <i>John Gold</i>.
+		<br><br>
+		<div style="color: rgb(163, 61, 61);">Disclaimer:
+			<ul>
+				<li>The current NPC, John Gold, only gives 1 quest, which does not have progress that can be saved.</li>
+				<li>This is in order to add NPCs in Locked In V4 without having to spend even more time adding new
+					quests and rewards.</li>
+				<li>More quests, and possibly more NPCs, will be added in the next Content update, along with possible
+					new bosses, guns and sections.</li>
+			</ul>
+		</div>
+		<i>Anyway</i>, the new NPC, John Gold, will give you a quest, and after the quest, he will despawn, and won't
+		spawn again until you restart.<br>
+		This will be changed in a future update. We've already got some stuff ready for it!
+		<div class="smallSpace"></div>
+		And don't worry. We definitely won't make it easy! What? It's not like we're going to make you kill lots of
+		really rare enemies and get a very small reward? Pff. No. No way.
+		<br>
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4>A massive UI update</h4>
+		New loadout screen! Check it:
+		<br><br><img src="newloadout.png" width="70%" class="centre">
+		<div class="imageDescription">Isn't that just so much better than before? Remember the really ugly box
+			that used to pop up to change your loadout?</div>
+		<h5>New notifications!</h5>
+		Simple, quick notification!
+		<br>
+		<br><img src="newnotification.png" width="70%"class="centre">
+		<div class="imageDescription">For when you need information mid-game, like if your spell is on
+			cooldown. It has a shake too! Wow!</div>
+		<br><br>Notify popup!
+		<br><br><img src="lockedinconfirm.png" width="50%">
+		<div class="imageDescription">Ooh, look at you, you privileged player! Getting to choose your
+			option? That's not available to some people, remember.</div>
+		<br><br>Confirm popup!
+		<br><br><img src="lockedinpopup.png" width="50%">
+		<div class="imageDescription">You have no choice over what to answer on this one!</div>
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4>Bug fixes and tweaks</h4>
+		Everyone's favourite part!
+		<ul>
+			<li>Wannabee will no longer disappear off the map... hopefully.</li>
+			<li>Firerate of guns is no longer affected by framerate.</li>
+			<li>Enemies will no longer get caught on walls.</li>
+			<li>And, as always, the ones that I can't remember off the top of my head.</li>
+		</ul>
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4>Post-update note</h4>
+		This update is hopefully going to change the style of Locked In, turning it from a repetitive, fast paced
+		shooter, to a more randomized, chaotic (but not infuriating... yet) arcade game.
+		We've tried as hard as we can ('we' being me, alone) to add some more features and content to the game, as well
+		as freshening up our website. If you want to support us, visit our <a
+			href="https://nikelet.itch.io/lockedinalpha">itch.io page</a> and,
+		after we set up donations, donate!
+		<div class="smallSpace"></div>
+		<button id="showold" class="buttonURL" onclick="OpenOlder()">Show older versions</button>
+		<br>The older versions are still in the old changelog format. It doesn't look too bad, though, does it?
+		<span id="old" style="display: none;">
+			<h3>V3 - Content Update</h3>
+			<ul>
+				<li>In this update, we added bosses! Specifically a bee called Wannabee!
+					<ul>
+						<li>Has multiple different phases</li>
+						<li>Spawns in an exclusive enemy (small bee)</li>
+						<li>Gives a secret new weapon when defeated!</li>
+					</ul>
+				</li>
+				<br>
+				<li>New gun: LMG
+					<ul>
+						<li>Fires as quick as an AR</li>
+						<li>Long time before lots of shake</li>
+						<li>Kills pretty quickly!</li>
+					</ul>
+				</li>
+				<br>
+				<li>New gun: Kar98k
+					<ul>
+						<li>Does 150 damage in one shot</li>
+						<li>Pierces enemies</li>
+						<li>Takes time to aim in before shooting</li>
+						<li>Kills a lot of things instantly!</li>
+					</ul>
+				</li>
+				<br>
+				<li>Added a few tiny changes and bug fixes
+					<ul>
+						<li>Your head now moves before your body and gun</li>
+						<li>Added a movement counter, and darkness speed indicator</li>
+						<li>The gun now goes under your head and over your arms, instead of being on top of both</li>
+						<li>A few other teeny tiny ones that I can't remember off the top of my head</li>
+					</ul>
+				</li>
+			</ul>
+	</div>
+	</span>
+	<div class="space"></div>
+
 </html>
