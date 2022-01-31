@@ -1,22 +1,67 @@
+button {
+	background-color: rgba(0, 0, 0, 0);
+	border: rgba(0, 0, 0, 0);
+	color: rgb(24, 126, 243);
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: none;
+	font-size: 1em;
+	cursor:pointer;
+	margin: 0% 0% 0% 0%;
+	color: white;
+	text-decoration: none;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding: 0%;
+}
+button:hover {
+	color: rgb(24, 126, 243);
+	text-decoration: underline;
+	font-size: 1em;
+	margin: 0% 0% 0% 0%;
+	color: white;
+	text-decoration: none;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 0%;
+}
 body {
 	font-family: 'Montserrat', sans-serif;
 	background-color: rgb(22, 28, 37);
-	margin: 0px 27% 0px 27%;
 	font-size: 1.35em;
 	color: rgb(218, 218, 218);
+	margin: 0px 0px 0px 0px;
+}
+.mainParagraph {
+	margin: 0px 27% 0px 27%;
 }
 #title {
 	text-align: center;
 	font-size: 4em;
-	height: 1.2em;
-	position: fixed;
+	/* height: 1.2em; */
 	background-color: rgb(24, 42, 77);
-	left: 0px;
-	width: 100%;
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
 }
+.bar {
+	text-align: center;
+	left: 0%;
+	background-color: rgb(16, 28, 51);
+	width: 100%;
+	font-size: 1.2em;
+	position: fixed;
+}
+.bar a {
+	color: white;
+	text-decoration: none;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+.bar a:hover {
+	color: white;
+	text-decoration: none;
+	background-color: rgb(12, 20, 36);
+}
+.notAllowed:hover { cursor: no-drop; }
 li {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -31,11 +76,13 @@ a {
 	color: rgb(24, 126, 243);
 	font-family: 'Montserrat', sans-serif;
 	text-decoration: none;
+	background-color: rgba(0, 0, 0, 0);
 }
 a:hover {
 	color: rgb(24, 126, 243);
 	font-family: 'Montserrat', sans-serif;
 	text-decoration: underline;
+	background-color: rgba(0, 0, 0, 0);
 }
 p {
 	margin-top: 50px;
@@ -100,10 +147,32 @@ h5 {
 	margin: 0% 0% 0% 0%;
 }
 .buttonURL:hover {
+	background-color: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
 	text-decoration: underline;
 	font-size: 1em;
 	margin: 0% 0% 0% 0%;
+}
+.URLbutton {
+	color: white;
+	text-decoration: none;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+.URLbutton:hover {
+	color: white;
+	text-decoration: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.URLbuttonText {
+	color: white;
+	text-decoration: none;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+.URLbuttonText:hover {
+	color: rgb(170, 170, 170);
+	text-decoration: none;
 }
 .imageDescription {
 font-size: 0.8em;
@@ -114,6 +183,25 @@ font-size: 0.8em;
 }
 .code {
 	font-family: 'Consolas', Courier, monospace;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.3);
 	font-size: 0.9em;
+	font-style: normal;
+}
+.sidebar {
+	position: fixed;
+	width: 15em;
+	left: 0%;
+	top: 1.45em;
+	min-height: calc(100% - 1.45em);
+	z-index: 0;
+	background-color: rgb(20, 22, 29);
+	padding: 0px 0.5em 0px 0.5em;
+}
+.sidebar h4 {
+	text-align: center;
+	font-size: 1.35em;
+	font-weight: 600;
+}
+html {
+	scroll-behavior: smooth;
 }
