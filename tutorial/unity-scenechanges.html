@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Constructors Tutorial</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs()">
+	<div class="bar">
+		<a href="../index.html">Homepage</a>
+		<a href="../lockedin.html">Locked In</a>
+		<a href="../changelog.html">Changelog</a>
+	</div>
+	<div class="sidebar">
+		<h4>Contents</h4>
+		<a href="#setup" class="URLbuttonText">Setting up scenes</a><br>
+		<a href="#addscenes" class="URLbuttonText">Adding scenes</a><br>
+		<a href="#addcode" class="URLbuttonText">Adding code</a><br>
+		<a href="#nextlevel" class="URLbuttonText">Level progressing</a><br>
+		<a href="#conclusion" class="URLbuttonText">Conclusion</a><br>
+		<h4>Links</h4>
+		<a href="../index.html" class="URLbuttonText">Homepage</a><br>
+		<a href="../lockedin.html" class="URLbuttonText">Locked In</a><br>
+		<a href="../changelog.html" class="URLbuttonText">Changelog</a><br>
+		<a href="../tutorials.html" class="URLbuttonText">Tutorials</a><br>
+	</div>
+	<div style="min-height: 1.35em;"></div>
+	<div id="title">EJGames</div>
+	<h2>Scene transitions</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a Unity tutorial about <b>scene transitions</b>. This tutorial will not be helpful to those using vanilla C#.
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4 id="setup">1. Set up your scenes</h4>
+		First, set up two distinct scenes so it is clear when you have switched.
+		<br><br>For testing purposes, I have set up Scene A and Scene B:
+		<br><br><img src="images/scenechanges-a.PNG" width=47% style="float: left;"><img src="images/scenechanges-b.PNG" width=47% style="float: right;">
+		<div style="clear: both;">&nbsp;</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="addscenes">2. Add scenes to build settings</h4>
+		<img src="images/buildsettings-open.png" width="20%" style="float:left;">
+		<div style="position: relative; left: 2.5%">Choose 'File &gt; Build Settings' to open the build settings, then drag each scene from the 'Project' panel into the box.
+		<br><br> <img src="images/buildsettings-drag.png" width="70%"> </div>
+		<div style="clear: both;">&nbsp;</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="addcode">3. Add code</h4>
+		To the top of the script of your choice (or a new script), add the following:
+		<br><br>
+		<div class="code">using UnityEngine.SceneManagement;</div>
+		<br><br>
+		Then add, to the place where you want to change scene:
+		<br><br>
+		<div class="code">SceneManager.LoadScene([Scene Name]);</div>
+		<br><br>
+		In my case, it would be:
+		<br><br>
+		<div class="code">SceneManager.LoadScene("SceneB");</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="nextlevel">Changing to the next level</h4>
+		If you are making a platformer game, or puzzle game, and want to progress to the next level, then you can use <span class="code">buildIndex</span>es.
+		<br>The build index is the number next to the scene in the Build Settings, on the far right.
+		<br><br>
+		To move to the next scene in the build settings, you can write:
+		<br><br>
+		<div class="code">
+			Scene currentScene = SceneManager.GetActiveScene();
+			<br>SceneManager.LoadScene(currentScene.buildIndex + 1);
+		</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="conclusion">Conclusion</h4>
+		Changing scenes is essential to most complex games.
+		<br>To change to a specific scene, use <span class="code">SceneManager.LoadScene("Example");</span>
+		<br>To change to the next scene, use <span class="code">SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);</span>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Did this tutorial make sense? It would be useful to know, which is why you can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>
