@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Constructors Tutorial</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs()">
+	<div class="bar">
+		<a href="../index.html">Homepage</a>
+		<a href="../lockedin.html">Locked In</a>
+		<a href="../changelog.html">Changelog</a>
+	</div>
+	<div class="sidebar">
+		<h4>Contents</h4>
+		<a href="#what" class="URLbuttonText">What is a constructor?</a><br>
+		<a href="#create" class="URLbuttonText">Creating a constructor</a><br>
+		<a href="#instantiate" class="URLbuttonText">Instantiating a class</a><br>
+		<a href="#end" class="URLbuttonText">Conclusion</a><br>
+		<h4>Links</h4>
+		<a href="../index.html" class="URLbuttonText">Homepage</a><br>
+		<a href="../lockedin.html" class="URLbuttonText">Locked In</a><br>
+		<a href="../changelog.html" class="URLbuttonText">Changelog</a><br>
+		<a href="../tutorials.html" class="URLbuttonText">Tutorials</a><br>
+	</div>
+	<div style="min-height: 1.35em;"></div>
+	<div id="title">EJGames</div>
+	<h2>Constructors</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a C# (with references to Unity) tutorial about <b>constructors</b>. This means that it will be able to be followed in vanilla C#, but will also contain context for Unity users.
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4 id="what">What is a constructor?</h4>
+		A constructor is a way of creating (instantiating) a class. If you're using Unity, then constructors can only be used when the class is not using MonoBehaviour.
+		<br><i>Look at the top of your class. Is it using MonoBehaviour?</i>
+		<br><br><div class="code">public class ExampleClass : MonoBehaviour {
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;// Stuff goes here
+		<br>}
+		</div>
+		<br>
+		The class shown above <i>is</i> using MonoBehaviour, which means that you can't use constructors to instantiate it.
+		<br>
+		<i>Instead, to instantiate this class, add it as a component to an object, and use </i><span class="code">GameObject.Instantiate()</span>.
+		<br><br>
+		A constructor is used to instantiate a class that just holds functions and variables, and doesn't run on its own.
+		<br>For example, if you wanted to store a list of cars (wow, what a creative idea!) then you would do:
+		<br><br>
+		<div class="code">
+			public class Car {<br>
+				<span class="tab"></span>public string make;
+				<br><span class="tab"></span>public string model;
+				<br><span class="tab"></span>public float speed;
+				<br><span class="tab"></span>// Etc
+				<br>}
+		</div>
+		instead of doing an if statement determining the make, model and speed of each car name.
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4 id="create">How to create a constructor</h4>
+		Right now, our <span class="code">Car</span> class is useless, because we haven't actually created any instances of it.
+		<br>This is where constructors come in. 
+		<br><br>To create a constructor, just do:
+		<br><br>
+		<div class="code">
+			public Car() {
+				<br><br>
+			}
+		</div>
+		<br>
+		This will create an empty constructor that takes no arguments. You will just have a car with a blank make, a blank model, and a speed of 0.
+		<br><br>
+		So, can you guess what we do next? We add arguments!
+		<br><br>
+		<div class="code">
+			public Car(string make, string model, float speed) {
+				<br><span class="tab"></span>
+				<br>}
+		</div>
+		<br><br>
+		So now we have a constructor for a <span class="code">Car</span> with a <span class="code">make</span> argument, a <span class="code">model</span> argument and a <span class="code">speed</span>
+		argument.
+		<br>
+		But right now, the values in each instance of our Car will be the same. We need to give the car's make, model and speed a value, based on the parameters we give the constructor.
+		<br><br>So, in the constructor, we write:
+		<br><br>
+		<div class="code">
+			this.make = make;
+			<br>this.model = model;
+			<br>this.speed = speed;
+		</div>
+		<i>Notice the <span class="code">this</span> before each variable: this references the class's variables, instead of the functions. This is only needed because the arguments have the 
+		same name as the variables in the class.</i>
+		<br><br>
+		The above code will set the make, model, and speed, to the values we pass it, giving each class unique values.
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4 id="instantiate">How to instantiate a class</h4>
+		That's all very well and good, but right now, you probably have no clue how to actually use the constructor to make a class.
+		<br><br>
+		Here's the simple answer:
+		<br><br>
+		<div class="code">
+			Car myCar = new Car("Ford", "Fiesta", 130);
+		</div>
+		<br><br>
+		But it's also useful to understand how it works.
+		<br><br>
+		When you create a class, you are creating a 'type' of object, that can hold values for each instance.
+		<br>Putting <span class="code">new Car("Ford", "Fiesta", 130)</span> will create a new car, with a make of 'Ford', a model of 'Fiesta', and a speed of 130.
+		<br>If, instead, you wanted to make a VW Polo, then you would put <span class="code">new Car("Volkswagen", "Polo", 151)</span>
+		<br>Because a VW Polo (in 2022) has a top speed of 151mph. Fun fact.
+		<br><br>However, if you wanted to compare two classes, you couldn't do:
+		<br><br><div class="code">
+			Car polo = new Car("Volkswagen", "Polo", 151);
+			<br>
+			<br>if(polo == new Car("Volkswagen", "Polo", 151)) {
+				<br><span class="tab"></span>Console.WriteLine("Yippee! It worked!");
+				<br>}
+		</div>
+		<br><br>
+		Because, although the values are the same, the items being compared, <span class="code">polo</span> and <span class="code">new Car("Volkswagen", "Polo", 151)</span>, are different instances
+		of the 'car' class. The result would never be:
+		<div class="code">> Yippee! It worked!</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="end">Conclusion</h4>
+		So, a constructor is a way to instantiate a class.
+		<br>To create a constructor, do <span class="code">public ExampleClass(string example)</span>.
+		<br>To create an instance of that class, do <span class="code">new ExampleClass("Example")</span>.
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Did this tutorial make sense? It would be useful to know, because it's the first one I've made.
+		<br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>
