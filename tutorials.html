@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>EJGames Tutorials Index</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="globalscript.js"></script>
+		<script>
+			function OnNewSearch() {
+				var input, filter, ul, li, a;
+				input = document.getElementById("searchBar");
+				filter = input.value.toUpperCase();
+				ul = document.getElementById("searchItems");
+				li = ul.getElementsByTagName("li");
+				for(var i = 0; i < li.length; i++) {
+					links = li[i].getElementsByTagName("a");
+					a = links[0];
+					if(a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						li[i].style.display = "";
+					}
+					else {
+						li[i].style.display = "none"
+					}
+				}
+			}
+
+			var currentChoice = "C#";
+
+			function SetChoice(choice) {
+				currentChoice = choice;
+			}
+		</script>
+
+		<style>
+			#searchBar {
+				width: 100%;
+				font-size: 1.5em;
+				font-family: "Montserrat", sans-serif;
+				font-weight: 600;
+				background-color: rgb(12, 20, 37);
+				border: none;
+				color:rgb(255, 255, 255);
+			}
+			#searchItems {
+				list-style-type: none;
+				padding-left: 0px;
+			}
+			#searchItems li {
+				margin-top: 1em;
+				margin-bottom: 1em;
+				text-align: center;
+			}
+			#searchItems li a {
+				color: white;
+				text-decoration: none;
+				padding-left: 1em;
+				padding-right: 1em;
+			}
+			#searchItems li a:hover {
+				color: white;
+				text-decoration: none;
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting()">
+	<div class="bar">
+		<a href="index.html">Homepage</a>
+		<a href="lockedin.html">Locked In</a>
+		<a href="changelog.html">Changelog</a>
+	</div>
+	<div class="sidebar">
+		<h4>Links</h4>
+		<a href="index.html" class="URLbuttonText">Homepage</a><br>
+		<a href="lockedin.html" class="URLbuttonText">Locked In</a><br>
+		<a href="changelog.html" class="URLbuttonText">Changelog</a><br>
+		<a href="tutorials.html" class="URLbuttonText">Tutorials</a><br>
+	</div>
+	<div style="min-height: 1.35em;"></div>
+	<div id="title">EJGames</div>
+	<h2>Unity & C# Tutorials</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		I have been making games for 2 years (as of writing this in February 2022).
+	<br><br>
+	I want to pass on my skills of programming in C#, with Unity, to other people who need them.
+	<br>
+	<div class="imageDescription"><i>Oh, wow, you're so nice!</i></div>
+	Yes, I am.
+	<br><br>
+	Here, you can find all of my tutorials that I've made so far, apart from some of them that I have forgotten to add.
+	<br>You can either scroll through all the tutorials, or just search in this box:
+	<br><br><input type="text" id="searchBar" onkeyup="OnNewSearch()" placeholder="Search tutorials" title="Type in the box to filter tutorials">
+	<br><br>and the results will appear right before your eyes!
+	<div class="smallSpace"></div>
+	<div class="line"></div>
+	<h4>Tutorials</h4>
+	<h5>
+	<ul id="searchItems">
+		<li><a href="tutorial/csharp-constructors.html">Constructors</a></li>
+	</ul>
+	</h5>
+	<div class="smallSpace"></div>
+</html>
