@@ -28,6 +28,7 @@
 			font-size: 1em;
 		}
 	</style>
+	<script src="globalscript.js"></script>
 	<script>
 		function OpenOlder()
 		{
@@ -63,27 +64,40 @@
 			}
 			document.getElementById(buttonId).onclick = Show;
 		}
-		function CheckFormatting()
-		{
-			var userAgent = navigator.userAgent.toLowerCase();
-			//userAgent = "iphone";
-			if (userAgent.indexOf("iphone") != -1)
-			{
-				document.body.style.margin = "0% 5% 0% 5%";
-			}
-		}
 	</script>
 
 </head>
 
 <body onload="CheckFormatting()">
+	<div class="bar">
+		<a href="index.html">Homepage</a>
+		<a href="lockedin.html">Locked In</a>
+		<a href="changelog.html">Changelog</a>
+	</div>
+	<div class="sidebar">
+		<h4>Contents</h4>
+		<a href="#v4" class="URLbuttonText"><b>Locked In</b></a>
+		<br><br><a href="#classes" class="URLbuttonText"><b>Classes</b></a>
+		<br><a href="#quests" class="URLbuttonText">Quests</a>
+		<br><a href="#ui" class="URLbuttonText">UI Update</a>
+		<br><a href="#bugfixes" class="URLbuttonText">Bug fixes & tweaks</a>
+		<br><a href="#postupdatenote" class="URLbuttonText">Post-update note</a>
+		<br><br>
+		<h4>Links</h4>
+		<a href="index.html" class="URLbuttonText">Homepage</a><br>
+		<a href="lockedin.html" class="URLbuttonText">Locked In</a><br>
+		<a href="changelog.html" class="URLbuttonText">Changelog</a><br>
+		<a href="tutorials.html" class="URLbuttonText">Tutorials</a><br>
+	</div>
+	<div style="min-height: 1.35em;"></div>
 	<div id="title">EJGames</div>
-	<div class="space"></div>
 	<h2>Locked In Changelog</h2>
 	<div class="mainParagraph">
+		<h5 style="text-align: center;">Contents</h5>
+		<div class="smallSpace"></div>
 		These are all the updates made to Locked In so far.<br><br>
 		<button type="button" class="buttonURL" id="keyButton" onclick="ShowExtraInfo('updateKey', 'keyButton')">Show
-			info</button>about update types
+			info</button> about update types
 		<br>
 		<span id="updateKey" style="display: none;">
 			<ul>
@@ -100,9 +114,9 @@
 			<br><br>
 		</span>
 		<!DOCTYPE html>
-		<h3>V4-P - Pre-feature update</h3>
+		<h3 id="v4">V4-P - Pre-feature update</h3>
 		<div class="line"></div>
-		<h4>New feature: classes!</h4>
+		<h4 id="classes">New feature: classes!</h4>
 		Classes can be chosen by opening the main menu (escape) and choosing "Select Class".
 		<br><br><img src="lockedinclasses.png" width="70%" class="centre">
 		<div class="smallSpace"></div>
@@ -155,7 +169,7 @@
 		Well, that was a lot of information!
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4>NPCs and Quests</h4>
+		<h4 id="quests">NPCs and Quests</h4>
 		Specifically a mechanic, who goes by the name... <i>John Gold</i>.
 		<br><br>
 		<div style="color: rgb(163, 61, 61);">Disclaimer:
@@ -176,7 +190,7 @@
 		<br>
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4>A massive UI update</h4>
+		<h4 id="ui">A massive UI update</h4>
 		New loadout screen! Check it:
 		<br><br><img src="newloadout.png" width="70%" class="centre">
 		<div class="imageDescription">Isn't that just so much better than before? Remember the really ugly box
@@ -196,7 +210,7 @@
 		<div class="imageDescription">You have no choice over what to answer on this one!</div>
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4>Bug fixes and tweaks</h4>
+		<h4 id="bugfixes">Bug fixes and tweaks</h4>
 		Everyone's favourite part!
 		<ul>
 			<li>Wannabee will no longer disappear off the map... hopefully.</li>
@@ -206,7 +220,7 @@
 		</ul>
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4>Post-update note</h4>
+		<h4 id="postupdatenote">Post-update note</h4>
 		This update is hopefully going to change the style of Locked In, turning it from a repetitive, fast paced
 		shooter, to a more randomized, chaotic (but not infuriating... yet) arcade game.
 		We've tried as hard as we can ('we' being me, alone) to add some more features and content to the game, as well
