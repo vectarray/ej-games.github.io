@@ -12,25 +12,33 @@
 		rel="stylesheet">
 	<style>
 	</style>
-	
-	<script>
-		
-		function CheckFormatting()
-		{
-			var userAgent = navigator.userAgent.toLowerCase();
-			//userAgent = "iphone";
-			if (userAgent.indexOf("iphone") != -1)
-			{
-				document.body.style.margin = "0% 5% 0% 5%";
-			}
-		}
-	</script>
+	<script src="globalscript.js"></script>
 
 </head>
 
-<body onload="CheckFormatting()">
+<body>
+	<div class="bar">
+		<a href="index.html">Homepage</a>
+		<a href="lockedin.html">Locked In</a>
+		<a href="changelog.html">Changelog</a>
+	</div>
+	<div class="sidebar">
+		<h4>Contents</h4>
+		<a href="#lockedin" class="URLbuttonText"><b>Locked In</b></a>
+		<br><br><a href="#everythingelse" class="URLbuttonText"><b>Everything else</b></a>
+		<br><a href="#apolycalypse" class="URLbuttonText">Apolycalypse</a>
+		<br><a href="#obbyshowdown" class="URLbuttonText">Obby Showdown</a>
+		<br><a href="#connectmore" class="URLbuttonText">ConnectMore</a>
+		<br><a href="#lockedininfo" class="URLbuttonText">Locked In</a>
+		<br><br>
+		<h4>Links</h4>
+		<a href="index.html" class="URLbuttonText">Homepage</a><br>
+		<a href="lockedin.html" class="URLbuttonText">Locked In</a><br>
+		<a href="changelog.html" class="URLbuttonText">Changelog</a><br>
+		<a href="tutorials.html" class="URLbuttonText">Tutorials</a><br>
+	</div>
+	<div style="min-height: 1.35em;"></div>
 	<div id="title">EJGames</div>
-	<div class="space"></div>
 	<h2>Homepage</h2>
 	<div class="smallSpace"></div>
 	<br>
@@ -38,12 +46,12 @@
 		Welcome to the homepage of EJGames!
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4>Locked In</h4>
+		<h4 id="lockedin">Locked In</h4>
 		If you're here for Locked In (most probably are) then please click here:
 		<a href="https://ej-games.github.io/lockedin.html"><button type="button" class="buttonURL">Visit the official page</button></a>
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4>Everything else</h4>
+		<h4 id="everythingelse">Everything else</h4>
 		In case you're not here for Locked In, then congratulations! You're a unique individual! Why don't I introduce myself, so that you don't think that you'll download a virus?
 		<div class="imageDescription">What? Who said anything about a virus?</div>
 		<br>
@@ -53,15 +61,15 @@
 		I have made plenty of games over the years. And other things. <b><a href="https://scratch.mit.edu/users/YouSawMyWebsiteLol/">Check out my scratch profile!!!!</a></b>
 		<br>Anyway, about the games. I have made plenty of games over the years. Some successful. A lot of them... not so successful.
 		<br>I'll give you a tour of the games I've made in the past. Most of them are pretty bad. But still, that's the essence of learning, isn't it?
-		<h5>Apolycalypse (Codename: FPS PVE)</h5>
+		<h5 id="apolycalypse">Apolycalypse (Codename: FPS PVE)</h5>
 		The FPS game that never got finished. Not just because of the really bad graphics (it was 3D! Do you expect me to know how to 3D model?), or the gripping narrative
 		(the man tells you to kill zombies). It was just because I had another idea. Which came next:
-		<h5>Obby Showdown (on Roblox)</h5>
+		<h5 id="obbyshowdown">Obby Showdown (on Roblox)</h5>
 		Ah, you thought I would never branch out and make games outside of Unity? Well you were wrong! My amazing <a href="https://www.roblox.com/games/7243771257/">Roblox game</a> got
 		barely any players, and also broke after I left it and came back. Although, the idea behind the game was absolutely amazing. People were completing the obstacle course, while a 'controller'
 		added stages, in real time. Sick. Even after all that effort, I got barely any reward.
 		Just goes to show how hard work doesn't always lead to success. Unless...
-		<h5>ConnectMore</h5>
+		<h5 id="connectmore">ConnectMore</h5>
 		To be honest, it was my first mobile game that
 		<ol>
 			<li>Looked decent</li>
@@ -72,7 +80,7 @@
 		using my newly learnt knowledge of <span class="code">Resources.Load()</span> in Unity. And, also, that was when I finally realised the architecture of Unity games. How did I
 		only just realise what <span class="code">static</span> actually meant?
 		<h5>Skip a few... ConnectCircle... Look Over There... Weird Circle Rotate Thingy... uhhhh</h5>
-		<h5>Locked In</h5>
+		<h5 id="lockedininfo">Locked In</h5>
 		And here we are now. Making a super cool PC game, top down, 2D, and over-engineering a website for it. Come on, making a website is fun! Especially when you're not just using Notepad.
 		
 	</div>
