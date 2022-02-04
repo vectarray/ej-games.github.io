@@ -76,8 +76,9 @@
 	</div>
 	<div class="sidebar">
 		<h4>Contents</h4>
-		<a href="#v4" class="URLbuttonText"><b>Locked In</b></a>
-		<br><br><a href="#classes" class="URLbuttonText"><b>Classes</b></a>
+		<a href="#v4" class="URLbuttonText"><b>V4</b></a>
+		<br><br><a href="#v4-p" class="URLbuttonText"><b>V4-P</b></a>
+		<br><a href="#classes" class="URLbuttonText">Classes</a>
 		<br><a href="#quests" class="URLbuttonText">Quests</a>
 		<br><a href="#ui" class="URLbuttonText">UI Update</a>
 		<br><a href="#bugfixes" class="URLbuttonText">Bug fixes & tweaks</a>
@@ -93,7 +94,6 @@
 	<div id="title">EJGames</div>
 	<h2>Locked In Changelog</h2>
 	<div class="mainParagraph">
-		<h5 style="text-align: center;">Contents</h5>
 		<div class="smallSpace"></div>
 		These are all the updates made to Locked In so far.<br><br>
 		<button type="button" class="buttonURL" id="keyButton" onclick="ShowExtraInfo('updateKey', 'keyButton')">Show
@@ -113,124 +113,136 @@
 			</ul>
 			<br><br>
 		</span>
-		<!DOCTYPE html>
-		<h3 id="v4">V4-P - Pre-feature update</h3>
+		<h3 id="v4">V4 - Feature update</h3>
 		<div class="line"></div>
-		<h4 id="classes">New feature: classes!</h4>
-		Classes can be chosen by opening the main menu (escape) and choosing "Select Class".
-		<br><br><img src="lockedinclasses.png" width="70%" class="centre">
-		<div class="smallSpace"></div>
-		There are currently 5 classes, each with a <i>passive</i> and a <i>spell</i>:
+		<h4 id="tweaks">Tweaks</h4>
+		Top tip: don't release an update without playtesting it. Actually, we've done it right by releasing pre-feature updates. This is the first one! Here are the changes
+		we've made since V4-P.
 		<ul>
-			<li><b>Frost</b>: the spell is "Frostwind" and the passive is "Cold shots"<br> <button type="button"
-					class="buttonURL" id="frost-button" onclick="ShowExtraInfo('frost-info', 'frost-button')">Show
-					info</button>
-				<ul id="frost-info" style="display: none;">
-					<li>Frostwind: "Sends a gust of wind at the enemies, knocking them back and freezing them for 5
-						seconds."</li>
-					<li>Cold shots: "Hitting an enemy can slow it for 5 seconds."</li>
-				</ul>
-			</li>
-			<li><b>Fire</b>: the spell is "Firewall" and the passive is "Flaming bullets"<br> <button type="button"
-					class="buttonURL" id="fire-button" onclick="ShowExtraInfo('fire-info', 'fire-button')">Show
-					info</button>
-				<ul id="fire-info" style="display:	none;">
-					<li>Firewall: "Sends a wall of flames towards the enemies, damaging them and setting them on fire
-						for 10 seconds."</li>
-					<li>Flaming bullets: "Each shot has a chance of setting the enemy on fire for 5 seconds."</li>
-				</ul>
-			</li>
-			<li><b>Magic</b>: the spell is "Teleport" and the passive is "Defence impulse"<br> <button type="button"
-					class="buttonURL" id="magic-button" onclick="ShowExtraInfo('magic-info', 'magic-button')">Show
-					info</button>
-				<ul id="magic-info" style="display:	none;">
-					<li>Teleport: "Allows instant teleportation through walls to the mouse's position."</li>
-					<li>Defence impulse: "When below 25% health, a small magic impulse is sent out, dealing damage to
-						all enemies in range."</li>
-				</ul>
-			</li>
-			<li><b>Life</b>: the spell is "Heal" and the passive is "Restoration"<br> <button type="button"
-					class="buttonURL" id="life-button" onclick="ShowExtraInfo('life-info', 'life-button')">Show
-					info</button>
-				<ul id="life-info" style="display:	none;">
-					<li>Heal: "Instantly heals for half of your maximum health."</li>
-					<li>Defence impulse: "Passive healing is twice as fast, and activates 25% quicker."</li>
-				</ul>
-			</li>
-			<li><b>Light</b>: the spell is "Snapshot" and the passive is "Insight"<br> <button type="button"
-					class="buttonURL" id="light-button" onclick="ShowExtraInfo('light-info', 'light-button')">Show
-					info</button>
-				<ul id="light-info" style="display:	none;">
-					<li>Snapshot: "Reveals the direction of all enemies, and shows the way forward."</li>
-					<li>Defence impulse: "The closer the darkness gets, the brighter the area."</li>
-				</ul>
-			</li>
+			<li>LMG does 1 less damage per shot (going from 17 to 16)</li>
+			<li>The Wannabee weapon does more damage, as requested by some individuals</li>
+			<li>The LMG has been fixed. No more 150-pellet shots. Can't believe that one made the update.</li>
+			<li>Music has been changed, and returned to its former glory. The new songs (made by me, of course) are so much better than the old ones, some of which <i>weren't</i> made my me.</li>
+			<li>If you've seen one of those flickering lights, you won't any more. Those were chests trying to spawn. That's been fixed.</li>
 		</ul>
-		Well, that was a lot of information!
-		<div class="smallSpace"></div>
-		<div class="line"></div>
-		<h4 id="quests">NPCs and Quests</h4>
-		Specifically a mechanic, who goes by the name... <i>John Gold</i>.
-		<br><br>
-		<div style="color: rgb(163, 61, 61);">Disclaimer:
-			<ul>
-				<li>The current NPC, John Gold, only gives 1 quest, which does not have progress that can be saved.</li>
-				<li>This is in order to add NPCs in Locked In V4 without having to spend even more time adding new
-					quests and rewards.</li>
-				<li>More quests, and possibly more NPCs, will be added in the next Content update, along with possible
-					new bosses, guns and sections.</li>
-			</ul>
-		</div>
-		<i>Anyway</i>, the new NPC, John Gold, will give you a quest, and after the quest, he will despawn, and won't
-		spawn again until you restart.<br>
-		This will be changed in a future update. We've already got some stuff ready for it!
-		<div class="smallSpace"></div>
-		And don't worry. We definitely won't make it easy! What? It's not like we're going to make you kill lots of
-		really rare enemies and get a very small reward? Pff. No. No way.
-		<br>
-		<div class="smallSpace"></div>
-		<div class="line"></div>
-		<h4 id="ui">A massive UI update</h4>
-		New loadout screen! Check it:
-		<br><br><img src="newloadout.png" width="70%" class="centre">
-		<div class="imageDescription">Isn't that just so much better than before? Remember the really ugly box
-			that used to pop up to change your loadout?</div>
-		<h5>New notifications!</h5>
-		Simple, quick notification!
-		<br>
-		<br><img src="newnotification.png" width="70%"class="centre">
-		<div class="imageDescription">For when you need information mid-game, like if your spell is on
-			cooldown. It has a shake too! Wow!</div>
-		<br><br>Notify popup!
-		<br><br><img src="lockedinconfirm.png" width="50%">
-		<div class="imageDescription">Ooh, look at you, you privileged player! Getting to choose your
-			option? That's not available to some people, remember.</div>
-		<br><br>Confirm popup!
-		<br><br><img src="lockedinpopup.png" width="50%">
-		<div class="imageDescription">You have no choice over what to answer on this one!</div>
-		<div class="smallSpace"></div>
-		<div class="line"></div>
-		<h4 id="bugfixes">Bug fixes and tweaks</h4>
-		Everyone's favourite part!
-		<ul>
-			<li>Wannabee will no longer disappear off the map... hopefully.</li>
-			<li>Firerate of guns is no longer affected by framerate.</li>
-			<li>Enemies will no longer get caught on walls.</li>
-			<li>And, as always, the ones that I can't remember off the top of my head.</li>
-		</ul>
-		<div class="smallSpace"></div>
-		<div class="line"></div>
-		<h4 id="postupdatenote">Post-update note</h4>
-		This update is hopefully going to change the style of Locked In, turning it from a repetitive, fast paced
-		shooter, to a more randomized, chaotic (but not infuriating... yet) arcade game.
-		We've tried as hard as we can ('we' being me, alone) to add some more features and content to the game, as well
-		as freshening up our website. If you want to support us, visit our <a
-			href="https://nikelet.itch.io/lockedinalpha">itch.io page</a> and,
-		after we set up donations, donate!
-		<div class="smallSpace"></div>
+		<div class="smallSpace"></div><div class="line"></div><div class="smallSpace"></div>
 		<button id="showold" class="buttonURL" onclick="OpenOlder()">Show older versions</button>
-		<br>The older versions are still in the old changelog format. It doesn't look too bad, though, does it?
+		<br>Some of the older versions are still in the old changelog format. It doesn't look too bad, though, does it?
 		<span id="old" style="display: none;">
+			<h3 id="v4-p">V4-P - Pre-feature update</h3>
+			<div class="line"></div>
+			<h4 id="classes">New feature: classes!</h4>
+			Classes can be chosen by opening the main menu (escape) and choosing "Select Class".
+			<br><br><img src="lockedinclasses.png" width="70%" class="centre">
+			<div class="smallSpace"></div>
+			There are currently 5 classes, each with a <i>passive</i> and a <i>spell</i>:
+			<ul>
+				<li><b>Frost</b>: the spell is "Frostwind" and the passive is "Cold shots"<br> <button type="button"
+						class="buttonURL" id="frost-button" onclick="ShowExtraInfo('frost-info', 'frost-button')">Show
+						info</button>
+					<ul id="frost-info" style="display: none;">
+						<li>Frostwind: "Sends a gust of wind at the enemies, knocking them back and freezing them for 5
+							seconds."</li>
+						<li>Cold shots: "Hitting an enemy can slow it for 5 seconds."</li>
+					</ul>
+				</li>
+				<li><b>Fire</b>: the spell is "Firewall" and the passive is "Flaming bullets"<br> <button type="button"
+						class="buttonURL" id="fire-button" onclick="ShowExtraInfo('fire-info', 'fire-button')">Show
+						info</button>
+					<ul id="fire-info" style="display:	none;">
+						<li>Firewall: "Sends a wall of flames towards the enemies, damaging them and setting them on fire
+							for 10 seconds."</li>
+						<li>Flaming bullets: "Each shot has a chance of setting the enemy on fire for 5 seconds."</li>
+					</ul>
+				</li>
+				<li><b>Magic</b>: the spell is "Teleport" and the passive is "Defence impulse"<br> <button type="button"
+						class="buttonURL" id="magic-button" onclick="ShowExtraInfo('magic-info', 'magic-button')">Show
+						info</button>
+					<ul id="magic-info" style="display:	none;">
+						<li>Teleport: "Allows instant teleportation through walls to the mouse's position."</li>
+						<li>Defence impulse: "When below 25% health, a small magic impulse is sent out, dealing damage to
+							all enemies in range."</li>
+					</ul>
+				</li>
+				<li><b>Life</b>: the spell is "Heal" and the passive is "Restoration"<br> <button type="button"
+						class="buttonURL" id="life-button" onclick="ShowExtraInfo('life-info', 'life-button')">Show
+						info</button>
+					<ul id="life-info" style="display:	none;">
+						<li>Heal: "Instantly heals for half of your maximum health."</li>
+						<li>Defence impulse: "Passive healing is twice as fast, and activates 25% quicker."</li>
+					</ul>
+				</li>
+				<li><b>Light</b>: the spell is "Snapshot" and the passive is "Insight"<br> <button type="button"
+						class="buttonURL" id="light-button" onclick="ShowExtraInfo('light-info', 'light-button')">Show
+						info</button>
+					<ul id="light-info" style="display:	none;">
+						<li>Snapshot: "Reveals the direction of all enemies, and shows the way forward."</li>
+						<li>Defence impulse: "The closer the darkness gets, the brighter the area."</li>
+					</ul>
+				</li>
+			</ul>
+			Well, that was a lot of information!
+			<div class="smallSpace"></div>
+			<div class="line"></div>
+			<h4 id="quests">NPCs and Quests</h4>
+			Specifically a mechanic, who goes by the name... <i>John Gold</i>.
+			<br><br>
+			<div style="color: rgb(163, 61, 61);">Disclaimer:
+				<ul>
+					<li>The current NPC, John Gold, only gives 1 quest, which does not have progress that can be saved.</li>
+					<li>This is in order to add NPCs in Locked In V4 without having to spend even more time adding new
+						quests and rewards.</li>
+					<li>More quests, and possibly more NPCs, will be added in the next Content update, along with possible
+						new bosses, guns and sections.</li>
+				</ul>
+			</div>
+			<i>Anyway</i>, the new NPC, John Gold, will give you a quest, and after the quest, he will despawn, and won't
+			spawn again until you restart.<br>
+			This will be changed in a future update. We've already got some stuff ready for it!
+			<div class="smallSpace"></div>
+			And don't worry. We definitely won't make it easy! What? It's not like we're going to make you kill lots of
+			really rare enemies and get a very small reward? Pff. No. No way.
+			<br>
+			<div class="smallSpace"></div>
+			<div class="line"></div>
+			<h4 id="ui">A massive UI update</h4>
+			New loadout screen! Check it:
+			<br><br><img src="newloadout.png" width="70%" class="centre">
+			<div class="imageDescription">Isn't that just so much better than before? Remember the really ugly box
+				that used to pop up to change your loadout?</div>
+			<h5>New notifications!</h5>
+			Simple, quick notification!
+			<br>
+			<br><img src="newnotification.png" width="70%"class="centre">
+			<div class="imageDescription">For when you need information mid-game, like if your spell is on
+				cooldown. It has a shake too! Wow!</div>
+			<br><br>Notify popup!
+			<br><br><img src="lockedinconfirm.png" width="50%">
+			<div class="imageDescription">Ooh, look at you, you privileged player! Getting to choose your
+				option? That's not available to some people, remember.</div>
+			<br><br>Confirm popup!
+			<br><br><img src="lockedinpopup.png" width="50%">
+			<div class="imageDescription">You have no choice over what to answer on this one!</div>
+			<div class="smallSpace"></div>
+			<div class="line"></div>
+			<h4 id="bugfixes">Bug fixes and tweaks</h4>
+			Everyone's favourite part!
+			<ul>
+				<li>Wannabee will no longer disappear off the map... hopefully.</li>
+				<li>Firerate of guns is no longer affected by framerate.</li>
+				<li>Enemies will no longer get caught on walls.</li>
+				<li>And, as always, the ones that I can't remember off the top of my head.</li>
+			</ul>
+			<div class="smallSpace"></div>
+			<div class="line"></div>
+			<h4 id="postupdatenote">Post-update note</h4>
+			This update is hopefully going to change the style of Locked In, turning it from a repetitive, fast paced
+			shooter, to a more randomized, chaotic (but not infuriating... yet) arcade game.
+			We've tried as hard as we can ('we' being me, alone) to add some more features and content to the game, as well
+			as freshening up our website. If you want to support us, visit our <a
+				href="https://nikelet.itch.io/lockedinalpha">itch.io page</a> and,
+			after we set up donations, donate!
+			<div class="smallSpace"></div><div class="line"></div>
 			<h3>V3 - Content Update</h3>
 			<ul>
 				<li>In this update, we added bosses! Specifically a bee called Wannabee!
