@@ -26,15 +26,26 @@
 					console.log("Just visible");
 				}
 			}, {threshold: [1]});
+			function CheckFormatting()
+		{
+			var userAgent = navigator.userAgent.toLowerCase();
+			//userAgent = "iphone";
+			if (userAgent.indexOf("iphone") != -1)
+			{
+				document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
+			}
+		}
 		</script>
 
 	</head>
 
-<body>
+<body onload="CheckFormatting()">
 	<div class="bar">
 		<a href="index.html">Homepage</a>
 		<a href="lockedin.html">Locked In</a>
 		<a href="changelog.html">Changelog</a>
+		<a href="tutorials.html">Tutorials</a>
+		<a href="blog/index.html">Blog</a>
 	</div>
 	<div class="sidebar">
 		<h4>Links</h4>
@@ -42,6 +53,7 @@
 		<a href="lockedin.html" class="URLbuttonText">Locked In</a><br>
 		<a href="changelog.html" class="URLbuttonText">Changelog</a><br>
 		<a href="tutorials.html" class="URLbuttonText">Tutorials</a><br>
+		<a href="blog/index.html" class="URLbuttonText">Blog</a>
 	</div>
 	<div style="min-height: 1.35em;"></div>
 	<div id="title">EJGames</div>
@@ -58,26 +70,33 @@
 	If you want a really in-depth explanation, then you should probably look at the changelog.
 	<div class="smallSpace"></div>
 	<div class="line"></div>
-	<h4>Downloads</h4>
+	<h4>Download</h4>
 		<b>The downloads will take a long time to load, especially with a poor internet connection. Even if the page seems to be frozen, it probably isn't. Unless it is, of course.
 			Which is very clear.
 		</b>
 		<br><br>
-		<a href="https://drive.google.com/file/d/1bP0ppfm_TvnRF9FAc0v2ggHJEvXJ_T7F/view?usp=sharing">Locked In Alpha V4 (Latest)</a>
+		<a href="https://drive.google.com/uc?export=download&id=1dBwfMK1z63XLNa9y8x-p7YIq9Ep7bODI" class="URLbuttonText" style="padding-left: 0px; font-size: 1.4em;">Latest version</a>
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4>Other versions</h4>
+		Need a specific version from V4 and earlier?
 		<br><br>
-		<a href="https://drive.google.com/file/d/1J_d2hRAezKDmZaJTvcVzP6OR0tCZeG34/view?usp=sharing">Locked In Alpha V4-P</a>
+		<a href="https://drive.google.com/file/d/1bP0ppfm_TvnRF9FAc0v2ggHJEvXJ_T7F/view?usp=sharing" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V4 (Latest)</a>
+		<br><br>
+		<a href="https://drive.google.com/file/d/1J_d2hRAezKDmZaJTvcVzP6OR0tCZeG34/view?usp=sharing" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V4-P</a>
 	<br><br>
-		<a href="https://drive.google.com/u/0/uc?export=download&confirm=HgJx&id=1c98VnYNa8zGSuDHKHWp7mjcTKtKGpgYU">Locked
-			In Alpha v3</a>
+		<a href="https://drive.google.com/u/0/uc?export=download&confirm=HgJx&id=1c98VnYNa8zGSuDHKHWp7mjcTKtKGpgYU" class="URLbuttonText" style="padding-left: 0px;">Locked
+			In Alpha V3</a>
 		<br><br>
-		<a href="https://drive.google.com/u/0/uc?export=download&confirm=rvZc&id=1frvSYhtfh7me__AC2ns9JtJku7MdOTYg">Locked
-			In Alpha v2</a>
+		<a href="https://drive.google.com/u/0/uc?export=download&confirm=rvZc&id=1frvSYhtfh7me__AC2ns9JtJku7MdOTYg" class="URLbuttonText" style="padding-left: 0px;">Locked
+			In Alpha V2</a>
 		<br><br>
-		<a href="https://ej-games.github.io/li-alphav1-installer.exe" download>Locked In Alpha v1</a>
+		<a href="https://ej-games.github.io/li-alphav1-installer.exe" class="URLbuttonText" style="padding-left: 0px;" download>Locked In Alpha V1</a>
 		<div class="smallSpace"></div>
 		<div class="line"></div>
 		<h4>Changelog</h4>
 		Yeah just look at the changelog.
 		<a href="changelog.html">Here.</a>
+		<div class="space"></div>
 	</div>
 </html>
