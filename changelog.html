@@ -10,6 +10,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 		rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 
 		#showold {
@@ -69,28 +70,18 @@
 </head>
 
 <body onload="CheckFormatting()">
-	<div class="bar">
-		<a href="index.html">Homepage</a>
-		<a href="lockedin.html">Locked In</a>
-		<a href="changelog.html">Changelog</a>
-	</div>
-	<div class="sidebar">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar">
 		<h4>Contents</h4>
-		<a href="#v4" class="URLbuttonText"><b>V4</b></a>
-		<br><br><a href="#v4-p" class="URLbuttonText"><b>V4-P</b></a>
-		<br><a href="#classes" class="URLbuttonText">Classes</a>
-		<br><a href="#quests" class="URLbuttonText">Quests</a>
-		<br><a href="#ui" class="URLbuttonText">UI Update</a>
-		<br><a href="#bugfixes" class="URLbuttonText">Bug fixes & tweaks</a>
-		<br><a href="#postupdatenote" class="URLbuttonText">Post-update note</a>
-		<br><br>
+		<a href="#v4" class="URLbuttonText zoomonhover"><b>V4</b></a>
+		<br><br><a href="#showold" class="URLbuttonText zoomonhover"><b>Older versions</b></a>
 		<h4>Links</h4>
-		<a href="index.html" class="URLbuttonText">Homepage</a><br>
-		<a href="lockedin.html" class="URLbuttonText">Locked In</a><br>
-		<a href="changelog.html" class="URLbuttonText">Changelog</a><br>
-		<a href="tutorials.html" class="URLbuttonText">Tutorials</a><br>
+		<a href="index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
 	</div>
-	<div style="min-height: 1.35em;"></div>
 	<div id="title">EJGames</div>
 	<h2>Locked In Changelog</h2>
 	<div class="mainParagraph">
@@ -187,7 +178,7 @@
 			<h4 id="quests">NPCs and Quests</h4>
 			Specifically a mechanic, who goes by the name... <i>John Gold</i>.
 			<br><br>
-			<div style="color: rgb(163, 61, 61);">Disclaimer:
+			<div class="disclaimer">Disclaimer:
 				<ul>
 					<li>The current NPC, John Gold, only gives 1 quest, which does not have progress that can be saved.</li>
 					<li>This is in order to add NPCs in Locked In V4 without having to spend even more time adding new
