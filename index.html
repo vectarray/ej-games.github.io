@@ -18,29 +18,23 @@
 
 </head>
 
-<body>
-	<div class="bar">
-		<a href="index.html">Homepage</a>
-		<a href="lockedin.html">Locked In</a>
-		<a href="changelog.html">Changelog</a>
-	</div>
-	<div class="sidebar">
+<body onload="CheckFormatting()">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar">
 		<h4>Contents</h4>
-		<a href="#lockedin" class="URLbuttonText"><b>Locked In</b></a>
-		<br><br><a href="#everythingelse" class="URLbuttonText"><b>Stickman Multiplayer</b></a>
-		<br><br><a href="#everythingelse" class="URLbuttonText"><b>Everything else</b></a>
-		<br><a href="#apolycalypse" class="URLbuttonText">Apolycalypse</a>
-		<br><a href="#obbyshowdown" class="URLbuttonText">Obby Showdown</a>
-		<br><a href="#connectmore" class="URLbuttonText">ConnectMore</a>
-		<br><a href="#lockedininfo" class="URLbuttonText">Locked In</a>
-		<br><br>
+		<a href="#lockedin" class="URLbuttonText zoomonhover"><b>Locked In</b></a><br><br>
+		<a href="#everythingelse" class="URLbuttonText zoomonhover"><b>Everything Else</b></a><br>
+		<a href="#apolycalypse" class="URLbuttonText zoomonhover">Apolycalypse</a><br>
+		<a href="#obbyshowdown" class="URLbuttonText zoomonhover">Obby Showdown</a><br>
+		<a href="#connectmore" class="URLbuttonText zoomonhover">ConnectMore</a><br>
+		<a href="#lockedininfo" class="URLbuttonText zoomonhover">Locked In</a>
 		<h4>Links</h4>
-		<a href="index.html" class="URLbuttonText">Homepage</a><br>
-		<a href="lockedin.html" class="URLbuttonText">Locked In</a><br>
-		<a href="changelog.html" class="URLbuttonText">Changelog</a><br>
-		<a href="tutorials.html" class="URLbuttonText">Tutorials</a><br>
+		<a href="index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
 	</div>
-	<div style="min-height: 1.35em;"></div>
 	<div id="title">EJGames</div>
 	<h2>Homepage</h2>
 	<div class="smallSpace"></div>
@@ -53,7 +47,10 @@
 		If you're here for Locked In (most probably are) then please click here:
 		<a href="https://ej-games.github.io/lockedin.html"><button type="button" class="buttonURL">Visit the official page</button></a>
 		<div class="smallSpace"></div><div class="line"></div>
-		<h4 id="lockedin">Stickman Multiplayer</h4>
+		<!--
+		<h4 id="lockedin">Stickman Multiplayer (on pause)</h4>
+		<i>I'm not sure if this will ever be taken off pause.</i>
+		<br><br>
 		This is a multiplayer game that I'm <b>currently</b> working on, using Unity's NetCode multiplayer solution.
 		<br>Trust me, it's been a fun ride.
 		<br><br>
@@ -66,7 +63,7 @@
 		</ol>
 		Although, I have to say a massive thanks to <a href="https://www.youtube.com/channel/UCHM37DnT_QGJT5Zyl4EmqcA">Dilmer Valecillos</a> for posting a massive
 		tutorial on how to create an entire multiplayer game. I used all of it. Apart from the part about VR or something.
-		<div class="smallSpace"></div><div class="line"></div>
+		<div class="smallSpace"></div><div class="line"></div>-->
 		<h4 id="everythingelse">Everything else</h4>
 		In case you're not here for Locked In, then congratulations! You're a unique individual! Why don't I introduce myself, so that you don't think that you'll download a virus?
 		<div class="imageDescription">What? Who said anything about a virus?</div>
