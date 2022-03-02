@@ -32,25 +32,15 @@
 
 	</head>
 
-<body onload="CheckFormatting(); Tabs()">
-	<div class="bar">
-		<a href="../index.html">Homepage</a>
-		<a href="../lockedin.html">Locked In</a>
-		<a href="../changelog.html">Changelog</a>
+<body onload="CheckFormatting(); Tabs();">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar"><h4>Links</h4>
+		<a href="../index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="../lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="../changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="../tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="../blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
 	</div>
-	<div class="sidebar">
-		<h4>Contents</h4>
-		<a href="#what" class="URLbuttonText">What is a constructor?</a><br>
-		<a href="#create" class="URLbuttonText">Creating a constructor</a><br>
-		<a href="#instantiate" class="URLbuttonText">Instantiating a class</a><br>
-		<a href="#end" class="URLbuttonText">Conclusion</a><br>
-		<h4>Links</h4>
-		<a href="../index.html" class="URLbuttonText">Homepage</a><br>
-		<a href="../lockedin.html" class="URLbuttonText">Locked In</a><br>
-		<a href="../changelog.html" class="URLbuttonText">Changelog</a><br>
-		<a href="../tutorials.html" class="URLbuttonText">Tutorials</a><br>
-	</div>
-	<div style="min-height: 1.35em;"></div>
 	<div id="title">EJGames</div>
 	<h2>Constructors</h2>
 	<div class="smallSpace"></div>
@@ -73,14 +63,13 @@
 		A constructor is used to instantiate a class that just holds functions and variables, and doesn't run on its own.
 		<br>For example, if you wanted to store a list of cars (wow, what a creative idea!) then you would do:
 		<br><br>
-		<div class="code">
-			public class Car {<br>
-				<span class="tab"></span>public string make;
-				<br><span class="tab"></span>public string model;
-				<br><span class="tab"></span>public float speed;
-				<br><span class="tab"></span>// Etc
-				<br>}
-		</div>
+		<div class="code"><pre>
+public class Car {
+	public string make;
+	public string model;
+	public float speed;
+	// Etc
+}</pre></div>
 		instead of doing an if statement determining the make, model and speed of each car name.
 		<div class="smallSpace"></div>
 		<div class="line"></div>
@@ -101,8 +90,7 @@
 		<br><br>
 		<div class="code">
 			public Car(string make, string model, float speed) {
-				<br><span class="tab"></span>
-				<br>}
+				<br><br>}
 		</div>
 		<br><br>
 		So now we have a constructor for a <span class="code">Car</span> with a <span class="code">make</span> argument, a <span class="code">model</span> argument and a <span class="code">speed</span>
@@ -148,7 +136,7 @@
 		<br><br>
 		Because, although the values are the same, the items being compared, <span class="code">polo</span> and <span class="code">new Car("Volkswagen", "Polo", 151)</span>, are different instances
 		of the 'car' class. The result would never be:
-		<div class="code">> Yippee! It worked!</div>
+		<div class="code">&gt; Yippee! It worked!</div>
 		<div class="smallSpace"></div><div class="line"></div>
 		<h4 id="end">Conclusion</h4>
 		So, a constructor is a way to instantiate a class.
