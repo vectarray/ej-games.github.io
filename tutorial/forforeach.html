@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>For vs Foreach - C#</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar"><h4>Links</h4>
+		<a href="../index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="../lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="../changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="../tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="../blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
+	</div>
+	<div id="title">EJGames</div>
+	<h2>For vs Foreach</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a C# (with references to Unity) tutorial about <b>for and foreach loops</b>. This means that it will be able to be followed in vanilla C#, but will also contain context for Unity users.
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4 id="for">What is a 'for' loop?</h4>
+		A for loop is an example of a definite iteration.
+		<ul>
+			<li>Definite means it repeats a certain number of times</li>
+			<li>Iteration is just another word for looping</li>
+		</ul>
+		In C#, it is a bit more complicated than other languages, for example Python:
+		<div class="code"><pre>
+for i in range(10):
+	print(str(i))
+</pre>
+		</div>
+		versus C#:
+		<div class="code"><pre>
+for(int i = 0; i &lt; 10; i++) {
+	Console.Writeline(i.ToString());
+}
+</pre></div>
+		Oh, by the way, that's how you make a For loop in C#.
+		<br><br>
+		The <span class="code">int i = 0;</span> means 'create a variable, named <span class="code">i</span>, with a value of 0'.
+		<br>The <span class="code">i &lt; 10;</span> means 'keep looping while <span class="code">i</span> is less than 10'.
+		<br>The <span class="code">i++</span> means 'add 1 after each loop'.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="foreach">What is a 'foreach' loop?</h4>
+		A foreach loop iterates through an array, instead of just a set of numbers.
+		<br><br>If you have:
+		<div class="code">string[] names = new string[] {"John Gold", "David Silva", "Chris Steele", "Joseph Iron"};</div>
+		<br><br>
+		then you might use:
+		<div class="code"><pre>
+foreach(string name in names) {
+	if(name == "John Gold") {
+		Console.WriteLine("John Gold has been found!");
+	}
+}
+</pre></div>
+		This might be considered easier and simpler than using a for loop, because you don't have to keep doing <span class="code">names[i]</span> instead of just <span class="code">name</span>.
+		<br><br>
+		<i>Just in case you're wondering, the for loop would look like this:</i>
+		<div class="code"><pre>
+for(int i = 0; i &lt; names.length; i++) {
+	if(names[i] == "John Gold") {
+		Console.WriteLine("John Gold has been found!");
+	}
+}
+</pre></div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="comparison">...which is better?</h4>
+		<div class="disclaimerBG"><b>DISCLAIMER</b>This is <i>just</i> my opinion, and different people have different coding preferences. Some people disagree with
+		foreach loops in general.</div>
+		<br>
+		But I don't disagree with foreach loops. They are really useful when it comes to iterating through arrays.
+		<h5>1. It's much quicker to type</h5>
+		If you want to be as shorthand and thoughtless as possible, then you can just do:
+		<div class="code">foreach(var item in collection) {</div>
+		You don't really need to think of a creative name for it, because, after all, in a normal for loop, you would call the variable <span class="code">i</span>.
+		<h5>2. No more <span class="code">array[i]</span></h5>
+		Instead of constantly having to do <span class="code">array[i]</span>, you can just do <span class="code">item</span>, which, when paired with Visual Studio, can be
+		shortened to <span class="code">it</span> and then pressing tab. If you want. But still, it's much quicker than having to write out your array name, then <span class="code">[i]</span>.
+		<h5>3. It's a bit easier to understand</h5>
+		Maybe. This may or may not be just to get 3 advantages instead of just 2.
+		<br><br>But still. Is this one more straight-forward?
+		<div class="code">Console.WriteLine(studentNames[currentIndex]);</div>
+		<div class="imageDescription">Because technically, using a generic name, like 'i', is a bad practice.</div>
+		<br>
+		Or is this one better?
+		<div class="code">Console.WriteLine(studentName);</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Well, I'll probably anger a lot of people who religiously use <span class="code">for</span> instead of <span class="code">foreach</span>.
+		<br>If you're one of those people, just... don't be angry. Please.
+		<br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>
