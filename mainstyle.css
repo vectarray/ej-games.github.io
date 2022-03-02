@@ -1,3 +1,6 @@
+.bigger {
+	font-size: 1.2em !important;
+}
 button {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
@@ -12,6 +15,7 @@ button {
 	padding-left: 1em;
 	padding-right: 1em;
 	padding: 0%;
+	transition: 0.3s;
 }
 button:hover {
 	color: rgb(24, 126, 243);
@@ -55,6 +59,7 @@ body {
 	text-decoration: none;
 	padding-left: 1em;
 	padding-right: 1em;
+	transition: 0.3s;
 }
 .bar a:hover {
 	color: white;
@@ -77,6 +82,7 @@ a {
 	font-family: 'Montserrat', sans-serif;
 	text-decoration: none;
 	background-color: rgba(0, 0, 0, 0);
+	transition: 0.3s;
 }
 a:hover {
 	color: rgb(24, 126, 243);
@@ -145,6 +151,7 @@ h5 {
 	font-size: 1em;
 	cursor:pointer;
 	margin: 0% 0% 0% 0%;
+	transition: 0.3s;
 }
 .buttonURL:hover {
 	background-color: rgba(0, 0, 0, 0);
@@ -158,6 +165,7 @@ h5 {
 	text-decoration: none;
 	padding-left: 1em;
 	padding-right: 1em;
+	transition: 0.3s;
 }
 .URLbutton:hover {
 	color: white;
@@ -167,15 +175,15 @@ h5 {
 .URLbuttonText {
 	color: white;
 	text-decoration: none;
-	padding-left: 1em;
-	padding-right: 1em;
+	transition: 0.3s;
 }
 .URLbuttonText:hover {
 	color: rgb(170, 170, 170);
 	text-decoration: none;
 }
-.imageDescription {
-font-size: 0.8em;
+.pad {
+	padding-left: 1em;
+	padding-right: 1em;
 }
 .centre {
 	margin: auto;
@@ -189,19 +197,47 @@ font-size: 0.8em;
 }
 .sidebar {
 	position: fixed;
-	width: 15em;
+	width: 12.5%;
 	left: 0%;
-	top: 1.45em;
 	min-height: calc(100% - 1.45em);
 	z-index: 0;
 	background-color: rgb(20, 22, 29);
-	padding: 0px 0.5em 0px 0.5em;
+	padding: 0px 1em 0px 1em;
+	transition: 0.5s;
 }
 .sidebar h4 {
 	text-align: center;
 	font-size: 1.35em;
 	font-weight: 600;
 }
-html {
-	scroll-behavior: smooth;
+.zoomonhover {
+	/*font-size: 1em;*/
+	transition: 0.3s;
+}
+.zoomonhover:hover {
+	font-size: 1.2em;
+}
+.imageDescription { font-size: 0.8em; }
+html { scroll-behavior: smooth; }
+pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
+.disclaimer { color: rgb(163, 61, 61); }
+.disclaimerBG {
+	background-color: rgb(102, 5, 5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(163, 61, 61);
+}
+.disclaimerBG b::after {
+	white-space: pre-wrap;
+	content: "\A";
+}
+#sidebarbutton {
+	display:none;
+	position:fixed;
+	left: 2%;
+	top: 2%;
+	z-index: 1;
+	font-size:1.5em;
+	background-color: rgb(0, 150, 155);
+	border-radius: 1em;
+	padding: 0.4em;
 }
