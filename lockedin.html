@@ -26,36 +26,20 @@
 					console.log("Just visible");
 				}
 			}, {threshold: [1]});
-			function CheckFormatting()
-		{
-			var userAgent = navigator.userAgent.toLowerCase();
-			//userAgent = "iphone";
-			if (userAgent.indexOf("iphone") != -1)
-			{
-				document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
-			}
-		}
 		</script>
 
 	</head>
 
 <body onload="CheckFormatting()">
-	<div class="bar">
-		<a href="index.html">Homepage</a>
-		<a href="lockedin.html">Locked In</a>
-		<a href="changelog.html">Changelog</a>
-		<a href="tutorials.html">Tutorials</a>
-		<a href="blog/index.html">Blog</a>
-	</div>
-	<div class="sidebar">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar">
 		<h4>Links</h4>
-		<a href="index.html" class="URLbuttonText">Homepage</a><br>
-		<a href="lockedin.html" class="URLbuttonText">Locked In</a><br>
-		<a href="changelog.html" class="URLbuttonText">Changelog</a><br>
-		<a href="tutorials.html" class="URLbuttonText">Tutorials</a><br>
-		<a href="blog/index.html" class="URLbuttonText">Blog</a>
+		<a href="index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
 	</div>
-	<div style="min-height: 1.35em;"></div>
 	<div id="title">EJGames</div>
 	<h2>Locked In</h2>
 	<div class="smallSpace"></div>
@@ -67,7 +51,10 @@
 	<br>Shotguns!
 	<br>Knives!
 	<br>
-	If you want a really in-depth explanation, then you should probably look at the changelog.
+	What do you do in Locked In, apart from shoot things?
+	<br><br>
+	At the time of writing, I'm currently adding a story to the game. It involves John Gold, the only NPC (currently) and possibly another NPC being added soon.
+	<br>While I'm making the story, I will try to update the game, but the updates will be a lot smaller, and NPCs will be removed until the story is complete.
 	<div class="smallSpace"></div>
 	<div class="line"></div>
 	<h4>Download</h4>
