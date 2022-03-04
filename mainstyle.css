@@ -191,19 +191,21 @@ h5 {
 }
 .code {
 	font-family: 'Consolas', Courier, monospace;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.5);
 	font-size: 0.9em;
 	font-style: normal;
+	border-radius: 0.2em;
 }
 .sidebar {
 	position: fixed;
-	width: 12.5%;
+	width: 10%;
 	left: 0%;
 	min-height: calc(100% - 1.45em);
 	z-index: 0;
 	background-color: rgb(20, 22, 29);
 	padding: 0px 1em 0px 1em;
 	transition: 0.5s;
+	overflow-x: auto;
 }
 .sidebar h4 {
 	text-align: center;
@@ -225,6 +227,7 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 	background-color: rgb(102, 5, 5);
 	padding: 0.3em 0.3em 0.3em 0.3em;
 	border: 0.1em solid rgb(163, 61, 61);
+	border-radius: 0.5em;
 }
 .disclaimerBG b::after {
 	white-space: pre-wrap;
