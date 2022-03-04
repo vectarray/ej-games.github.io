@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Inheritance Tutorial</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar"><h4>Links</h4>
+		<a href="../index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="../lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="../changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="../tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="../blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
+	</div>
+	<div id="title">EJGames</div>
+	<h2>Inheritance</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a C# (with references to Unity) tutorial about <b>class inheritance</b>. This means that it will be able to be followed in vanilla C#, but will also contain context for Unity users.
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4 id="what">What is inheritance?</h4>
+		Technically speaking, inheritance is when 2 parents' offspring share the same genotype and phenotype as them.
+		<br><br>
+		But in C#, we're talking about the weird colon. <span class="code">:</span>
+		<br><br>
+		If you're using Unity, you've no doubt found a colon next to the name of your class.
+		<br>
+		<span class="code">public class Example : MonoBehaviour</span>
+		<br><br>
+		This means that the class <i>inherits</i> from <span class="code">MonoBehaviour</span>.
+		<br>All of the functions and variables that <span class="code">MonoBehaviour</span> contains, like <span class="code">StartCoroutine</span> and <span class="code">print</span>, will be
+		accessible by your class, <span class="code">Example</span>.
+		<br><br>
+		Now, why would you need to know this? Your MonoBehaviour works perfectly fine by itself, and it works as a component, and you don't need to care about what the colon means.
+		<br>Until you start making some non-Mono classes.
+		<br><br>
+		In the <a href="csharp-constructors.html">constructors tutorial</a>, we show you some things that you can do with non-Mono classes.
+		<br><br>
+		Inheritance is another thing you can do with the same types of class.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="whatmore">What? Explain more.</h4>
+		OK, I will.
+		<br><br>
+		Imagine you have a class for a car, set up perfectly like any other class. Which you do now. ⬇
+		<br>
+		<div class="code">
+<pre>
+public class Car
+{
+	public float speed;
+	public float acceleration;
+	public bool carOn;
+
+	public Car(float speed, float acceleration)
+	{
+		this.speed = speed;
+		this.acceleration = acceleration;
+	}
+
+	public void StartCar()
+	{
+		carOn = true;
+		Console.WriteLine("Car has started!");
+	}
+}
+</pre>
+		</div>
+		You're thinking to yourself: <i>"Wow, I really loved that constructors tutorial, and this class is now amazing. Thanks EJGames!"</i>
+		<br>
+		You're welcome, by the way.
+		<br><br>
+		This car is pretty generic right now. You probably want to make more classes for different cars.
+		<br>So, next, you do the next rational thing: create a new car class.
+		<br>
+		<div class="code">
+<pre>
+public class DieselCar
+{
+	public float speed;
+	public float acceleration;
+	public bool carOn;
+	public bool isParticulateFilterClogged;
+
+	public Car(float speed, float acceleration)
+	{
+		this.speed = speed;
+		this.acceleration = acceleration;
+	}
+
+	public void StartCar()
+	{
+		carOn = true;
+		Console.WriteLine("Car has started!");
+		isParticulateFilterClogged = true;
+		Console.WriteLine("Diesel particulate filter: risk of clogging. See handbook.");
+	}
+}
+</pre>
+		</div>
+		But then you think: <i>"Why am I using 'speed' and 'acceleration' and 'StartCar()' multiple times? I need an inheritance tutorial!"</i>
+		<br>And you do! That's why you came here, isn't it?
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="how">How to inherit</h4>
+		So, it all comes back to the weird colon. Now you want to put that into the name of your class. It's simple:
+		<br>
+		<br>
+		<span class="code">public class DieselCar : Car</span>
+		<br><br>
+		And that's it.
+		Now that we've inherited the fields and methods from <span class="code">Car</span>, we can 
+		Let's get rid of <span class="code">speed</span>, <span class="code">acceleration</span> and <span class="code">carOn</span>.
+		<div class="code">
+<pre>
+public class DieselCar : Car
+{
+	public bool isParticulateFilterClogged;
+
+	public Car(float speed, float acceleration)
+	{
+		this.speed = speed;
+		this.acceleration = acceleration;
+	}
+
+	public <u>override</u> void StartCar()
+	{
+		carOn = true;
+		Console.WriteLine("Car has started!");
+		isParticulateFilterClogged = true;
+		Console.WriteLine("Diesel particulate filter: risk of clogging. See handbook.");
+	}
+}
+</pre>
+		</div>
+		<br>Notice the <span class="code">override</span> keyword before <span class="code">StartCar</span>? That's because <span class="code">Car</span> already has a definition for it.
+		<br><br>That is how to inherit. It's quite easy to grasp, but it takes a bit of time to realise how useful it can be.
+		<br><br>
+		<div class="disclaimerBG"><b>Slightly more advanced:</b>
+			Inheritance can be incredibly useful, and can be used to inherit singleton properties:
+			<br>
+			<div class="code">
+				<pre>
+public class Singleton<T> where T : class, new()
+{
+    private static T _instance;
+    public static T Instance
+    {
+        get
+        {
+            if(_instance == null) _instance = new T();
+            return _instance;
+        }
+    }
+}
+				</pre>
+			</div>
+		</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Inheritance is pretty essential to basically every program. How else did you get your blue eyes and brown hair?
+		<br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>
