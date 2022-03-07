@@ -16,6 +16,7 @@ function CheckFormatting()
 	if(getCookie("completed") != "") {
 		if(getCookie("completed") == "true") {
 			document.body.getElementsByTagName("h2")[0].innerHTML += " (Completed)";
+			CreateNotification("Tutorial Completed!", "You've completed this tutorial!", 5, "https://ejgames.co.uk/sounds/complete.wav", "rgba(0, 150, 155, 0.8)", "rgba(0, 75, 77, 0.8)");
 		}
 	}
 	else {
@@ -26,7 +27,33 @@ function CheckFormatting()
 function SetCompleted() {
 	window.setTimeout(function() {
 		setCookie("completed", "true", 45);
+		CreateNotification("Tutorial Completed!", "You've completed this tutorial!", 5, "https://ejgames.co.uk/sounds/complete.wav", "rgba(0, 150, 155, 0.8)", "rgba(0, 75, 77, 0.8)");
 	}, 50000)
+}
+function CreateNotification(heading, body, showTime, soundToPlay, colour, borderColour) {
+	var notification = document.createElement("button");
+	var bodyText = document.createElement("div");
+	notification.classList.add("notification");
+	bodyText.innerHTML = body;
+	var bold = document.createElement("b");
+	bold.innerHTML = heading;
+	notification.appendChild(bold)
+	document.body.appendChild(notification);
+	notification.appendChild(bodyText);
+	notification.style.backgroundColor = colour;
+	notification.style.borderColor = borderColour;
+	setTimeout(function() {
+		setTimeout(function() {
+			notification.remove();
+		}, 1000);
+		notification.style.opacity = 0;
+	}, (showTime - 1) * 1000)
+	setTimeout(function() {
+		notification.style.right = "3.5%";
+		var toPlay = new sound(soundToPlay);
+		toPlay.sound.volume = 0.3;
+		toPlay.play();
+	}, 100)
 }
 
 function OpenElement(elementId, buttonId, textWhenOpen, textWhenClosed) {
@@ -77,4 +104,21 @@ function setCookie(cname, cvalue, exdays) {
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	let expires = "expires="+ d.toUTCString();
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function sound(src)
+{
+	this.sound = document.createElement("audio");
+	this.sound.src = src;
+	this.sound.setAttribute("preload", "auto");
+	this.sound.setAttribute("controls", "none");
+	this.sound.style.display = "none";
+	document.body.appendChild(this.sound);
+	this.play = function ()
+	{
+		this.sound.play();
+	}
+	this.stop = function ()
+	{
+		this.sound.pause();
+	}
 }
