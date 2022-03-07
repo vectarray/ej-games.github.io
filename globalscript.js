@@ -6,7 +6,8 @@ function CheckFormatting()
 	{
 		document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
 		document.getElementById("sidebarbutton").style.display = "block";
-		document.getElementById("sidebar").style.left = "-50%";
+		document.getElementById("sidebar").style.left = "-100%";
+		document.getElementById("sidebar").style.width = "30%";
 		for(var i = 0; i < document.getElementById("sidebar").getElementsByTagName("a").length; i++) {
 			document.getElementById("sidebar").getElementsByTagName("a")[i].classList.add("bigger");
 		}
