@@ -13,22 +13,28 @@ function CheckFormatting()
 		}
 		document.body.style.fontSize = "1.5em";
 	}
+}
+
+function SetCompleted() {
 	if(getCookie("completed") != "") {
 		if(getCookie("completed") == "true") {
 			document.body.getElementsByTagName("h2")[0].innerHTML += " (Completed)";
 			CreateNotification("Tutorial Completed!", "You've completed this tutorial!", 5, "https://ejgames.co.uk/sounds/complete.wav", "rgba(0, 150, 155, 0.8)", "rgba(0, 75, 77, 0.8)");
 		}
+		else {
+			window.setTimeout(function() {
+				setCookie("completed", "true", 45);
+				CreateNotification("Tutorial Completed!", "You've completed this tutorial!", 5, "https://ejgames.co.uk/sounds/complete.wav", "rgba(0, 150, 155, 0.8)", "rgba(0, 75, 77, 0.8)");
+			}, 50000)
+		}
 	}
 	else {
 		setCookie("completed", "false", 45);
+		window.setTimeout(function() {
+			setCookie("completed", "true", 45);
+			CreateNotification("Tutorial Completed!", "You've completed this tutorial!", 5, "https://ejgames.co.uk/sounds/complete.wav", "rgba(0, 150, 155, 0.8)", "rgba(0, 75, 77, 0.8)");
+		}, 50000)
 	}
-}
-
-function SetCompleted() {
-	window.setTimeout(function() {
-		setCookie("completed", "true", 45);
-		CreateNotification("Tutorial Completed!", "You've completed this tutorial!", 5, "https://ejgames.co.uk/sounds/complete.wav", "rgba(0, 150, 155, 0.8)", "rgba(0, 75, 77, 0.8)");
-	}, 50000)
 }
 function CreateNotification(heading, body, showTime, soundToPlay, colour, borderColour) {
 	var notification = document.createElement("button");
