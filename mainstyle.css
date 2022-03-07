@@ -244,3 +244,18 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 	border-radius: 1em;
 	padding: 0.4em;
 }
+.notification {
+	position: fixed;
+	z-index: 5;
+	right: -30em;
+	top: 2%;
+	text-align: left;
+	max-width: 20em;
+	background-color: red;
+	overflow-x: auto;
+	word-wrap: break-word;
+	transition: 0.7s ease-out;
+	border: 0.15em solid rgba(0, 0, 0, 0);
+	padding: 0.3em;
+	border-radius: 1em;
+}
