@@ -64,6 +64,17 @@ function UpdateColour() {
 	else {
 		setCookie("colour", "classic", 730);
 	}
+	document.getElementById("sidebar").getElementByTagName("button")[0].onclick = function() {
+		if(getCookie("colour") == "blue") {
+			ChangeColours("classic");
+		}
+		if(getCookie("colour") == "classic") {
+			ChangeColours("lockedin");
+		}
+		if(getCookie("colour") == "lockedin") {
+			ChangeColours("blue");
+		}
+	}
 }
 
 function ChangeColours(newColour) {
