@@ -13,6 +13,62 @@ function CheckFormatting()
 		}
 		document.body.style.fontSize = "1.5em";
 	}
+
+	var newH4 = document.createElement("h4");
+	newH4.innerHTML = "Actions";
+	var newButton = document.createElement("button");
+	newButton.innerHTML = "Change Colours";
+	newButton.classList.add("URLbuttonText");
+	newButton.classList.add("zoomonhover");
+	document.getElementById("sidebar").appendChild(newH4);
+	document.getElementById("sidebar").appendChild(newButton);
+	newButton.onclick = function() {
+		if(getCookie("colour") == "blue") {
+			ChangeColours("classic");
+		}
+		if(getCookie("colour") == "classic") {
+			ChangeColours("lockedin");
+		}
+		if(getCookie("colour") == "lockedin") {
+			ChangeColours("blue");
+		}
+	}
+	UpdateColour();
+}
+
+function UpdateColour() {
+
+	if(getCookie("colour") != "") {
+		if(getCookie("colour") == "blue") {
+			document.body.style.backgroundColor = "rgb(24, 24, 24)";
+			document.getElementById("title").style.backgroundColor = "rgb(24, 36, 77)";
+			for(var item of document.getElementsByClassName("sidebar")) {
+				item.style.backgroundColor = "rgb(10, 15, 19)";
+			}
+		}
+		else if(getCookie("colour") == "classic") {
+			document.body.style.backgroundColor = "rgb(22, 28, 37)";
+			document.getElementById("title").style.backgroundColor = "rgb(24, 42, 77)";
+			for(var item of document.getElementsByClassName("sidebar")) {
+				item.style.backgroundColor = "rgb(20, 22, 29)";
+			}
+		}
+		else if(getCookie("colour") == "lockedin") {
+			document.body.style.backgroundColor = "rgb(24, 24, 24)";
+			document.getElementById("title").style.backgroundColor = "rgb(24, 77, 28)";
+			for(var item of document.getElementsByClassName("sidebar")) {
+				item.style.backgroundColor = "rgb(10, 19, 13)";
+			}
+		}
+	}
+	else {
+		setCookie("colour", "classic", 730);
+	}
+}
+
+function ChangeColours(newColour) {
+	setCookie("colour", newColour, 730);
+	UpdateColour();
 }
 
 function SetCompleted() {
