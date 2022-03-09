@@ -64,7 +64,7 @@ function UpdateColour() {
 	else {
 		setCookie("colour", "classic", 730);
 	}
-	document.getElementById("sidebar").getElementByTagName("button")[0].onclick = function() {
+	document.getElementById("sidebar").getElementsByTagName("button")[0].onclick = function() {
 		if(getCookie("colour") == "blue") {
 			ChangeColours("classic");
 		}
