@@ -29,9 +29,9 @@ button:hover {
 }
 body {
 	font-family: 'Montserrat', sans-serif;
-	background-color: rgb(22, 28, 37);
+	background-color: #1a1d16;
 	font-size: 1.35em;
-	color: rgb(218, 218, 218);
+	color: #c2c8da;
 	margin: 0px 0px 0px 0px;
 }
 .mainParagraph {
@@ -41,7 +41,7 @@ body {
 	text-align: center;
 	font-size: 4em;
 	/* height: 1.2em; */
-	background-color: rgb(24, 42, 77);
+	background-color: #26636b;
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
@@ -99,6 +99,7 @@ h2 {
 	font-size: 3em;
 	font-weight: 900;
 	text-align: center;
+	color: #5c82b3;
 }
 h3 {
 	font-size: 1.9em;
@@ -202,9 +203,9 @@ h5 {
 	left: 0%;
 	min-height: calc(100% - 1.45em);
 	z-index: 0;
-	background-color: rgb(20, 22, 29);
+	background-color: #253d47;
 	padding: 0px 1em 0px 1em;
-	transition: 0.5s;
+	transition: left 0.5s;
 	overflow-x: auto;
 }
 .sidebar h4 {
@@ -218,6 +219,12 @@ h5 {
 }
 .zoomonhover:hover {
 	font-size: 1.2em;
+}
+.zoomonhover:hover:disabled {
+	font-size: 1em;
+}
+button:disabled {
+	opacity: 0.4;
 }
 .imageDescription { font-size: 0.8em; }
 html { scroll-behavior: smooth; }
