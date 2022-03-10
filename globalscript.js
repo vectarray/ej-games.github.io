@@ -1,7 +1,7 @@
 function CheckFormatting()
 {
 	var newScript = document.createElement("script");
-	newScript.src = "colours.jsonp";
+	newScript.src = "https://ejgames.co.uk/colours.jsonp";
 	document.body.appendChild(newScript);
 	var userAgent = navigator.userAgent.toLowerCase();
 	//userAgent = "iphone";
