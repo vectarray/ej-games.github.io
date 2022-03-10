@@ -1,5 +1,8 @@
 function CheckFormatting()
 {
+	var newScript = document.createElement("script");
+	newScript.src = "colours.jsonp";
+	document.body.appendChild(newScript);
 	var userAgent = navigator.userAgent.toLowerCase();
 	//userAgent = "iphone";
 	if (userAgent.indexOf("iphone") != -1)
@@ -23,24 +26,34 @@ function CheckFormatting()
 	document.getElementById("sidebar").appendChild(newH4);
 	document.getElementById("sidebar").appendChild(newButton);
 	newButton.onclick = function() {
-		if(getCookie("colour") == "blue") {
-			ChangeColours("classic");
+		var colourArrangements = ["classic", "blue", "lockedin", "aqua"];
+		var colourNames = {
+			"classic": "classic",
+			"blue": "blue",
+			"lockedin": "Locked In",
+			"aqua": "aqua"
 		}
-		if(getCookie("colour") == "classic") {
-			ChangeColours("lockedin");
+		var currentIndex = colourArrangements.indexOf(getCookie("colour"));
+		currentIndex += 1;
+		if(currentIndex + 1 > colourArrangements.length) {
+			currentIndex = 0;
 		}
-		if(getCookie("colour") == "lockedin") {
-			ChangeColours("blue");
-		}
+		ChangeColours(colourArrangements[currentIndex]);
+		CreateNotification("Colours set!", "You've picked the " + colourNames[colourArrangements[currentIndex]] + " colour scheme.", "2", "sounds/clickbutton.wav",
+		colours[colourArrangements[currentIndex]].title, "white")
+		document.getElementById("sidebar").getElementsByTagName("button")[0].disabled = true;
+		setTimeout(function() {
+			document.getElementById("sidebar").getElementsByTagName("button")[0].disabled = false;
+		}, 1500)
 	}
-	UpdateColour();
+	ChangeColours(getCookie("colour"));
 }
 
 function UpdateColour() {
 
 	if(getCookie("colour") != "") {
-		if(getCookie("colour") == "blue") {
-			document.body.style.backgroundColor = "rgb(24, 24, 24)";
+		/*if(getCookie("colour") == "blue") {
+			document.body.style.backgroundColor = "#0c1420";
 			document.getElementById("title").style.backgroundColor = "rgb(24, 36, 77)";
 			for(var item of document.getElementsByClassName("sidebar")) {
 				item.style.backgroundColor = "rgb(10, 15, 19)";
@@ -54,26 +67,24 @@ function UpdateColour() {
 			}
 		}
 		else if(getCookie("colour") == "lockedin") {
-			document.body.style.backgroundColor = "rgb(24, 24, 24)";
+			document.body.style.backgroundColor = "#1a1d16";
 			document.getElementById("title").style.backgroundColor = "rgb(24, 77, 28)";
 			for(var item of document.getElementsByClassName("sidebar")) {
 				item.style.backgroundColor = "rgb(10, 19, 13)";
 			}
+		}*/
+		setTimeout(function() {
+		document.body.style.backgroundColor = colours[getCookie("colour")].background;
+		document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
+		document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
+		for(var item of document.getElementsByTagName("h2")) {
+			item.style.color = colours[getCookie("colour")].h2;
 		}
+		document.body.style.color = colours[getCookie("colour")].body;
+	}, 100)
 	}
 	else {
-		setCookie("colour", "classic", 730);
-	}
-	document.getElementById("sidebar").getElementsByTagName("button")[0].onclick = function() {
-		if(getCookie("colour") == "blue") {
-			ChangeColours("classic");
-		}
-		if(getCookie("colour") == "classic") {
-			ChangeColours("lockedin");
-		}
-		if(getCookie("colour") == "lockedin") {
-			ChangeColours("blue");
-		}
+		ChangeColours("classic")
 	}
 }
 
@@ -159,7 +170,7 @@ function MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed) {
 }
 function getCookie(cname) {
 	let name = cname + "=";
-	let decodedCookie = decodeURIComponent(document.cookie);
+	let decodedCookie = decodeURIComponent(document.cookie)/* document.getElementById("cookie").innerHTML*/;
 	let ca = decodedCookie.split(';');
 	for(let i = 0; i <ca.length; i++) {
 	  let c = ca[i];
@@ -177,6 +188,7 @@ function setCookie(cname, cvalue, exdays) {
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	let expires = "expires="+ d.toUTCString();
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	//document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 function sound(src)
 {
