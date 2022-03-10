@@ -1,0 +1,30 @@
+colours = {
+    "blue": {
+        "background": "#181818",
+        "title": "#18244d",
+        "sidebar": "#0a0f13",
+        "h2": "#5c82b3",
+        "body": "#c2c8da"
+    },
+    "classic": {
+        "background": "#161c25",
+        "title": "#182a4d",
+        "sidebar": "#14161d",
+        "h2": "#ffffff",
+        "body colour": "#ffffff"
+    },
+    "lockedin": {
+        "background": "#1a1d16",
+        "title": "#184d1c",
+        "sidebar": "#0a130d",
+        "h2": "#5cb360",
+        "body": "#c2dac6"
+    },
+    "aqua": {
+        "background": "#1e2d31",
+        "title": "#26636b",
+        "sidebar": "#253d47",
+        "h2": "#5cb3ae",
+        "body": "#c2dad8"
+    }
+}
