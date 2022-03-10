@@ -29,9 +29,9 @@ button:hover {
 }
 body {
 	font-family: 'Montserrat', sans-serif;
-	background-color: #1a1d16;
+	background-color: #161c25;
 	font-size: 1.35em;
-	color: #c2c8da;
+	color: #ffffff;
 	margin: 0px 0px 0px 0px;
 }
 .mainParagraph {
@@ -41,7 +41,7 @@ body {
 	text-align: center;
 	font-size: 4em;
 	/* height: 1.2em; */
-	background-color: #26636b;
+	background-color: #182a4d;
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
@@ -99,7 +99,7 @@ h2 {
 	font-size: 3em;
 	font-weight: 900;
 	text-align: center;
-	color: #5c82b3;
+	color: #ffffff;
 }
 h3 {
 	font-size: 1.9em;
@@ -203,7 +203,7 @@ h5 {
 	left: 0%;
 	min-height: calc(100% - 1.45em);
 	z-index: 0;
-	background-color: #253d47;
+	background-color: #14161d;
 	padding: 0px 1em 0px 1em;
 	transition: left 0.5s;
 	overflow-x: auto;
