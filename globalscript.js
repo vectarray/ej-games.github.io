@@ -1,7 +1,7 @@
 function CheckFormatting()
 {
 	var newScript = document.createElement("script");
-	newScript.src = "https://ejgames.co.uk/colours.jsonp";
+	newScript.src = /*"https://ejgames.co.uk/*/"colours.jsonp";
 	document.body.appendChild(newScript);
 	var userAgent = navigator.userAgent.toLowerCase();
 	//userAgent = "iphone";
@@ -19,32 +19,39 @@ function CheckFormatting()
 
 	var newH4 = document.createElement("h4");
 	newH4.innerHTML = "Actions";
-	var newButton = document.createElement("button");
-	newButton.innerHTML = "Change Colours";
-	newButton.classList.add("URLbuttonText");
-	newButton.classList.add("zoomonhover");
+	var newButton = document.createElement("b");
+	newButton.innerHTML = "Colour Scheme:";
 	document.getElementById("sidebar").appendChild(newH4);
+
 	document.getElementById("sidebar").appendChild(newButton);
-	newButton.onclick = function() {
-		var colourArrangements = ["classic", "blue", "lockedin", "aqua"];
-		var colourNames = {
-			"classic": "classic",
-			"blue": "blue",
-			"lockedin": "Locked In",
-			"aqua": "aqua"
-		}
-		var currentIndex = colourArrangements.indexOf(getCookie("colour"));
-		currentIndex += 1;
-		if(currentIndex + 1 > colourArrangements.length) {
-			currentIndex = 0;
-		}
-		ChangeColours(colourArrangements[currentIndex]);
-		CreateNotification("Colours set!", "You've picked the " + colourNames[colourArrangements[currentIndex]] + " colour scheme.", "2", "sounds/clickbutton.wav",
-		colours[colourArrangements[currentIndex]].title, "white")
-		document.getElementById("sidebar").getElementsByTagName("button")[0].disabled = true;
+
+	var newDropdown = document.createElement("select");
+	newDropdown.id = "colour-dropdown";
+	document.getElementById("sidebar").appendChild(newDropdown);
+	var colourArrangements = ["classic", "red", "blue", "lockedin", "aqua"];
+	var colourDisplayNames = {
+		"classic": "Classic",
+		"blue": "Blue",
+		"lockedin": "Locked In",
+		"aqua": "Aqua",
+		"red": "Red"
+	}
+	for(var item of colourArrangements) {
+		var newOption = document.createElement("option");
+		newOption.value = colourDisplayNames[item];
+		newOption.innerHTML = colourDisplayNames[item];
+		if(item == getCookie("colour")) newOption.selected = "selected";
+		newDropdown.appendChild(newOption);
+	}
+	newDropdown.onchange = function() {
+		var newColour = newDropdown.options[newDropdown.options.selectedIndex].text.toLowerCase().replace(" ", "");
+		ChangeColours(newColour);
+		CreateNotification("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "2", "sounds/clickbutton.wav",
+		colours[newColour].title, "white")
+		newDropdown.disabled = true;
 		setTimeout(function() {
-			document.getElementById("sidebar").getElementsByTagName("button")[0].disabled = false;
-		}, 1500)
+			newDropdown.disabled = false;
+		}, 1000)
 	}
 	ChangeColours(getCookie("colour"));
 }
@@ -81,7 +88,7 @@ function UpdateColour() {
 			item.style.color = colours[getCookie("colour")].h2;
 		}
 		document.body.style.color = colours[getCookie("colour")].body;
-	}, 100)
+	}, 50)
 	}
 	else {
 		ChangeColours("classic")
@@ -170,7 +177,7 @@ function MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed) {
 }
 function getCookie(cname) {
 	let name = cname + "=";
-	let decodedCookie = decodeURIComponent(document.cookie)/* document.getElementById("cookie").innerHTML*/;
+	let decodedCookie = /*decodeURIComponent(document.cookie)*/ document.getElementById("cookie").innerHTML;
 	let ca = decodedCookie.split(';');
 	for(let i = 0; i <ca.length; i++) {
 	  let c = ca[i];
@@ -187,8 +194,8 @@ function setCookie(cname, cvalue, exdays) {
 	const d = new Date();
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	let expires = "expires="+ d.toUTCString();
-	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	//document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
+	//document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 function sound(src)
 {
