@@ -34,6 +34,18 @@ body {
 	color: #ffffff;
 	margin: 0px 0px 0px 0px;
 }
+select {
+	background-color: #383838;
+	border-color: #383838;
+	border-radius: 1em;
+	color: white;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1em;
+	transition: background-color 0.3s;
+}
+select:hover {
+	background-color: #727272;
+}
 .mainParagraph {
 	margin: 0px 27% 0px 27%;
 }
@@ -199,7 +211,7 @@ h5 {
 }
 .sidebar {
 	position: fixed;
-	width: 10%;
+	width: calc(3% + 6em);
 	left: 0%;
 	min-height: calc(100% - 1.45em);
 	z-index: 0;
