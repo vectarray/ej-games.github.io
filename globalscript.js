@@ -1,7 +1,7 @@
 function CheckFormatting()
 {
 	var newScript = document.createElement("script");
-	newScript.src = /*"https://ejgames.co.uk/*/"colours.jsonp";
+	newScript.src = "https://ejgames.co.uk/colours.jsonp";
 	document.body.appendChild(newScript);
 	var userAgent = navigator.userAgent.toLowerCase();
 	//userAgent = "iphone";
@@ -177,7 +177,7 @@ function MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed) {
 }
 function getCookie(cname) {
 	let name = cname + "=";
-	let decodedCookie = /*decodeURIComponent(document.cookie)*/ document.getElementById("cookie").innerHTML;
+	let decodedCookie = decodeURIComponent(document.cookie)/*document.getElementById("cookie").innerHTML*/;
 	let ca = decodedCookie.split(';');
 	for(let i = 0; i <ca.length; i++) {
 	  let c = ca[i];
@@ -194,8 +194,8 @@ function setCookie(cname, cvalue, exdays) {
 	const d = new Date();
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	let expires = "expires="+ d.toUTCString();
-	//document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	//document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 function sound(src)
 {
