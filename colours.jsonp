@@ -26,5 +26,12 @@ colours = {
         "sidebar": "#253d47",
         "h2": "#5cb3ae",
         "body": "#c2dad8"
+    },
+    "red": {
+        "background": "#351a16",
+        "title": "#6b3126",
+        "sidebar": "#4f231e",
+        "h2": "#bf4f41",
+        "body": "#d8c4c0"
     }
 }
