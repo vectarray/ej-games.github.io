@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>C# Basics - Intro</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar"><h4>Links</h4>
+		<a href="../index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="../lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="../changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="../tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="../blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
+	</div>
+	<div id="title">EJGames</div>
+	<h2>Basics - Intro</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is the first C# tutorial in a series on EJGames: C# Basics.
+		<br>In this tutorial, I'll try to explain (in as simple a way as possible) the basics of C#.
+		<br>You know W3schools? You've probably heard of it in your C# journey. I'll basically be following the same topics as that, but I'll try my best to explain it, rather
+		than just give you the information. W3schools is very useful for the basic facts.
+		<h5>Coming up:</h5>
+		<ul>
+			<li>How C# works</li>
+			<li>Variables</li>
+			<li>Datatypes</li>
+			<li>
+				Functions
+				<ul>
+					<li>Function Parameters</li>
+					<li>Overloading</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>How C# works</h4>
+		C# is a compiled programming language, meaning the code you write is converted into machine language that the computer runs. If that doesn't make sense, then just
+		think of it as if the computer speaks Arabic, and you only know English, so you write in English. Once you've finished your writing, the computer translates it into Arabic.
+		Just imagine that, but instead of Arabic, it's binary.
+		<br><br>That bit above isn't all that important. It's just some extra-fun theory.
+		<br><br>When you write a C# program, in order for your code to run, you need to have:
+		<ul>
+			<li>A class (we'll cover that later) with the same name as the C# file,</li>
+			<li>and a function (or 'method') called <span class="code">Main</span> (you can't change the name of it, otherwise it won't run by itself)</li>
+		</ul>
+		When you press the Run button on your code editor, or press F5, or whatever you do to run the code, C# (well, not actually the language itself but who cares) will look
+		for a function called <span class="code">Main()</span>, and will execute (run) the code inside it.
+		<br><br>If you've used Unity, and are programming in vanilla C#, then the <span class="code">Main()</span> is the equivalent of <span class="code">Start()</span>, pretty much.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Variables</h4>
+		If you've programmed before, or been taught how to program, then you no doubt know what these are.
+		<br>Especially if you learnt it from a school, then you'll also hate having to explain what it is. It's really weirdly difficult to explain. It's just a thing that you assign
+		a value to, OK?
+		<br><br>But, because this is a formal, no-nonsense tutorial, I have to formally explain what they are, with no nonsense at all.
+		<br><br>A variable is an object that can be changed at runtime (when the program is running) that is given a name (identifier) and value.
+		<br>A variable can be called anything, apart from reserved words, like <span class="code">if</span> and <span class="code">void</span> and <span class="code">using</span> and
+		other keywords like that.
+		<br><br>Because this a C# tutorial, not an Arabic tutorial, we create variables like this: <span class="code">var variable = value;</span>
+		<br>As my Computing teacher once said, "your company will always give you a naming convention." But most of the time, you just call your variable myName. It's standard for most languages.
+		<br><br>
+		<div class="disclaimerBG"><b>Stop!</b>Stop right there, you silly pedantic individual that goes to small websites to make fun of their tiny mistakes! I'm probably wrong about the naming convention
+		thing, but you know what? I don't care. It's not the end of the world if everyone puts helloWorld instead of hello_world or helloworld or hello%20world</div>
+		<br>Thanks for keeping on reading, and not being pedantic.
+		<br>Anyway, to store a variable on whether the user has logged in or not, a good name would be <span class="code">loggedIn</span>, so you would write:
+		<br><span class="code">var loggedIn = false;</span>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Datatypes</h4>
+		If you've come from JavaScript, or some other language that uses <span class="code">var</span>, then you will recognise the word.
+		<br>If you don't, and you've got here by looking up the best programming languages and realising that C# is quite high up, then all you might know is that <span class="code">var</span>
+		is short for variable.
+		<br><br>There are lots of different 'datatypes' in C#. String, integer (whole number), float (decimal number), boolean (true/false), date/time, and so on.
+		<br>I was deliberately using 'var' above to not confuse any new programmers. A new programmer would probably wonder what 'bool' is.
+		<br>If that's you, it's absolutely fine. Bool is short for boolean.
+		<br><br>If you want to create a variable with a specific datatype, you can write:
+		<br>
+		<div class="code"><b>int</b> number = 4;</div>
+		<br><br>
+		Here's a lovely table to show you a delicious sample of datatypes.
+		<br><br>
+		<table>
+			<tr>
+				<th>Data type</th><th>Meaning</th><th>C# syntax</th>
+			</tr>
+			<tr>
+				<td>Integer</td> <td>Whole number</td><td>int</td>
+			</tr>
+			<tr>
+				<td>Floating point number</td> <td>Decimal number</td><td>float</td>
+			</tr>
+			<tr>
+				<td>Boolean</td> <td>True/false</td><td>bool</td>
+			</tr>
+			<tr>
+				<td>String</td> <td>A piece of text</td><td>string</td>
+			</tr>
+			<tr>
+				<td>Array</td> <td>A list of datatypes</td><td>datatype[]</td>
+			</tr>
+		</table>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Functions</h4>
+		You know the <span class="code">Main(string[] args)</span> thing above? Let's try and remember the distant events of the mysterious past...
+		<div style="font-family: mrs-eaves-xl-serif, serif; color: #ccfffa;">
+			<br>When you write a C# program, in order for your code to run, you need to have:
+			<ul>
+				<li>A class (we'll cover that later) with the same name as the C# file,</li>
+				<b><li>and a function (or 'method') called <span class="code">Main</span></b> (you can't change the name of it, otherwise it won't run by itself)</li>
+			</ul>
+		</div>
+		I said that <span class="code">Main</span> is a function.
+		<br><br>
+		But...
+		<br>
+		<b>What is a function?</b>
+		<br><br>
+		It's simple. Imagine you want to go to the shops and buy your food shopping.
+		<br>You wouldn't want to repeat multiple steps over and over again.
+		<br><br>For example, take when you start your car. Instead of performing the car-starting multiple times, you can just create a function, let's call it <span class="code">StartCar</span>,
+		and invoke (call) it multiple times.
+		<div class="code">
+			<pre>
+public class Example
+{
+	static void Main(string[] args)
+	{
+		StartCar();
+		// Then go to the shops, and once you're finished:
+		StartCar();
+		// And drive home.
+	}
+
+	static void StartCar()
+	{
+		Console.WriteLine("The car is now on!");
+		// Extra car-starting fun goes here!
+	}
+}
+</pre>
+		</div>
+		Instead of repeatedly running:
+		<div class="code">
+			<pre>
+Console.WriteLine("The car is now on!");
+// Extra car-starting fun goes here!
+</pre>
+		</div>
+		you can just call <span class="code">StartCar()</span> every time you want the car to start.
+		<br><br>
+		Now that the reason for creating functions is clearer, we can now dive deeper into the more advanced stuff.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Function parameters</h4>
+		Say you've got your car starting logic. Which you do.
+		<br>How about actually doing the shopping? That would be useful for a shopping program.
+		<br><br>In order to do that efficiently, you should use parameters. They are objects that you 'pass' to a function that change how it runs. It's like a variable,
+		but each time you call the function, you give it a different value.
+		<br><br>
+		It's done like this:
+		<div class="code">
+			<pre>
+public class Example
+{
+	static void Main(string[] args)
+	{
+		BuyItem("Ice cream cone 4pk £3.49 on sale");
+	}
+
+	static void BuyItem(string itemName)
+	{
+		Console.WriteLine("You've bought " + itemName);
+	}
+}
+</pre>
+		</div>
+		The output would be:
+		<br><span class="code">> You've bought Ice cream cone 4pk £3.49 on sale</span>
+		<br><br>
+		<div class="disclaimerBG">
+			<b>Warning:</b>The parameter that you pass to the function is not accessible outside of it. You can not get the value of <span class="code">itemName</span> when you're
+			not in the <span class="code">BuyItem</span> function.
+		</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Overloading</h4>
+		A lot of people would argue that overloading isn't necessary at this point, but it's a very useful thing to know, and since we're already covering functions, we may as well
+		cover this as well.
+		<br><br><b>Overloading is when you have two functions with the same name that take different parameters and can perform different actions.</b>
+		<br><br>If you want to have a <span class="code">BuyItem</span> function that also takes an integer, holding the value of how many you want to buy, then you could just
+		make a new function. Or, you could copy <span class="code">BuyItem</span> and add an int parameter to it.
+		<br><br>Observe:
+		<div class="code">
+			<pre>
+public class Example
+{
+	static void Main(string[] args)
+	{
+		BuyItem("Ice cream cone 4pk £3.49 on sale");
+		BuyItem("Chocolate bar £0.49 on sale", 5); // Because they're on sale! Buy 5 of them!
+	}
+
+	static void BuyItem(string itemName)
+	{
+		Console.WriteLine("You've bought " + itemName);
+	}
+	
+	static void BuyItem(string itemName, int amount)
+	{
+		Console.WriteLine("You've bought " + amount.ToString() + " of " + itemName);
+	}
+}
+</pre>
+		</div>
+		The output would be:
+		<br><span class="code">> You've bought Ice cream cone 4pk £3.49 on sale
+			<br>> You've bought 5 of Chocolate bar £0.49 on sale
+		</span>
+		<br><br>It's as simple as that. If that's not simple, then... well, it might not be, because I haven't explained it very well.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		This is a long tutorial, by my standards.
+		<br><br>If you don't understand, you have three choices:
+		<ol>
+			<li>Read it again (good if this is your first time)</li>
+			<li>Try a different tutorial (might be a good idea if this isn't your first time)</li>
+			<li>Give up and delete C# and everything to do with it, and clear your browser history and all that malarkey (if you really want to)</li>
+		</ol>
+		<br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>
