@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Returning Tutorial</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+	<body onload="CheckFormatting(); Tabs(); SetCompleted();">
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div class="sidebar" id="sidebar"><h4>Links</h4>
+		<a href="../index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="../lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="../changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="../tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="../blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
+	</div>
+	<div id="title">EJGames</div>
+	<h2>Function Returning</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a C# (with references to Unity) tutorial about <b>returning values in functions</b>. This means that it will be able to be followed in vanilla C#, but will also contain context for Unity users.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="voids">Functions as you may know them</h4>
+		If you're using Unity (which a lot of C# users are), then you are probably over-familiar with the word <span class="code">void</span>.
+		<br><br>It's everywhere.
+		<br><br><span class="code">void Start()</span>, <span class="tab"></span><span class="tab"></span> <span class="code">void Update()</span>,
+		<span class="tab"></span><span class="tab"></span><span class="code">private void OnCollisionEnter(Collision collision)</span>.
+		<br><br>
+		But you're a big boy (or girl) now, you should really be learning what <span class="code">void</span> actually means. Pff. Kids these days.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="return-types">Return types</h4>
+		The word <span class="code">void</span> just means "don't return anything". In <span class="code">Start()</span>, for example, you're not trying to get the number of objects in the scene,
+		or 'return' how many times you've entered the scene in the current session. You just want the code to be executed, and to be done with it.
+		<br><br>Sometimes, however, that's not what you want. What if you want a function that gives you a random number between 1 and 100? You wouldn't want to do:
+		<br>
+		<div class="code"> <pre>
+int randomNumber = Random.Range(1, 100); // Unity
+
+var random = new Random();
+int randomNumber = random.Next(1, 101); // Vanilla C#
+</pre>
+		</div>
+		every time you wanted a random number. Especially if you're in vanilla C#.
+		<br><br>Instead, you would want to create a function for it. Let's call it <span class="code">GetRandomNumber</span>.
+		<br><br>And here's your amazing new class:
+		<div class="code">
+			<pre>
+public class Example
+{
+	public int randomNumber;
+
+	static void Main(string[] args)
+	{
+		GetRandomNumber();
+		Console.WriteLine(randomNumber.ToString());
+	}
+
+	public void GetRandomNumber()
+	{
+		randomNumber = // and then your random number generator
+	}
+}
+</pre>
+		</div>
+		But, as are all of the first examples in these tutorials, this isn't the best way to do it.
+		<br><br>This is where returning comes in.
+		<h5>Step One</h5>
+		Create your function as if it were a normal <span class="code">int</span> variable.
+		<div class="code">
+			<pre>
+public int GetRandomNumber;
+</pre>
+		</div>
+		<h5>Step Two</h5>
+		Add your favourite brackets to the end of the name!
+		<div class="code">
+			<pre>
+public int GetRandomNumber()
+</pre>
+		</div>
+		<h5>Step Three</h5>
+		Continue the ritual by adding the final curly brackets of light!!
+		<div class="code">
+			<pre>
+public int GetRandomNumber()
+{
+
+}
+</pre>
+		</div>
+		<h5>Step Four</h5>
+		The ritual is not yet complete! Add your code into the function!
+		<div class="code">
+			<pre>
+public int GetRandomNumber()
+{
+	var random = new Random();
+	int randomNumber = random.Next(1, 101);
+}
+</pre>
+		</div>
+		At this point, if you're using Visual Studio, or another debugger, then it'll get angry at you, and say something like:
+		<br><br><span class="code disclaimerBG">Error CS0161: 'Example.GetRandomNumber()': not all code paths return a value</span>
+		<br><br><span class="imageDescription">(actually, if you're using the same names, this is exactly the error you'll get)</span>
+		<br><br>So, what you need to do is:
+		<h5>Step Five</h5>
+		DON'T GIVE UP! THE RITUAL IS ALMOST COMPLETE! JUST ADD THE FINAL HOLY WORD:
+		<div class="code">
+			<pre>
+<b style="color: #e67fd7">return</b> randomNumber;
+</pre>
+		</div>
+		and that's how you make a function return a value.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="more">Explain more!!!</h4>
+		OK!
+		<br><br>
+		Remember the function that we made before?
+		<br>Well, if you were following the entire tutorial, then you should:
+		<div class="code">
+			<pre>
+public int GetRandomNumber()
+{
+	var random = new Random();
+	int randomNumber = random.Next(1, 101);
+}
+</pre>
+		</div>
+		You can put this in your Main function to print the random number! Because when you call/invoke the function, it just returns the value you programmed it to, just like
+		it was a normal variable.
+		<div class="code">
+			<pre>
+static void Main(string[] args)
+{
+	Console.WriteLine(GetRandomNumber().ToString());
+	/*
+		Assuming that the function was static, which I forgot to do, but it's fine,
+		as long as it still makes sense
+	*/
+}
+</pre>
+		</div>
+		And, because it's just like any other variable, you can make it return ANYTHING YOU WANT!
+		<div class="code">
+			<pre>
+public string HelloWorld()
+{
+	return "Hello world!";
+}
+</pre>
+		</div>
+		<div class="code">
+			<pre>
+public string IsFourGreaterThanFiveOrIsItLess()
+{
+	if(4 > 5)
+	{
+		return "It's greater.";
+	}
+	else
+	{
+		return "It's less.";
+	}
+}
+</pre>
+		</div>
+		<div class="code">
+			<pre>
+public bool IsJohnGoldAmazing()
+{
+	string response = Console.ReadLine("Is John Gold amazing? [Y/N]");
+	if(response == "Y")
+	{
+		return true;
+	}
+	else
+	{
+		return true; // Because John Gold is amazing anyway
+	}
+}
+</pre>
+		</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Isn't this one amazing? It took me about twice as long as the other ones. You'd better be extra informed by this one.
+		<br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>
