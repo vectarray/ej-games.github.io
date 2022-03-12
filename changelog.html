@@ -73,7 +73,7 @@
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 	<div class="sidebar" id="sidebar">
 		<h4>Contents</h4>
-		<a href="#v4" class="URLbuttonText zoomonhover"><b>V4</b></a>
+		<a href="#v5p" class="URLbuttonText zoomonhover"><b>V5-P</b></a>
 		<br><br><a href="#showold" class="URLbuttonText zoomonhover"><b>Older versions</b></a>
 		<h4>Links</h4>
 		<a href="index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
@@ -104,6 +104,57 @@
 			</ul>
 			<br><br>
 		</span>
+		<h3 class="v5p">V5-P - Pre-Content Update</h3>
+		<div class="line"></div>
+		<h4 id="v5-note">Note</h4>
+		We've (we being just me) been working on the storyline for the game. But because it's not finished, and we want to keep releasing updates, we've just removed NPCs for now
+		and we'll add them back in once the story is finished. And then... oh, I don't know what will happen once the game is done.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="v5-zones">Zones</h4>
+		We have biomes! But let's not call them that, because that's associated with a certain other pixel-art based game.
+		<br><br>
+		Right now, we've got:
+		<br><br>
+		<h5>Normal Zone</h5>
+		Mites, zombies and robots roam this area. It's also the place that you start. But it can also appear further on.
+		<h5>Frosty Zone</h5>
+		Frost zombies, snowman zombies and mites are here. It's also really easy to find. Just 50 or so metres away from the start.
+		<h5>Shady Zone</h5>
+		Thugs! Darkness! Where have the lights gone? Why is there a car alarm in the music? Find all this and more in the <b>Shady Zone!</b> (only appears 150m in, and further).
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="v5-weapons">More weapon<del>s</del>!</h4>
+		We've added a new weapon. There are <b>way</b> more weapons that you can unlock by killing enemies, and bosses, and completing quests, but right now, we've only added one that you can buy:
+		<h5 style="font-family: Engravers MT, sans-serif;">The Streetsweeper</h5>
+		<ul>
+			<li>Automatic Shotgun</li>
+			<li>Fires around 4 rounds per second</li>
+			<li>Medium spread, high damage at close range</li>
+			<li>1500 coins</li>
+			<li>Ingame description: <i>A fast-firing, automatic shotgun, that allows for spraying the enemies while holding down the trigger. Sure, it's not the most skillful, but it's definitely effective.</i></li>
+		</ul>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="v5-enemies">Enemy changes</h4>
+		<div class="disclaimerBG"><b>Technical alert!</b>Do you want to know about a really boring change? If not, then just skip this section. If you do, then go on, read ahead!</div>
+		<br>
+		We've changed how enemies work to reduce the really quick kills (when enemies would just run into the player repeatedly, with no gaps inbetween hits, and kill in under a second).
+		<br><br>To do this, we have <b>removed collision-based attacks</b>, and now, enemies damage the player over time, if they are in range.
+		<br>This does mean that enemies can hit from a longer range. But, we have specifically set each enemy's range to a different value, that suits the enemy, so that
+		not all of the enemies can snipe you from 50m away.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4 id="v5-tweaks">Tweaks! Yay!</h4>
+		Because of the very frequently asked question, "Why don't you have more tweaks in your changelogs?", I'm happy to announce that I noted down all of the changes I made
+		in Locked In V5.
+		<br><br><b>New cursor</b>
+		<br>Added a new cursor, that looks like this: <img src="cursor-default.png" style="width: 1.5em;"> and changes based on what you're hovering over. Mainly just guns.
+		<br><br><b>Light spell</b>
+		<br>We've removed the 'shows the way forward' aspect of the spell for the Light class. It was just completely weird, going through walls, and for some reason, changing its mind to
+		which way is forward...?
+		<br><br><b>Removed lanterns on the side</b>
+		<br><br><b>Teleporting into walls is no longer allowed</b>
+		<br>There's just a notification telling you that you can't, and it stops you from teleporting if there's something in the way.
+		<div class="smallSpace"></div><div class="line"></div><div class="smallSpace"></div>
+		<button id="showold" class="buttonURL" onclick="OpenOlder()">Show older versions</button>
+		<span id="old" style="display: none;">
 		<h3 id="v4">V4 - Feature update</h3>
 		<div class="line"></div>
 		<h4 id="tweaks">Tweaks</h4>
@@ -117,9 +168,7 @@
 			<li>If you've seen one of those flickering lights, you won't any more. Those were chests trying to spawn. That's been fixed.</li>
 		</ul>
 		<div class="smallSpace"></div><div class="line"></div><div class="smallSpace"></div>
-		<button id="showold" class="buttonURL" onclick="OpenOlder()">Show older versions</button>
 		<br>Some of the older versions are still in the old changelog format. It doesn't look too bad, though, does it?
-		<span id="old" style="display: none;">
 			<h3 id="v4-p">V4-P - Pre-feature update</h3>
 			<div class="line"></div>
 			<h4 id="classes">New feature: classes!</h4>
