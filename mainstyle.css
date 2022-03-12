@@ -5,7 +5,7 @@ button {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -28,7 +28,8 @@ button:hover {
 	padding: 0%;
 }
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-weight: 300;
 	background-color: #161c25;
 	font-size: 1.35em;
 	color: #ffffff;
@@ -39,7 +40,7 @@ select {
 	border-color: #383838;
 	border-radius: 1em;
 	color: white;
-	font-family: "Montserrat", sans-serif;
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	font-size: 1em;
 	transition: background-color 0.3s;
 }
@@ -55,7 +56,7 @@ select:hover {
 	/* height: 1.2em; */
 	background-color: #182a4d;
 	color: white;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	font-weight: 900;
 }
 .bar {
@@ -91,14 +92,12 @@ li {
 }
 a {
 	color: rgb(24, 126, 243);
-	font-family: 'Montserrat', sans-serif;
 	text-decoration: none;
 	background-color: rgba(0, 0, 0, 0);
 	transition: 0.3s;
 }
 a:hover {
 	color: rgb(24, 126, 243);
-	font-family: 'Montserrat', sans-serif;
 	text-decoration: underline;
 	background-color: rgba(0, 0, 0, 0);
 }
@@ -107,23 +106,35 @@ p {
 	margin-bottom: 50px;
 }
 h2 {
-	font-family: "Montserrat", sans-serif;
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	font-size: 3em;
 	font-weight: 900;
 	text-align: center;
 	color: #ffffff;
 }
 h3 {
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	font-size: 1.9em;
 	font-weight: 600;
 }
 h4 {
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	font-size: 2em;
-	font-weight: 300;
+	font-weight: 900;
 	text-align: center;
 }
 h5 {
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	font-size: 1.3em;
+}
+h6 {
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-weight: 900;
+	font-size: 1.1em;
+}
+.fredoka {
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-weight: 600;
 }
 .line {
 	border-top-style: solid;
@@ -159,7 +170,7 @@ h5 {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Fredoka', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -209,11 +220,14 @@ h5 {
 	font-style: normal;
 	border-radius: 0.2em;
 }
+small {
+	font-size: small;
+}
 .sidebar {
 	position: fixed;
 	width: calc(3% + 6em);
 	left: 0%;
-	min-height: calc(100% - 1.45em);
+	min-height: 100%;
 	z-index: 0;
 	background-color: #14161d;
 	padding: 0px 1em 0px 1em;
@@ -277,4 +291,12 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 	border: 0.15em solid rgba(0, 0, 0, 0);
 	padding: 0.3em;
 	border-radius: 1em;
+}
+th {
+	background-color: rgba(255, 255, 255, 0.212);
+	padding: 0.3em;
+}
+td {
+	background-color: rgba(255, 255, 255, 0.106);
+	padding: 0.3em;
 }
