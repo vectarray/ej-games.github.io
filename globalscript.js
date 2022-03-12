@@ -3,6 +3,18 @@ function CheckFormatting()
 	var newScript = document.createElement("script");
 	newScript.src = "https://ejgames.co.uk/colours.jsonp";
 	document.body.appendChild(newScript);
+	var fredoka = document.createElement("link");
+	fredoka.rel = "stylesheet";
+	fredoka.href = "https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap";
+	document.body.appendChild(fredoka);
+	var lato = document.createElement("link");
+	lato.rel = "stylesheet";
+	lato.href = "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap";
+	document.body.appendChild(lato);
+	var leagueSpartan = document.createElement("link");
+	leagueSpartan.rel = "stylesheet";
+	leagueSpartan.href = "https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;700;900&display=swap";
+	document.body.appendChild(leagueSpartan);
 	var userAgent = navigator.userAgent.toLowerCase();
 	//userAgent = "iphone";
 	if (userAgent.indexOf("iphone") != -1)
@@ -177,7 +189,13 @@ function MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed) {
 }
 function getCookie(cname) {
 	let name = cname + "=";
-	let decodedCookie = decodeURIComponent(document.cookie)/*document.getElementById("cookie").innerHTML*/;
+	let decodedCookie = "";
+	if(window.location.href.indexOf("file:///") > -1) {
+		decodedCookie = document.getElementById("cookie").innerHTML;
+	}
+	else {
+		decodedCookie = decodeURIComponent(document.cookie);
+	}
 	let ca = decodedCookie.split(';');
 	for(let i = 0; i <ca.length; i++) {
 	  let c = ca[i];
@@ -194,8 +212,12 @@ function setCookie(cname, cvalue, exdays) {
 	const d = new Date();
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
 	let expires = "expires="+ d.toUTCString();
-	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	//document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
+	if(window.location.href.indexOf("file:///") > -1) {
+		document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+	else {
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
 }
 function sound(src)
 {
@@ -210,7 +232,7 @@ function sound(src)
 		this.sound.play();
 	}
 	this.stop = function ()
-	{
+	{	
 		this.sound.pause();
 	}
 }
