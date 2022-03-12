@@ -4,7 +4,7 @@
 <head>
 	<title>EJGames Homepage</title>
 	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
-	<link rel="stylesheet" href="../mainstyle.css">
+	<link rel="stylesheet" href="mainstyle.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -12,31 +12,99 @@
 		rel="stylesheet">
 	<style>
 	</style>
-	<script src="../globalscript.js"></script>
-	<script>
-	</script>
+	<script src="globalscript.js"></script>
 
 </head>
 
 <body onload="CheckFormatting()">
+	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
-	<div class="sidebar" id="sidebar"><h4>Links</h4>
-		<a href="../index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
-		<a href="../lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
-		<a href="../changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
-		<a href="../tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
-		<a href="index.html" class="URLbuttonText zoomonhover">Blog</a>
+	<div class="sidebar" id="sidebar">
+		<h4>Contents</h4>
+		<a href="#lockedin" class="URLbuttonText zoomonhover"><b>Locked In</b></a><br><br>
+		<a href="#everythingelse" class="URLbuttonText zoomonhover"><b>Everything Else</b></a><br>
+		<a href="#apolycalypse" class="URLbuttonText zoomonhover">FPS PVE</a><br>
+		<a href="#obbyshowdown" class="URLbuttonText zoomonhover">Roblox Game</a><br>
+		<a href="#connectmore" class="URLbuttonText zoomonhover">Connect More</a><br>
+		<a href="#lockedininfo" class="URLbuttonText zoomonhover">Locked In</a>
+		<h4>Links</h4>
+		<a href="index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
+		<a href="lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
+		<a href="changelog.html" class="URLbuttonText zoomonhover">Changelog</a><br>
+		<a href="tutorials.html" class="URLbuttonText zoomonhover">Tutorials</a><br>
+		<a href="blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
 	</div>
 	<div id="title">EJGames</div>
 	<h2>Homepage</h2>
 	<div class="smallSpace"></div>
 	<br>
 	<div class="mainParagraph">
-		Welcome to the blog homepage of EJGames!
-		<br><br>This is where most of the blog stuff will be. There will just be different pages for <b>large</b> articles.
+		Welcome to the homepage of EJGames!
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<h4 id="lockedin">Locked In</h4>
+		If you're here for Locked In (most probably are) then please click here:
+		<a href="https://ej-games.github.io/lockedin.html"><button type="button" class="buttonURL">Visit the official page</button></a>
 		<div class="smallSpace"></div><div class="line"></div>
+		<!--
+		<h4 id="lockedin">Stickman Multiplayer (on pause)</h4>
+		<i>I'm not sure if this will ever be taken off pause.</i>
 		<br><br>
-		Ooh! There's nothing here. This is because I'm busy right now! Come back when I'm not busy!
+		This is a multiplayer game that I'm <b>currently</b> working on, using Unity's NetCode multiplayer solution.
+		<br>Trust me, it's been a fun ride.
+		<br><br>
+		...they made me copy and paste stuff about Relay... and Transports... and... Async Tasks 🤮
+		<br><br>As of writing this, I'm only a couple of days in, and <b>all</b> I've done is:
+		<ol>
+			<li>Make a player that moves</li>
+			<li>Nice animations for movement and jumping</li>
+			<li>A block that appears (on all clients) when you go past a certain point</li>
+		</ol>
+		Although, I have to say a massive thanks to <a href="https://www.youtube.com/channel/UCHM37DnT_QGJT5Zyl4EmqcA">Dilmer Valecillos</a> for posting a massive
+		tutorial on how to create an entire multiplayer game. I used all of it. Apart from the part about VR or something.
+		<div class="smallSpace"></div><div class="line"></div>-->
+		<h4 id="everythingelse">Everything else</h4>
+		In case you're not here for Locked In, then congratulations! You're a unique individual! Why don't I introduce myself, so that you don't think that you'll download a virus?
+		<div class="imageDescription">What? Who said anything about a virus?</div>
+		<br>
+		Anyway, here's some background.
+		<br>
+		<h3>My stuff</h3>
+		I have made plenty of games over the years. And other things. <b><a href="https://scratch.mit.edu/users/Kinesis887/">Check out my scratch profile!!!!</a></b>
+		<br>Anyway, about the games. I have made plenty of games over the years. Some successful. A lot of them... not so successful.
+		<br>I'll give you a tour of the games I've made in the past. Most of them are pretty bad. But still, that's the essence of learning, isn't it?
+		<h5 id="apolycalypse">Apolycalypse (Codename: FPS PVE)</h5>
+		The FPS game that never got finished. Not just because of the really bad graphics (it was 3D! Do you expect me to know how to 3D model?), or the gripping narrative
+		(the man tells you to kill zombies). It was just because I had another idea. Which came next:
+		<h5 id="obbyshowdown">Obby Showdown (on Roblox)</h5>
+		Ah, you thought I would never branch out and make games outside of Unity? Well you were wrong! My amazing <a href="https://www.roblox.com/games/7243771257/">Roblox game</a> got
+		barely any players, and also broke after I left it and came back. Although, the idea behind the game was absolutely amazing. People were completing the obstacle course, while a 'controller'
+		added stages, in real time. Sick. Even after all that effort, I got barely any reward.
+		Just goes to show how hard work doesn't always lead to success. Unless...
+		<h5 id="connectmore">ConnectMore</h5>
+		To be honest, it was my first mobile game that
+		<ol>
+			<li>Looked decent</li>
+			<li>Was 'weirdly addicting'</li>
+			<li>Had quite a lot of content.</li>
+		</ol>
+		You moved a square, and then it attached to other squares, and you had to build patterns out of the squares. It was a pretty good game. I even added skins, and a pattern viewer,
+		using my newly learnt knowledge of <span class="code">Resources.Load()</span> in Unity. And, also, that was when I finally realised the architecture of Unity games. How did I
+		only just realise what <span class="code">static</span> actually meant?
+		<h5>Skip a few... ConnectCircle... Look Over There... Weird Circle Rotate Thingy... uhhhh</h5>
+		<h5 id="lockedininfo">Locked In</h5>
+		And here we are now. Making a super cool PC game, top down, 2D, and over-engineering a website for it. Come on, making a website is fun! Especially when you're not just using Notepad.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4><a href="https://tzgames.github.io/" class="URLbuttonText zoomonhover">TZGames</a></h4>
+		I am so happy to announce that TZGames... exists! It's here! Look at it! You'll find some epic stuff like:
+		<ul>
+			<li>A calendar (as of writing, <i>Schedule/Organiser</i> is just a calendar)</li>
+			<li>A Unity tutorial (as of writing, there's only one)</li>
+			<li>Astro Hole (as of writing, it's still in early development, and doesn't look like it will be finished any time soon, but still go and support it)</li>
+			<li>A copy of my search bar!</li>
+			<img src="magpie.png" style="width: 15em">
+		</ul>
+		<a href="https://tzgames.github.io/" class="URLbuttonText zoomonhover">Go check it out! You won't regret it.
 	</div>
 	<div class="smallSpace"></div>
 
