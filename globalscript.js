@@ -100,7 +100,7 @@ function UpdateColour() {
 			item.style.color = colours[getCookie("colour")].h2;
 		}
 		document.body.style.color = colours[getCookie("colour")].body;
-	}, 50)
+	}, 100)
 	}
 	else {
 		ChangeColours("classic")
