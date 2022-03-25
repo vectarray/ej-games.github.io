@@ -2,19 +2,10 @@ function CheckFormatting()
 {
 	var newScript = document.createElement("script");
 	newScript.src = "https://ejgames.co.uk/colours.jsonp";
+	//newScript.src = "colours.jsonp";
 	document.body.appendChild(newScript);
-	var fredoka = document.createElement("link");
-	fredoka.rel = "stylesheet";
-	fredoka.href = "https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap";
-	document.body.appendChild(fredoka);
-	var lato = document.createElement("link");
-	lato.rel = "stylesheet";
-	lato.href = "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap";
-	document.body.appendChild(lato);
-	var leagueSpartan = document.createElement("link");
-	leagueSpartan.rel = "stylesheet";
-	leagueSpartan.href = "https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;700;900&display=swap";
-	document.body.appendChild(leagueSpartan);
+
+
 	var userAgent = navigator.userAgent.toLowerCase();
 	//userAgent = "iphone";
 	if (userAgent.indexOf("iphone") != -1)
@@ -37,16 +28,28 @@ function CheckFormatting()
 
 	document.getElementById("sidebar").appendChild(newButton);
 
+	//document.getElementById("title").style.display = "none";
+	
+	for(var icon of document.getElementsByTagName("link")) {
+		if(icon.rel == "icon" && icon.type == "image/x-icon") {
+			icon.remove();
+		}
+	}
+	var newIcon = document.createElement("link");
+	newIcon.rel = "icon";
+	newIcon.href = "https://ejgames.co.uk/files/ej%20logo.png";
+	newIcon.type = "image/x-icon";
+	document.body.appendChild(newIcon);
+
+
 	var newDropdown = document.createElement("select");
 	newDropdown.id = "colour-dropdown";
 	document.getElementById("sidebar").appendChild(newDropdown);
-	var colourArrangements = ["classic", "red", "blue", "lockedin", "aqua"];
+	var colourArrangements = ["dark", "light", "red"];
 	var colourDisplayNames = {
-		"classic": "Classic",
-		"blue": "Blue",
-		"lockedin": "Locked In",
-		"aqua": "Aqua",
-		"red": "Red"
+		"dark": "Dark",
+		"red": "Red",
+		"light": "Light"
 	}
 	for(var item of colourArrangements) {
 		var newOption = document.createElement("option");
@@ -66,6 +69,74 @@ function CheckFormatting()
 		}, 1000)
 	}
 	ChangeColours(getCookie("colour"));
+	
+	var observer = new IntersectionObserver(function(entries) {
+		if(entries[0].isIntersecting === true) {
+			console.log(entries[0].target.innerHTML);
+			moveInElement(entries[0]);
+		}
+	}, { threshold: [0] });
+	checkForVisibility("moveIn");
+}
+
+function moveInElement(element) {
+	setTimeout(function() {
+		element.style.opacity = "100%";
+		element.style.transform = "translateY(-10px)";
+	}, 100)
+}
+
+function checkForVisibility(className) {
+	for(var item of this.document.getElementsByClassName(className)) {
+		var element = item;
+		var position = element.getBoundingClientRect();
+
+		// checking for partial visibility
+		if(position.top < window.innerHeight && position.bottom >= 0) {
+			moveInElement(element);
+		}
+	}
+	window.addEventListener('scroll', function() {
+		for(var item of this.document.getElementsByClassName(className)) {
+			var element = item;
+			var position = element.getBoundingClientRect();
+	
+			// checking for partial visibility
+			if(position.top < window.innerHeight && position.bottom >= 0) {
+				moveInElement(element);
+			}
+		}
+	});
+}
+
+function checkForVisibilityTag(tagName) {
+	for(var item of this.document.getElementsByTagName(tagName)) {
+		var element = item;
+		var position = element.getBoundingClientRect();
+
+		// checking for partial visibility
+		if(position.top < window.innerHeight && position.bottom >= 0) {
+			moveInElement(element);
+		}
+	}
+	window.addEventListener('scroll', function() {
+		for(var item of this.document.getElementsByTagName(tagName)) {
+			var element = item;
+			var position = element.getBoundingClientRect();
+	
+			// checking for partial visibility
+			if(position.top < window.innerHeight && position.bottom >= 0) {
+				moveInElement(element)
+			}
+		}
+	});
+}
+
+function createFont(fontURL) {
+	var font = document.createElement("link");
+	font.rel = "stylesheet";
+	font.href = fontURL;
+	document.body.appendChild(font);
 }
 
 function UpdateColour() {
@@ -78,7 +149,7 @@ function UpdateColour() {
 				item.style.backgroundColor = "rgb(10, 15, 19)";
 			}
 		}
-		else if(getCookie("colour") == "classic") {
+		else if(getCookie("colour") == "dark") {
 			document.body.style.backgroundColor = "rgb(22, 28, 37)";
 			document.getElementById("title").style.backgroundColor = "rgb(24, 42, 77)";
 			for(var item of document.getElementsByClassName("sidebar")) {
@@ -95,15 +166,22 @@ function UpdateColour() {
 		setTimeout(function() {
 		document.body.style.backgroundColor = colours[getCookie("colour")].background;
 		document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
+		document.getElementById("title").style.color = colours[getCookie("colour")].h2;
 		document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
 		for(var item of document.getElementsByTagName("h2")) {
 			item.style.color = colours[getCookie("colour")].h2;
 		}
 		document.body.style.color = colours[getCookie("colour")].body;
+		for(var item of document.getElementsByClassName("URLbuttonText")) {
+			item.style.color = colours[getCookie("colour")].body;
+		}
+		for(var item of document.getElementsByClassName("card")) {
+			item.style.backgroundColor = colours[getCookie("colour")].title;
+		}
 	}, 100)
 	}
 	else {
-		ChangeColours("classic")
+		ChangeColours("dark")
 	}
 }
 
