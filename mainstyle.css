@@ -1,3 +1,20 @@
+/* Fonts */
+
+/* Sen (Body) */
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+/* Raleway (Headings) */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,900;1,900&display=swap');
+
+/* League Spartan (Unused) */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;700;900&display=swap");
+
+/* Lato (Unused) */
+/*@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");*/
+
+/* Fredoka (Unused) */
+/*@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap");*/
+
 .bigger {
 	font-size: 1.2em !important;
 }
@@ -5,7 +22,7 @@ button {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Sen', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -28,7 +45,7 @@ button:hover {
 	padding: 0%;
 }
 body {
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Sen', 'Montserrat', sans-serif;
 	font-weight: 300;
 	background-color: #161c25;
 	font-size: 1.35em;
@@ -40,7 +57,7 @@ select {
 	border-color: #383838;
 	border-radius: 1em;
 	color: white;
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Sen', 'Montserrat', sans-serif;
 	font-size: 1em;
 	transition: background-color 0.3s;
 }
@@ -56,7 +73,7 @@ select:hover {
 	/* height: 1.2em; */
 	background-color: #182a4d;
 	color: white;
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
 }
 .bar {
@@ -101,39 +118,120 @@ a:hover {
 	text-decoration: underline;
 	background-color: rgba(0, 0, 0, 0);
 }
-p {
-	margin-top: 50px;
-	margin-bottom: 50px;
+.moveIn {
+	transform:translateY(10px);
+	transition: transform 0.5s, opacity 0.5s;
+	opacity: 0%;
+}
+.card {
+	background-color: grey;
+	border-radius: 0.5em;
+	min-height: 13em;
+	max-width: 40%;
+	padding: 2%;
+	margin: 2%;
+	font-size: 0.8em;
+	float: left;
+	outline: 0em solid grey;
+	box-shadow: 0.5em 0.5em 2em black;
+}
+.card:hover {
+	cursor: pointer;
+	outline: 0.2em solid grey;
+}
+.card h4 {
+	font-size: 1.3em;
+	margin-top: 0px;
+	margin-bottom: 0.5em;
+}
+.card img {
+	width: 40%;
+	float: right;
+	border-radius: 0.2em;
+}
+.card img.cardIcon {
+	float: left;
+	width: 8%;
+	border-radius: 100%;
+}
+#searchBar {
+	width: 100%;
+	font-size: 1.5em;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+	background-color: rgb(12, 20, 37);
+	border: none;
+	color:rgb(255, 255, 255);
+}
+#searchItems {
+	list-style-type: none;
+	padding-left: 0px;
+}
+#searchItems li {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+#searchItems li a {
+	color: white;
+	text-decoration: none;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+#searchItems li a:hover {
+	color: white;
+	text-decoration: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.bigList {
+	list-style-type: none;
+	padding-left: 0px;
+}
+.bigList li {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+.bigList li a {
+	color: white;
+	text-decoration: none;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+.bigList li a:hover {
+	color: white;
+	text-decoration: none;
+	background-color: rgba(0, 0, 0, 0.3);
 }
 h2 {
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Raleway', 'Montserrat', sans-serif;
 	font-size: 3em;
 	font-weight: 900;
 	text-align: center;
 	color: #ffffff;
 }
 h3 {
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Raleway', 'Montserrat', sans-serif;
 	font-size: 1.9em;
 	font-weight: 600;
 }
 h4 {
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Raleway', 'Montserrat', sans-serif;
 	font-size: 2em;
 	font-weight: 900;
 	text-align: center;
 }
 h5 {
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Raleway', 'Montserrat', sans-serif;
 	font-size: 1.3em;
 }
 h6 {
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Raleway', 'Montserrat', sans-serif;
 	font-weight: 900;
 	font-size: 1.1em;
 }
 .fredoka {
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Raleway', 'Montserrat', sans-serif;
 	font-weight: 600;
 }
 .line {
@@ -170,7 +268,7 @@ h6 {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Fredoka', 'Montserrat', sans-serif;
+	font-family: 'Sen', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -215,7 +313,7 @@ h6 {
 }
 .code {
 	font-family: 'Consolas', Courier, monospace;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.3);
 	font-size: 0.9em;
 	font-style: normal;
 	border-radius: 0.2em;
