@@ -119,9 +119,19 @@ a:hover {
 	background-color: rgba(0, 0, 0, 0);
 }
 .moveIn {
-	transform:translateY(10px);
+	transform:translateY(15px);
 	transition: transform 0.5s, opacity 0.5s;
 	opacity: 0%;
+}
+.rightImage {
+	float: right;
+	width: 15%;
+	padding-left: 2%;
+}
+.leftImage {
+	float: left;
+	width: 15%;
+	padding-right: 2%;
 }
 .card {
 	background-color: grey;
@@ -150,6 +160,38 @@ a:hover {
 	border-radius: 0.2em;
 }
 .card img.cardIcon {
+	float: left;
+	width: 8%;
+	border-radius: 100%;
+}
+.small-card {
+	background-color: grey;
+	border-radius: 0.5em;
+	min-height: 22em;
+	max-width: 17%;
+	padding: 2%;
+	margin: 2%;
+	font-size: 0.8em;
+	float: left;
+	outline: 0em solid grey;
+	box-shadow: 0.5em 0.5em 2em black;
+}
+.small-card:hover {
+	cursor: pointer;
+	outline: 0.2em solid grey;
+}
+.small-card h4 {
+	font-size: 1.3em;
+	margin-top: 0px;
+	margin-bottom: 0.5em;
+}
+.small-card img {
+	width: 100%;
+	float: left;
+	padding: 0.3em;
+	border-radius: 0.2em;
+}
+.small-card img.cardIcon {
 	float: left;
 	width: 8%;
 	border-radius: 100%;
