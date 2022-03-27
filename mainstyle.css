@@ -65,7 +65,7 @@ select:hover {
 	background-color: #727272;
 }
 .mainParagraph {
-	margin: 0px 29em 0px 29em;
+	margin: 0px 27% 0px 27%;
 }
 #title {
 	text-align: center;
@@ -163,6 +163,11 @@ a:hover {
 	float: left;
 	width: 8%;
 	border-radius: 100%;
+}
+.cards {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
 }
 .small-card {
 	background-color: grey;
