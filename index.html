@@ -11,8 +11,12 @@
 		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 		rel="stylesheet">
 	<style>
+		.mainParagraph {
+			font-size: 1.1em;
+		}
 	</style>
 	<script src="globalscript.js"></script>
+	<link rel="icon" href="https://ejgames.co.uk/files/ej%20logo.png" type="image/x-icon">
 
 </head>
 
@@ -20,13 +24,6 @@
 	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 	<div class="sidebar" id="sidebar">
-		<h4>Contents</h4>
-		<a href="#lockedin" class="URLbuttonText zoomonhover"><b>Locked In</b></a><br><br>
-		<a href="#everythingelse" class="URLbuttonText zoomonhover"><b>Everything Else</b></a><br>
-		<a href="#apolycalypse" class="URLbuttonText zoomonhover">FPS PVE</a><br>
-		<a href="#obbyshowdown" class="URLbuttonText zoomonhover">Roblox Game</a><br>
-		<a href="#connectmore" class="URLbuttonText zoomonhover">Connect More</a><br>
-		<a href="#lockedininfo" class="URLbuttonText zoomonhover">Locked In</a>
 		<h4>Links</h4>
 		<a href="index.html" class="URLbuttonText zoomonhover">Homepage</a><br>
 		<a href="lockedin.html" class="URLbuttonText zoomonhover">Locked In</a><br>
@@ -42,10 +39,6 @@
 		Welcome to the homepage of EJGames!
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4 id="lockedin">Locked In</h4>
-		If you're here for Locked In (most probably are) then please click here:
-		<a href="https://ej-games.github.io/lockedin.html"><button type="button" class="buttonURL">Visit the official page</button></a>
-		<div class="smallSpace"></div><div class="line"></div>
 		<!--
 		<h4 id="lockedin">Stickman Multiplayer (on pause)</h4>
 		<i>I'm not sure if this will ever be taken off pause.</i>
@@ -63,9 +56,106 @@
 		Although, I have to say a massive thanks to <a href="https://www.youtube.com/channel/UCHM37DnT_QGJT5Zyl4EmqcA">Dilmer Valecillos</a> for posting a massive
 		tutorial on how to create an entire multiplayer game. I used all of it. Apart from the part about VR or something.
 		<div class="smallSpace"></div><div class="line"></div>-->
-		<h4 id="everythingelse">Everything else</h4>
+		<h4 class="moveIn">Me</h4>
+		<div class="moveIn">
+			I'm EJGames.
+			<br>
+			Thanks for reading.
+			<br><br>I'm a programmer. I have made many games in the past, and a couple of Python utility apps. And a website (this one you're looking at right now).
+			<br>I started developing games in early 2020, and, well, let's just say I've learnt a lot since.
+			<div class="smallSpace"></div><div class="line"></div>
+		</div>
+		<h4 class="moveIn">My stuff</h4>
+		<div class="moveIn card" onclick="window.location.href='lockedin.html'">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
+			<h4>Locked In</h4>
+			<img src="files/locked-in-card.png">
+			This is a top-down shooter that I'm currently working on. I started it in November(ish) 2021, and it's still going (as of March 2022)! In Locked In, you collect coins, fight enemies,
+			and complete quests (soon to be added).
+		</div>
+		<div class="moveIn card" onclick="window.location.href='installs.html#connect-circle-apk'">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon" width="5px">
+			<h4>ConnectCircle (Old)</h4>
+			<img src="files/connect-circle-card.png">
+			This is a mobile game I made (surpise: using Unity) where you tap different coloured circles to get points. I even added reward ads to the game, and could get $0.10! But
+			I need to get at least $100 to redeem it.
+		</div>
+		<div class="moveIn card" onclick="window.location.href='installs.html#connect-more-apk'">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon" width="5px">
+			<h4>ConnectMore (Old)</h4>
+			<img src="files/connect-more-card.png">
+			This is another mobile game, but this time, you are dragging around a box to form patterns. This was my first proper mobile game I ever made, and it's available
+			for Android only (because iOS is a pain).
+		</div>
+		<div class="moveIn card" onclick="window.location.href='https://www.roblox.com/games/7243771257/Obby-Showdown'">
+			<img src="https://bit.ly/3wDn4LS" class="cardIcon" width="5px">
+			<h4>Obby Showdown</h4>
+			<img src="files/obby-showdown-card.png">
+			This is a roblox game I made! You have a controller, who places stages of parkour for the others to complete. If everyone dies, the controller wins. If the time
+			runs out, the remaining runners win. Wow! I spent August 2021 making this amazing game!
+		</div>
+		<div class="moveIn card" onclick="window.location.href=String.raw`https://drive.google.com/uc?export=download&id=1RK4v3ChX84Pj8uiqkiVp5vNi9YqTZT0r&confirm=t`;">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
+			<h4>Apolycalypse (Old)</h4>
+			<img src="files/apolycalypse-card.png">
+			This was an FPS (first-person shooter) game that I made in Summer 2021. Let's face it: it didn't look great. But still, it was 3D, and kind of had a story, but
+			I gave up before finishing the 3rd part of the story.
+		</div>
+		<div class="moveIn card" onclick="CreateNotification('Unavailable', 'You cannot download this game, it has been discontinued.', 3.2, null, colours[getCookie('colour')].title)">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
+			<h4>3D Quiz V2 (Old)</h4>
+			<img src="files/3d-quiz-v2-card.PNG">
+			So, I basically got a bunch of pre-made graphics and glued them together with coding. It was a more advanced version of 3D Quiz, which was the
+			first game I made! It had random questions, data saving, and more!
+		</div>
+		<div class="moveIn card" onclick="window.location.href=String.raw`https://www.roblox.com/games/6814938864/Gun-Mayhem-BETA`;">
+			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
+			<h4>Gun Mayhem! (BETA)</h4>
+			<img src="https://bit.ly/3wEEg3Q">
+			Oh, I tried. Who'd have thought people would prefer washing cars to shooting people? I made a Roblox FPS game, and people would rather ride a cart around
+			a used car battery!? Which was actually quite good.
+		</div>
+		<div class="moveIn card" onclick="window.location.href=String.raw`https://www.roblox.com/games/6217314637/Epic-Gun-Battle`">
+			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
+			<h4>Epic Gun Battle!</h4>
+			<img src="https://bit.ly/3qEeWal">
+			This was the pinnacle of my entire programming career. You know why? Because I didn't write a single line of code. Or, at least I don't think I did. You were
+			basically using Roblox default guns to fight each other.
+		</div>
+		<div class="moveIn card" onclick="window.location.href=String.raw`https://www.roblox.com/games/5605856266/Practise-Basic-Obby-Skills`;">
+			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
+			<h4>Practise Basic Obby Skills</h4>
+			<img src="https://bit.ly/3iymA1z">
+			I tried to get people to play a game called that? 'Ah, what are you playing? Looks like fun!' 'Yeah, just playing Practise Basic Obby Skills, want to join?'
+			It was a typical Roblox obby game that I branded as a 'practise' place.
+		</div>
+		<div class="moveIn card" onclick="CreateNotification('Unavailable', 'You cannot download this game, it has been discontinued.', 3.2, null, colours[getCookie('colour')].title)">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
+			<h4>Don't Think Of (Old)</h4>
+			<img src="files/dont-think-of-card.PNG">
+			A mobile game involving numbers. This was one of the first games I ever made. I've also tried to remake it in JavaScript, but it went horribly, and it kept crashing, and you
+			kept getting +5.321876, and +Infinity, and +NaN
+		</div>
+		<div class="moveIn card" onclick="CreateNotification('Unavailable', 'You cannot download this game, it has been discontinued.', 3.2, null, colours[getCookie('colour')].title)">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
+			<h4>Generic Platformer (Old)</h4>
+			<img src="files/platformer-card.PNG">
+			This was the second proper game that I ever made, and it's much better than the first game. There were 10 levels, and some of them had checkpoints! I also
+			added a changelog, for some reason, as if anyone was going to read it.
+		</div>
+		<div class="moveIn card" onclick="CreateNotification('Unavailable', 'You cannot download this game, it has been discontinued.', 3.2, null, colours[getCookie('colour')].title)">
+			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
+			<h4>3D Quiz (Very Old)</h4>
+			<img src="ejgames logo.png">
+			I don't have a screenshot for this. Have my logo.
+			<br>This 3D Quiz was very linear and simple, but did teach me the basics of Unity. It was a humble beginning. It was also very easy because
+			the answers were always in the same place.
+		</div>
+		<!--<h4 id="everythingelse">Everything else</h4>
 		In case you're not here for Locked In, then congratulations! You're a unique individual! Why don't I introduce myself, so that you don't think that you'll download a virus?
-		<div class="imageDescription">What? Who said anything about a virus?</div>
+		<br>
+		<span class="imageDescription">What? Who said anything about a virus?</span>
+		<br>
 		<br>
 		Anyway, here's some background.
 		<br>
@@ -104,7 +194,7 @@
 			<li>A copy of my search bar!</li>
 			<img src="magpie.png" style="width: 15em">
 		</ul>
-		<a href="https://tzgames.github.io/" class="URLbuttonText zoomonhover">Go check it out! You won't regret it.
+		<a href="https://tzgames.github.io/" class="URLbuttonText zoomonhover">Go check it out! You won't regret it.</a>-->
 	</div>
 	<div class="smallSpace"></div>
 
