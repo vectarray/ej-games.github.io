@@ -1,8 +1,12 @@
 function CheckFormatting()
 {
 	var newScript = document.createElement("script");
-	newScript.src = "https://ejgames.co.uk/colours.jsonp";
-	//newScript.src = "colours.jsonp";
+	if(window.location.href.indexOf("https://") > -1) {
+		newScript.src = "https://ejgames.co.uk/colours.jsonp";
+	}
+	else {
+		newScript.src = "colours.jsonp";
+	}
 	document.body.appendChild(newScript);
 
 
@@ -82,7 +86,7 @@ function CheckFormatting()
 function moveInElement(element) {
 	setTimeout(function() {
 		element.style.opacity = "100%";
-		element.style.transform = "translateY(-10px)";
+		element.style.transform = "translateY(-15px)";
 	}, 100)
 }
 
@@ -176,6 +180,9 @@ function UpdateColour() {
 			item.style.color = colours[getCookie("colour")].body;
 		}
 		for(var item of document.getElementsByClassName("card")) {
+			item.style.backgroundColor = colours[getCookie("colour")].title;
+		}
+		for(var item of document.getElementsByClassName("small-card")) {
 			item.style.backgroundColor = colours[getCookie("colour")].title;
 		}
 	}, 100)
