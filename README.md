@@ -1,1 +1,3 @@
-# ej-games.github.io
+# EJGames Website
+
+This is the site for EJGames.
