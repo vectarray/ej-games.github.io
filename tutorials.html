@@ -38,40 +38,12 @@
 		</script>
 
 		<style>
-			#searchBar {
-				width: 100%;
-				font-size: 1.5em;
-				font-family: "Montserrat", sans-serif;
-				font-weight: 600;
-				background-color: rgb(12, 20, 37);
-				border: none;
-				color:rgb(255, 255, 255);
-			}
-			#searchItems {
-				list-style-type: none;
-				padding-left: 0px;
-			}
-			#searchItems li {
-				margin-top: 1em;
-				margin-bottom: 1em;
-				text-align: center;
-			}
-			#searchItems li a {
-				color: white;
-				text-decoration: none;
-				padding-left: 1em;
-				padding-right: 1em;
-			}
-			#searchItems li a:hover {
-				color: white;
-				text-decoration: none;
-				background-color: rgba(0, 0, 0, 0.3);
-			}
 		</style>
 
 	</head>
 
 <body onload="CheckFormatting()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 	<div class="sidebar" id="sidebar">
 		<h4>Links</h4>
@@ -94,12 +66,12 @@
 	<br><br>
 	Here, you can find all of my tutorials that I've made so far, apart from some of them that I have forgotten to add.
 	<br>You can either scroll through all the tutorials, or just search in this box:
-	<br><br><input type="text" id="searchBar" onkeyup="OnNewSearch()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+	<br><br><input type="text" id="searchBar" class="searchBar" onkeyup="OnNewSearch()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
 	<br><br>and the results will appear right before your eyes!
 	<div class="smallSpace"></div><div class="line"></div>
 	<h4>Tutorials</h4>
 	<h5>
-	<ul id="searchItems">
+	<ul class="searchItems" id="searchItems">
 		<li><a href="tutorial/csharp-basics-intro.html" class="zoomonhover">Basics: Intro</a></li>
 		<li><a href="tutorial/csharp-constructors.html" class="zoomonhover">Classes: Constructors</a></li>
 		<li><a href="tutorial/csharp-inheritance.html" class="zoomonhover">Classes: Inheritance</a></li>
