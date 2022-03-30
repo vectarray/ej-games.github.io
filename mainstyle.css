@@ -529,3 +529,11 @@ td {
 	background-color: rgba(255, 255, 255, 0.106);
 	padding: 0.3em;
 }
+#loading {
+	background-color: rgba(0, 0, 0, 0.705);
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 50;
+	text-align: center;
+}
