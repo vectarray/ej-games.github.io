@@ -17,7 +17,7 @@
 			background-color: rgba(0, 0, 0, 0);
 			border: rgba(0, 0, 0, 0);
 			color: rgb(24, 126, 243);
-			font-family: 'Montserrat', sans-serif;
+			font-family: 'Sen', 'Montserrat', sans-serif;
 			text-decoration: none;
 			font-size: 1em;
 			cursor: pointer;
@@ -104,13 +104,16 @@
 			</ul>
 			<br><br>
 		</span>
-		<h3 class="v5p">V5-P - Pre-Content Update</h3>
-		<div class="line"></div>
-		<h4 id="v5-note">Note</h4>
+		<h3 class="v5p moveIn">V5-P - Pre-Content Update</h3>
+		<div class="line moveIn"></div>
+		<h4 id="v5-note" class="moveIn">Note</h4>
+		<div class="moveIn">
 		We've (we being just me) been working on the storyline for the game. But because it's not finished, and we want to keep releasing updates, we've just removed NPCs for now
 		and we'll add them back in once the story is finished. And then... oh, I don't know what will happen once the game is done.
 		<div class="smallSpace"></div><div class="line"></div>
-		<h4 id="v5-zones">Zones</h4>
+		</div>
+		<h4 id="v5-zones" class="moveIn">Zones</h4>
+		<div class="moveIn">
 		We have biomes! But let's not call them that, because that's associated with a certain other pixel-art based game.
 		<br><br>
 		Right now, we've got:
@@ -122,7 +125,9 @@
 		<h5>Shady Zone</h5>
 		Thugs! Darkness! Where have the lights gone? Why is there a car alarm in the music? Find all this and more in the <b>Shady Zone!</b> (only appears 150m in, and further).
 		<div class="smallSpace"></div><div class="line"></div>
-		<h4 id="v5-weapons">More weapon<del>s</del>!</h4>
+		</div>
+		<h4 id="v5-weapons" class="moveIn">More weapon<del>s</del>!</h4>
+		<div class="moveIn">
 		We've added a new weapon. There are <b>way</b> more weapons that you can unlock by killing enemies, and bosses, and completing quests, but right now, we've only added one that you can buy:
 		<h5 style="font-family: Engravers MT, sans-serif;">The Streetsweeper</h5>
 		<ul>
@@ -133,15 +138,19 @@
 			<li>Ingame description: <i>A fast-firing, automatic shotgun, that allows for spraying the enemies while holding down the trigger. Sure, it's not the most skillful, but it's definitely effective.</i></li>
 		</ul>
 		<div class="smallSpace"></div><div class="line"></div>
-		<h4 id="v5-enemies">Enemy changes</h4>
-		<div class="disclaimerBG"><b>Technical alert!</b>Do you want to know about a really boring change? If not, then just skip this section. If you do, then go on, read ahead!</div>
+		</div>
+		<h4 id="v5-enemies" class="moveIn">Enemy changes</h4>
+		<div class="disclaimerBG moveIn"><b>Technical alert!</b>Do you want to know about a really boring change? If not, then just skip this section. If you do, then go on, read ahead!</div>
 		<br>
+		<div class="moveIn">
 		We've changed how enemies work to reduce the really quick kills (when enemies would just run into the player repeatedly, with no gaps inbetween hits, and kill in under a second).
 		<br><br>To do this, we have <b>removed collision-based attacks</b>, and now, enemies damage the player over time, if they are in range.
 		<br>This does mean that enemies can hit from a longer range. But, we have specifically set each enemy's range to a different value, that suits the enemy, so that
 		not all of the enemies can snipe you from 50m away.
 		<div class="smallSpace"></div><div class="line"></div>
-		<h4 id="v5-tweaks">Tweaks! Yay!</h4>
+	</div>
+		<h4 id="v5-tweaks" class="moveIn">Tweaks! Yay!</h4>
+		<div class="moveIn">
 		Because of the very frequently asked question, "Why don't you have more tweaks in your changelogs?", I'm happy to announce that I noted down all of the changes I made
 		in Locked In V5.
 		<br><br><b>New cursor</b>
@@ -153,6 +162,7 @@
 		<br><br><b>Teleporting into walls is no longer allowed</b>
 		<br>There's just a notification telling you that you can't, and it stops you from teleporting if there's something in the way.
 		<div class="smallSpace"></div><div class="line"></div><div class="smallSpace"></div>
+	</div>
 		<button id="showold" class="buttonURL" onclick="OpenOlder()">Show older versions</button>
 		<span id="old" style="display: none;">
 		<h3 id="v4">V4 - Feature update</h3>
