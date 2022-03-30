@@ -1,5 +1,6 @@
 function CheckFormatting()
 {
+	document.getElementById("loading").remove();
 	var newScript = document.createElement("script");
 	if(window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) {
 		newScript.src = "https://ejgames.co.uk/colours.jsonp";
