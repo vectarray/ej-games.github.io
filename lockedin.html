@@ -16,16 +16,13 @@
 		<link
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 			rel="stylesheet">
-		<style>
-			
-		</style>
+			<style>
+				.bigger {
+					font-size: 1.1em;
+				}
+			</style>
 		<script src="globalscript.js"></script>
 		<script>
-			var observer = new IntersectionObserver(function(entries) {
-				if(entries[0].isIntersecting) {
-					console.log("Just visible");
-				}
-			}, {threshold: [1]});
 		</script>
 
 	</head>
@@ -43,21 +40,68 @@
 	<div id="title">EJGames</div>
 	<div class="smallSpace"></div>
 	<div class="mainParagraph">
-	<h2><img src="lockedinbannergood.png" style="width: 100%;"></h2>
+	<h2><img src="lockedinbannergood.png" style="width: 100%;" class="moveIn"></h2>
+	<div class="moveIn">
 	Locked In is a top-down shooter, where you attack enemies with a wide range of guns.
-	<br>
-	<br>SMGs!
-	<br>Assault rifles!
-	<br>Shotguns!
-	<br>Knives!
-	<br>
-	What do you do in Locked In, apart from shoot things?
-	<br><br>
-	At the time of writing, I'm currently adding a story to the game. It involves John Gold, the only NPC (currently) and possibly another NPC being added soon.
-	<br>While I'm making the story, I will try to update the game, but the updates will be a lot smaller, and NPCs will be removed until the story is complete.
+	<br><br>It's the project that I'm devoting my current time to the most. Here's a summary of what the game is.
 	<div class="smallSpace"></div>
 	<div class="line"></div>
-	<h4>Download</h4>
+	</div>
+
+
+	<h4 class="moveIn">
+		Guns
+	</h4>
+	<div class="moveIn">
+	<img src="images/lockedin-guns.png" class="moveIn leftImage">
+	Locked In is a game where you mainly kill enemies. There is a wide range of guns to choose from, that have to be unlocked and bought with coins, that enemies drop.
+	<br>There is a variety of different enemies, with more coming soon. There are zombies, robots, snowmen, thugs and many more.
+	<br><br>Kill the enemies, take their coins, and upgrade your gear.
+	<div class="smallSpace"></div>
+	<div class="line"></div>
+	</div>
+
+	<h4 class="moveIn">
+		Bosses
+	</h4>
+	<div class="moveIn">
+	<img src="images/lockedin-bee.png" class="moveIn rightImage">
+	What's a shooter game without bosses? To find a boss, just open a chest, and it has a chance of spawning a random boss. At the time of writing, there is only one boss,
+	but the next update (V6) will have a new boss!
+	<br>Bosses also drop coins, like all other enemies. They also sometimes drop exclusive weapons.#
+	<br><br>Kill bosses, get their weapons, and defeat the waves of enemies that
+	are coming. 
+	<div class="smallSpace"></div>
+	<div class="line"></div>
+	</div>
+
+	<h4 class="moveIn">
+		Spells
+	</h4>
+	<div class="moveIn">
+	<img src="images/lockedin-spells.png" class="moveIn rightImage">
+	The most special thing about Locked In is its spell and class feature. There are 5 classes, each with a spell and a passive.
+	<br>They range from:
+	<br>flaming walls of fire,
+	<br>blinking through walls and magic arcane explosions.
+	<br><br>Use your spells on the enemies to level the playing field. After all, there is a whole horde of them.
+	<div class="smallSpace"></div>
+	<div class="line"></div>
+	</div>
+
+	<h4 class="moveIn">
+		Zones
+	</h4>
+	<div class="moveIn">
+	<img src="images/lockedin-zones.png" class="moveIn leftImage">
+	There are also different zones in the game! The further you search, the more diverse and unusual biomes you will find.
+	<br>The darkness lies only a few hundred metres beyond the start... that's where the thugs stay...
+	<br><br>Explore the zones, kill their enemies, and dive deeper into the dungeon.
+	<div class="smallSpace"></div>
+	<div class="line"></div>
+	</div>
+	<h4 class="moveIn">Download</h4>
+	<div class="moveIn">
 		<!--<b>The downloads will take a long time to load, especially with a poor internet connection. Even if the page seems to be frozen, it probably isn't. Unless it is, of course.
 			Which is very clear.
 		</b>
@@ -68,24 +112,66 @@
 		<h4>Other versions</h4>-->
 		Downloads here!
 		<br><br>
-		<a href="https://drive.google.com/uc?export=download&id=1z653sWh6LeC8uAdFQWxbiOyAC2eNiy_J&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V5-P (Latest)</a>
+		<h3>Alpha</h3>
+		<div class="cards">
+		<div class="moveIn small-card" onclick="window.location.href=String.raw`https://drive.google.com/uc?export=download&id=1z653sWh6LeC8uAdFQWxbiOyAC2eNiy_J&confirm=t`">
+			<h4>V5-P</h4>
+			Zones, more enemies, and a whole lot of bug fixes. It's a preview update, so it's probably less stable than V4. 
+			<br><br>
+			<img src="images/lockedin-zones.png">
+		</div>
+		<div class="moveIn small-card" onclick="window.location.href=String.raw`https://drive.google.com/uc?export=download&id=1bP0ppfm_TvnRF9FAc0v2ggHJEvXJ_T7F&confirm=t`">
+			<h4>V4</h4>
+			Like V4-P, but with so many more bug fixes and just as many new features. It's the stable version of V4-P.
+			<br><br>
+			<img src="images/lockedin-spells.png">
+		</div>
+		<div class="moveIn small-card" onclick="window.location.href=String.raw`https://drive.google.com/uc?export=download&id=1J_d2hRAezKDmZaJTvcVzP6OR0tCZeG34&confirm=t`">
+			<h4>V4-P</h4>
+			Classes, spells, and a fresh new UI. This is a less stable version of V4-P, as it's a preview version.
+			<br><br>
+			<img src="images/lockedin-spells.png">
+		</div>
+		<div class="moveIn small-card" onclick="window.location.href=String.raw`https://drive.google.com/uc?export=download&id=1c98VnYNa8zGSuDHKHWp7mjcTKtKGpgYU&confirm=t`">
+			<h4>V3</h4>
+			Bosses, more enemies, and even more guns. As stable as a pre-version, but was created before they existed.
+			<br><br>
+			<img src="images/lockedin-bee.png">
+		</div>
+		<div class="moveIn small-card" onclick="window.location.href=String.raw`https://drive.google.com/uc?export=download&id=1frvSYhtfh7me__AC2ns9JtJku7MdOTYg&confirm=t`">
+			<h4>V2</h4>
+			More guns, healthbars, bug fixes and a lot of balance changes. In my opinion, the oldest tolerable version.
+			<br><br>
+			<img src="images/lockedin-coins.png">
+		</div>
+		<div class="moveIn small-card" onclick="window.location.href=String.raw`https://ej-games.github.io/li-alphav1-installer.exe`">
+			<h4>V1</h4>
+			Incredibly difficult and not really worth your time, apart from for <i>me</i> to see how the game has changed.
+			<br><br>
+			<img src="Plain Zombie.png">
+		</div>
+		</div>
+		<!--<a href="https://drive.google.com/uc?export=download&id=1z653sWh6LeC8uAdFQWxbiOyAC2eNiy_J&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V5-P (Latest)</a>
 		<br><br>
-		<a href="https://drive.google.com/file/d/1bP0ppfm_TvnRF9FAc0v2ggHJEvXJ_T7F/view?usp=sharing&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V4</a>
+		<a href="https://drive.google.com/uc?export=download&id=1bP0ppfm_TvnRF9FAc0v2ggHJEvXJ_T7F&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V4</a>
 		<br><br>
-		<a href="https://drive.google.com/file/d/1J_d2hRAezKDmZaJTvcVzP6OR0tCZeG34/view?usp=sharing&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V4-P</a>
+		<a href="https://drive.google.com/uc?export=download&id=1J_d2hRAezKDmZaJTvcVzP6OR0tCZeG34&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked In Alpha V4-P</a>
 	<br><br>
-		<a href="https://drive.google.com/file/d/HgJx&id=1c98VnYNa8zGSuDHKHWp7mjcTKtKGpgYU/view?usp=sharing&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked
+		<a href="https://drive.google.com/uc?export=download&id=1c98VnYNa8zGSuDHKHWp7mjcTKtKGpgYU&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked
 			In Alpha V3</a>
 		<br><br>
-		<a href="https://drive.google.com/file/d/rvZc&id=1frvSYhtfh7me__AC2ns9JtJku7MdOTYg/view?usp=sharing&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked
+		<a href="https://drive.google.com/uc?export=download&id=1frvSYhtfh7me__AC2ns9JtJku7MdOTYg&confirm=t" class="URLbuttonText" style="padding-left: 0px;">Locked
 			In Alpha V2</a>
 		<br><br>
-		<a href="https://ej-games.github.io/li-alphav1-installer.exe" class="URLbuttonText" style="padding-left: 0px;" download>Locked In Alpha V1</a>
+		<a href="https://ej-games.github.io/li-alphav1-installer.exe" class="URLbuttonText" style="padding-left: 0px;" download>Locked In Alpha V1</a>-->
 		<div class="smallSpace"></div>
 		<div class="line"></div>
-		<h4>Changelog</h4>
+		</div>
+		<h4 class="moveIn">Changelog</h4>
+		<div class="moveIn">
 		Yeah just look at the changelog.
 		<a href="changelog.html">Here.</a>
+		</div>
 		<div class="space"></div>
 	</div>
 </html>
