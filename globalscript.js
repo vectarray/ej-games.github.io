@@ -1,19 +1,14 @@
 function CheckFormatting()
 {
 	var newScript = document.createElement("script");
-	if(window.location.href.indexOf("https://") > -1) {
+	if(window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) {
 		newScript.src = "https://ejgames.co.uk/colours.jsonp";
 	}
 	else {
 		newScript.src = "colours.jsonp";
 	}
 	document.body.appendChild(newScript);
-
-
-	var userAgent = navigator.userAgent.toLowerCase();
-	//userAgent = "iphone";
-	if (userAgent.indexOf("iphone") != -1)
-	{
+	function setMobile() {
 		document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
 		document.getElementById("sidebarbutton").style.display = "block";
 		document.getElementById("sidebar").style.left = "-100%";
@@ -22,6 +17,12 @@ function CheckFormatting()
 			document.getElementById("sidebar").getElementsByTagName("a")[i].classList.add("bigger");
 		}
 		document.body.style.fontSize = "1.5em";
+	}
+	var userAgent = navigator.userAgent.toLowerCase();
+	//userAgent = "iphone";
+	if (userAgent.indexOf("iphone") != -1 || userAgent.indexOf("android") != -1 || userAgent.indexOf("windows phone") != -1)
+	{
+		setMobile();
 	}
 
 	var newH4 = document.createElement("h4");
@@ -49,10 +50,12 @@ function CheckFormatting()
 	var newDropdown = document.createElement("select");
 	newDropdown.id = "colour-dropdown";
 	document.getElementById("sidebar").appendChild(newDropdown);
-	var colourArrangements = ["dark", "light", "red"];
+	var colourArrangements = ["default", "dark", "red", "aqua"];
 	var colourDisplayNames = {
+		"default": "Default",
 		"dark": "Dark",
 		"red": "Red",
+		"aqua": "Aqua",
 		"light": "Light"
 	}
 	for(var item of colourArrangements) {
@@ -65,7 +68,7 @@ function CheckFormatting()
 	newDropdown.onchange = function() {
 		var newColour = newDropdown.options[newDropdown.options.selectedIndex].text.toLowerCase().replace(" ", "");
 		ChangeColours(newColour);
-		CreateNotification("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "2", "sounds/clickbutton.wav",
+		CreateNotification("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "2", "https://ejgames.co.uk/sounds/clickbutton.wav",
 		colours[newColour].title, "white")
 		newDropdown.disabled = true;
 		setTimeout(function() {
@@ -86,8 +89,8 @@ function CheckFormatting()
 function moveInElement(element) {
 	setTimeout(function() {
 		element.style.opacity = "100%";
-		element.style.transform = "translateY(-15px)";
-	}, 100)
+		element.style.transform = "translateY(-20px)";
+	}, 200)
 }
 
 function checkForVisibility(className) {
@@ -167,25 +170,37 @@ function UpdateColour() {
 				item.style.backgroundColor = "rgb(10, 19, 13)";
 			}
 		}*/
-		setTimeout(function() {
-		document.body.style.backgroundColor = colours[getCookie("colour")].background;
-		document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
-		document.getElementById("title").style.color = colours[getCookie("colour")].h2;
-		document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
-		for(var item of document.getElementsByTagName("h2")) {
-			item.style.color = colours[getCookie("colour")].h2;
+		try {
+			document.getElementsByTagName("html")[0].style.background = colours[getCookie("colour")].background;
+			document.getElementsByTagName("html")[0].style.backgroundAttachment = "fixed";
+			document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
+			document.getElementById("title").style.color = colours[getCookie("colour")].h2;
+			document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
+			for(var item of document.getElementsByTagName("h2")) {
+				item.style.color = colours[getCookie("colour")].h2;
+			}
+			document.body.style.color = colours[getCookie("colour")].body;
+			for(var item of document.getElementsByClassName("URLbuttonText")) {
+				item.style.color = colours[getCookie("colour")].body;
+			}
+			for(var item of document.getElementsByClassName("card")) {
+				item.style.backgroundColor = colours[getCookie("colour")].title;
+			}
+			for(var item of document.getElementsByClassName("small-card")) {
+				item.style.backgroundColor = colours[getCookie("colour")].title;
+			}
+			for(var item of document.getElementsByClassName("searchBar")) {
+				item.style.backgroundColor = colours[getCookie("colour")].sidebar;
+			}
+			for(var item of document.getElementsByClassName("searchItems")) {
+				for(var searchItem of item.getElementsByTagName("a")) {
+					searchItem.style.color = colours[getCookie("colour")].body;
+				}
+			}
 		}
-		document.body.style.color = colours[getCookie("colour")].body;
-		for(var item of document.getElementsByClassName("URLbuttonText")) {
-			item.style.color = colours[getCookie("colour")].body;
+		catch {
+			setTimeout(UpdateColour, 50)
 		}
-		for(var item of document.getElementsByClassName("card")) {
-			item.style.backgroundColor = colours[getCookie("colour")].title;
-		}
-		for(var item of document.getElementsByClassName("small-card")) {
-			item.style.backgroundColor = colours[getCookie("colour")].title;
-		}
-	}, 100)
 	}
 	else {
 		ChangeColours("dark")
@@ -219,7 +234,7 @@ function SetCompleted() {
 	}
 }
 function CreateNotification(heading, body, showTime, soundToPlay, colour, borderColour) {
-	var notification = document.createElement("button");
+	var notification = document.createElement("div");
 	var bodyText = document.createElement("div");
 	notification.classList.add("notification");
 	bodyText.innerHTML = body;
@@ -238,10 +253,52 @@ function CreateNotification(heading, body, showTime, soundToPlay, colour, border
 	}, (showTime - 1) * 1000)
 	setTimeout(function() {
 		notification.style.right = "3.5%";
-		var toPlay = new sound(soundToPlay);
-		toPlay.sound.volume = 0.3;
-		toPlay.play();
+		playSound(soundToPlay);
 	}, 100)
+}
+
+function playSound(soundURL) {
+	var toPlay = new sound(soundURL);
+	toPlay.sound.volume = 0.3;
+	toPlay.play();
+	toPlay.sound.onended = function() {
+		toPlay.sound.remove();
+	}
+}
+
+function createPopup(heading, body, soundToPlay) {
+	var notification = document.createElement("div");
+	notification.classList.add("popup");
+	notification.id = "popup";
+	notification.innerHTML = `
+	<h5 class="heading">${heading == undefined ? "Notification" : heading}
+	<button class="close-button" onclick="hidePopup()">&times;</button>
+	</h5>
+	<div class="popup-body">
+	${body == undefined ? String.raw`You have received a notification, but there was no body ¯\_ (ツ)_/¯` : body}
+	</div>
+	`
+	if(soundToPlay != null && soundToPlay != undefined) {
+		playSound(soundToPlay);
+	}
+	document.body.appendChild(notification);
+	if(document.getElementById("overlay") == null) {
+		var newOverlay = document.createElement("div");
+		newOverlay.id = "overlay";
+		document.body.appendChild(newOverlay);
+	}
+	document.getElementById("overlay").style.display = "block";
+	document.getElementById("overlay").style.opacity = 100;
+}
+
+function hidePopup() {
+	var notification = document.getElementById("popup");
+	notification.classList.add("closed");
+	document.getElementById("overlay").style.opacity = 0;
+	setTimeout(function() {
+		notification.remove();
+		document.getElementById("overlay").style.display = "none";
+	}, 500);
 }
 
 function OpenElement(elementId, buttonId, textWhenOpen, textWhenClosed) {
