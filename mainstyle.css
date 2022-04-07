@@ -86,7 +86,7 @@ select:hover {
 	text-align: center;
 	font-size: 4em;
 	/* height: 1.2em; */
-	background-color: #182a4d;
+	/*background-color: #182a4d;*/
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
@@ -187,8 +187,7 @@ a:hover {
 .small-card {
 	background-color: grey;
 	border-radius: 0.5em;
-	min-height: 22em;
-	max-width: 17%;
+	max-width: 23%;
 	padding: 2%;
 	margin: 2%;
 	font-size: 0.8em;
@@ -206,12 +205,45 @@ a:hover {
 	margin-bottom: 0.5em;
 }
 .small-card img {
+	width: 65%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0.3em;
+	border-radius: 0.2em;
+}
+.small-card img.cardIcon {
+	float: left;
+	width: 8%;
+	border-radius: 100%;
+}
+.smaller-card {
+	background-color: grey;
+	border-radius: 0.5em;
+	max-width: 17%;
+	padding: 2%;
+	margin: 2%;
+	font-size: 0.8em;
+	float: left;
+	outline: 0em solid grey;
+	box-shadow: 0.5em 0.5em 2em black;
+}
+.smaller-card:hover {
+	cursor: pointer;
+	outline: 0.2em solid grey;
+}
+.smaller-card h4 {
+	font-size: 1.3em;
+	margin-top: 0px;
+	margin-bottom: 0.5em;
+}
+.smaller-card img {
 	width: 100%;
 	float: left;
 	padding: 0.3em;
 	border-radius: 0.2em;
 }
-.small-card img.cardIcon {
+.smaller-card img.cardIcon {
 	float: left;
 	width: 8%;
 	border-radius: 100%;
@@ -268,9 +300,14 @@ a:hover {
 h2 {
 	font-family: 'Raleway', 'Montserrat', sans-serif;
 	font-size: 3em;
-	font-weight: 900;
-	text-align: center;
+	/*font-weight: 900;*/
 	color: #ffffff;
+	text-align: center;
+	font-size: 4em;
+	/* height: 1.2em; */
+	/*background-color: #182a4d;*/
+	color: white;
+	font-weight: 900;
 }
 h3 {
 	font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
@@ -384,6 +421,7 @@ small {
 	font-size: small;
 }
 .sidebar {
+	top: 0px;
 	position: fixed;
 	width: calc(3% + 6em);
 	left: 0%;
@@ -468,8 +506,8 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 	max-height: 30%;
 	z-index: 5;
 	transform-origin: 0% 0%;
-	-webkit-animation: openPopup 0.4s ease-out;
-	animation: openPopup 0.4s ease-out;
+	-webkit-animation: openPopup 0.25s ease-out;
+	animation: openPopup 0.25s ease-out;
 	overflow-y: auto;
 }
 .popup h5 {
@@ -487,27 +525,37 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 	overflow-y: hidden;
 }
 .popup.closed {
-	-webkit-animation: closePopup 0.5s ease;
-	animation: closePopup 0.5s ease;
+	-webkit-animation: closePopup 0.25s ease-in;
+	animation: closePopup 0.25s ease-in;
+}
+#confirm-close {
+	border-radius: 0.2em;
+	padding: 0.2em;
+	background-color: rgba(75, 214, 65, 0.321);
+}
+#confirm-close:hover {
+	border-radius: 0.2em;
+	padding: 0.2em;
+	background-color: rgba(167, 232, 162, 0.713);
 }
 @-webkit-keyframes closePopup {
 	0% { opacity: 100; transform: scale(1) translate(-50%, -50%); }
-	20% { opacity: 100; transform: scale(1.2) translate(-50%, -50%); }
-	100% { opacity: 0; transform: scale(0) translate(-50%, -50%); }
+	/*20% { opacity: 100; transform: scale(1.2) translate(-50%, -50%); }*/
+	100% { opacity: 0; transform: scale(0.6) translate(-50%, -50%); }
 }
 @keyframes closePopup {
 	0% { opacity: 100; transform: scale(1) translate(-50%, -50%); }
-	20% { opacity: 100; transform: scale(1.2) translate(-50%, -50%); }
-	100% { opacity: 0; transform: scale(0) translate(-50%, -50%); }
+	/*20% { opacity: 100; transform: scale(1.2) translate(-50%, -50%); }*/
+	100% { opacity: 0; transform: scale(0.6) translate(-50%, -50%); }
 }
 @-webkit-keyframes openPopup {
-	0% { opacity: 0; transform: scale(0) translate(-50%, -50%); }
-	50% { opacity: 100; transform: scale(1.2) translate(-50%, -50%); }
+	0% { opacity: 0; transform: scale(0.6) translate(-50%, -50%); }
+	/*50% { opacity: 100; transform: scale(1.2) translate(-50%, -50%); }*/
 	100% { opacity: 100; transform: scale(1) translate(-50%, -50%); }
 }
 @keyframes openPopup {
-	0% { opacity: 0; transform: scale(0) translate(-50%, -50%); }
-	50% { opacity: 100; transform: scale(1.2) translate(-50%, -50%);}
+	0% { opacity: 0; transform: scale(0.6) translate(-50%, -50%); }
+	/*50% { opacity: 100; transform: scale(1.2) translate(-50%, -50%);}*/
 	100% { opacity: 100; transform: scale(1) translate(-50%, -50%); }
 }
 #overlay {
@@ -536,4 +584,10 @@ td {
 	position: fixed;
 	z-index: 50;
 	text-align: center;
+}
+#logo {
+	width: 60%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
