@@ -18,7 +18,23 @@
 	<script src="globalscript.js"></script>
 	<script>
 		function cannotDownload() {
-			createPopup('Unavailable', 'You cannot download this game, it has been discontinued.', "sounds/error.wav")
+			createPopup('Unavailable', 'You cannot download this game, it has been discontinued.', "sounds/error.wav");
+		}
+		function cannotDownloadMobile(gameName) {
+			createPopup("Game Unavailable", String.raw`This game (${gameName != null ? "<b>" + gameName + "</b>" : "the one you're trying to access"}) is unavailable
+			because it is mobile-only and is no longer supported. Other games, that are not iOS-only, can be accessed by clicking on the other cards.`, "sounds/error.wav");
+		}
+		function promptRobloxVisit(id) {
+			createConfirm('Leave website?', 'Are you sure you want to leave EJGames and visit the Roblox game?', "sounds/bad.wav", "Yes, take me there.",
+			function() {
+				window.location.href = "https://www.roblox.com/games/" + id.toString();
+			});
+		}
+		function promptOldGame() {
+			createConfirm('Leave website?', "Leave EJGames and visit the GitHub page for my old game installs?", "sounds/bad.wav", "Yes! I mean, it's not that bad, is it?",
+			function() {
+				window.location.href = "https://github.com/ej-games/old-games";
+			});
 		}
 	</script>
 	<link rel="icon" href="https://ejgames.co.uk/files/ej%20logo.png" type="image/x-icon">
@@ -72,91 +88,112 @@
 			<div class="smallSpace"></div><div class="line"></div>
 		</div>
 		<h4 class="moveIn">My stuff</h4>
+		<h5 class="moveIn">Currently Supported</h5>
 		<div class="cards">
 		<div class="moveIn card" onclick="window.location.href='lockedin.html'">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
 			<h4>Locked In</h4>
-			<img src="files/locked-in-card.png">
+			<img src="images/c-lockedin-card.jpg">
 			This is a top-down shooter that I'm currently working on. I started it in November(ish) 2021, and it's still going (as of March 2022)! In Locked In, you collect coins, fight enemies,
-			and complete quests (soon to be added).
+			kill bosses, upgrade your weapons, explore new zones, do other things, and some other things, and complete quests (soon to be added).
 		</div>
 		<div class="moveIn card" onclick="window.location.href='installs.html#connect-circle-apk'">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon" width="5px">
-			<h4>ConnectCircle (Old)</h4>
-			<img src="files/connect-circle-card.png">
+			<h4>ConnectCircle</h4>
+			<img src="images/c-connectcircle-card.jpg">
 			This is a mobile game I made (surpise: using Unity) where you tap different coloured circles to get points. I even added reward ads to the game, and could get $0.10! But
-			I need to get at least $100 to redeem it.
+			I need to get at least $100 to redeem it. It has speed upgrades, money upgrades, and even prestiging. And it's available for Android!
 		</div>
 		<div class="moveIn card" onclick="window.location.href='installs.html#connect-more-apk'">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon" width="5px">
-			<h4>ConnectMore (Old)</h4>
-			<img src="files/connect-more-card.png">
-			This is another mobile game, but this time, you are dragging around a box to form patterns. This was my first proper mobile game I ever made, and it's available
-			for Android only (because iOS is a pain).
+			<h4>ConnectMore</h4>
+			<img src="images/c-connectmore-card.jpg">
+			This is another mobile game, but this time, you are dragging around a box to form patterns. You get points for forming different patterns, with more complex patterns
+			rewarding more points. It has skins, a pattern viewer and, for some reason, a button to reset your data. It's also available for Android!
 		</div>
-		<div class="moveIn card" onclick="window.location.href='https://www.roblox.com/games/7243771257/Obby-Showdown'">
+		</div>
+		<h5 class="moveIn">Unsupported</h5>
+		<div class="cards">
+		<div class="moveIn card" onclick="promptRobloxVisit(7243771257)">
 			<img src="https://bit.ly/3wDn4LS" class="cardIcon" width="5px">
 			<h4>Obby Showdown</h4>
-			<img src="files/obby-showdown-card.png">
+			<img src="images/c-obbyshowdown-card.jpg">
 			This is a roblox game I made! You have a controller, who places stages of parkour for the others to complete. If everyone dies, the controller wins. If the time
-			runs out, the remaining runners win. Wow! I spent August 2021 making this amazing game!
+			runs out, the remaining runners win. I spent August 2021 making this amazing game! I didn't know, at the time, that it would be the last Roblox game I ever made,
+			for now, at least.
+			<br><br>
+			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
 		<div class="moveIn card" onclick="window.location.href=String.raw`https://drive.google.com/uc?export=download&id=1RK4v3ChX84Pj8uiqkiVp5vNi9YqTZT0r&confirm=t`;">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
-			<h4>Apolycalypse (Old)</h4>
-			<img src="files/apolycalypse-card.png">
-			This was an FPS (first-person shooter) game that I made in Summer 2021. Let's face it: it didn't look great. But still, it was 3D, and kind of had a story, but
-			I gave up before finishing the 3rd part of the story.
+			<h4>Apolycalypse</h4>
+			<img src="images/c-apolycalypse-card.png">
+			This was an FPS (first-person shooter) game that I made in Summer 2021. Let's face it: it didn't look great, and the story wasn't very gripping. It also had a ton of bugs!
+			Go on, try and find all of them! I've counted 53, try and find them all! Go on, download it by visiting the installs page!
+			<br><br>
+			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
-		<div class="moveIn card" onclick="cannotDownload()">
+		<div class="moveIn card" onclick="promptOldGame()">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
-			<h4>3D Quiz V2 (Old)</h4>
-			<img src="files/3d-quiz-v2-card.PNG">
+			<h4>3D Quiz V2</h4>
+			<img src="images/c-3dquiz-card.PNG">
 			So, I basically got a bunch of pre-made graphics and glued them together with coding. It was a more advanced version of 3D Quiz, which was the
-			first game I made! It had random questions, data saving, and more!
+			first game I made! This version has random questions, a new 'notification' system (what's a 'notification?'), and data saving, and XP, and levels, but not much else.
+			<br><br>
+			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
-		<div class="moveIn card" onclick="window.location.href=String.raw`https://www.roblox.com/games/6814938864/Gun-Mayhem-BETA`;">
+		<div class="moveIn card" onclick="promptRobloxVisit(6814938864)">
 			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
 			<h4>Gun Mayhem! (BETA)</h4>
 			<img src="https://bit.ly/3wEEg3Q">
-			Oh, I tried. Who'd have thought people would prefer washing cars to shooting people? I made a Roblox FPS game, and people would rather ride a cart around
-			a used car battery!? Which was actually quite good.
+			This was an FPS game that I made in May 2021 that was actually really good! Until I stopped making it, came back, and realised it's nothing compared to
+			most Roblox games. Still, it was very fun to play, but apparently, washing cars is more fun. And riding around a used car battery.
+			<br><br>
+			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
-		<div class="moveIn card" onclick="window.location.href=String.raw`https://www.roblox.com/games/6217314637/Epic-Gun-Battle`">
+		<div class="moveIn card" onclick="promptRobloxVisit(6217314637)">
 			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
 			<h4>Epic Gun Battle!</h4>
 			<img src="https://bit.ly/3qEeWal">
 			This was the pinnacle of my entire programming career. You know why? Because I didn't write a single line of code. Or, at least I don't think I did. You were
-			basically using Roblox default guns to fight each other.
+			basically using Roblox default guns to fight each other. And there was a label in the top left that says 'Level XX' because I had yet to add levels and XP into the game.
+			<br><br>
+			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
-		<div class="moveIn card" onclick="window.location.href=String.raw`https://www.roblox.com/games/5605856266/Practise-Basic-Obby-Skills`;">
+		<div class="moveIn card" onclick="promptRobloxVisit(5605856266)">
 			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
 			<h4>Practise Basic Obby Skills</h4>
 			<img src="https://bit.ly/3iymA1z">
 			I tried to get people to play a game called that? 'Ah, what are you playing? Looks like fun!' 'Yeah, just playing Practise Basic Obby Skills, want to join?'
-			It was a typical Roblox obby game that I branded as a 'practise' place.
+			It was a typical Roblox obby game that I branded as a 'practise' place. I might still update it, because it wasn't too difficult to maintain and develop.
 		</div>
-		<div class="moveIn card" onclick="cannotDownload()">
+		<div class="moveIn card" onclick="cannotDownloadMobile(String.raw`Don't Think Of`)">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
 			<h4>Don't Think Of (Old)</h4>
-			<img src="files/dont-think-of-card.PNG">
+			<img src="images/c-dontthinkof-card.jpg">
 			A mobile game involving numbers. This was one of the first games I ever made. I've also tried to remake it in JavaScript, but it went horribly, and it kept crashing, and you
-			kept getting +5.321876, and +Infinity, and +NaN
+			kept getting +5.321876, and +Infinity, and +NaN.
+			<br><br>
+			<div class="disclaimerBG">This game is unavailable.</div>
 		</div>
-		<div class="moveIn card" onclick="cannotDownload()">
+		<div class="moveIn card" onclick="promptOldGame()">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
 			<h4>Generic Platformer (Old)</h4>
-			<img src="files/platformer-card.PNG">
+			<img src="images/c-platformer-card.jpg">
 			This was the second proper game that I ever made, and it's much better than the first game. There were 10 levels, and some of them had checkpoints! I also
 			added a changelog, for some reason, as if anyone was going to read it.
+			<br><br>
+			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
-		<div class="moveIn card" onclick="cannotDownload();">
+		<div class="moveIn card" onclick="promptOldGame();">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
 			<h4>3D Quiz (Very Old)</h4>
 			<img src="ejgames logo.png">
 			I don't have a screenshot for this. Have my logo.
 			<br>This 3D Quiz was very linear and simple, but did teach me the basics of Unity. It was a humble beginning. It was also very easy because
 			the answers were always in the same place.
+			<br><br>
+			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
 		</div>
 		<!--<h4 id="everythingelse">Everything else</h4>
