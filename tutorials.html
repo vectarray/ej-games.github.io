@@ -34,6 +34,49 @@
 						li[i].style.display = "none";
 					}
 				}
+				if(filter.length > 1) {
+					var suggestionFound = false;
+					for(var item of words) {
+						if(item.toUpperCase().startsWith(filter) && ul.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+							suggestionFound = true;
+							break;
+						}
+						if(item.toUpperCase().startsWith(filter) && !suggestionFound) {
+							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+							suggestionFound = true;
+						}
+					}
+				}
+			}
+			function OnNewSearchCards() {
+				var input = document.getElementById("searchBar");
+				var filter = input.value.toUpperCase();
+				var cards = document.getElementById("cards");
+				var divs = cards.getElementsByTagName("div");
+				for(var div of divs) {
+					if(div.getElementsByTagName("h4").length < 1) continue;
+					if(div.getElementsByTagName("h4")[0].innerHTML.toUpperCase().indexOf(filter) > -1) {
+						div.style.display = "";
+					}
+					else {
+						div.style.display = "none";
+					}
+				}
+				if(filter.length > 1) {
+					var suggestionFound = false;
+					for(var item of words) {
+						if(item.toUpperCase().startsWith(filter) && ul.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+							suggestionFound = true;
+							break;
+						}
+						if(item.toUpperCase().startsWith(filter) && !suggestionFound) {
+							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+							suggestionFound = true;
+						}
+					}
+				}
 			}
 		</script>
 
@@ -54,9 +97,10 @@
 		<a href="blog/index.html" class="URLbuttonText zoomonhover">Blog</a>
 	</div>
 	<div id="title">EJGames</div>
-	<h2>Unity & C# Tutorials</h2>
+	<h2>Tutorials</h2>
 	<div class="smallSpace"></div>
 	<div class="mainParagraph">
+		<div class="moveIn">
 		I have been making games for 2 years (as of writing this in February 2022).
 	<br><br>
 	I want to pass on my skills of programming in C#, with Unity, to other people who need them.
@@ -66,11 +110,11 @@
 	<br><br>
 	Here, you can find all of my tutorials that I've made so far, apart from some of them that I have forgotten to add.
 	<br>You can either scroll through all the tutorials, or just search in this box:
-	<br><br><input type="text" id="searchBar" class="searchBar" onkeyup="OnNewSearch()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
-	<br><br>and the results will appear right before your eyes!
+	<br><br><input type="text" id="searchBar" class="searchBar" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+	<br><span id="suggestion">&nbsp;</span>
 	<div class="smallSpace"></div><div class="line"></div>
-	<h4>Tutorials</h4>
-	<h5>
+	</div>
+	<!--<h5>
 	<ul class="searchItems" id="searchItems">
 		<li><a href="tutorial/csharp-basics-intro.html" class="zoomonhover">Basics: Intro</a></li>
 		<li><a href="tutorial/csharp-constructors.html" class="zoomonhover">Classes: Constructors</a></li>
@@ -78,13 +122,40 @@
 		<li><a href="tutorial/csharp-return.html" class="zoomonhover">Functions: Returning</a></li>
 		<li><a href="tutorial/csharp-forforeach.html" class="zoomonhover">For vs Foreach loops</a></li>
 	</ul>
-	</h5>
-	<div class="smallSpace"></div><div class="line"></div>
-	<h4>Unity Tutorials</h4>
+	</h5>-->
+	<h4 class="moveIn">Tutorials</h4>
+	<div class="cards">
+		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+			<h4>Basics: Intro</h4>
+			The first instalment in the C# basics course. Learn about functions, variables, datatypes and how C# works.
+		</div>
+	</div>
+	<div class="cards">
+		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+			<h4>Classes: Constructors</h4>
+			Constructors are used to create instances of classes. Click to learn more about them in C#.
+		</div>
+		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+			<h4>Classes: Inheritance</h4>
+			In C#, classes can 'inherit' from parent classes, inheriting their variables, functions, and some other fun stuff!
+		</div>
+		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+			<h4>Functions: returning</h4>
+			Not all functions are just for running code! They can be used to retrieve data, and quickly return values.
+		</div>
+		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+			<h4>For vs Foreach loops</h4>
+			It's a controversial topic. Should you use a numerical <span class="code">for</span> loop, or a quicker <span class="code">foreach</span>? Here are the pros and cons.
+		</div>
+	</div>
+	<div class="smallSpace"></div><div class="line moveIn"></div>
+	<h4 class="moveIn">Unity Tutorials</h4>
+	<div class="moveIn">
 	<h5>We've partnered with <a href="https://tzgames.github.io/#tutorials">TZGames!</a></h5>
 	EJGames have partnered with TZGames (see the resemblance?)! We've agreed that here, we will do C#-based tutorials, and over at TZGames, there will be Unity tutorials!
 	<br>If you head over there, you'll probably find a section that has similar content to this. No doubt involving "Excited??? I thought you were."
 	<br><br>
 	<i>Note: you can still find our Unity 'Changing Scene' tutorial <a href="tutorial/unity-scenechanges">here</a>. That one is here to stay.</i>
 	<div class="smallSpace"></div>
+	</div>
 </html>
