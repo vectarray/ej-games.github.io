@@ -50,8 +50,16 @@ function CheckFormatting()
 	newIcon.type = "image/x-icon";
 	document.body.appendChild(newIcon);*/
 
+	document.getElementById("sidebar").lastChild.innerHTML += "\n";
 
-	var newDropdown = document.createElement("select");
+	var newColourButton = document.createElement("a");
+	newColourButton.id = "colour-button";
+	newColourButton.href = "https://ejgames.co.uk/blog/#070422";
+	newColourButton.classList.add("URLbuttonText", "zoomonhover")
+	newColourButton.innerHTML = "No options?"
+	document.getElementById("sidebar").appendChild(newColourButton);
+
+	/*var newDropdown = document.createElement("select");
 	newDropdown.id = "colour-dropdown";
 	document.getElementById("sidebar").appendChild(newDropdown);
 	var colourArrangements = ["default", "dark", "red", "aqua"];
@@ -77,8 +85,8 @@ function CheckFormatting()
 		setTimeout(function() {
 			newDropdown.disabled = false;
 		}, 1000)
-	}
-	ChangeColours(getCookie("colour"));
+	}*/
+	ChangeColours("default"/*getCookie("colour")*/);
 	
 	var observer = new IntersectionObserver(function(entries) {
 		if(entries[0].isIntersecting === true) {
