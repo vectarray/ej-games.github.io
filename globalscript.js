@@ -1,24 +1,36 @@
 function CheckFormatting()
 {
-	document.getElementById("loading").remove();
+	// Script initialisation
 	var newScript = document.createElement("script");
-	if(window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) {
+	if((window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) && window.location.href.indexOf("127.0.0.1") < 0) {
 		newScript.src = "https://ejgames.co.uk/colours.jsonp";
 	}
 	else {
 		newScript.src = "colours.jsonp";
 	}
 	document.body.appendChild(newScript);
-	function setMobile() {
-		document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
-		document.getElementById("sidebarbutton").style.display = "block";
-		document.getElementById("sidebar").style.left = "-100%";
-		document.getElementById("sidebar").style.width = "30%";
-		for(var i = 0; i < document.getElementById("sidebar").getElementsByTagName("a").length; i++) {
-			document.getElementById("sidebar").getElementsByTagName("a")[i].classList.add("bigger");
-		}
-		document.body.style.fontSize = "1.5em";
+	if(window.location.href.indexOf("tutorials") > -1) {
+		createScript("files/all-words.js");
 	}
+
+
+	// Cleaning up & inserting elements
+	document.getElementById("title").style.display = "none";
+	var newH4 = document.createElement("h4");
+	newH4.innerHTML = "Actions";
+	var newButton = document.createElement("b");
+	newButton.innerHTML = "Colour Scheme:";
+	document.getElementById("sidebar").appendChild(newH4);
+	document.getElementById("sidebar").appendChild(newButton);
+	document.getElementById("loading").remove();
+
+	var newLogo = document.createElement("img");
+	newLogo.src = "https://ejgames.co.uk/ejgames%20logo.png";
+	newLogo.id = "logo";
+	document.getElementById("sidebar").insertBefore(newLogo, document.getElementById("sidebar").firstChild);
+
+
+	// Formatting
 	var userAgent = navigator.userAgent.toLowerCase();
 	//userAgent = "iphone";
 	if (userAgent.indexOf("iphone") != -1 || userAgent.indexOf("android") != -1 || userAgent.indexOf("windows phone") != -1)
@@ -26,17 +38,8 @@ function CheckFormatting()
 		setMobile();
 	}
 
-	var newH4 = document.createElement("h4");
-	newH4.innerHTML = "Actions";
-	var newButton = document.createElement("b");
-	newButton.innerHTML = "Colour Scheme:";
-	document.getElementById("sidebar").appendChild(newH4);
-
-	document.getElementById("sidebar").appendChild(newButton);
-
-	//document.getElementById("title").style.display = "none";
 	
-	for(var icon of document.getElementsByTagName("link")) {
+	/*for(var icon of document.getElementsByTagName("link")) {
 		if(icon.rel == "icon" && icon.type == "image/x-icon") {
 			icon.remove();
 		}
@@ -45,7 +48,7 @@ function CheckFormatting()
 	newIcon.rel = "icon";
 	newIcon.href = "https://ejgames.co.uk/files/ej%20logo.png";
 	newIcon.type = "image/x-icon";
-	document.body.appendChild(newIcon);
+	document.body.appendChild(newIcon);*/
 
 
 	var newDropdown = document.createElement("select");
@@ -69,8 +72,7 @@ function CheckFormatting()
 	newDropdown.onchange = function() {
 		var newColour = newDropdown.options[newDropdown.options.selectedIndex].text.toLowerCase().replace(" ", "");
 		ChangeColours(newColour);
-		CreateNotification("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "2", "https://ejgames.co.uk/sounds/clickbutton.wav",
-		colours[newColour].title, "white")
+		createPopup("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "https://ejgames.co.uk/sounds/clickbutton.wav")
 		newDropdown.disabled = true;
 		setTimeout(function() {
 			newDropdown.disabled = false;
@@ -85,6 +87,23 @@ function CheckFormatting()
 		}
 	}, { threshold: [0] });
 	checkForVisibility("moveIn");
+}
+
+function setMobile() {
+	document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
+	document.getElementById("sidebarbutton").style.display = "block";
+	document.getElementById("sidebar").style.left = "-100%";
+	document.getElementById("sidebar").style.width = "30%";	
+	for(var i = 0; i < document.getElementById("sidebar").getElementsByTagName("a").length; i++) {
+		document.getElementById("sidebar").getElementsByTagName("a")[i].classList.add("bigger");
+	}
+	document.body.style.fontSize = "1.5em";
+}
+
+function createScript(url) {
+	var newScript = document.createElement("script");
+	newScript.src = url;
+	document.body.appendChild(newScript);
 }
 
 function moveInElement(element) {
@@ -174,7 +193,7 @@ function UpdateColour() {
 		try {
 			document.getElementsByTagName("html")[0].style.background = colours[getCookie("colour")].background;
 			document.getElementsByTagName("html")[0].style.backgroundAttachment = "fixed";
-			document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
+			//document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
 			document.getElementById("title").style.color = colours[getCookie("colour")].h2;
 			document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
 			for(var item of document.getElementsByTagName("h2")) {
@@ -188,6 +207,9 @@ function UpdateColour() {
 				item.style.backgroundColor = colours[getCookie("colour")].title;
 			}
 			for(var item of document.getElementsByClassName("small-card")) {
+				item.style.backgroundColor = colours[getCookie("colour")].title;
+			}
+			for(var item of document.getElementsByClassName("smaller-card")) {
 				item.style.backgroundColor = colours[getCookie("colour")].title;
 			}
 			for(var item of document.getElementsByClassName("searchBar")) {
@@ -234,6 +256,11 @@ function SetCompleted() {
 		}, 50000)
 	}
 }
+
+function hyperlink(url) {
+	window.open(url);
+}
+
 function CreateNotification(heading, body, showTime, soundToPlay, colour, borderColour) {
 	var notification = document.createElement("div");
 	var bodyText = document.createElement("div");
@@ -288,18 +315,60 @@ function createPopup(heading, body, soundToPlay) {
 		newOverlay.id = "overlay";
 		document.body.appendChild(newOverlay);
 	}
+	document.getElementById("overlay").onclick = hidePopup;
 	document.getElementById("overlay").style.display = "block";
 	document.getElementById("overlay").style.opacity = 100;
 }
 
 function hidePopup() {
 	var notification = document.getElementById("popup");
+	document.getElementById("overlay").onclick = null;
 	notification.classList.add("closed");
 	document.getElementById("overlay").style.opacity = 0;
 	setTimeout(function() {
 		notification.remove();
 		document.getElementById("overlay").style.display = "none";
-	}, 500);
+	}, 200);
+}
+
+function createConfirm(heading, body, soundToPlay, buttonText, onConfirm) {
+	var notification = document.createElement("div");
+	notification.classList.add("popup");
+	notification.id = "confirm";
+	notification.innerHTML = `
+	<h5 class="heading">${heading == undefined ? "Notification" : heading}
+	<button class="close-button" onclick="hideConfirm()">&times;</button>
+	</h5>
+	<div class="popup-body">
+	${body == undefined ? String.raw`You have received a notification, but there was no body ¯\_ (ツ)_/¯` : body}
+	<br><br>
+	<h5><button id="confirm-close">${buttonText}</button></h5>
+	</div>
+	`
+	if(soundToPlay != null && soundToPlay != undefined) {
+		playSound(soundToPlay);
+	}
+	document.body.appendChild(notification);
+	if(document.getElementById("overlay") == null) {
+		var newOverlay = document.createElement("div");
+		newOverlay.id = "overlay";
+		document.body.appendChild(newOverlay);
+	}
+	document.getElementById("overlay").style.display = "block";
+	document.getElementById("overlay").style.opacity = 100;
+	document.getElementById("overlay").onclick = hideConfirm;
+	document.getElementById("confirm-close").onclick = onConfirm;
+}
+
+function hideConfirm() {
+	var notification = document.getElementById("confirm");
+	document.getElementById("overlay").onclick = null;
+	notification.classList.add("closed");
+	document.getElementById("overlay").style.opacity = 0;
+	setTimeout(function() {
+		notification.remove();
+		document.getElementById("overlay").style.display = "none";
+	}, 200);
 }
 
 function OpenElement(elementId, buttonId, textWhenOpen, textWhenClosed) {
