@@ -36,6 +36,10 @@
 				window.location.href = "https://github.com/ej-games/old-games";
 			});
 		}
+		function incomplete(gameName) {
+			createPopup("Not Available!", String.raw`This game (${gameName != null ? "<b>" + gameName + "</b>" : "the one you're trying to access"}) is unavailable
+			because it's not ready to be release to the public yet! Come back soon and maybe it'll be available.`, "sounds/error.wav");
+		}
 	</script>
 	<link rel="icon" href="https://ejgames.co.uk/files/ej%20logo.png" type="image/x-icon">
 
@@ -96,6 +100,13 @@
 			<img src="images/c-lockedin-card.jpg">
 			This is a top-down shooter that I'm currently working on. I started it in November(ish) 2021, and it's still going (as of March 2022)! In Locked In, you collect coins, fight enemies,
 			kill bosses, upgrade your weapons, explore new zones, do other things, and some other things, and complete quests (soon to be added).
+		</div>
+		<div class="moveIn card" onclick="incomplete('\'Parkour Game\'')">
+			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
+			<h4>Parkour Game</h4>
+			<img src="https://bit.ly/3v3u7LF">
+			I'm making a new Roblox game? Yes, and it's going to be quite bad, seeing as I haven't even touched Roblox for a few months. It's going to be a simple parkour game, like
+			<a href="#pbos">Practise Basic Obby Skills</a>, but a bit more simple, and not called Practise Basic Obby Skills.
 		</div>
 		<div class="moveIn card" onclick="window.location.href='installs.html#connect-circle-apk'">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon" width="5px">
@@ -160,7 +171,7 @@
 			<br><br>
 			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
-		<div class="moveIn card" onclick="promptRobloxVisit(5605856266)">
+		<div class="moveIn card" onclick="promptRobloxVisit(5605856266)" id="pbos">
 			<img src="https://bit.ly/3wDn4LS" class="cardIcon">
 			<h4>Practise Basic Obby Skills</h4>
 			<img src="https://bit.ly/3iymA1z">
