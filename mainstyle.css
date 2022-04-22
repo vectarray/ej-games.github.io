@@ -37,7 +37,7 @@ button {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Sen', 'Montserrat', sans-serif;
+	font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -60,7 +60,7 @@ button:hover {
 	padding: 0%;
 }
 body {
-	font-family: 'Lexend', 'Montserrat', sans-serif;
+	font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
 	font-weight: 400;
 	/*background: #161c25;*/
 	font-size: 1.35em;
@@ -72,7 +72,7 @@ select {
 	border-color: #383838;
 	border-radius: 1em;
 	color: white;
-	font-family: 'Lexend', 'Montserrat', sans-serif;
+	font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
 	font-size: 1em;
 	transition: background-color 0.3s;
 }
@@ -251,7 +251,7 @@ a:hover {
 .searchBar {
 	width: 100%;
 	font-size: 1.5em;
-	font-family: 'Lexend', 'Montserrat', sans-serif;
+	font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
 	font-weight: 600;
 	background-color: rgb(12, 20, 37);
 	border: none;
@@ -367,7 +367,7 @@ h6 {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Lexend', 'Montserrat', sans-serif;
+	font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -590,4 +590,40 @@ td {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+green {
+	color: rgb(69, 255, 69);
+}
+red {
+	color: rgb(255, 97, 97);
+}
+red-bg {
+	background-color: rgba(255, 69, 69, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(234, 53, 53);
+	border-radius: 0.5em;
+}
+green-bg {
+	background-color: rgba(69, 255, 116, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(53, 234, 101);
+	border-radius: 0.5em;
+}
+hide {
+	display: none;
+}
+.hide {
+	display: none;
+}
+#tooltip {
+	position: fixed;
+	font-family: "Be Vietnam Pro", "Montserrat", sans-serif;
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 0.2em;
+	padding: 0.2em 0.2em;
+	padding: 0.2em 0.2em;
+	transition: opacity 0.1s;
+}
+.fa-solid {
+	padding-right: 0.3em;
 }
