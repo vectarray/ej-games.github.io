@@ -426,7 +426,7 @@ small {
 	width: calc(3% + 6em);
 	left: 0%;
 	min-height: 100%;
-	z-index: 0;
+	z-index: 10;
 	background-color: #14161d;
 	padding: 0px 1em 0px 1em;
 	transition: left 0.5s;
