@@ -13,6 +13,10 @@ function CheckFormatting()
 		createScript("files/all-words.js");
 	}
 
+	createStyle("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+
+	createScript("https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js");
+
 
 	// Cleaning up & inserting elements
 	document.getElementById("title").style.display = "none";
@@ -95,6 +99,38 @@ function CheckFormatting()
 		}
 	}, { threshold: [0] });
 	checkForVisibility("moveIn");
+	var tooltip = document.createElement("span");
+	tooltip.id = "tooltip";
+	document.addEventListener('mousemove', updateTooltip, false);
+	tooltip.style.opacity = "0";
+	document.body.appendChild(tooltip);
+
+	for(var hover of document.getElementsByClassName("hover")) {
+		hover.addEventListener('mouseenter', function(e) {
+			stt(e.target.getElementsByTagName("hide")[0].innerHTML);
+		});
+		hover.addEventListener('mouseleave', htt);
+		/*hover.onmouseenter = function() {
+			stt(hover.getElementsByClassName("hide")[0].innerHTML);
+		};
+		hover.onmouseleave = htt;*/
+	}
+}
+
+function htt() {
+	tooltip.style.opacity = "0";
+}
+
+function stt(text) {
+	var tooltip = document.getElementById("tooltip");
+	tooltip.innerHTML = text;
+	tooltip.style.opacity = "100";
+}
+
+function updateTooltip(e) {
+	var tooltip = document.getElementById("tooltip");
+	tooltip.style.left = "calc(" + ((e.clientX / innerWidth) * 100) + "vw + 10px)";
+	tooltip.style.top = "calc(" + ((e.clientY / innerHeight) * 100) + "vh + 10px)";
 }
 
 function setMobile() {
@@ -111,6 +147,13 @@ function setMobile() {
 function createScript(url) {
 	var newScript = document.createElement("script");
 	newScript.src = url;
+	document.body.appendChild(newScript);
+}
+
+function createStyle(url) {
+	var newScript = document.createElement("link");
+	newScript.href = url;
+	newScript.rel = "stylesheet";
 	document.body.appendChild(newScript);
 }
 
