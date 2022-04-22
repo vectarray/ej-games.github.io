@@ -12,22 +12,6 @@
 		rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
-
-		#showold {
-			background-color: rgba(0, 0, 0, 0);
-			border: rgba(0, 0, 0, 0);
-			color: rgb(24, 126, 243);
-			font-family: 'Sen', 'Montserrat', sans-serif;
-			text-decoration: none;
-			font-size: 1em;
-			cursor: pointer;
-		}
-
-		#showold:hover {
-			color: rgb(24, 126, 243);
-			text-decoration: underline;
-			font-size: 1em;
-		}
 	</style>
 	<script src="globalscript.js"></script>
 	<script>
@@ -95,16 +79,160 @@
 			<ul>
 				<li>Feature update: adds new features, like, for example, classes (added in Alpha V4) and bosses (added
 					in Alpha V3). Alpha V4 is a feature update.</li>
-				<li>Content update: adds new content, like more guns, bosses and sections. Alpha V3 is a feature update.
+				<li>Content update: adds new content, like more guns, bosses and sections. Alpha V3 and V5 are content updates.
 				</li>
-				<li>Fix update: fixes major bugs, or just a lot of bugs. Expect more of these in the future. Alpha V2
-					could be classed as a fix update.</li>
+				<li>Fix update: fixes major bugs, or just a lot of bugs. Expect more of these in the future. Alpha V6
+					is a fix update.</li>
 				<li>Pre-update: before a proper update is released, Locked In will have a "pre-update" (named something
-					like "Pre-V4"), which just allows for people to play the game with the new update, and report bugs,
+					like "V4-P"), which just allows for people to play the game with the new update, and report bugs,
 					and have them fixed in the next update.</li>
 			</ul>
 			<br><br>
 		</span>
+		<h3 class="moveIn">V6-P - Pre-Fix Update</h3>
+		<div class="line moveIn"></div>
+		<h4 id="v6-note" class="moveIn">Note</h4>
+		<div class="moveIn">
+			We've got the same disclaimer as last update - there are no NPCs this time, unfortunately. We're still working (very slowly, but still) on the main NPC (John Gold)
+			and his quests. The story will be finished! I will not be happy with this game until the story is done. And I know this sounds like the story of someone who's lost
+			all motivation. If I had, then this update wouldn't be here!
+		<div class="smallSpace"></div><div class="line"></div>
+		</div>
+		<h4 id="v6-boss" class="moveIn">New Boss: Corrupted Heart</h4>
+		<div class="moveIn">
+			We've added a new boss! Unfortunately, it's not a conga line of robots. But it's another boss, instead of just having one.
+			<br>It's a corrupted heart, and it spawns rounds of enemies, as well as other enemies spawning more quickly.
+			<br>Killing it won't give you any special rewards, but will give you a lot of coins.
+			<br><br>Try and find it, and slay it for its gold!
+		<div class="smallSpace"></div><div class="line"></div>
+		</div>
+		
+		<h4 id="v6-sounds" class="moveIn">Changes to Sounds</h4>
+		<div class="moveIn">
+			Let's admit it: the previous sound design for Locked In was quite lackluster.
+			<br>So, to change it, we've added:
+			<h5 class="moveIn">3D Sound</h5>
+			<div class="moveIn">
+				Instead of being flat and boring, we've changed the sounds so they change volume depending on distance, and are directional! This means that both of your ears
+				can hear different things, making the game even more sickening.
+			</div>
+			<div class="smallSpace"></div>
+			<h5 class="moveIn">Footstep Sounds</h5>
+			<div class="moveIn">
+				Footstep sounds now play for the player (as well as a very subtle walking animation that is just the player getting bigger and smaller). We wanted to add this
+				because otherwise, between fights with enemies, it's just dead silence. Which is eerie, but boring. Instead, the footstep sounds make it seem lonelier. Because you are lonely.
+			</div>
+			<h5 class="moveIn">Louder Music</h5>
+			<div class="moveIn">
+				The music is a lot louder now, especially in boss fights, because before, you couldn't hear it over the shooting.
+			</div>
+			<h5 class="moveIn">Enemy Sounds</h5>
+			<div class="moveIn">
+				Another thing that helps with boring emptiness is ambient sound! Enemies now will give off a random, appropriate sound (meaning a zombie won't make the sound of a gun shooting).
+			</div>
+			<h5 class="moveIn">UI Sounds</h5>
+			<div class="moveIn">
+				There are new UI sounds for when you press most buttons, as well as hovering over them.
+			</div>
+		<div class="smallSpace"></div><div class="line"></div>
+		</div>
+
+		<h4 id="v6-camera" class="moveIn">Camera Changes</h4>
+		<div class="moveIn">
+			The camera was also a bit of a boring aspect of the old game: now we've changed it completely to be a lot more immersive, and easier to use.
+			<table>
+				<thead>
+					<tr>
+						<td><b>Old camera</b></td><td><b>New camera</b></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><red>Slow</red></td><td><green>Much faster</green></td>
+					</tr>
+					<tr>
+						<td><red>Far away</red></td><td><green>Closer</green></td>
+					</tr>
+					<tr>
+						<td><green>Can see both times</green></td><td><red>Can't see both sides</red></td>
+					</tr>
+					<tr>
+						<td><red>Unresponsive</red></td><td><green>Moves towards mouse pointer</green></td>
+					</tr>
+				</tbody>
+			</table>
+			If you're wondering why we've downgraded the range of the camera, it's because we want the game to be more immersive, just like the 3D sound changes.
+			<br>It will also be good to know people respond to some more experimental changes.
+		<div class="smallSpace"></div><div class="line"></div>
+		</div>
+
+		<h4 id="v6-menu" class="moveIn">Main Menu!</h4>
+		<div class="moveIn">
+			I can't believe we went for so long without even a menu screen!
+			<br><br>In it, there are options to:
+			<ul>
+				<li>Play the game</li>
+				<li>Change Loadout</li>
+				<li>Change class (this can no longer be done in game)</li>
+				<li>Change settings (which is still a mess right now)</li>
+				<li>Exit the game (but we don't press that one, do we?)</li>
+			</ul>
+			It also has some exclusive music (the track is called 'Into the Depths') handmade by yours truly, EJGames.
+		<div class="smallSpace"></div><div class="line"></div>
+		</div>
+
+		<h4 id="v6-tweaks" class="moveIn">Tweaks / Bug Fixes</h4>
+		<div class="moveIn">
+			<!-- onmouseenter="stt('Quality of Life Change')" onmouseleave="htt()"-->
+			<i class="fa-solid fa-award hover"><hide>Quality of life change</hide></i><b>Coins move towards you</b>
+			<br>Instead of being really difficult to catch, coins will now move towards the player when they are near.
+			<br><br>
+			<i class="fa-solid fa-bolt-lightning hover"><hide>Cool feature</hide></i><b>Music muffles in the menu</b>
+			<br><br>
+			<i class="fa-solid fa-bug hover"><hide>Bug fix</hide></i><b>Bug fix: Wannabee can't hit the player</b>
+			<br>Before, the bee boss wouldn't be able to hit you due to the <a href="#v5-enemies">changes to how enemies attacked</a>. This has now bee-n fixed!
+			<br><br>
+			<i class="fa-solid fa-user-group hover"><hide>Suggestions</hide></i><b>Shaking has been greatly decreased</b>
+			<br>Rather than being uncomfortably vigorous with the shaking, we've toned it down a bit. The guns aren't that hard to use.
+			<br><br>
+			<i class="fa-solid fa-bug hover"><hide>Bug fix</hide></i><b>Enemies spawn closer</b>
+			<br>Instead of spawning 50m further up, they just spawn offscreen.
+			<br><br>
+			<i class="fa-solid fa-award hover"><hide>Quality of life change</hide></i><b>Dying is much more polished</b>
+			<br>There is now a 'you died' screen that shows how many coins you collected, how far you travelled etc.
+			<br><br>
+			<i class="fa-solid fa-desktop hover"><hide>Performance optimisation</hide></i><b>No camera in the menu</b>
+			<br>It was taking up a lot of memory, and is not worth the effort of actually optimising it.
+			<br><br>
+			<i class="fa-solid fa-globe hover"><hide>General update</hide></i><b>New font</b>
+			<br>It's probably just me being sick of it, but I hated the old one. Also, it now matches the website. It's called "Be Vietnam Pro", for all of you
+			who care about it for some reason.
+			<br><br>
+			<i class="fa-solid fa-globe hover"><hide>General update</hide></i><b>Notifications are darker</b>
+			<br><br>
+			<i class="fa-solid fa-award hover"><hide>Quality of life change</hide></i><b>Notifications appear quicker</b>
+			<br>It might make you jump, but at least you get the information quicker.
+			<br><br>
+			<i class="fa-solid fa-award hover"><hide>Quality of life change</hide></i><b>Changed FPS counter font</b>
+			<br>This was to improve readability, so that all the digits are in the same place.
+			<br><br>
+			<i class="fa-solid fa-globe hover"><hide>General update</hide></i><b>New icon</b>
+			<br>It's no longer just a zombie. Although it might be changed again, because it doesn't look too good when actually as small as an icon.
+			<br><br>
+			<i class="fa-solid fa-bug hover"><hide>Bug fix</hide></i><b>Bug fix: enemy clusters wouldn't spawn correctly</b>
+			<br>It's because I added too many zeroes to the distance from the player! Or something. But it's fixed now.
+			<br><br>
+			<i class="fa-solid fa-globe hover"><hide>General update</hide></i><b>Music changes</b>
+			<br>Added new track ('Into the Depths') and added more tracks for different zones, as well as shuffling some tracks around.
+			<br><br>
+
+			<div class="smallSpace"></div><div class="line"></div>
+		</div>
+
+
+		<div class="smallSpace"></div>
+		<button id="showold" class="buttonURL" onclick="OpenOlder()">Show older versions</button>
+		<span id="old" style="display: none;">
 		<h3 class="v5p moveIn">V5-P - Pre-Content Update</h3>
 		<div class="line moveIn"></div>
 		<h4 id="v5-note" class="moveIn">Note</h4>
@@ -164,8 +292,6 @@
 		<br>There's just a notification telling you that you can't, and it stops you from teleporting if there's something in the way.
 		<div class="smallSpace"></div><div class="line"></div><div class="smallSpace"></div>
 	</div>
-		<button id="showold" class="buttonURL" onclick="OpenOlder()">Show older versions</button>
-		<span id="old" style="display: none;">
 		<h3 id="v4">V4 - Feature update</h3>
 		<div class="line"></div>
 		<h4 id="tweaks">Tweaks</h4>
