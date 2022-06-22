@@ -581,12 +581,13 @@ td {
 	padding: 0.3em;
 }
 #loading {
-	background-color: rgba(0, 0, 0, 0.705);
+	background-color: rgba(0, 0, 0, 0.2);
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
 	z-index: 50;
 	text-align: center;
+	color: rgba(1, 1, 1, 0.3);
 }
 #logo {
 	width: 60%;
