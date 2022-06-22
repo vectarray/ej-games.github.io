@@ -501,8 +501,8 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 	max-height: 30%;
 	z-index: 5;
 	transform-origin: 0% 0%;
-	-webkit-animation: openPopup 0.25s ease-out;
-	animation: openPopup 0.25s ease-out;
+	-webkit-animation: openPopup 0.5s cubic-bezier(0, 0, 0, 1);
+	animation: openPopup 0.5s cubic-bezier(0, 0, 0, 1);
 	overflow-y: auto;
 }
 .popup h5 {
