@@ -133,11 +133,6 @@ a:hover {
 	text-decoration: underline;
 	background-color: rgba(0, 0, 0, 0);
 }
-.moveIn {
-	transform:translateY(20px);
-	transition: transform 0.5s, opacity 0.5s;
-	/*opacity: 0%;*/
-}
 .rightImage {
 	float: right;
 	width: 15%;
@@ -557,6 +552,14 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 	0% { opacity: 0; transform: scale(0.6) translate(-50%, -50%); }
 	/*50% { opacity: 100; transform: scale(1.2) translate(-50%, -50%);}*/
 	100% { opacity: 100; transform: scale(1) translate(-50%, -50%); }
+}
+@keyframes moveInElement {
+	from {opacity: 0%; transform: translateY(60px);}
+	to {opacity: 100%;}
+}
+@-webkit-keyframes moveInElement {
+	from {opacity: 0%; transform: translateY(60px);}
+	to {opacity: 100%;}
 }
 #overlay {
 	top: 0;

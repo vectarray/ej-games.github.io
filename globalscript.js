@@ -115,6 +115,10 @@ function CheckFormatting()
 		};
 		hover.onmouseleave = htt;*/
 	}
+
+	for(var moveIn of document.getElementsByClassName("moveIn")) {
+		moveIn.style.opacity = "0%";
+	}
 }
 
 function htt() {
@@ -159,8 +163,13 @@ function createStyle(url) {
 
 function moveInElement(element) {
 	setTimeout(function() {
+		/*element.style.transition = "transform 0.5s, opacity 0.5s";
 		element.style.opacity = "100%";
-		element.style.transform = "translateY(-20px)";
+		element.style.transform = "translateY(-20px)";*/
+		element.style.animation = "moveInElement 0.7s cubic-bezier(0, 0, 0, 1)"
+		setTimeout(function() {
+			element.style.opacity = 100;
+		}, 500)
 	}, 200)
 }
 
