@@ -1,5 +1,6 @@
 function CheckFormatting()
 {
+	window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 	// Script initialisation
 	var newScript = document.createElement("script");
 	if((window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) && window.location.href.indexOf("127.0.0.1") < 0) {
