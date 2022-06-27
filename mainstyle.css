@@ -252,6 +252,14 @@ a:hover {
 	border: none;
 	color:rgb(255, 255, 255);
 }
+input {
+	font-size: 1em;
+	font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
+	font-weight: 600;
+	background-color: rgb(12, 20, 37);
+	border: none;
+	color:rgb(255, 255, 255);
+}
 .searchItems {
 	list-style-type: none;
 	padding-left: 0px;

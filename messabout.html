@@ -17,6 +17,30 @@
 	</style>
 	<script src="globalscript.js"></script>
 	<script>
+		function encryptData() {
+			var toEncrypt = document.getElementById("encrypt-input").value;
+			var encryptedA = "";
+			for(var item of toEncrypt.split("")) {
+				encryptedA += item.charCodeAt(0) + ";";
+				console.log(item + ": " + item.charCodeAt(0));
+			}
+			encryptedA = encryptedA.replace(";NaN;", "");
+			var encryptedB = "";
+			for(var item of encryptedA.split(";")) {
+				encryptedB += Math.pow(parseInt(item.replace(";", "")), 2) + ";";
+			}
+			encryptedB = encryptedB.replace(";NaN;", "");
+			var encryptedC = "";
+			for(var i = 0; i < encryptedB.split(";").length; i++) {
+				if(i = 0) {
+					encryptedC += encryptedB.split(";")[i];
+				}
+				else {
+					encryptedC += (parseInt(encryptedB.split(";")[i-1]) + parseInt(encryptedB.split(";")[i])).toString + ";";
+				}
+			}
+			document.getElementById("encrypt-button").innerHTML = encryptedC;
+		}
 	</script>
 	<link rel="icon" href="https://ejgames.co.uk/files/ej%20logo.png" type="image/x-icon">
 
@@ -70,7 +94,9 @@
 		</div>
 		<h4 class="moveIn">This is a cool bar (Coming soon):</h4>
 		<div class="moveIn">
-			
+			This is not a cool bar, but will encrypt what you type in it:
+			<br><input type="input" id="encrypt-input" placeholder="To encrypt goes here!">
+			<br><button onclick="encryptData()" id="encrypt-button">Click to encrypt</button>
 		</div>
 	</div>
 	<div class="smallSpace"></div>
