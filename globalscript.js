@@ -67,7 +67,7 @@ function CheckFormatting()
 	/*var newDropdown = document.createElement("select");
 	newDropdown.id = "colour-dropdown";
 	document.getElementById("sidebar").appendChild(newDropdown);
-	var colourArrangements = ["default", "dark", "red", "aqua"];
+	var colourArrangements = ["default", "dark"];
 	var colourDisplayNames = {
 		"default": "Default",
 		"dark": "Dark",
