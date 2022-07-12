@@ -24,6 +24,7 @@
 			var observer = new IntersectionObserver(function(entries) {
 				if(entries[0].isIntersecting) {
 					console.log("Just visible");
+					console.log("No longer needed.")
 				}
 			}, {threshold: [1]});
 		</script>
