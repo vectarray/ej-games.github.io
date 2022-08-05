@@ -136,10 +136,10 @@ function CheckFormatting()
 
 function getAbsLocation(pathName) {
 	if((window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) && window.location.href.indexOf("127.0.0.1") < 0) {
-		return location.hostname + "/" + pathName;
+		return "https://" + location.hostname + "/" + pathName
 	}
 	else {
-		return "https://" + location.hostname + "/" + pathName
+		return location.hostname + "/" + pathName
 	}
 }
 
