@@ -30,9 +30,16 @@
 /* Copy of Be Vietnam Pro */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;800;900&display=swap');
 
+/* Kumbh sans, nice headings */
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;300;400;600;800;900&display=swap');
+
+
 
 .bigger {
 	font-size: 1.2em !important;
+}
+.much-bigger {
+	font-size: 1.5em !important;
 }
 html {
 	background: #161c25;
@@ -44,7 +51,7 @@ button {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -67,10 +74,10 @@ button:hover {
 	padding: 0%;
 }
 body {
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-weight: 400;
 	/*background: #161c25;*/
-	font-size: 1.35em;
+	font-size: 1.25em;
 	color: #ffffff;
 	margin: 0px 0px 0px 0px;
 }
@@ -79,7 +86,7 @@ select {
 	border-color: #383838;
 	border-radius: 1em;
 	color: white;
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-size: 1em;
 	transition: background-color 0.3s;
 }
@@ -253,7 +260,7 @@ a:hover {
 .searchBar {
 	width: 100%;
 	font-size: 1.5em;
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-weight: 600;
 	background-color: rgb(12, 20, 37);
 	border: none;
@@ -261,7 +268,7 @@ a:hover {
 }
 input {
 	font-size: 1em;
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-weight: 600;
 	background-color: rgb(12, 20, 37);
 	border: none;
@@ -308,7 +315,7 @@ input {
 	background-color: rgba(0, 0, 0, 0.3);
 }
 h2 {
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-size: 3em;
 	/*font-weight: 900;*/
 	color: #ffffff;
@@ -320,22 +327,22 @@ h2 {
 	font-weight: 900;
 }
 h3 {
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-size: 1.9em;
 	font-weight: 600;
 }
 h4 {
-	font-family: 'Inter', 'Montserrat', sans-serif;
-	font-size: 2em;
-	font-weight: 900;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
+	font-size: 2.5em;
+	font-weight: 300;
 	text-align: center;
 }
 h5 {
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-size: 1.3em;
 }
 h6 {
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	font-weight: 900;
 	font-size: 1.1em;
 }
@@ -377,7 +384,7 @@ h6 {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -431,13 +438,13 @@ small {
 	font-size: small;
 }
 .sidebar {
-	top: 0px;
+	top: 2%;
 	position: fixed;
 	width: calc(3% + 6em);
-	left: 0%;
+	left: 2.5%;
 	min-height: 100%;
 	z-index: 10;
-	background-color: #14161d;
+	background-color: rgba(0, 0, 0, 0);
 	padding: 0px 1em 0px 1em;
 	transition: left 0.5s;
 	overflow-x: auto;
@@ -574,6 +581,14 @@ pre { font-family: 'Consolas', 'Courier New', Courier, monospace; }
 }
 @-webkit-keyframes moveInElement {
 	from {opacity: 0%; transform: translateY(60px);}
+	to {opacity: 100%;}
+}
+@keyframes moveInRight {
+	from {opacity: 0%; transform: translateX(-60px);}
+	to {opacity: 100%;}
+}
+@-webkit-keyframes moveInRight {
+	from {opacity: 0%; transform: translateX(-60px);}
 	to {opacity: 100%;}
 }
 #overlay {

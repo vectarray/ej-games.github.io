@@ -30,7 +30,7 @@ function CheckFormatting()
 	document.getElementById("loading").remove();
 
 	var newLogo = document.createElement("img");
-	newLogo.src = "https://ejgames.co.uk/ejgames%20logo.png";
+	newLogo.src = getAbsLocation("images/new-ej-logo.png");
 	newLogo.id = "logo";
 	document.getElementById("sidebar").insertBefore(newLogo, document.getElementById("sidebar").firstChild);
 
@@ -57,17 +57,17 @@ function CheckFormatting()
 
 	document.getElementById("sidebar").lastChild.innerHTML += "\n";
 
-	var newColourButton = document.createElement("a");
+	/*var newColourButton = document.createElement("a");
 	newColourButton.id = "colour-button";
 	newColourButton.href = "https://ejgames.co.uk/blog/#070422";
 	newColourButton.classList.add("URLbuttonText", "zoomonhover")
 	newColourButton.innerHTML = "No options?"
-	document.getElementById("sidebar").appendChild(newColourButton);
+	document.getElementById("sidebar").appendChild(newColourButton);*/
 
-	/*var newDropdown = document.createElement("select");
+	var newDropdown = document.createElement("select");
 	newDropdown.id = "colour-dropdown";
 	document.getElementById("sidebar").appendChild(newDropdown);
-	var colourArrangements = ["default", "dark"];
+	var colourArrangements = ["dark", "light"];
 	var colourDisplayNames = {
 		"default": "Default",
 		"dark": "Dark",
@@ -90,8 +90,8 @@ function CheckFormatting()
 		setTimeout(function() {
 			newDropdown.disabled = false;
 		}, 1000)
-	}*/
-	ChangeColours("default"/*getCookie("colour")*/);
+	}
+	ChangeColours(getCookie("colour"));
 	
 	var observer = new IntersectionObserver(function(entries) {
 		if(entries[0].isIntersecting === true) {
@@ -99,7 +99,10 @@ function CheckFormatting()
 			moveInElement(entries[0]);
 		}
 	}, { threshold: [0] });
-	checkForVisibility("moveIn");
+	checkForVisibility("moveIn", false);
+	checkForVisibilityRight("moveInRight", false);
+	checkForVisibility("moveInSlow", true);
+	checkForVisibilityRight("moveInRightSlow", true);
 	var tooltip = document.createElement("span");
 	tooltip.id = "tooltip";
 	document.addEventListener('mousemove', updateTooltip, false);
@@ -119,6 +122,24 @@ function CheckFormatting()
 
 	for(var moveIn of document.getElementsByClassName("moveIn")) {
 		moveIn.style.opacity = "0%";
+	}
+	for(var moveIn of document.getElementsByClassName("moveInRight")) {
+		moveIn.style.opacity = "0%";
+	}
+	for(var moveIn of document.getElementsByClassName("moveInSlow")) {
+		moveIn.style.opacity = "0%";
+	}
+	for(var moveIn of document.getElementsByClassName("moveInRightSlow")) {
+		moveIn.style.opacity = "0%";
+	}
+}
+
+function getAbsLocation(pathName) {
+	if((window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) && window.location.href.indexOf("127.0.0.1") < 0) {
+		return location.hostname + "/" + pathName;
+	}
+	else {
+		return "https://" + location.hostname + "/" + pathName
 	}
 }
 
@@ -162,49 +183,62 @@ function createStyle(url) {
 	document.body.appendChild(newScript);
 }
 
-function moveInElement(element) {
+function moveInRight(element, slow) {
 	setTimeout(function() {
 		/*element.style.transition = "transform 0.5s, opacity 0.5s";
 		element.style.opacity = "100%";
 		element.style.transform = "translateY(-20px)";*/
-		element.style.animation = "moveInElement 0.7s cubic-bezier(0, 0, 0, 1)"
+		element.style.animation = String.raw`moveInRight ${slow ? "1.5" : "0.7"}s cubic-bezier(0, 0, 0, 1)`
 		setTimeout(function() {
 			element.style.opacity = 100;
 		}, 500)
 	}, 200)
 }
 
-function checkForVisibility(className) {
+function moveInElement(element, slow) {
+	setTimeout(function() {
+		/*element.style.transition = "transform 0.5s, opacity 0.5s";
+		element.style.opacity = "100%";
+		element.style.transform = "translateY(-20px)";*/
+		element.style.animation = String.raw`moveInElement ${slow ? "1.5" : "0.7"}s cubic-bezier(0, 0, 0, 1)`
+		setTimeout(function() {
+			element.style.opacity = 100;
+		}, 500)
+	}, 200)
+}
+
+function checkForVisibility(className, slow) {
 	for(var item of this.document.getElementsByClassName(className)) {
 		var element = item;
 		var position = element.getBoundingClientRect();
 
 		// checking for partial visibility
-		if(position.top < window.innerHeight && position.bottom >= 0) {
-			moveInElement(element);
+		if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
+			moveInElement(element, slow);
 		}
 	}
 	window.addEventListener('scroll', function() {
 		for(var item of this.document.getElementsByClassName(className)) {
 			var element = item;
 			var position = element.getBoundingClientRect();
+			console.log(element.innerHTML, "(" + position.top.toString() + ")", "needs to get to", window.innerHeight);
 	
 			// checking for partial visibility
-			if(position.top < window.innerHeight && position.bottom >= 0) {
-				moveInElement(element);
+			if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
+				moveInElement(element, slow);
 			}
 		}
 	});
 }
 
-function checkForVisibilityTag(tagName) {
+function checkForVisibilityTag(tagName, slow) {
 	for(var item of this.document.getElementsByTagName(tagName)) {
 		var element = item;
 		var position = element.getBoundingClientRect();
 
 		// checking for partial visibility
-		if(position.top < window.innerHeight && position.bottom >= 0) {
-			moveInElement(element);
+		if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
+			moveInElement(element, slow);
 		}
 	}
 	window.addEventListener('scroll', function() {
@@ -213,8 +247,53 @@ function checkForVisibilityTag(tagName) {
 			var position = element.getBoundingClientRect();
 	
 			// checking for partial visibility
-			if(position.top < window.innerHeight && position.bottom >= 0) {
-				moveInElement(element)
+			if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
+				moveInElement(element, slow)
+			}
+		}
+	});
+}
+function checkForVisibilityRight(className, slow) {
+	for(var item of this.document.getElementsByClassName(className)) {
+		var element = item;
+		var position = element.getBoundingClientRect();
+
+		// checking for partial visibility
+		if(position.top < window.innerHeight - (slow ? 250 : 0) && position.bottom >= 0) {
+			moveInRight(element, slow);
+		}
+	}
+	window.addEventListener('scroll', function() {
+		for(var item of this.document.getElementsByClassName(className)) {
+			var element = item;
+			var position = element.getBoundingClientRect();
+	
+			// checking for partial visibility
+			if(position.top < window.innerHeight - (slow ? 250 : 0) && position.bottom >= 0) {
+				moveInRight(element, slow);
+			}
+		}
+	});
+}
+
+function checkForVisibilityTagRight(tagName, slow) {
+	for(var item of this.document.getElementsByTagName(tagName)) {
+		var element = item;
+		var position = element.getBoundingClientRect();
+
+		// checking for partial visibility
+		if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
+			moveInRight(element, slow);
+		}
+	}
+	window.addEventListener('scroll', function() {
+		for(var item of this.document.getElementsByTagName(tagName)) {
+			var element = item;
+			var position = element.getBoundingClientRect();
+	
+			// checking for partial visibility
+			if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
+				moveInRight(element, slow)
 			}
 		}
 	});
@@ -257,6 +336,7 @@ function UpdateColour() {
 			//document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
 			document.getElementById("title").style.color = colours[getCookie("colour")].h2;
 			document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
+			document.getElementById("sidebar").style.backgroundColor = "rgba(0, 0, 0, 0)";
 			for(var item of document.getElementsByTagName("h2")) {
 				item.style.color = colours[getCookie("colour")].h2;
 			}

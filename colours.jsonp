@@ -1,8 +1,8 @@
 colours = {
     "dark": {
-        "background": "#161c25",
-        "title": "#182a4d",
-        "sidebar": "#14161d",
+        "background": "#101e33",
+        "title": "#141c51",
+        "sidebar": "#0e1626",
         "h2": "#ffffff",
         "body": "#ffffff",
         "shadow": "#000000"
@@ -32,8 +32,8 @@ colours = {
     },
     "light": {
         "background": "#ffffff",
-        "title": "#9bcef7",
-        "sidebar": "#88baef",
+        "title": "#b2dbfb",
+        "sidebar": "#b2dbfb",
         "h2": "#1e1e1e",
         "body": "#1e1e1e",
         "shadow": "#000000"
