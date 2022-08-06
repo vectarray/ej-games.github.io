@@ -157,6 +157,43 @@ a:hover {
 	width: 15%;
 	padding-right: 2%;
 }
+.whole-width-card {
+	background-color: grey;
+	border-radius: 0.5em;
+	width: 96%;
+	padding: 2%;
+	margin: 2%;
+	margin-left: 0px;
+	/*padding-left: 0px;*/
+	font-size: 0.8em;
+	/*float: left;*/
+	outline: 0em solid grey;
+	box-shadow: 0.5em 0.5em 2em black;
+}
+.whole-width-card.active:hover {
+	cursor: pointer;
+	outline: 0.2em solid grey;
+}
+.whole-width-card h4 {
+	font-size: 1.3em;
+	margin-top: 0px;
+	/*margin-bottom: 0.5em;*/
+}
+.whole-width-card img {
+	width: 40%;
+	float: right;
+	border-radius: 0.2em;
+}
+.whole-width-card img.cardIcon {
+	float: right;
+	width: 5%;
+	border-radius: 100%;
+}
+.whole-width-card i {
+	float: left;
+	width: 5%;
+	border-radius: 100%;
+}
 .card {
 	background-color: grey;
 	border-radius: 0.5em;
@@ -169,7 +206,7 @@ a:hover {
 	outline: 0em solid grey;
 	box-shadow: 0.5em 0.5em 2em black;
 }
-.card:hover {
+.card.active:hover {
 	cursor: pointer;
 	outline: 0.2em solid grey;
 }
@@ -204,7 +241,7 @@ a:hover {
 	outline: 0em solid grey;
 	box-shadow: 0.5em 0.5em 2em black;
 }
-.small-card:hover {
+.small-card.active:hover {
 	cursor: pointer;
 	outline: 0.2em solid grey;
 }
@@ -237,7 +274,7 @@ a:hover {
 	outline: 0em solid grey;
 	box-shadow: 0.5em 0.5em 2em black;
 }
-.smaller-card:hover {
+.smaller-card.active:hover {
 	cursor: pointer;
 	outline: 0.2em solid grey;
 }
@@ -411,12 +448,12 @@ h6 {
 	background-color: rgba(0, 0, 0, 0.3);
 }
 .URLbuttonText {
-	color: white;
+	opacity: 1;
 	text-decoration: none;
-	transition: 0.3s;
+	transition: opacity 0.3s;
 }
 .URLbuttonText:hover {
-	color: rgb(170, 170, 170);
+	opacity: 0.66;
 	text-decoration: none;
 }
 .pad {
@@ -441,7 +478,7 @@ small {
 	top: 2%;
 	position: fixed;
 	width: calc(3% + 6em);
-	left: 2.5%;
+	left: calc(27% - ((3% + 6em) * 1.5));
 	min-height: 100%;
 	z-index: 10;
 	background-color: rgba(0, 0, 0, 0);
@@ -651,7 +688,7 @@ hide {
 }
 #tooltip {
 	position: fixed;
-	font-family: "Inter", "Montserrat", sans-serif;
+	font-family: "Kumbh Sans", "Montserrat", sans-serif;
 	background: rgba(0, 0, 0, 0.8);
 	border-radius: 0.2em;
 	padding: 0.2em 0.2em;

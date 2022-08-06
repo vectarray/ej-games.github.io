@@ -1,14 +1,24 @@
 function CheckFormatting()
 {
+	var sidebar = document.createElement("div");
+	sidebar.classList.add("sidebar");
+	sidebar.id = "sidebar";
+	sidebar.innerHTML = String.raw`
+		<h3 style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${document.getElementById("title").innerHTML.toUpperCase()}</h3>
+		<h4>Links</h4>
+		<a href="${getAbsLocation("index.html")}" class="URLbuttonText">Homepage</a><br>
+		<a href="${getAbsLocation("lockedin.html")}" class="URLbuttonText">Locked In</a><br>
+		<a href="${getAbsLocation("changelog.html")}" class="URLbuttonText">Changelog</a><br>
+		<a href="${getAbsLocation("tutorials.html")}" class="URLbuttonText">Tutorials</a><br>
+		<a href="${getAbsLocation("blog/index.html")}" class="URLbuttonText">Blog</a><br>
+		<a href="${getAbsLocation("music.html")}" class="URLbuttonText">Music</a>`
+
+	document.body.insertBefore(sidebar, document.getElementById("title"));
+
 	// window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 	// Script initialisation
 	var newScript = document.createElement("script");
-	if((window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) && window.location.href.indexOf("127.0.0.1") < 0) {
-		newScript.src = "https://ejgames.co.uk/colours.jsonp";
-	}
-	else {
-		newScript.src = "colours.jsonp";
-	}
+	newScript.src = getAbsLocation("colours.jsonp")
 	document.body.appendChild(newScript);
 	if(window.location.href.indexOf("tutorials") > -1) {
 		createScript("files/all-words.js");
@@ -85,13 +95,14 @@ function CheckFormatting()
 	newDropdown.onchange = function() {
 		var newColour = newDropdown.options[newDropdown.options.selectedIndex].text.toLowerCase().replace(" ", "");
 		ChangeColours(newColour);
-		createPopup("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "https://ejgames.co.uk/sounds/clickbutton.wav")
-		newDropdown.disabled = true;
+		//CreateNotification("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "https://ejgames.co.uk/sounds/clickbutton.wav")
+		/*newDropdown.disabled = true;
 		setTimeout(function() {
 			newDropdown.disabled = false;
-		}, 1000)
+		}, 1000)*/
 	}
 	ChangeColours(getCookie("colour"));
+	
 	
 	var observer = new IntersectionObserver(function(entries) {
 		if(entries[0].isIntersecting === true) {
@@ -135,11 +146,12 @@ function CheckFormatting()
 }
 
 function getAbsLocation(pathName) {
+	return location.protocol + "//" + location.hostname + ":" + location.port + "/" + pathName;
 	if((window.location.href.indexOf("https://") > -1 || window.location.href.indexOf("http://") > -1) && window.location.href.indexOf("127.0.0.1") < 0) {
-		return "https://" + location.hostname + "/" + pathName
+		return "https://" + location.hostname + "/" + pathName;
 	}
 	else {
-		return location.hostname + "/" + pathName
+		return "http://" + location.hostname + ":" + location.port + "/" + pathName;
 	}
 }
 
@@ -335,7 +347,7 @@ function UpdateColour() {
 			document.getElementsByTagName("html")[0].style.backgroundAttachment = "fixed";
 			//document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
 			document.getElementById("title").style.color = colours[getCookie("colour")].h2;
-			document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
+			//document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
 			document.getElementById("sidebar").style.backgroundColor = "rgba(0, 0, 0, 0)";
 			for(var item of document.getElementsByTagName("h2")) {
 				item.style.color = colours[getCookie("colour")].h2;
@@ -344,14 +356,14 @@ function UpdateColour() {
 			for(var item of document.getElementsByClassName("URLbuttonText")) {
 				item.style.color = colours[getCookie("colour")].body;
 			}
-			for(var item of document.getElementsByClassName("card")) {
-				item.style.backgroundColor = colours[getCookie("colour")].title;
-			}
-			for(var item of document.getElementsByClassName("small-card")) {
-				item.style.backgroundColor = colours[getCookie("colour")].title;
-			}
-			for(var item of document.getElementsByClassName("smaller-card")) {
-				item.style.backgroundColor = colours[getCookie("colour")].title;
+			var changeToTitle = [
+				document.getElementsByClassName("card"), document.getElementsByClassName("whole-width-card"),
+				document.getElementsByClassName("small-card"), document.getElementsByClassName("smaller-card")
+			]
+			for(var item of changeToTitle) {
+				for(var toChange of item) {
+					toChange.style.backgroundColor = colours[getCookie("colour")].title;
+				}
 			}
 			for(var item of document.getElementsByClassName("searchBar")) {
 				item.style.backgroundColor = colours[getCookie("colour")].sidebar;
@@ -361,6 +373,32 @@ function UpdateColour() {
 					searchItem.style.color = colours[getCookie("colour")].body;
 				}
 			}
+			setTimeout(function() {
+				document.getElementsByTagName("html")[0].style.transition = "background 0.5s";
+				for(var item of document.getElementsByTagName("h2")) {
+					item.style.transition = "color 0.5s";
+				}
+				for(var item of document.getElementsByClassName("URLbuttonText")) {
+					item.style.transition = "color 0.5s";
+				}
+				var changeToTitle = [
+					document.getElementsByClassName("card"), document.getElementsByClassName("whole-width-card"),
+					document.getElementsByClassName("small-card"), document.getElementsByClassName("smaller-card")
+				]
+				for(var item of changeToTitle) {
+					for(var toChange of item) {
+						toChange.style.transition = "background-color 0.5s";
+					}
+				}
+				for(var item of document.getElementsByClassName("searchBar")) {
+					item.style.transition = "background-color 0.5s";
+				}
+				for(var item of document.getElementsByClassName("searchItems")) {
+					for(var searchItem of item.getElementsByTagName("a")) {
+						searchItem.style.transition = "color 0.5s";
+					}
+				}
+			}, 500);
 		}
 		catch {
 			setTimeout(UpdateColour, 50)
