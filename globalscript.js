@@ -46,8 +46,8 @@ function CheckFormatting()
 
 
 	// Formatting
-	var userAgent = navigator.userAgent.toLowerCase();
-	//userAgent = "iphone";
+	//var userAgent = navigator.userAgent.toLowerCase();
+	userAgent = "iphone";
 	if (userAgent.indexOf("iphone") != -1 || userAgent.indexOf("android") != -1 || userAgent.indexOf("windows phone") != -1)
 	{
 		setMobile();
@@ -175,11 +175,33 @@ function setMobile() {
 	document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
 	document.getElementById("sidebarbutton").style.display = "block";
 	document.getElementById("sidebar").style.left = "-100%";
-	document.getElementById("sidebar").style.width = "30%";	
+	document.getElementById("sidebar").style.width = "30%";
+
+	var sidebarColour;
+	try {
+		sidebarColour = colours[getCookie("colour")].sidebar;
+		document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
+	}
+	catch {
+		function setSidebar() {
+			try {
+				sidebarColour = colours[getCookie("colour")].sidebar;
+				document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
+			}
+			catch {
+				setTimeout(setSidebar, 100);
+				console.log("failed - trying again.");
+			}
+		}
+		setTimeout(setSidebar, 100);
+		console.log("Trying for the first time.");
+	}
+
+
 	for(var i = 0; i < document.getElementById("sidebar").getElementsByTagName("a").length; i++) {
 		document.getElementById("sidebar").getElementsByTagName("a")[i].classList.add("bigger");
 	}
-	document.body.style.fontSize = "1.5em";
+	document.body.style.fontSize = String.raw`calc(${document.body.style.fontSize} + 1.5em)`;
 }
 
 function createScript(url) {
