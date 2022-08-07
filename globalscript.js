@@ -190,11 +190,9 @@ function setMobile() {
 			}
 			catch {
 				setTimeout(setSidebar, 100);
-				console.log("failed - trying again.");
 			}
 		}
 		setTimeout(setSidebar, 100);
-		console.log("Trying for the first time.");
 	}
 
 
