@@ -46,8 +46,8 @@ function CheckFormatting()
 
 
 	// Formatting
-	//var userAgent = navigator.userAgent.toLowerCase();
-	userAgent = "iphone";
+	var userAgent = navigator.userAgent.toLowerCase();
+	//userAgent = "iphone";
 	if (userAgent.indexOf("iphone") != -1 || userAgent.indexOf("android") != -1 || userAgent.indexOf("windows phone") != -1)
 	{
 		setMobile();
