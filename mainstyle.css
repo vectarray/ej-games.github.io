@@ -104,6 +104,7 @@ select:hover {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
+	visibility: hidden;
 }
 .bar {
 	text-align: center;
@@ -310,6 +311,37 @@ input {
 	background-color: rgb(12, 20, 37);
 	border: none;
 	color:rgb(255, 255, 255);
+}
+.popup-text {
+	animation: popup-text 1s linear;
+	-webkit-animation: popup-text 1s linear;
+	position: relative;
+}
+@keyframes popup-text {
+	0% {
+		transform: translateY(-30px);
+		opacity: 0;
+	}
+	50% {
+		opacity: 100;
+	}
+	100% {
+		transform: translateY(30px);
+		opacity: 0;
+	}
+}
+@-webkit-keyframes popup-text {
+	0% {
+		-webkit-transform: translateY(-30px);
+		opacity: 0;
+	}
+	50% {
+		opacity: 100;
+	}
+	100% {
+		-webkit-transform: translateY(30px);
+		opacity: 0;
+	}
 }
 .searchItems {
 	list-style-type: none;

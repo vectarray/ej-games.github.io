@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Template page</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<style>
+        #letters-input {
+            font-size: 2em;
+            font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
+            font-weight: 600;
+            background-color: rgb(12, 20, 37);
+            border: none;
+            color:rgb(255, 255, 255);
+            margin: auto;
+            width: 25%;
+            display: block;
+            text-align: center;
+        }
+        input {
+            font-size: 2em;
+            font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
+            font-weight: 600;
+            background-color: rgb(12, 20, 37);
+            border: none;
+            color:rgb(255, 255, 255);
+            width: 100%;
+        }
+        .slider {
+            height: 0.8em;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 0.1em;
+        }
+        .slider::-moz-range-thumb {
+            background:rgb(25, 49, 100);
+            height: 0.8em;
+            width: 5em;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background:rgb(25, 49, 100);
+            height: 0.8em;
+            opacity: 100;
+            border-radius: 0.1em;
+            width: 5em;
+        }
+        #num-letters-input::-moz-range-thumb {
+            width: 33.33%;
+        }
+        #num-letters-input::-webkit-slider-thumb {
+            width: 33.33%;
+        }
+        #size-input::-moz-range-thumb {
+            width: 20%;
+        }
+        #size-input::-webkit-slider-thumb {
+            width: 20%;
+        }
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+    <script src="/suitable-words.jsonp"></script>
+	<script>
+        var isMobile = false;
+
+        var properNouns = [];
+
+        var points = "0";
+
+        var numberOfLetters = 0
+        var numberOfWords = 0
+
+        var words = []
+        var possibleWords = []
+
+        var correctString = "";
+
+        var attemptsLeft = 3;
+
+        var creatingWords = false;
+
+
+
+        function update() {
+            document.getElementById("points-display").innerHTML = points + " points";
+            if(creatingWords) {
+                document.getElementById("game-heading").innerHTML = "Game (loading)";
+            }
+            else {
+                document.getElementById("game-heading").innerHTML = "Game";
+            }
+        }
+
+        function resetWords() {
+            creatingWords = true;
+            document.getElementById("letters-input").disabled = "disabled";
+            attemptsLeft = 3;
+            points = getCookie("points");
+            createWords();
+            function createWords() {
+                for(var j = 0; j < 3; j++) {
+                    for(var item of document.getElementsByClassName("word-display")) {
+                        document.getElementById("words").removeChild(item);
+                    }
+                }
+                var wordsList = []
+                for(var item of suitableWords.words) {
+                    wordsList.push(item);
+                }
+
+                numberOfLetters = document.getElementById("num-letters-input").value;
+                numberOfWords = document.getElementById("size-input").value;
+
+                document.getElementById("letters-input").maxLength = numberOfLetters;
+
+                var unusedWords = Array.from(wordsList);
+                var referenceWord = wordsList[randInt(0, wordsList.length - 1)];
+                var randomStartIndex = randInt(0, referenceWord.length - numberOfLetters); // Must be at least [letters] away from the end
+
+                unusedWords.splice(unusedWords.indexOf(referenceWord), 1);
+
+                //console.log("----");
+                //console.log("----");
+                //console.log(referenceWord);
+                //console.log(randomStartIndex);
+
+                var possibleOtherWords = [];
+
+                for(var item of unusedWords) {
+                    if(item.indexOf(referenceWord.substring(randomStartIndex, randomStartIndex + numberOfLetters)) > -1) {
+                        possibleOtherWords.push(item);
+                    }
+                }
+
+                //console.log(referenceWord.substr(randomStartIndex, numberOfLetters));
+                correctString = referenceWord.substr(randomStartIndex, numberOfLetters);
+                //console.log(possibleOtherWords);
+
+                possibleWords = Array.from(possibleOtherWords);
+                checkForWords();
+            }
+
+            function checkForWords() {
+                if(possibleWords.length < numberOfWords) {
+                    setTimeout(createWords, 100);
+                }
+                else {
+                    createWordElements();
+                    document.getElementById("letters-input").removeAttribute("disabled");
+                    creatingWords = false;
+                }
+            }
+            
+        }
+
+        function createWordElements() {
+            // Create list elements
+            var elementsToAdd = []
+            for(var i = 0; i < document.getElementById("size-input").value; i++) {
+                var newWordDisplay = document.createElement("li");
+                newWordDisplay.classList.add("word-display");
+                newWordDisplay.id = "word-display-" + i.toString();
+                
+
+                newWordDisplay.innerHTML = String.raw`<h3>${possibleWords[i].replace(new RegExp(correctString, "g"), multiplyString("-", numberOfLetters)).toUpperCase()}</h3>`;
+                elementsToAdd.push(newWordDisplay);
+            }
+            for(var item of elementsToAdd) {
+                document.getElementById("words").append(item);
+            }
+        }
+
+        function onLoad() {
+            setInterval(update, 20);
+            if(getCookie("points") == "") {
+                setCookie("points", "0", 730);
+            }
+            points = getCookie("points");
+
+            // Set mobile
+            if (navigator.userAgent.indexOf("iphone") != -1 || navigator.userAgent.indexOf("android") != -1 || navigator.userAgent.indexOf("windows phone") != -1)
+            {
+                isMobile = true;
+            }
+
+            // Show instructions
+            if(getCookie("playedWordGame") == "" || getCookie("playedWordGame") == "false") {
+                createConfirm("How to play", String.raw`You will get 3 words that are all missing at least one letter.
+                <br><br>For example, the first word could be
+                <br><b>fa_l</b>
+                <br>The answer is "fail", which is missing an 'i'.
+                <br><br>The second word could be
+                <br><b>s_gn</b>
+                <br>which is also missing an 'i'.
+                <br><br>The three words will all fall into the same category, like fruit, colour, animal etc.
+                <br><br>Your aim is to find the letter(s) that fill in all of the blanks.
+                <br><br><i>Note: I have tried to remove all of the useless words, like proper nouns and obsure plants, but some will still remain.</i>`, null, "OK, don't show me again.", function() {
+                    setCookie("playedWordGame", "true", 730);
+                    hideConfirm();
+                });
+            }
+
+            // Mobile formatting
+            if(isMobile) {
+                document.getElementById("letters-input").style.fontSize = "5em";
+            }
+
+            if(getCookie("wordGameWordCount") != "") {
+                setCookie("wordGameWordCount", "4", )
+            }
+
+
+            document.getElementById("size-display").innerHTML = document.getElementById("size-input").value;
+            document.getElementById("num-letters-display").innerHTML = document.getElementById("num-letters-input").value;
+            // Load words
+            resetWords();
+        }
+
+        function changeWordNumber() {
+            document.getElementById("size-display").innerHTML = document.getElementById("size-input").value;
+
+            // Get suitable words
+            resetWords();
+            
+        }
+
+        function changeLetterNumber() {
+            document.getElementById("num-letters-display").innerHTML = document.getElementById("num-letters-input").value;
+
+            document.getElementById("letters-input").maxLength = document.getElementById("num-letters-input").value;
+            resetWords();
+        }
+
+        function inputChanged() {
+            //console.log("Hello");
+            var input = document.getElementById("letters-input");
+            var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+            input.value = input.value.toUpperCase();
+
+            for(var char of input.value) {
+                if(alphabet.indexOf(char.toLowerCase()) < 0) {
+                    input.value = input.value.replace(char, "");
+                }
+            }
+
+            //createWordElements();
+
+
+            if(possibleWords.length < numberOfWords) { return; }
+            //console.log(numberOfWords);
+            for(var i = 0; i < numberOfWords; i++) {
+                var currentListItem = document.getElementById("word-display-" + i.toString());
+
+                var currentHiddenWord = possibleWords[i].replace(new RegExp(correctString, "g"), multiplyString("-", numberOfLetters));
+
+                //console.log(currentHiddenWord);
+
+                //console.log(currentListItem.innerText);
+
+
+                var inputValue = input.value.toLowerCase();
+
+                currentListItem.innerHTML = "<h3>" + currentHiddenWord.toUpperCase() + "</h3>";
+
+                for(var j = 0; j < inputValue.length; j++) {
+                    //console.log("changing " + j.toString() + " to " + inputValue.substr(j, 1));
+                    currentListItem.innerHTML = "<h3>" + currentListItem.innerText.replace("-", inputValue.substr(j, 1)).toUpperCase() + "</h3>";
+                }
+                //break;
+            }
+
+            if(input.value.toLowerCase() == correctString.toLowerCase()) {
+                var pointsToAdd = attemptsLeft;
+            
+                pointsToAdd *= Math.pow(0.6, numberOfWords);
+                pointsToAdd *= Math.pow(1.7, numberOfLetters);
+
+                pointsToAdd = Math.round(pointsToAdd);
+
+                points = (Number(points) + pointsToAdd).toString();
+                setCookie("points", points, 730);
+                createPopupText("+" + attemptsLeft.toString() + " points", document.getElementById("points-display"));
+                createConfirm("Correct!", "You have won this round, earning <b class='bigger'>" + pointsToAdd.toString() + "</b> point(s)! Click the button to play again.",
+                        "/sounds/complete.wav", "Play again!", function() {
+                    hideConfirm();
+                    resetWords();
+                    input.value = "";
+                });
+            }
+            else if(input.value.length == numberOfLetters && input.value.toLowerCase() != correctString.toLowerCase()) {
+                attemptsLeft -= 1;
+                CreateNotification("Incorrect", String.raw`You have ${attemptsLeft} attempts left.`, 4, "/sounds/bad.wav", "#fc464c", "#b53438");
+
+                if(attemptsLeft <= 0) {
+                    input.value = "";
+                    var toShow = String.raw`You used up all of your attempts. The correct answer was "<b>${correctString.toUpperCase()}</b>".<br>`;
+                    for(var hiddenIndex = 0; hiddenIndex < numberOfWords; hiddenIndex++) {
+                        var currentHiddenWord = possibleWords[hiddenIndex].replace(new RegExp(correctString, "g"), multiplyString("-", numberOfLetters));
+                        for(var replaceIndex = 0; replaceIndex < correctString.length; replaceIndex++) {
+                            currentHiddenWord = currentHiddenWord.replace("-", correctString.substr(replaceIndex, 1));
+                        }
+                        toShow += "<br>" + currentHiddenWord;
+                    }
+                    resetWords();
+                    createPopup("Failed!", toShow, "/sounds/error.wav");
+                }
+            } 
+        }
+	</script>
+	<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+
+</head>
+
+<body onload="CheckFormatting(); onLoad();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <!--
+        What theme is this page? (e.g. games, tutorials, music)
+    -->
+	<div id="title">games</div>
+
+	<h2>Word Game</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph">
+        <h3>Settings</h3>
+        <b>Number of words: <span id="size-display">5</span></b>
+        <input type="range" min="2" max="6" id="size-input" class="slider" oninput="changeWordNumber()">
+        <br><br>
+        <b>Number of letters: <span id="num-letters-display">3</span></b>
+        <input type="range" min="2" max="4" id="num-letters-input" class="slider" oninput="changeLetterNumber()">
+        <div class="smallSpace"></div><div class="line"></div>
+
+        <h3 id="game-heading">Game</h3>
+        <input type="text" id="letters-input" maxlength="4" oninput="inputChanged()">
+        <div style="float:right; "><h5 id="points-display">0 points</h5></div>
+        <ul id="words">
+        </ul>
+	</div>
+	<div class="smallSpace"></div>
+
+</html>

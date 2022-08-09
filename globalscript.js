@@ -460,6 +460,17 @@ function hyperlink(url) {
 	window.open(url);
 }
 
+function createPopupText(text, elementFor) {
+	var newText = document.createElement("span");
+	newText.classList.add("popup-text");
+	newText.innerHTML = text;
+	elementFor.appendChild(newText);
+}
+
+function createPopupTextAtPos(text, position) {
+
+}
+
 function CreateNotification(heading, body, showTime, soundToPlay, colour, borderColour) {
 	var notification = document.createElement("div");
 	var bodyText = document.createElement("div");
@@ -598,6 +609,20 @@ function MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed) {
 	}
 	document.getElementById(buttonId).innerHTML = textWhenClosed;
 }
+
+function randInt(min, max)
+{
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function multiplyString(str, times) {
+	var toReturn = "";
+	for(var i = 0; i < times; i++) {
+		toReturn += str;
+	}
+	return toReturn;
+}
+
 function getCookie(cname) {
 	let name = cname + "=";
 	let decodedCookie = "";
@@ -628,6 +653,28 @@ function setCookie(cname, cvalue, exdays) {
 	}
 	else {
 		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+}
+function setLocalCookie(cname, cvalue, exdays) {
+	const d = new Date();
+	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	let expires = "expires="+ d.toUTCString();
+	if(window.location.href.indexOf("file:///") > -1) {
+		document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+	else {
+		document.cookie = cname + "=" + cvalue + ";" + expires;
+	}
+}
+function setCookieWithPath(cname, cvalue, exdays, path) {
+	const d = new Date();
+	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	let expires = "expires="+ d.toUTCString();
+	if(window.location.href.indexOf("file:///") > -1) {
+		document.getElementById("cookie").innerHTML = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+	else {
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=" + path;
 	}
 }
 function sound(src)
