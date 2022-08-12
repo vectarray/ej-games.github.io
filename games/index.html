@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Games - Home</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<style>
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+	<script>
+	</script>
+	<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+
+</head>
+
+<body onload="CheckFormatting()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <!--
+        What theme is this page? (e.g. games, tutorials, music)
+    -->
+	<div id="title">games</div>
+
+	<h2>Games Home</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph bigger">
+		We (being me, by myself) are making web games! Just brainstorming some ideas, thought, "Oh, most of our games are PC only. If only there were some all-platform games we could make.", and then made a web game.
+
+		<div class="cards">
+			<div class="moveInRight active card" onclick="hyperlink('/games/word-game.html')">
+				<h4>Word Game</h4>
+				Still under development. Contains many, many bugs, but you can still play it and give us feedback. Disclaimer: only verbal feedback is supported.
+				<br>
+				<br>In the hit new "Word Game", you are given a few words with 2-4 missing letters. Your job is to guess the letters that are missing from all of them.
+				<br>E.g.
+				<br><br><b>F--H</b>
+				<br><b>EP--ODE</b>
+				<br><b>R--E</b>
+				<br><br>The answer is "IS" (F<b>IS</b>H, EP<b>IS</b>ODE, R<b>IS</b>E)
+			</div>
+		</div>
+	</div>
+	<div class="smallSpace"></div>
+
+</html>

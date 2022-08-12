@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Template page</title>
+	<title>Word Game</title>
 	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
 	<link rel="stylesheet" href="/mainstyle.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +10,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 		rel="stylesheet">
+        <link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
 	<style>
         #letters-input {
             font-size: 2em;
@@ -200,7 +201,7 @@
                 <br><br>The second word could be
                 <br><b>s_gn</b>
                 <br>which is also missing an 'i'.
-                <br><br>The three words will all fall into the same category, like fruit, colour, animal etc.
+                <br><br>The three words will always be nouns - this will mean there will probably be only one option.
                 <br><br>Your aim is to find the letter(s) that fill in all of the blanks.
                 <br><br><i>Note: I have tried to remove all of the useless words, like proper nouns and obsure plants, but some will still remain.</i>`, null, "OK, don't show me again.", function() {
                     setCookie("playedWordGame", "true", 730);
@@ -286,6 +287,8 @@
 
                 pointsToAdd = Math.round(pointsToAdd);
 
+                if(pointsToAdd > 1) { pointsToAdd = 1; }
+
                 points = (Number(points) + pointsToAdd).toString();
                 setCookie("points", points, 730);
                 createPopupText("+" + attemptsLeft.toString() + " points", document.getElementById("points-display"));
@@ -316,7 +319,6 @@
             } 
         }
 	</script>
-	<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
 
 </head>
 
@@ -349,5 +351,6 @@
         </ul>
 	</div>
 	<div class="smallSpace"></div>
+</body>
 
 </html>

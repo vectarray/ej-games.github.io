@@ -11,7 +11,8 @@ function CheckFormatting()
 		<a href="${getAbsLocation("changelog.html")}" class="URLbuttonText">Changelog</a><br>
 		<a href="${getAbsLocation("tutorials.html")}" class="URLbuttonText">Tutorials</a><br>
 		<a href="${getAbsLocation("blog/index.html")}" class="URLbuttonText">Blog</a><br>
-		<a href="${getAbsLocation("music.html")}" class="URLbuttonText">Music</a>`
+		<a href="${getAbsLocation("music.html")}" class="URLbuttonText">Music</a><br>
+		<a href="${getAbsLocation("games/index.html")}" class="URLbuttonText">Games <green>(NEW)</green></a>`
 
 	document.body.insertBefore(sidebar, document.getElementById("title"));
 

@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="mainstyle.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="icon" href="https://ejgames.co.uk/Plain Zombie.png" type="image/x-icon">
+		<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
 		<link
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 			rel="stylesheet">
@@ -56,14 +56,15 @@
 				var divs = cards.getElementsByTagName("div");
 				for(var div of divs) {
 					if(div.getElementsByTagName("h4").length < 1) continue;
-					if(div.getElementsByTagName("h4")[0].innerHTML.toUpperCase().indexOf(filter) > -1) {
+					//console.log(div.getElementsByTagName("h4")[0].innerHTML);
+					if(div.innerHTML.toUpperCase().indexOf(filter) > -1) {
 						div.style.display = "";
 					}
 					else {
 						div.style.display = "none";
 					}
 				}
-				if(filter.length > 1) {
+				/*if(filter.length > 1) {
 					var suggestionFound = false;
 					for(var item of words) {
 						if(item.toUpperCase().startsWith(filter) && ul.innerHTML.toUpperCase().indexOf(filter) > -1) {
@@ -76,7 +77,7 @@
 							suggestionFound = true;
 						}
 					}
-				}
+				}*/
 			}
 		</script>
 
@@ -116,26 +117,24 @@
 	</ul>
 	</h5>-->
 	<h4 class="moveIn">Tutorials</h4>
-	<div class="cards">
-		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+	<div class="cards" id="cards">
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
 			<h4>Basics: Intro</h4>
 			The first instalment in the C# basics course. Learn about functions, variables, datatypes and how C# works.
 		</div>
-	</div>
-	<div class="cards">
-		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-constructors.html')" onmousewheel="">
 			<h4>Classes: Constructors</h4>
 			Constructors are used to create instances of classes. Click to learn more about them in C#.
 		</div>
-		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-inheritance.html')" onmousewheel="">
 			<h4>Classes: Inheritance</h4>
 			In C#, classes can 'inherit' from parent classes, inheriting their variables, functions, and some other fun stuff!
 		</div>
-		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-return.html')" onmousewheel="">
 			<h4>Functions: returning</h4>
 			Not all functions are just for running code! They can be used to retrieve data, and quickly return values.
 		</div>
-		<div class="moveIn smaller-card" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-forforeach	.html')" onmousewheel="">
 			<h4>For vs Foreach loops</h4>
 			It's a controversial topic. Should you use a numerical <span class="code">for</span> loop, or a quicker <span class="code">foreach</span>? Here are the pros and cons.
 		</div>
