@@ -104,7 +104,7 @@
             creatingWords = true;
             document.getElementById("letters-input").disabled = "disabled";
             attemptsLeft = 3;
-            points = getCookie("points");
+            points = getCookie("wordGamePoints");
             createWords();
             function createWords() {
                 for(var j = 0; j < 3; j++) {
@@ -181,10 +181,10 @@
 
         function onLoad() {
             setInterval(update, 20);
-            if(getCookie("points") == "") {
-                setCookie("points", "0", 730);
+            if(getCookie("wordGamePoints") == "") {
+                setCookie("wordGamePoints", "0", 730);
             }
-            points = getCookie("points");
+            points = getCookie("wordGamePoints");
 
             // Set mobile
             if (navigator.userAgent.indexOf("iphone") != -1 || navigator.userAgent.indexOf("android") != -1 || navigator.userAgent.indexOf("windows phone") != -1)
@@ -290,7 +290,7 @@
                 if(pointsToAdd > 1) { pointsToAdd = 1; }
 
                 points = (Number(points) + pointsToAdd).toString();
-                setCookie("points", points, 730);
+                setCookie("wordGamePoints", points, 730);
                 createPopupText("+" + attemptsLeft.toString() + " points", document.getElementById("points-display"));
                 createConfirm("Correct!", "You have won this round, earning <b class='bigger'>" + pointsToAdd.toString() + "</b> point(s)! Click the button to play again.",
                         "/sounds/complete.wav", "Play again!", function() {

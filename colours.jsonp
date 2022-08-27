@@ -1,7 +1,7 @@
 colours = {
     "dark": {
         "background": "#101e33",
-        "title": "#141c51",
+        "title": "#0a2343",
         "sidebar": "#0e1626",
         "h2": "#ffffff",
         "body": "#ffffff",

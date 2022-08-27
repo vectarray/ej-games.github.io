@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>C# Type Arguments</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>Type Arguments</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a C# (with references to Unity) tutorial about <b>type arguments</b>. This means that it will be able to be followed in vanilla C#, but will also contain context for Unity users.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Ahem - what?</h4>
+		Ahahaha, very funny. Stick together a bunch of foreign-sounding words to sound clever.
+		<br>That's not what I'm doing, really! I understand it, at least!
+		<br><br>You have no doubt encountered type arguments on your C# journey, whether it be:
+		<br><br>
+		<span class="code">List&lt;T&gt;</span>
+
+		<div class="imageDescription">Wow! A list! What are they?</div>
+
+		<br>
+		<span class="code">GetComponent&lt;T&gt;</span>
+		<div class="imageDescription">Only Unity users will understand! 😂</div>
+
+		<br>
+		<span class="code">mod.ProjectileType&lt;T&gt;</span>
+		<div class="imageDescription">A little snippet from my tModLoader days</div>
+
+		<br><br>And you have no doubt noticed by now that they are the <b>T</b>s in the &lt; and &gt; signs.
+
+		<div class="smallSpace"></div><div class="line"></div>
+
+
+		<h4>What are Types?</h4>
+		Stupid question, isn't it? Actually, not as much as you think.
+		<br>Types are not just your regular <code>int</code>s or <code>string</code>s, or even your custom classes like, for example, <code>Weapon</code>. They are their own special class that has a variant for every other class you make.
+		<br><br>That's some bad explaining. Here's an example of just a weapon class with just one field, and a constructor (tutorial <a href="csharp-constructors.html">here</a>):
+<pre>
+<div class="code">public class Weapon
+{
+	public int damage;
+
+
+	public Weapon(int damage)
+	{
+		this.damage = damage;
+	}
+}
+</div>
+</pre>
+		The class is called Weapon, so you could do
+		<br><br><code>Weapon ak47 = new Weapon(10);</code>
+		to make a weapon that does 10 damage. If you had actually been bothered to make it deal damage.
+		<br><br>But, if you wanted to get the actual <i>Type</i>, for whatever reason, you wouldn't be able to just do something like <code>var weaponType = Weapon;</code> because that (for some reason) doesn't work.
+		<br><br>Instead, you would do either:
+		<br><code>var weaponType = typeof(Weapon);</code>
+		<br>or
+		<br><code>var weaponType = Weapon.GetType();</code>
+		Which will return a <code>Type</code> class, not a <code>Weapon</code> class.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+
+
+		<h4>How do you use Type Arguments?</h4>
+		Glad you asked! You didn't really, did you? Whatever.
+		<br>You use them just as I did: put the Type (<span class="code">T</span>) in the &lt; and &gt;.
+
+		<br><br>In this section of the tutorial, I will just show you how to use them! If you already know how to use them (ahem, Unity users?) then you can just go on ahead to the
+		section below on <b>how to make methods with type arguments</b>.
+		<br>But, if you don't have any idea how to use a type argument (or just want some more explanation), then keep reading!
+
+		<br><br>Take the Unity example above: <span class="code">GetComponent&lt;T&gt;</span> - you would usually use it like this, where <code>AudioSource</code> is the type:
+		<pre>
+<div class="code">void Start()
+{
+	AudioSource loadIn = player.GetComponent<red>&lt;</red>AudioSource<red>&gt;</red>;
+	loadIn.Play();
+}
+</div></pre>
+
+		Simple enough, isn't it? Just put your type in the triangular brackets.
+		<br><i>Just saying, there is an alternative, and it isn't pretty:</i>
+		<pre>
+<div class="code">AudioSource loadIn = player.GetComponent(typeof(AudioSource)) as AudioSource;
+</div></pre>
+		That's just a pain.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+
+
+		<h4>How do you <i>make</i> a type argument?</h4>
+		Did you skip the above, or read it because you didn't know? Leave a comment in the comment section down below. (Poetry Corner)
+		<br><br>Poetry aside, I will now tell you, step by step, how to make a type argument, and what <i>not</i> to do.
+
+		<div class="smallSpace"></div>
+
+		<h5>Step 1 - Make your function</h5>
+		This part is simple: just make a function. Or "method", or whatever. Here's an example, and I'll make it as multi-purpose as possible so you can copy and paste to your needs.
+
+<pre>
+<div class="code">public class Lettuce
+{
+	public void TransmutateLettuce()
+	{
+		
+	}
+}
+</div></pre>
+
+		Now that you've got your lettuce transmutator, we can move on to the next step:
+
+		<div class="smallSpace"></div>
+		
+		<h5>Step 2 - Add triangular brackets</h5>
+		We've done it before above, but this time, we'll actually be adding the T in ourselves!
+
+<pre>
+<div class="code">public void TransmutateLettuce<green>&lt;T&gt;</green>()
+{
+
+}
+</div></pre>
+		Now, the <code>T</code> can be used just like any other variable - it effectively is a variable, but with a set datatype of <code>Type</code>.
+
+		<div class="smallSpace"></div>
+
+		<h5>Step 3 - Add your base type</h5>
+		What does that mean, then? It means we need to put in something to make sure that all of our <code>T</code> arguments <a href="csharp-inheritance.html" class="hover"><hide>View tutorial</hide>inherit</a>
+		from a specific class. We don't want to have lettuce transmutating into a string or something.
+		<br>So, assuming we have some other classes like <code>BabyGem</code> or <code>Iceberg</code> (inheriting from Lettuce):
+
+<pre>
+<div class="code">public void TransmutateLettuce&lt;T&gt;()<green> where T : Lettuce</green>
+{
+
+}
+</div></pre>
+		In English, this function says
+		<br>"Transmutate the lettuce into THIS (T) type, where T must be some sort of lettuce."
+
+		<div class="smallSpace"></div>
+
+		<h5>Step 4 - Do the actual function</h5>
+		I have no idea how to transmutate a lettuce in C#, so I'll just give you some examples of how to use your new Type argument.
+<pre>
+<div class="code">public void TransmutateLettuce&lt;T&gt;() where T : Lettuce
+{
+	// Create a new class with the Type argument:
+	var newClass = new T();
+
+	// Make a variable with the Type argument:
+	T myVariable = ...;
+
+	// You can't perform any functions on the Type argument, because it's a Type, not an instance of the class.
+	// (I believe) you can call static methods, assuming the base class has static methods:
+	T.InitialiseLettuce();
+}
+</div></pre>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		I apologise if there are too many foreign words that I have slapped together.
+		<br>You can hopefully look them up, but if you still don't understand, then do NOT go on Stack Overflow, because they'll start shouting more
+		foreign words at you, like "Singleton" and "Deserialise" for no reason.
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

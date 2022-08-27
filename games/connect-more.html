@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Connect More</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+        <link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+	<style>
+        #top-bar {
+            text-align: center;
+        }
+        #top-bar button {
+            padding: 0px 1em 0px 1em;
+            font-size: 1.2em;
+        }
+        #game-content {
+            width: 25em;
+            height: 25em;
+            max-height: 75vh;
+            max-width: 75vh;
+            margin: auto;
+            background-color: #0e352e;
+            display: flexbox;
+        }
+        #game-content .square {
+            float: left;
+            margin: 1.0555555555%;
+            width: 9%;
+            height: 9%;
+        }
+        #game-content .square.occupied {
+            background-color: #14453d;
+        }
+        #game-content .square.occupied.home-square {
+            background-color: #3d7068;
+        }
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+    <script src="/suitable-words.jsonp"></script>
+    <script src="/colours.jsonp"></script>
+    <script src="scripts/connect-more-script.js"></script>
+	<script>
+        
+	</script>
+
+</head>
+
+<body onload="CheckFormatting(); onLoad();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <!--
+        What theme is this page? (e.g. games, tutorials, music)
+    -->
+	<div id="title">games</div>
+
+	<h2>Connect More</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph">
+
+        <div id="top-bar">
+            <button onclick="openGame()" class="buttonURL">Game</button>
+            <button onclick="openPatterns()" class="buttonURL">Patterns</button>
+        </div>
+        
+        <div id="patterns" hidden>
+            <h4>Patterns</h4>
+        </div>
+
+        
+	</div>
+    <div id="game">
+        <h4 id="game-heading">Game</h4>
+        <h4 style="font-size: 1.5em;"><button onclick="this.remove(); document.getElementById('game-content').removeAttribute('hidden')">Open Game</button></h4>
+        <div id="game-content" hidden>
+
+        </div>
+    </div>
+	<div class="smallSpace"></div>
+</body>
+
+</html>
