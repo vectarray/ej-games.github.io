@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>C# -> Python</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>C# -> Python</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a tutorial that is designed to help you migrate from C# to Python, or just find out the differences.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Intro</h4>
+
+
+		C# and Python are wildly different programming (and scripting!) languages. Not just in how they are actually run, but also how they are formatted.
+		<br><br>I'm sorry, but if you thought this migration would be as easy as going from Java to C#, then you might be wrong. Python was made for speed, not
+		for ease of use. Which is why "<code>def</code>" is used for functions, rather than the return type.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Overall Thingies</h4>
+
+
+		Unlike C#, in Python, you barely use any curly brackets. Any "body" of a statement or function is declared by an indent.
+		<br>Here's a function in C#, compared to a function in Python:
+<pre><code class="language-csharp" style="float: left; width: 45%;">public void ThisIsLovely()
+{
+	Console.WriteLine("Hello!");
+}
+</code></pre>
+<pre><code class="language-python" style="float: right; width: 45%;">def this_is_lovely():
+	print("Hello!")
+
+
+</code></pre>
+		<div class="clear"></div>
+		<br>
+		Python is also run <b>from top to bottom</b>. This is a small thing but very important to know, because it means that you can't invoke functions that are declared
+		below.
+		<br><br>Here are some commonly-used methods in C# and their equivalents in Python:
+		<table>
+			<thead>
+				<tr><td><b>C#</b></td><td><b>Python</b></td></tr>
+			</thead>
+			<tbody>
+				<tr><td><code>Console.WriteLine("Hi");</code></td><td><code>print("Hi")</code></td></tr>
+				<tr><td><code>Console.Read();</code></td><td><code>input()</code></td></tr>
+				<tr><td><code>Thread.Sleep(1000);</code> (Requires <code>using System.Threading;</code>)</td><td><code>time.sleep(1)</code> (Requires <code>import time</code>)</td></tr>
+			</tbody>
+		</table>
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Variables and Datatypes</h4>
+
+
+		Python is weak-typed (variables don't have a set type)! Good in some ways, bad in others, in my opinion.
+		<br>In Python, you <b>can</b> do this:
+<pre><code class="language-python">lovely_variable = 4
+lovely_variable = "x"
+</code></pre>
+
+		<br>And, from my experience of other peoples' Python code, the naming convention is snake_case, like <code>john_gold</code> and <code>is_your_name_joseph</code> or something like that.
+		<br><br>Variables are just declared by putting the variable name and then the value, with no "var" or datatype or anything like that.
+		<br><br>Here is a list of some datatypes in C# and their equivalents in Python:
+		<table>
+			<thead>
+				<tr><td><b>C#</b></td><td><b>Python</b></td></tr>
+			</thead>
+			<tbody>
+				<tr><td><code>string</code></td><td><code>str</code></td></tr>
+				<tr><td><code>int</code></td><td><code>int</code> (same)</td></tr>
+				<tr><td><code>float</code></td><td><code>float</code> (same)</td></tr>
+				<tr><td><code>object</code></td><td><code>any</code> (pretty much)</td></tr>
+				<tr><td><code>List&lt;T&gt;</code></td><td><code>list</code></td></tr>
+				<tr><td><code>something[]</code></td><td><code>list</code></td></tr>
+				<tr><td><code>Dictionary&lt;TKey, TValue&gt;</code></td><td><code>dict</code></td></tr>
+				<tr><td><code>FileStream</code></td><td><code>TextIOWrapper</code></td></tr>
+			</tbody>
+		</table>
+
+
+		<br><br>To cast between datatypes, you simply do the datatype, then put the variable in brackets:
+<pre><code class="language-python">lovely_number = 44
+print(str(lovely_number))
+
+lovely_string_number = "49"
+print(int(lovely_string_number))
+</code></pre>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Comparisons</h4>
+
+
+		<h5>For Loop</h5>
+<pre><code class="language-csharp" style="float: left; width: 45%;">for(int i = 0; i &lt; whatever; i++)
+{
+	Console.WriteLine(i.ToString());
+}
+</code></pre>
+<pre><code class="language-python" style="float: right; width: 45%;">for i in range(whatever):
+	print(str(i))
+
+
+</code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h5>For Loop In Array</h5>
+<pre><code class="language-csharp" style="float: left; width: 45%;">foreach(int number in numbers)
+{
+	Console.WriteLine(number.ToString());
+}
+</code></pre>
+<pre><code class="language-python" style="float: right; width: 45%;">for number in numbers:
+	print(str(number))
+
+
+</code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h5>While Loop</h5>
+<pre><code class="language-csharp" style="float: left; width: 45%;">while(condition)
+{
+	Console.WriteLine("This condition is true");
+}
+</code></pre>
+<pre><code class="language-python" style="float: right; width: 45%;">while condition:
+	print("This condition is true")
+
+
+</code></pre>
+		<div class="clear"></div>
+		
+
+		<h5>If Statement</h5>
+<pre><code class="language-csharp" style="float: left; width: 45%;">if(condition1 && (condition2 || condition3))
+{
+	Console.WriteLine("¯\_(ツ)_/¯");
+}
+</code></pre>
+<pre><code class="language-python" style="float: right; width: 45%;">if condition1 and (condition2 or condition3):
+	print("¯\_(ツ)_/¯")
+
+
+</code></pre>
+		<div class="clear"></div>
+
+
+		<h5>Try/Catch</h5>
+<pre><code class="language-csharp" style="float: left; width: 45%;">try
+{
+	// Imagine there was a bug in here
+}
+catch(Exception e)
+{
+	if(e is NullReferenceException)
+	{
+		// #Caught
+	}
+}
+</code></pre>
+<pre><code class="language-python" style="float: right; width: 45%;">try:
+	# Are you still imagining
+except ReferenceError:
+	# Still caught
+#There
+#isn't
+#much
+#going
+#on
+#down
+#here
+</code></pre>
+		<div class="clear"></div>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Functions and Classes</h4>
+
+
+		As shown earlier, this is a function in Python:
+<pre><code class="language-python">def funky_function():
+	print("This is funky and swish!")
+</code></pre>
+		<br>But, not as shown earlier, this is a class in Python:
+
+
+<pre><code class="language-python">class CoolTerms:
+
+	swish = "That's very swish!"
+
+	def funky_function(self)
+		self.swish = "I prefer 'funky'"
+</code></pre>
+		<br>Whatever you do, DO NOT forget the self! Doing that would make your IQ instantly halve.
+		<br>The first argument in a class function has to be a reference to the class, but does not have to be called "self".
+
+		<br><br>To return a value from a function, you can either just return the value at the end, or you can specify it in the function:
+<pre><code class="language-python">def funky_function() -> str:
+	return "I prefer 'funky'"
+</code></pre>
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Other things</h4>
+		This is a list (<code>list</code> - ordered, changeable):
+<pre><code class="language-python">my_lovely_list = ["my", "lovely", "list"]
+</code></pre>
+		and this is a dictionary (<code>dict</code> - ordered, changeable):
+<pre><code class="language-python">my_lovely_dictionary = {
+	"my": "lovely",
+	"dictionary": "is",
+	"so": "lovely"
+}
+</code></pre>
+		and this is a tuple (<code>tuple</code> - ordered, unchangeable):
+<pre><code class="language-python">my_lovely_tuple = ("tuples", "are", "boring", "why", "not", "use", "a", "list")
+</code></pre>
+		and this is a set (<code>set</code> - unordered, unchangeable):
+<pre><code class="language-python">my_lovely_tuple = {"sets", "are", "also", "quite", "weird"}
+</code></pre>
+		<small>Note: only existing set items are unchangeable - you can add and remove as you please 😊</small>
+
+		
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Wow! Do you understand Python now?
+		<br><small>No</small>
+		<br>Be quiet.
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

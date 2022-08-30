@@ -50,34 +50,36 @@
 				}
 			}
 			function OnNewSearchCards() {
-				var input = document.getElementById("searchBar");
-				var filter = input.value.toUpperCase();
-				var cards = document.getElementById("cards");
-				var divs = cards.getElementsByTagName("div");
-				for(var div of divs) {
-					if(div.getElementsByTagName("h4").length < 1) continue;
-					//console.log(div.getElementsByTagName("h4")[0].innerHTML);
-					if(div.innerHTML.toUpperCase().indexOf(filter) > -1) {
-						div.style.display = "";
+				for(var input of document.getElementsByClassName("searchBar"))
+				{
+					var filter = input.value.toUpperCase();
+					var cards = document.getElementById("cards-" + input.id);
+					var divs = cards.getElementsByTagName("div");
+					for(var div of divs) {
+						if(div.getElementsByTagName("h4").length < 1) continue;
+						//console.log(div.getElementsByTagName("h4")[0].innerHTML);
+						if(div.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							div.style.display = "";
+						}
+						else {
+							div.style.display = "none";
+						}
 					}
-					else {
-						div.style.display = "none";
-					}
+					/*if(filter.length > 1) {
+						var suggestionFound = false;
+						for(var item of words) {
+							if(item.toUpperCase().startsWith(filter) && ul.innerHTML.toUpperCase().indexOf(filter) > -1) {
+								document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+								suggestionFound = true;
+								break;
+							}
+							if(item.toUpperCase().startsWith(filter) && !suggestionFound) {
+								document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+								suggestionFound = true;
+							}
+						}
+					}*/
 				}
-				/*if(filter.length > 1) {
-					var suggestionFound = false;
-					for(var item of words) {
-						if(item.toUpperCase().startsWith(filter) && ul.innerHTML.toUpperCase().indexOf(filter) > -1) {
-							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
-							suggestionFound = true;
-							break;
-						}
-						if(item.toUpperCase().startsWith(filter) && !suggestionFound) {
-							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
-							suggestionFound = true;
-						}
-					}
-				}*/
 			}
 		</script>
 
@@ -90,7 +92,14 @@
 	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 	<div id="title">tutorials</div>
-	<h2>Tutorials</h2>
+	<div class="large-space"></div>
+	<h1>Tutorials</h1>
+	<div class="large-space"></div>
+	<div class="large-space"></div>
+	<div class="whole-width-image" id="heading-image">
+		<img src="/images/tutorials-banner.PNG">
+		<div class="fade"></div>
+	</div>
 	<div class="smallSpace"></div>
 	<div class="mainParagraph">
 		<div class="moveIn">
@@ -102,8 +111,7 @@
 	Yes, I am.
 	<br><br>
 	Here, you can find all of my tutorials that I've made so far, apart from some of them that I have forgotten to add.
-	<br>You can either scroll through all the tutorials, or just search in this box:
-	<br><br><input type="text" id="searchBar" class="searchBar" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+	<br>You can either scroll through all the tutorials, or search in the corresponding box.
 	<br><span id="suggestion">&nbsp;</span>
 	<div class="smallSpace"></div><div class="line"></div>
 	</div>
@@ -117,40 +125,61 @@
 	</ul>
 	</h5>-->
 	<h4 class="moveIn">Tutorials</h4>
-	<div class="cards" id="cards">
+	<h5 class="moveIn">C#</h5>
+	<input type="text" id="csharp" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+	<div class="moveIn"><small>You can also search by difficulty (Beginner, Intermediate, Advanced)</small></div>
+	<div class="cards" id="cards-csharp">
 		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover beginner" style="float:right;"><hide>Beginner</hide></i>
 			<h4>Basics: Intro</h4>
 			The first instalment in the C# basics course. Learn about functions, variables, datatypes and how C# works.
 		</div>
 		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-constructors.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover beginner" style="float:right;"><hide>Beginner</hide></i>
 			<h4>Classes: Constructors</h4>
 			Constructors are used to create instances of classes. Click to learn more about them in C#.
 		</div>
 		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-inheritance.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover intermediate" style="float:right;"><hide>Intermediate</hide></i>
 			<h4>Classes: Inheritance</h4>
 			In C#, classes can 'inherit' from parent classes, inheriting their variables, functions, and some other fun stuff!
 		</div>
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-singletons.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover intermediate" style="float:right;"><hide>Intermediate</hide></i>
+			<h4>Classes: Singletons</h4>
+			Singletons are classes with just one instance. If that makes no sense, that's another reason to read this.
+		</div>
 		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-return.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover beginner" style="float:right;"><hide>Beginner</hide></i>
 			<h4>Functions: returning</h4>
 			Not all functions are just for running code! They can be used to retrieve data, and quickly return values.
 		</div>
 		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-type.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover intermediate" style="float:right;"><hide>Intermediate</hide></i>
 			<h4>Functions: Type arguments</h4>
 			It's difficult to explain in less than 2 sentences, so just go and read the tutorial.
 		</div>
 		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-forforeach.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover beginner" style="float:right;"><hide>Beginner</hide></i>
 			<h4>For vs Foreach loops</h4>
 			It's a controversial topic. Should you use a numerical <span class="code">for</span> loop, or a quicker <span class="code">foreach</span>? Here are the pros and cons.
 		</div>
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-static.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover intermediate" style="float:right;"><hide>Intermediate</hide></i>
+			<h4>Static Keyword</h4>
+			This is a tutorial about the "static" keyword, which might be difficult to get your head around.
+		</div>
 	</div>
-	<div class="smallSpace"></div><div class="line moveIn"></div>
-	<h4 class="moveIn">Unity Tutorials</h4>
-	<div class="moveIn">
-	<h5>We've partnered with <a href="https://tzgames.github.io/#tutorials">TZGames!</a></h5>
-	EJGames have partnered with TZGames (see the resemblance?)! We've agreed that here, we will do C#-based tutorials, and over at TZGames, there will be Unity tutorials!
-	<br>If you head over there, you'll probably find a section that has similar content to this. No doubt involving "Excited??? I thought you were."
-	<br><br>
-	<i>Note: you can still find our Unity 'Changing Scene' tutorial <a href="tutorial/unity-scenechanges">here</a>. That one is here to stay.</i>
+	<h5 class="moveIn">Unity</h5>
+	<input type="text" id="unity" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+	<div class="moveIn"><small>You can also search by difficulty (Beginner, Intermediate, Advanced)</small></div>
+	<div class="cards" id="cards-unity">
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/csharp-basics-intro.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover beginner" style="float:right;"><hide>Beginner</hide></i>
+			<h4>Basics: Intro</h4>
+			The first instalment in the C# basics course. Learn about functions, variables, datatypes and how C# works.
+		</div>
+	</div>
 	<div class="smallSpace"></div>
 	</div>
 </html>

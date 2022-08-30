@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Static Keyword</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+
+			function toggleTable() {
+				var table = document.getElementById("terminology-table");
+				var button = document.getElementById("terminology-table-button");
+
+				if(table.style.display == "none") {
+					button.innerHTML = "Click to hide";
+					table.style.display = "block";
+				}
+				else {
+					button.innerHTML = "Click to view";
+					table.style.display = "none";
+				}
+			}
+		</script>
+
+
+		<style>
+		</style>
+
+	</head>
+
+	<body onload="CheckFormatting(); Tabs();">
+		<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>"Static" Keyword</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a C# (with references to Unity) tutorial about <b>the static keyword</b>. This means that it will be able to be followed in vanilla C#, but will also contain context for Unity users.
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Normal fields</h4>
+
+
+		(Fields are just a fancy name for variables)
+		<br>
+		Only EJGames tutorials start with something that is <b>not</b> the subject of the tutorial. So to begin, instead of explaining what a static field is, we'll explain what a
+		non-static field is.
+		<br><br>When you make a variable in C#, you'd usually do something along the lines of:
+		<br><code>public string name = "John Gold";</code>
+		<br><br>But, if you look at the class you're putting it in:
+<pre>
+<code>public class Person
+{
+	public string name = "John Gold";
+}
+</code>
+</pre>
+		You'll notice that both the class (<code>Person</code>) and the field (<code>name</code>) are public. This means they can be accessed from anywhere you want...
+		<br><b>...as long as you have a reference to an instance of the class</b>.
+		<br><br>Now, you may be thinking, "Instance? Reference? What are these things!?", and so I have compiled a hidden table that you can click here to view:
+		<br><button onclick="toggleTable()" id="terminology-table-button">Click to view</button>
+		<table id="terminology-table" style="display: none;">
+			<thead>
+				<tr><td><b>Keyword</b></td><td><b>Definition</b></td></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Instance</td><td>
+						A specific version of the class, where each variable contains a specific value. A class can have many different instances, where each one has different values.
+						<br>For example, imagine you have a class called Company. You would have instances of that class called Apple, Google, Ford etc.
+					</td>
+				</tr>
+				<tr>
+					<td>Reference</td><td>
+						Where you <i>refer</i> to a given field or method. A method that is called in 2 different places will have 2 references. A reference allows you to access the
+						instance of something, which means "having a reference to" is just "being able to access".
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br><br>
+		But, as I was saying about instances of classes - you have to create an instance of the class before you can access its variables.
+		<br><br>You can't just access <code>Person.name</code> because which person would you be accessing? The idea of a "person" does not include anyone's name. Much like how when
+		you Google "person", it might give you a definition for a person, or various results of people, but not just one on their own.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>What is the "static"</h4>
+
+
+		Static objects can only have one instance, and can be accessed everywhere. So if you have a class called <code>Person</code> and a variable called something like <code>arePeopleAmazing</code> then
+		you would make the variable static, because your opinion won't differ from person to person.
+		<br>Yes, that's a really bad example, but hopefully there's a better one coming soon:
+		<br><br>Imagine you have a class called <code>Car</code> (so original):
+
+<pre><code>public class Car
+{
+	public string make;
+	public string model;
+	// Etc
+}
+</code></pre>
+
+		Hmm, what if you want to have a list of cars that are currently on the road? Well, you'd do something like this:
+
+<pre><code>public class Car
+{
+	public string make;
+	public string model;
+
+	public Car[] carsOnRoad;
+}
+</code></pre>
+
+		But wait... there's something wrong with that! Oh my goodness, we've made a terrible mistake!
+		<br>We have millions of instances of <code>Car</code>, each with their own array of cars on the road! This is a disaster, what can we do?
+		<br><br><b>"Don't worry, I'll save you!"</b>
+		<br>Wow, is that Static-Man? The man who removes unnecessary instances of classes!?
+		<br><b>"Yes, that's me. Now let me help you out:"</b>
+
+<pre><code>public class Car
+{
+	public string make;
+	public string model;
+
+	public static Car[] carsOnRoad;
+}
+</code></pre>
+
+		Thanks Static-Man! In case you're wondering, he just added "static" in front of the declaration of <code>carsOnRoad</code>.
+		<br>Now, thanks to the help of the big SM, we can save a lot of resources by having only one instance of <code>carsOnRoad</code> instead of millions.
+		<br><br>Yes, yes, it's all well and good that we've got static variables to make everything easier, but...
+		<br>what about static functions and methods and whatever you want to call them?
+		<br><br>We don't need Static-Man for this one - I've got this all covered:
+<pre><code>public class Car
+{
+	// Variables up here (removed for simplicity)
+
+	public static void CarThing()
+	{
+		Console.WriteLine("Cars are cool! Probably.");
+	}
+}
+</code></pre>
+		And there you go. That <code>CarThing</code> function is pretty useless. For static functions, you'd need to do something that isn't related to any specific car.
+		<br>How about <code>GetCar</code>? That would be a useful static method:
+<pre><code>public class Car
+{
+	public string make;
+	public string model;
+	public static Car[] carsOnRoad;
+
+	public static Car GetCarByName(string make, string model)
+	{
+		foreach(Car car in carsOnRoad)
+		{
+			if(car.make == make && car.model == model)
+			{
+				return car;
+			}
+		}
+		return null;
+	}
+}
+</code></pre>
+		<small>Foreach tutorial <a href="csharp-forforeach.html">here</a>, returning tutorial <a href="csharp-return.html">here</a></small>
+		<br><br>The code above is the most common (for me) use for a static method. Unless the class is being used like a Singleton (yay! Singletons!) or is a static class.
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>How to use it??</h4>
+
+
+		I almost forgot - how are you meant to access those lovely static methods? You can probably just access them like any other variable, right?
+		
+<pre><code>class Program
+{
+	static void Main(string[] args)
+	{
+		Car ford = new Car();
+		Console.WriteLine(ford.carsOnRoad);
+	}
+}
+</code></pre>
+		But that doesn't work! It's never that easy, is it? There always has to be some silly old error saying
+		<br><br>
+		<div class="disclaimerBG">Error CS0176: Static member 'Car.carsOnRoad' cannot be accessed with an instance reference, qualify it with a type name instead.</div>
+		<br>You can now probably guess that instead of accessing it with an instance reference, you should qualify it with a type name instead:
+<pre><code>class Program
+{
+	static void Main(string[] args)
+	{
+		Console.WriteLine(Car.carsOnRoad);
+	}
+}
+</code></pre>
+		Just put in the class name instead of the variable name.
+		<br>You can also call the function in a similar way: <code>Car.GetCar("Ford", "Mondeo");</code>
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>WARNING! DO NOT DO THIS!</h4>
+
+
+		That got your attention, eh?
+		<br>If you're using Unity specifically, don't just be lazy and put static in front of everything to make it easier.
+		<br>Because then, like me, you'll end up with a really weird bug where you're accessing the same instance of a class when you think you aren't. Don't, for example, do this:
+<pre><code>public class Enemy : MonoBehaviour
+{
+	public static int health;
+	
+	public static void TakeDamage(int amount)
+	{
+		health -= amount;
+	}
+}
+</code></pre>
+		and then
+<pre><code>public class PlayerWeapon : MonoBehaviour
+{
+	public static int damage;
+	
+	void Update()
+	{
+		Enemy.TakeDamage(damage);
+	}
+}
+</code></pre>
+		because then you're just damaging every enemy and also, you can't access non-static members inside a static function. So if you want to access the GameObject of your enemy, you
+		just won't be able to.
+		Unless... <a href="csharp-singletons.html">there was a way to fix that</a>
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+
+
+		<br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

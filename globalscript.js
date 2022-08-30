@@ -31,6 +31,8 @@ function CheckFormatting()
 
 	createScript("https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js");
 
+	createScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js");
+
 
 	// Cleaning up & inserting elements
 	document.getElementById("title").style.display = "none";
@@ -366,36 +368,36 @@ function UpdateColour() {
 			}
 		}*/
 		try {
-			document.getElementsByTagName("html")[0].style.background = colours[getCookie("colour")].background;
-			document.getElementsByTagName("html")[0].style.backgroundAttachment = "fixed";
-			//document.getElementById("title").style.backgroundColor = colours[getCookie("colour")].title;
-			document.getElementById("title").style.color = colours[getCookie("colour")].h2;
-			//document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
-			document.getElementById("sidebar").style.backgroundColor = "rgba(0, 0, 0, 0)";
-			for(var item of document.getElementsByTagName("h2")) {
-				item.style.color = colours[getCookie("colour")].h2;
-			}
-			document.body.style.color = colours[getCookie("colour")].body;
-			for(var item of document.getElementsByClassName("URLbuttonText")) {
-				item.style.color = colours[getCookie("colour")].body;
-			}
-			var changeToTitle = [
-				document.getElementsByClassName("card"), document.getElementsByClassName("whole-width-card"),
-				document.getElementsByClassName("small-card"), document.getElementsByClassName("smaller-card")
-			]
-			for(var item of changeToTitle) {
-				for(var toChange of item) {
-					toChange.style.backgroundColor = colours[getCookie("colour")].title;
+			var colourScheme = colours[getCookie("colour")];
+			
+			var root = document.querySelector(":root");
+			root.style.setProperty("--background", colourScheme.background);
+			root.style.setProperty("--title", colourScheme.title);
+			root.style.setProperty("--sidebar", colourScheme.sidebar);
+			root.style.setProperty("--h2", colourScheme.h2);
+			root.style.setProperty("--body", colourScheme.body);
+			root.style.setProperty("--shadow", colourScheme.shadow);
+			root.style.setProperty("--elementBG", colourScheme.elementBG);
+			root.style.setProperty("--elementHover", colourScheme.elementHover);
+			root.style.setProperty("--green", colourScheme.green);
+
+			for(var style of document.getElementsByTagName("link")) {
+				var possibleLinks = ["https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark-dimmed.min.css",
+					"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css"]
+				if(style.rel == "stylesheet" && possibleLinks.indexOf(style.href) > -1) {
+					style.remove();
 				}
 			}
-			for(var item of document.getElementsByClassName("searchBar")) {
-				item.style.backgroundColor = colours[getCookie("colour")].sidebar;
+
+			if(colourScheme.background == "#ffffff") {
+				createStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css");
 			}
-			for(var item of document.getElementsByClassName("searchItems")) {
-				for(var searchItem of item.getElementsByTagName("a")) {
-					searchItem.style.color = colours[getCookie("colour")].body;
-				}
+			else {
+				createStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark-dimmed.min.css");
 			}
+
+			hljs.highlightAll();
+			
 			setTimeout(function() {
 				document.getElementsByTagName("html")[0].style.transition = "background 0.5s";
 				for(var item of document.getElementsByTagName("h2")) {

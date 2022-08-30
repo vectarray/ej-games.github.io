@@ -11,6 +11,9 @@
 		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 		rel="stylesheet">
 	<style>
+		.whole-width-image .fade {
+			height: 650px;
+		}
 	</style>
 	<script src="globalscript.js"></script>
 	<script src="frequent-notifications.js"></script>
@@ -25,11 +28,17 @@
 	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 	<div id="title">games</div>
-	<h2>Homepage</h2>
+	<div class="large-space"></div>
+	<h1>EJGames</h1>
+	<div class="large-space"></div>
+	<div class="whole-width-image" id="heading-image">
+		<img src="/images/lockedin-zones.png">
+		<div class="fade"></div>
+	</div>
 	<div class="smallSpace"></div>
 	<br>
 	<div class="mainParagraph bigger">
-		Welcome to the homepage of EJGames!
+		Welcome to the EJGames homepage.
 		<div class="smallSpace"></div>
 		<div class="line"></div>
 		<!--
@@ -49,6 +58,29 @@
 		Although, I have to say a massive thanks to <a href="https://www.youtube.com/channel/UCHM37DnT_QGJT5Zyl4EmqcA">Dilmer Valecillos</a> for posting a massive
 		tutorial on how to create an entire multiplayer game. I used all of it. Apart from the part about VR or something.
 		<div class="smallSpace"></div><div class="line"></div>-->
+		<h4 class="moveInRight">Quick Links</h4>
+
+		<div class="cards">
+			<div class="smaller-card active" onclick="hyperlink('lockedin.html');">
+				<h4>Locked In</h4>
+				The longest project I have ever worked on, besides this website.
+			</div>
+			<div class="smaller-card active" onclick="hyperlink('tutorials.html');">
+				<h4>Tutorials Page</h4>
+				Need some help with programming? Just visit this page.
+			</div>
+			<div class="smaller-card active" onclick="hyperlink('music.html');">
+				<h4>Music</h4>
+				A place where I can show off my very slowly-improving music.
+			</div>
+			<div class="smaller-card active" onclick="hyperlink('tutorials.html');">
+				<h4>Games Home</h4>
+				A few very poorly-written games made with JavaScript.
+			</div>
+		</div>
+
+		<div class="smallSpace"></div>
+		<div class="line"></div>
 		<h4 class="moveInRightSlow">Me</h4>
 		<div class="moveInRightSlow">
 			I'm EJGames.

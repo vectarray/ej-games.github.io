@@ -67,8 +67,7 @@
 		Stupid question, isn't it? Actually, not as much as you think.
 		<br>Types are not just your regular <code>int</code>s or <code>string</code>s, or even your custom classes like, for example, <code>Weapon</code>. They are their own special class that has a variant for every other class you make.
 		<br><br>That's some bad explaining. Here's an example of just a weapon class with just one field, and a constructor (tutorial <a href="csharp-constructors.html">here</a>):
-<pre>
-<div class="code">public class Weapon
+<pre><code>public class Weapon
 {
 	public int damage;
 
@@ -78,7 +77,7 @@
 		this.damage = damage;
 	}
 }
-</div>
+</code>
 </pre>
 		The class is called Weapon, so you could do
 		<br><br><code>Weapon ak47 = new Weapon(10);</code>
@@ -103,19 +102,17 @@
 		<br>But, if you don't have any idea how to use a type argument (or just want some more explanation), then keep reading!
 
 		<br><br>Take the Unity example above: <span class="code">GetComponent&lt;T&gt;</span> - you would usually use it like this, where <code>AudioSource</code> is the type:
-		<pre>
-<div class="code">void Start()
+		<pre><code>void Start()
 {
 	AudioSource loadIn = player.GetComponent<red>&lt;</red>AudioSource<red>&gt;</red>;
 	loadIn.Play();
 }
-</div></pre>
+</code></pre>
 
 		Simple enough, isn't it? Just put your type in the triangular brackets.
 		<br><i>Just saying, there is an alternative, and it isn't pretty:</i>
-		<pre>
-<div class="code">AudioSource loadIn = player.GetComponent(typeof(AudioSource)) as AudioSource;
-</div></pre>
+		<pre><code>AudioSource loadIn = player.GetComponent(typeof(AudioSource)) as AudioSource;
+</code></pre>
 		That's just a pain.
 
 
@@ -131,15 +128,14 @@
 		<h5>Step 1 - Make your function</h5>
 		This part is simple: just make a function. Or "method", or whatever. Here's an example, and I'll make it as multi-purpose as possible so you can copy and paste to your needs.
 
-<pre>
-<div class="code">public class Lettuce
+<pre><code>public class Lettuce
 {
 	public void TransmutateLettuce()
 	{
 		
 	}
 }
-</div></pre>
+</code></pre>
 
 		Now that you've got your lettuce transmutator, we can move on to the next step:
 
@@ -148,12 +144,11 @@
 		<h5>Step 2 - Add triangular brackets</h5>
 		We've done it before above, but this time, we'll actually be adding the T in ourselves!
 
-<pre>
-<div class="code">public void TransmutateLettuce<green>&lt;T&gt;</green>()
+<pre><code>public void TransmutateLettuce<green>&lt;T&gt;</green>()
 {
 
 }
-</div></pre>
+</code></pre>
 		Now, the <code>T</code> can be used just like any other variable - it effectively is a variable, but with a set datatype of <code>Type</code>.
 
 		<div class="smallSpace"></div>
@@ -163,12 +158,11 @@
 		from a specific class. We don't want to have lettuce transmutating into a string or something.
 		<br>So, assuming we have some other classes like <code>BabyGem</code> or <code>Iceberg</code> (inheriting from Lettuce):
 
-<pre>
-<div class="code">public void TransmutateLettuce&lt;T&gt;()<green> where T : Lettuce</green>
+<pre><code>public void TransmutateLettuce&lt;T&gt;()<green> where T : Lettuce</green>
 {
 
 }
-</div></pre>
+</code></pre>
 		In English, this function says
 		<br>"Transmutate the lettuce into THIS (T) type, where T must be some sort of lettuce."
 
@@ -176,8 +170,7 @@
 
 		<h5>Step 4 - Do the actual function</h5>
 		I have no idea how to transmutate a lettuce in C#, so I'll just give you some examples of how to use your new Type argument.
-<pre>
-<div class="code">public void TransmutateLettuce&lt;T&gt;() where T : Lettuce
+<pre><code>public void TransmutateLettuce&lt;T&gt;() where T : Lettuce
 {
 	// Create a new class with the Type argument:
 	var newClass = new T();
@@ -189,7 +182,7 @@
 	// (I believe) you can call static methods, assuming the base class has static methods:
 	T.InitialiseLettuce();
 }
-</div></pre>
+</code></pre>
 		<div class="smallSpace"></div><div class="line"></div>
 		<h4>Post-note</h4>
 		I apologise if there are too many foreign words that I have slapped together.

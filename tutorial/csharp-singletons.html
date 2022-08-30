@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Singletons</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+
+			function toggleTable() {
+				var table = document.getElementById("terminology-table");
+				var button = document.getElementById("terminology-table-button");
+
+				if(table.style.display == "none") {
+					button.innerHTML = "Click to hide";
+					table.style.display = "block";
+				}
+				else {
+					button.innerHTML = "Click to view";
+					table.style.display = "none";
+				}
+			}
+		</script>
+
+
+		<style>
+		</style>
+
+	</head>
+
+	<body onload="CheckFormatting(); Tabs();">
+		<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>"Static" Keyword</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a C# (with references to Unity) tutorial about <b>singletons</b>. This means that it will be able to be followed in vanilla C#, but will also contain context for Unity users.
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>What is a singleton?</h4>
+		
+
+		Described by my good friend Moo-Juice from stackoverflow.com, they are just a pain in the bum: glorified global variable containers.
+		<br>Apparently it's bad practice to use a Singleton, for some reasons involving smells and weird life cycles (<a href="https://stackoverflow.com/a/138012">no, really</a>).
+		But I generally think that unless it is going to be a big performance problem or headache, then there is no such thing as bad practice.
+		<br><br>It might be useful for you to know what a singleton is, especially if you've just come from my <a href="csharp-static.html">static tutorial</a>.
+		<br><br>So, let us begin with this lovely tutorial.
+
+		<h5>The actual thing</h5>
+		Yes, I have written a very rambly paragraph about practices and things, but here you go.
+		<br>A singleton is a class that has one instance (like a static class) and contains lots of general-purpose, widely-used functions and variables. Alternatively, they are used
+		to represent a specific mechanic or feature of a program. So you would probably have a singleton for managing music in a game, or managing sound, or something like that.
+		<br>Basically, if the class "manages" something, it is probably a singleton.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>How do you make one?</h4>
+
+
+		Classes can be singletons right out of the box, if you want to treat it like one.
+		<br>This scenario below involves a singleton:
+<pre><code>public class MusicManager
+{
+	public string musicPlaying;
+
+	public void PlaySong(string song)
+	{
+		musicPlaying = song;
+	}
+}
+
+class Program
+{
+	MusicManager musicManager;
+	static void Main(string[] args)
+	{
+		musicManager = new MusicManager();
+
+		musicManager.PlaySong("Cruising Along");
+	}
+}
+</code></pre>
+		That's just a normal class, isn't it? That's because singletons aren't a specific type of class, they are just a way to treat a class. There is no C# keyword for "Singleton".
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Ways to make a singleton</h4>
+
+
+		Yeah, yeah, I get it, less ideas and more examples, I know.
+		<br><br>As I said above, there is no specific way to make a singleton, but there are some common ways.
+		<br>Apart from the one above, I think there are two main ways to make one, as well as another bonus third one:
+
+		<h5>Number 1 - The Instance Method</h5>
+		All you have to do is make a static variable that refers to an instance of the class, so that you can access the instance from a static method.
+		<br>What does that mean? I'm not going to tell you, but I will show you:
+<pre><code>public class Singleton
+{
+	public static Singleton instance;
+	public int favouriteNumber;
+
+	public static void SetFavouriteNumber(int number)
+	{
+		instance.favouriteNumber = number;
+	}
+}
+</code></pre>
+		This will work just fine when you compile it, but when you run it, that's when the trouble starts. Whenever you call <code>Singleton.SetFavouriteNumber()</code>,
+		you will get an error, because <code>instance</code> won't exist yet. You will have to do
+<pre><code>static void Main(string[] args)
+{
+	Singleton.instance = new Singleton();
+}
+</code></pre>
+		before anything will work.
+		<br><br>Unless you're using Unity, in which case it gets a lot easier:
+<pre><code>public class Singleton : MonoBehaviour
+{
+	public static Singleton instance;
+	public int favouriteNumber;
+
+	void Start()
+	{
+		instance = this;
+	}
+
+	public void SetFavouriteNumber(int number)
+	{
+		favouriteNumber = number;
+	}
+}
+</code></pre>
+
+		<h5>Number 2 - The Static Method</h5>
+		I'm not sure if a static class still counts as a Singleton, but who cares?
+		<br><br>This is how you would use a static class:
+<pre><code>public static class Singleton
+{
+	public static int favouriteNumber;
+
+	public static void SetFavouriteNumber(int number)
+	{
+		favouriteNumber = number;
+	}
+}
+</code></pre>
+		The class doesn't necessarily need to be static, but if it is, everything inside it has to be static as well.
+
+		<h5>Number 3 - The Inheritance Method</h5>
+
+		Why make a class that has to be initialised, if you can just initialise it when it is first needed?
+		<br>Just make a new class that your Singleton will inherit from, and add a static variable called "instance" (just like Method 1) and then do some
+		extra-fun code with it.
+<pre><code>public class Singleton&lt;T&gt; where T : class, new()
+{
+	public static T instance
+	{
+		get
+		{
+			if(_instance == null)
+				_instance = new T();
+
+			return _instance;
+		}
+	};
+
+	private static T _instance;
+}
+
+public class NumberManager : Singleton&lt;MusicManager&gt;
+{
+	public int favouriteNumber;
+
+	public void SetFavouriteNumber(int number)
+	{
+		favouriteNumber = number;
+	}
+}
+</code></pre>
+		<small>Type argument tutorial <a href="csharp-type">here</a></small>
+
+		<h5>Note</h5>
+
+		If you want to access a Singleton that is using the Instance or Inheritance method, just do:
+<pre><code>class Program
+{
+	static void Main(string[] args)
+	{
+		Singleton.instance.SetFavouriteNumber(666); // Oooooh
+	}
+}
+</code></pre>
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Yet another tutorial where I do something controversial.
+
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

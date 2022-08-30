@@ -2,10 +2,13 @@ colours = {
     "dark": {
         "background": "#101e33",
         "title": "#0a2343",
-        "sidebar": "#0e1626",
+        "sidebar": "#00000000",
         "h2": "#ffffff",
         "body": "#ffffff",
-        "shadow": "#000000"
+        "shadow": "#000000",
+        "elementBG": "#0a2343",
+        "elementHover": "#13396b",
+        "green": "rgb(69, 255, 69)"
     },
     "red": {
         "background": "#351a16",
@@ -33,9 +36,12 @@ colours = {
     "light": {
         "background": "#ffffff",
         "title": "#b2dbfb",
-        "sidebar": "#b2dbfb",
+        "sidebar": "#00000000",
         "h2": "#1e1e1e",
         "body": "#1e1e1e",
-        "shadow": "#000000"
+        "shadow": "#000000",
+        "elementBG": "#b2dbfb",
+        "elementHover": "#85c9fc",
+        "green": "rgb(42, 171, 42)"
     }
 }
