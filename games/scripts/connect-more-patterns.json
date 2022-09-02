@@ -1,0 +1,20 @@
+{
+    "small-square": {
+        "squares": [909, 910, 1009, 1010],
+        "points": 10,
+        "displayName": "Small square",
+        "completed": false
+    },
+    "large-square": {
+        "squares": [909, 910, 911, 1009, 1010, 1011, 1109, 1110, 1111],
+        "points": 50,
+        "displayName": "Large square",
+        "completed": false
+    },
+    "hollow-square": {
+        "squares": [909, 910, 911, 1011, 1111, 1110, 1109, 1009],
+        "points": 65,
+        "displayName": "Hollow square",
+        "completed": false
+    }
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>X1 -> X2</title>
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>X1 -> X2</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		<!--
+			Note: c1 and c2 are for the non-display names (i.e. csharp, python, cpp) and X1 and X2 are for the display names (i.e. C#, Python, C++)
+		-->
+		This is a tutorial that is designed to help you migrate from X1 to X2, or just find out the differences.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Intro</h4>
+
+
+		Write some intro things in here, introduce them to the language, you silly old poo
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Overall Thingies</h4>
+
+		Include some overall thingies, and equivalent statements:
+		<br><br>Here are some commonly-used methods in X1 and their equivalents in X2:
+		<table style="width: 100%">
+			<thead>
+				<tr><td><b>Function</b></td><td><b>X1</b></td><td><b>X2</b></td></tr>
+			</thead>
+			<tbody>
+				<tr><td>Print the message x</td>
+					<td>
+						<code>code</code>
+					</td>
+					<td>
+						<code>code</code>
+					</td>
+				</tr>
+				<tr><td>Set x to user input</td>
+					<td>
+						<code>code</code>
+					</td>
+					<td>
+						<code>code</code>
+					</td>
+				</tr>
+
+				<tr><td>Wait for x seconds</td>
+					<td>
+						<code>code</code>
+					</td>
+					<td>
+						<code>code</code>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Variables and Datatypes</h4>
+
+
+		What do you think goes in here?
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Comparisons</h4>
+
+		<div class="left"><h5>X1</h5></div>
+		<div class="right"><h5>X2</h5></div>
+		<div class="clear"></div>
+
+
+		<h5>For Loop</h5>
+<pre><code class="language-c1" style="float: left; width: 45%;">for(int i = 0; i &lt; whatever; i++)
+{
+	Console.WriteLine(i.ToString());
+}
+</code></pre>
+<pre><code class="language-c2" style="float: right; width: 45%;">for i in range(whatever):
+	print(str(i))
+
+
+</code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h5>For Loop In Array</h5>
+<pre><code class="language-c1" style="float: left; width: 45%;">foreach(int number in numbers)
+{
+	Console.WriteLine(number.ToString());
+}
+</code></pre>
+<pre><code class="language-c2" style="float: right; width: 45%;">for number in numbers:
+	print(str(number))
+
+
+</code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h5>While Loop</h5>
+<pre><code class="language-c1" style="float: left; width: 45%;">while(condition)
+{
+	Console.WriteLine("This condition is true");
+}
+</code></pre>
+<pre><code class="language-c2" style="float: right; width: 45%;">while condition:
+	print("This condition is true")
+
+
+</code></pre>
+		<div class="clear"></div>
+		
+
+		<h5>If Statement</h5>
+<pre><code class="language-c1" style="float: left; width: 45%;">if(condition1 && (condition2 || condition3))
+{
+	Console.WriteLine("¯\_(ツ)_/¯");
+}
+</code></pre>
+<pre><code class="language-c2" style="float: right; width: 45%;">if condition1 and (condition2 or condition3):
+	print("¯\_(ツ)_/¯")
+
+
+</code></pre>
+		<div class="clear"></div>
+
+
+		<h5>Try/Catch</h5>
+<pre><code class="language-c1" style="float: left; width: 45%;">try
+{
+	// Imagine there was a bug in here
+}
+catch(Exception e)
+{
+	if(e is NullReferenceException)
+	{
+		// #Caught
+	}
+}
+</code></pre>
+<pre><code class="language-c2" style="float: right; width: 45%;">try:
+	# Are you still imagining
+except ReferenceError:
+	# Still caught
+#There
+#isn't
+#much
+#going
+#on
+#down
+#here
+</code></pre>
+		<div class="clear"></div>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Functions and Classes</h4>
+
+
+		This is a function in X2:
+<pre><code class="language-c2">def funky_function():
+	print("This is funky and swish!")
+</code></pre>
+		<br>But, not as shown earlier, this is a class in X2:
+
+
+<pre><code class="language-c2">class CoolTerms:
+
+	swish = "That's very swish!"
+
+	def funky_function(self)
+		self.swish = "I prefer 'funky'"
+</code></pre>
+
+		<br>To return a value from a function, you can do this:
+<pre><code class="language-c2">def funky_function() -> str:
+	return "I prefer 'funky'"
+</code></pre>
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Other things</h4>
+
+
+		Other things that you either
+		<ul>
+			<li>Might not know about the language already</li>
+			<li>Cannot figure out from common sense (i.e. self in Python)</li>
+			<li>Are explaining in more detail</li>
+		</ul>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Wow! Do you understand X2 now?
+		<br><small>No</small>
+		<br>Be quiet.
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

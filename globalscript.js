@@ -1,12 +1,16 @@
 var KC = {backspace:8,tab:9,enter:13,shift:16,ctrl:17,alt:18,pausebreak:19,capslock:20,esc:27,space:32,pageup:33,pagedown:34,end:35,home:36,leftarrow:37,uparrow:38,rightarrow:39,downarrow:40,insert:45,delete:46,0:48,1:49,2:50,3:51,4:52,5:53,6:54,7:55,8:56,9:57,a:65,b:66,c:67,d:68,e:69,f:70,g:71,h:72,i:73,j:74,k:75,l:76,m:77,n:78,o:79,p:80,q:81,r:82,s:83,t:84,u:85,v:86,w:87,x:88,y:89,z:90,leftwindowkey:91,rightwindowkey:92,selectkey:93,numpad0:96,numpad1:97,numpad2:98,numpad3:99,numpad4:100,numpad5:101,numpad6:102,numpad7:103,numpad8:104,numpad9:105,multiply:106,add:107,subtract:109,decimalpoint:110,divide:111,f1:112,f2:113,f3:114,f4:115,f5:116,f6:117,f7:118,f8:119,f9:120,f10:121,f11:122,f12:123,numlock:144,scrolllock:145,semicolon:186,equalsign:187,comma:188,dash:189,period:190,forwardslash:191,graveaccent:192,openbracket:219,backslash:220,closebracket:221,singlequote:222};
 
+
+
+
+
 function CheckFormatting()
 {
 	var sidebar = document.createElement("div");
 	sidebar.classList.add("sidebar");
 	sidebar.id = "sidebar";
 	sidebar.innerHTML = String.raw`
-		<h3 style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${document.getElementById("title").innerHTML.toUpperCase()}</h3>
+		<h4 style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${document.getElementById("title").innerHTML.toUpperCase()}</h4>
 		<h4>Links</h4>
 		<a href="${getAbsLocation("index.html")}" class="URLbuttonText">Homepage</a><br>
 		<a href="${getAbsLocation("lockedin.html")}" class="URLbuttonText">Locked In</a><br>
@@ -24,7 +28,7 @@ function CheckFormatting()
 	newScript.src = getAbsLocation("colours.jsonp")
 	document.body.appendChild(newScript);
 	if(window.location.href.indexOf("tutorials") > -1) {
-		createScript("files/all-words.js");
+		createScript("/csharp-keywords.js");
 	}
 
 	createStyle("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
@@ -33,15 +37,76 @@ function CheckFormatting()
 
 	createScript("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js");
 
+	createScript("/scripts/tooltip-controller.js");
+	retryTooltips();
+	function retryTooltips() {
+		try {
+			setupTooltips();
+		}
+		catch(ex) {
+			//console.warn(ex.message);
+			setTimeout(retryTooltips, 250);
+		}
+	}
+
+	createScript("/scripts/transition-controller.js");
+	retryTransitions();
+	function retryTransitions() {
+		try {
+			setupTransitions();
+		}
+		catch(ex) {
+			//console.warn(ex.message);
+			setTimeout(retryTransitions, 250);
+		}
+	}
+
+	createScript("/scripts/colour-controller.js");
+	retryColours();
+	function retryColours() {
+		try {
+			setupColours();
+		}
+		catch(ex) {
+			//console.warn(ex.message);
+			setTimeout(retryColours, 250);
+		}
+	}
+
+	createScript("/scripts/notifications.js");
+	retryNotifications();
+	function retryNotifications() {
+		try {
+			setupNotifications();
+		}
+		catch(ex) {
+			//console.warn(ex.message);
+			setTimeout(retryNotifications, 250);
+		}
+	}
+
+	/*if(window.location.href.indexOf("/tutorial/") > -1) {
+		createScript("/scripts/tutorial-manager.js");
+		retryTutorial();
+		function retryTutorial() {
+			try {
+				setupTutorial();
+			}
+			catch(ex) {
+				//console.warn(ex.message);
+				setTimeout(retryTutorial, 250);
+			}
+		}
+	}*/
+
 
 	// Cleaning up & inserting elements
 	document.getElementById("title").style.display = "none";
 	var newH4 = document.createElement("h4");
 	newH4.innerHTML = "Actions";
-	var newButton = document.createElement("b");
-	newButton.innerHTML = "Colour Scheme:";
+	newH4.id = "sidebar-actions";
 	document.getElementById("sidebar").appendChild(newH4);
-	document.getElementById("sidebar").appendChild(newButton);
+
 	document.getElementById("loading").remove();
 
 	var newLogo = document.createElement("img");
@@ -58,95 +123,23 @@ function CheckFormatting()
 		setMobile();
 	}
 
-	
-	/*for(var icon of document.getElementsByTagName("link")) {
-		if(icon.rel == "icon" && icon.type == "image/x-icon") {
-			icon.remove();
-		}
-	}
-	var newIcon = document.createElement("link");
-	newIcon.rel = "icon";
-	newIcon.href = "https://ejgames.co.uk/files/ej%20logo.png";
-	newIcon.type = "image/x-icon";
-	document.body.appendChild(newIcon);*/
-
 	document.getElementById("sidebar").lastChild.innerHTML += "\n";
 
-	/*var newColourButton = document.createElement("a");
-	newColourButton.id = "colour-button";
-	newColourButton.href = "https://ejgames.co.uk/blog/#070422";
-	newColourButton.classList.add("URLbuttonText", "zoomonhover")
-	newColourButton.innerHTML = "No options?"
-	document.getElementById("sidebar").appendChild(newColourButton);*/
+	
 
-	var newDropdown = document.createElement("select");
-	newDropdown.id = "colour-dropdown";
-	document.getElementById("sidebar").appendChild(newDropdown);
-	var colourArrangements = ["dark", "light"];
-	var colourDisplayNames = {
-		"default": "Default",
-		"dark": "Dark",
-		"red": "Red",
-		"aqua": "Aqua",
-		"light": "Light"
-	}
-	for(var item of colourArrangements) {
-		var newOption = document.createElement("option");
-		newOption.value = colourDisplayNames[item];
-		newOption.innerHTML = colourDisplayNames[item];
-		if(item == getCookie("colour")) newOption.selected = "selected";
-		newDropdown.appendChild(newOption);
-	}
-	newDropdown.onchange = function() {
-		var newColour = newDropdown.options[newDropdown.options.selectedIndex].text.toLowerCase().replace(" ", "");
-		ChangeColours(newColour);
-		//CreateNotification("Colours set!", "You've picked the " + newDropdown.options[newDropdown.options.selectedIndex].text + " colour scheme.", "https://ejgames.co.uk/sounds/clickbutton.wav")
-		/*newDropdown.disabled = true;
-		setTimeout(function() {
-			newDropdown.disabled = false;
-		}, 1000)*/
-	}
-	ChangeColours(getCookie("colour"));
-	
-	
-	var observer = new IntersectionObserver(function(entries) {
-		if(entries[0].isIntersecting === true) {
-			console.log(entries[0].target.innerHTML);
-			moveInElement(entries[0]);
+	collapsible();
+}
+
+function keepTrying(toTry, delay) {
+	failure();
+	function failure() {
+		try {
+			toTry();
 		}
-	}, { threshold: [0] });
-	checkForVisibility("moveIn", false);
-	checkForVisibilityRight("moveInRight", false);
-	checkForVisibility("moveInSlow", true);
-	checkForVisibilityRight("moveInRightSlow", true);
-	var tooltip = document.createElement("span");
-	tooltip.id = "tooltip";
-	document.addEventListener('mousemove', updateTooltip, false);
-	tooltip.style.opacity = "0";
-	document.body.appendChild(tooltip);
-
-	for(var hover of document.getElementsByClassName("hover")) {
-		hover.addEventListener('mouseenter', function(e) {
-			stt(e.target.getElementsByTagName("hide")[0].innerHTML);
-		});
-		hover.addEventListener('mouseleave', htt);
-		/*hover.onmouseenter = function() {
-			stt(hover.getElementsByClassName("hide")[0].innerHTML);
-		};
-		hover.onmouseleave = htt;*/
-	}
-
-	for(var moveIn of document.getElementsByClassName("moveIn")) {
-		moveIn.style.opacity = "0%";
-	}
-	for(var moveIn of document.getElementsByClassName("moveInRight")) {
-		moveIn.style.opacity = "0%";
-	}
-	for(var moveIn of document.getElementsByClassName("moveInSlow")) {
-		moveIn.style.opacity = "0%";
-	}
-	for(var moveIn of document.getElementsByClassName("moveInRightSlow")) {
-		moveIn.style.opacity = "0%";
+		catch(ex) {
+			console.warn(ex.message);
+			setTimeout(failure, delay);
+		}
 	}
 }
 
@@ -160,29 +153,14 @@ function getAbsLocation(pathName) {
 	}
 }
 
-function htt() {
-	tooltip.style.opacity = "0";
-}
-
-function stt(text) {
-	var tooltip = document.getElementById("tooltip");
-	tooltip.innerHTML = text;
-	tooltip.style.opacity = "100";
-}
-
-function updateTooltip(e) {
-	var tooltip = document.getElementById("tooltip");
-	tooltip.style.left = "calc(" + ((e.clientX / innerWidth) * 100) + "vw + 10px)";
-	tooltip.style.top = "calc(" + ((e.clientY / innerHeight) * 100) + "vh + 10px)";
-}
-
 function setMobile() {
 	document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
 	document.getElementById("sidebarbutton").style.display = "block";
 	document.getElementById("sidebar").style.left = "-100%";
+	document.getElementById("sidebar").style.top = "0";
 	document.getElementById("sidebar").style.width = "30%";
 
-	var sidebarColour;
+	/*var sidebarColour;
 	try {
 		sidebarColour = colours[getCookie("colour")].sidebar;
 		document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
@@ -190,8 +168,8 @@ function setMobile() {
 	catch {
 		function setSidebar() {
 			try {
-				sidebarColour = colours[getCookie("colour")].sidebar;
-				document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
+				//sidebarColour = colours[getCookie("colour")].sidebar;
+				//document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
 			}
 			catch {
 				setTimeout(setSidebar, 100);
@@ -199,12 +177,12 @@ function setMobile() {
 		}
 		setTimeout(setSidebar, 100);
 	}
-
+	*/
 
 	for(var i = 0; i < document.getElementById("sidebar").getElementsByTagName("a").length; i++) {
 		document.getElementById("sidebar").getElementsByTagName("a")[i].classList.add("bigger");
 	}
-	document.body.style.fontSize = String.raw`calc(${document.body.style.fontSize} + 1.5em)`;
+	document.body.style.fontSize = "2em";
 }
 
 function createScript(url) {
@@ -220,121 +198,7 @@ function createStyle(url) {
 	document.body.appendChild(newScript);
 }
 
-function moveInRight(element, slow) {
-	setTimeout(function() {
-		/*element.style.transition = "transform 0.5s, opacity 0.5s";
-		element.style.opacity = "100%";
-		element.style.transform = "translateY(-20px)";*/
-		element.style.animation = String.raw`moveInRight ${slow ? "1.5" : "0.7"}s cubic-bezier(0, 0, 0, 1)`
-		setTimeout(function() {
-			element.style.opacity = 100;
-		}, 500)
-	}, 200)
-}
 
-function moveInElement(element, slow) {
-	setTimeout(function() {
-		/*element.style.transition = "transform 0.5s, opacity 0.5s";
-		element.style.opacity = "100%";
-		element.style.transform = "translateY(-20px)";*/
-		element.style.animation = String.raw`moveInElement ${slow ? "1.5" : "0.7"}s cubic-bezier(0, 0, 0, 1)`
-		setTimeout(function() {
-			element.style.opacity = 100;
-		}, 500)
-	}, 200)
-}
-
-function checkForVisibility(className, slow) {
-	for(var item of this.document.getElementsByClassName(className)) {
-		var element = item;
-		var position = element.getBoundingClientRect();
-
-		// checking for partial visibility
-		if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
-			moveInElement(element, slow);
-		}
-	}
-	window.addEventListener('scroll', function() {
-		for(var item of this.document.getElementsByClassName(className)) {
-			var element = item;
-			var position = element.getBoundingClientRect();
-			console.log(element.innerHTML, "(" + position.top.toString() + ")", "needs to get to", window.innerHeight);
-	
-			// checking for partial visibility
-			if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
-				moveInElement(element, slow);
-			}
-		}
-	});
-}
-
-function checkForVisibilityTag(tagName, slow) {
-	for(var item of this.document.getElementsByTagName(tagName)) {
-		var element = item;
-		var position = element.getBoundingClientRect();
-
-		// checking for partial visibility
-		if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
-			moveInElement(element, slow);
-		}
-	}
-	window.addEventListener('scroll', function() {
-		for(var item of this.document.getElementsByTagName(tagName)) {
-			var element = item;
-			var position = element.getBoundingClientRect();
-	
-			// checking for partial visibility
-			if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
-				moveInElement(element, slow)
-			}
-		}
-	});
-}
-function checkForVisibilityRight(className, slow) {
-	for(var item of this.document.getElementsByClassName(className)) {
-		var element = item;
-		var position = element.getBoundingClientRect();
-
-		// checking for partial visibility
-		if(position.top < window.innerHeight - (slow ? 250 : 0) && position.bottom >= 0) {
-			moveInRight(element, slow);
-		}
-	}
-	window.addEventListener('scroll', function() {
-		for(var item of this.document.getElementsByClassName(className)) {
-			var element = item;
-			var position = element.getBoundingClientRect();
-	
-			// checking for partial visibility
-			if(position.top < window.innerHeight - (slow ? 250 : 0) && position.bottom >= 0) {
-				moveInRight(element, slow);
-			}
-		}
-	});
-}
-
-function checkForVisibilityTagRight(tagName, slow) {
-	for(var item of this.document.getElementsByTagName(tagName)) {
-		var element = item;
-		var position = element.getBoundingClientRect();
-
-		// checking for partial visibility
-		if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
-			moveInRight(element, slow);
-		}
-	}
-	window.addEventListener('scroll', function() {
-		for(var item of this.document.getElementsByTagName(tagName)) {
-			var element = item;
-			var position = element.getBoundingClientRect();
-	
-			// checking for partial visibility
-			if(position.top < window.innerHeight - (slow ? 250 : 0)  && position.bottom >= 0) {
-				moveInRight(element, slow)
-			}
-		}
-	});
-}
 
 function createFont(fontURL) {
 	var font = document.createElement("link");
@@ -343,101 +207,7 @@ function createFont(fontURL) {
 	document.body.appendChild(font);
 }
 
-function UpdateColour() {
 
-	if(getCookie("colour") != "") {
-		/*if(getCookie("colour") == "blue") {
-			document.body.style.backgroundColor = "#0c1420";
-			document.getElementById("title").style.backgroundColor = "rgb(24, 36, 77)";
-			for(var item of document.getElementsByClassName("sidebar")) {
-				item.style.backgroundColor = "rgb(10, 15, 19)";
-			}
-		}
-		else if(getCookie("colour") == "dark") {
-			document.body.style.backgroundColor = "rgb(22, 28, 37)";
-			document.getElementById("title").style.backgroundColor = "rgb(24, 42, 77)";
-			for(var item of document.getElementsByClassName("sidebar")) {
-				item.style.backgroundColor = "rgb(20, 22, 29)";
-			}
-		}
-		else if(getCookie("colour") == "lockedin") {
-			document.body.style.backgroundColor = "#1a1d16";
-			document.getElementById("title").style.backgroundColor = "rgb(24, 77, 28)";
-			for(var item of document.getElementsByClassName("sidebar")) {
-				item.style.backgroundColor = "rgb(10, 19, 13)";
-			}
-		}*/
-		try {
-			var colourScheme = colours[getCookie("colour")];
-			
-			var root = document.querySelector(":root");
-			root.style.setProperty("--background", colourScheme.background);
-			root.style.setProperty("--title", colourScheme.title);
-			root.style.setProperty("--sidebar", colourScheme.sidebar);
-			root.style.setProperty("--h2", colourScheme.h2);
-			root.style.setProperty("--body", colourScheme.body);
-			root.style.setProperty("--shadow", colourScheme.shadow);
-			root.style.setProperty("--elementBG", colourScheme.elementBG);
-			root.style.setProperty("--elementHover", colourScheme.elementHover);
-			root.style.setProperty("--green", colourScheme.green);
-
-			for(var style of document.getElementsByTagName("link")) {
-				var possibleLinks = ["https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark-dimmed.min.css",
-					"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css"]
-				if(style.rel == "stylesheet" && possibleLinks.indexOf(style.href) > -1) {
-					style.remove();
-				}
-			}
-
-			if(colourScheme.background == "#ffffff") {
-				createStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css");
-			}
-			else {
-				createStyle("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark-dimmed.min.css");
-			}
-
-			hljs.highlightAll();
-			
-			setTimeout(function() {
-				document.getElementsByTagName("html")[0].style.transition = "background 0.5s";
-				for(var item of document.getElementsByTagName("h2")) {
-					item.style.transition = "color 0.5s";
-				}
-				for(var item of document.getElementsByClassName("URLbuttonText")) {
-					item.style.transition = "color 0.5s";
-				}
-				var changeToTitle = [
-					document.getElementsByClassName("card"), document.getElementsByClassName("whole-width-card"),
-					document.getElementsByClassName("small-card"), document.getElementsByClassName("smaller-card")
-				]
-				for(var item of changeToTitle) {
-					for(var toChange of item) {
-						toChange.style.transition = "background-color 0.5s";
-					}
-				}
-				for(var item of document.getElementsByClassName("searchBar")) {
-					item.style.transition = "background-color 0.5s";
-				}
-				for(var item of document.getElementsByClassName("searchItems")) {
-					for(var searchItem of item.getElementsByTagName("a")) {
-						searchItem.style.transition = "color 0.5s";
-					}
-				}
-			}, 500);
-		}
-		catch {
-			setTimeout(UpdateColour, 50)
-		}
-	}
-	else {
-		ChangeColours("dark")
-	}
-}
-
-function ChangeColours(newColour) {
-	setCookie("colour", newColour, 730);
-	UpdateColour();
-}
 
 function SetCompleted() {
 	if(getCookie("completed") != "") {
@@ -461,43 +231,54 @@ function SetCompleted() {
 	}
 }
 
+function collapsible() {
+	for(var collapsible of document.getElementsByClassName("collapsible")) {
+		collapsible.addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if(content.style.maxHeight) {
+				content.style.maxHeight = null;
+			}
+			else {
+				content.style.maxHeight = content.scrollHeight.toString() + "px";
+			}
+		});
+	}
+}
+
 function hyperlink(url) {
 	window.open(url);
 }
 
+function popup(heading, body, soundToPlay) {
+	createPopup(heading, body, soundToPlay);
+}
+
+function confirm(heading, body, soundToPlay, buttonText, onConfirm) {
+	createConfirm(heading, body, soundToPlay, buttonText, onConfirm);
+}
+
 function createPopupText(text, elementFor) {
-	var newText = document.createElement("span");
+	var newText = document.createElement("div");
 	newText.classList.add("popup-text");
 	newText.innerHTML = text;
 	elementFor.appendChild(newText);
+	setTimeout(function() {
+		newText.remove();
+	}, 2990);
 }
 
 function createPopupTextAtPos(text, position) {
 
 }
 
-function CreateNotification(heading, body, showTime, soundToPlay, colour, borderColour) {
-	var notification = document.createElement("div");
-	var bodyText = document.createElement("div");
-	notification.classList.add("notification");
-	bodyText.innerHTML = body;
-	var bold = document.createElement("b");
-	bold.innerHTML = heading;
-	notification.appendChild(bold)
-	document.body.appendChild(notification);
-	notification.appendChild(bodyText);
-	notification.style.backgroundColor = colour;
-	notification.style.borderColor = borderColour;
-	setTimeout(function() {
-		setTimeout(function() {
-			notification.remove();
-		}, 1000);
-		notification.style.opacity = 0;
-	}, (showTime - 1) * 1000)
-	setTimeout(function() {
-		notification.style.right = "3.5%";
-		playSound(soundToPlay);
-	}, 100)
+function handleSound(soundName) {
+	if(getCookie("colour") == "dark") {
+		return "/sounds/" + soundName + ".mp3";
+	}
+	else {
+		return "/sounds/" + soundName + "-light.mp3";
+	}
 }
 
 function playSound(soundURL) {
@@ -509,82 +290,25 @@ function playSound(soundURL) {
 	}
 }
 
-function createPopup(heading, body, soundToPlay) {
-	var notification = document.createElement("div");
-	notification.classList.add("popup");
-	notification.id = "popup";
-	notification.innerHTML = `
-	<h5 class="heading">${heading == undefined ? "Notification" : heading}
-	<button class="close-button" onclick="hidePopup()">&times;</button>
-	</h5>
-	<div class="popup-body">
-	${body == undefined ? String.raw`You have received a notification, but there was no body ¯\_ (ツ)_/¯` : body}
-	</div>
-	`
-	if(soundToPlay != null && soundToPlay != undefined) {
-		playSound(soundToPlay);
+function sound(src)
+{
+	this.sound = document.createElement("audio");
+	this.sound.src = src;
+	this.sound.setAttribute("preload", "auto");
+	this.sound.setAttribute("controls", "none");
+	this.sound.style.display = "none";
+	document.body.appendChild(this.sound);
+	this.play = function ()
+	{
+		this.sound.play();
 	}
-	document.body.appendChild(notification);
-	if(document.getElementById("overlay") == null) {
-		var newOverlay = document.createElement("div");
-		newOverlay.id = "overlay";
-		document.body.appendChild(newOverlay);
+	this.stop = function ()
+	{	
+		this.sound.pause();
 	}
-	document.getElementById("overlay").onclick = hidePopup;
-	document.getElementById("overlay").style.display = "block";
-	document.getElementById("overlay").style.opacity = 100;
 }
 
-function hidePopup() {
-	var notification = document.getElementById("popup");
-	document.getElementById("overlay").onclick = null;
-	notification.classList.add("closed");
-	document.getElementById("overlay").style.opacity = 0;
-	setTimeout(function() {
-		notification.remove();
-		document.getElementById("overlay").style.display = "none";
-	}, 200);
-}
 
-function createConfirm(heading, body, soundToPlay, buttonText, onConfirm) {
-	var notification = document.createElement("div");
-	notification.classList.add("popup");
-	notification.id = "confirm";
-	notification.innerHTML = `
-	<h5 class="heading">${heading == undefined ? "Notification" : heading}
-	<button class="close-button" onclick="hideConfirm()">&times;</button>
-	</h5>
-	<div class="popup-body">
-	${body == undefined ? String.raw`You have received a notification, but there was no body ¯\_ (ツ)_/¯` : body}
-	<br><br>
-	<h5><button id="confirm-close">${buttonText}</button></h5>
-	</div>
-	`
-	if(soundToPlay != null && soundToPlay != undefined) {
-		playSound(soundToPlay);
-	}
-	document.body.appendChild(notification);
-	if(document.getElementById("overlay") == null) {
-		var newOverlay = document.createElement("div");
-		newOverlay.id = "overlay";
-		document.body.appendChild(newOverlay);
-	}
-	document.getElementById("overlay").style.display = "block";
-	document.getElementById("overlay").style.opacity = 100;
-	document.getElementById("overlay").onclick = hideConfirm;
-	document.getElementById("confirm-close").onclick = onConfirm;
-}
-
-function hideConfirm() {
-	var notification = document.getElementById("confirm");
-	document.getElementById("overlay").onclick = null;
-	notification.classList.add("closed");
-	document.getElementById("overlay").style.opacity = 0;
-	setTimeout(function() {
-		notification.remove();
-		document.getElementById("overlay").style.display = "none";
-	}, 200);
-}
 
 function OpenElement(elementId, buttonId, textWhenOpen, textWhenClosed) {
 	document.getElementById(elementId).style.display = "block";
@@ -618,6 +342,10 @@ function MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed) {
 function randInt(min, max)
 {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function lerp(a, b, t) {
+	return a + (b - a) * t;
 }
 
 function multiplyString(str, times) {
@@ -680,22 +408,5 @@ function setCookieWithPath(cname, cvalue, exdays, path) {
 	}
 	else {
 		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=" + path;
-	}
-}
-function sound(src)
-{
-	this.sound = document.createElement("audio");
-	this.sound.src = src;
-	this.sound.setAttribute("preload", "auto");
-	this.sound.setAttribute("controls", "none");
-	this.sound.style.display = "none";
-	document.body.appendChild(this.sound);
-	this.play = function ()
-	{
-		this.sound.play();
-	}
-	this.stop = function ()
-	{	
-		this.sound.pause();
 	}
 }

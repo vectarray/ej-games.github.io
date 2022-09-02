@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="user-scalable=no" />
+
 
 <head>
 	<title>Connect More</title>
@@ -19,6 +21,8 @@
             padding: 0px 1em 0px 1em;
             font-size: 1.2em;
         }
+
+
         #game-content {
             width: 25em;
             height: 25em;
@@ -33,12 +37,32 @@
             margin: 1.0555555555%;
             width: 9%;
             height: 9%;
+            border-radius: 0.2em;
         }
         #game-content .square.occupied {
-            background-color: #14453d;
+            background-color: #217063;
+            border: 0.2em solid #15473f;
+            box-sizing: border-box;
         }
-        #game-content .square.occupied.home-square {
-            background-color: #3d7068;
+        #game-content .square.occupied.connected {
+            background-color: #4a867d;
+        }
+        #game-content .square.occupied.connected.home-square {
+            background: url("https://whatemoji.org/wp-content/uploads/2020/07/White-Heart-Emoji-1024x1024.png") no-repeat #4a867d;
+            background-size: 90%;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+        }
+
+
+        #mobile-buttons {
+            text-align: center;
+        }
+        #mobile-buttons button {
+            margin: 0.2em;
+            padding: 0.8em;
+            font-size: 1.5em;
+            font-weight: 900;
         }
 	</style>
 	<script src="/globalscript.js"></script>
@@ -52,7 +76,7 @@
 
 </head>
 
-<body onload="CheckFormatting(); onLoad();">
+<body onload="CheckFormatting(); loadPatterns();">
 	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
@@ -80,9 +104,19 @@
 	</div>
     <div id="game">
         <h4 id="game-heading">Game</h4>
-        <h4 style="font-size: 1.5em;"><button onclick="this.remove(); document.getElementById('game-content').removeAttribute('hidden')">Open Game</button></h4>
+        <h5 style="text-align: center" id="points-display">Points: </h5>
+        <div style="text-align: center" id="points-popup">&nbsp;</div>
+        <h4 style="font-size: 1.5em;"><button id="open-game-button" onclick="this.remove(); document.getElementById('game-content').removeAttribute('hidden'); inGame = true;">Open Game</button></h4>
         <div id="game-content" hidden>
-
+            
+        </div>
+        <div id="mobile-buttons" hidden>
+            <button id="button-move-up">UP</button>
+            <br>
+            <button id="button-move-left">LEFT</button>
+            <button id="button-move-right">RIGHT</button>
+            <br>
+            <button id="button-move-down">DOWN</button>
         </div>
     </div>
 	<div class="smallSpace"></div>

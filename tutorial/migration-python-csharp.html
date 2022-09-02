@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Python -> C#</title>
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>Python -> C#</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		<!--
+			Note: python and csharp are for the non-display names (i.e. csharp, python, cpp) and Python and C# are for the display names (i.e. C#, Python, C++)
+		-->
+		This is a tutorial that is designed to help you migrate from Python to C#, or just find out the differences.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Intro</h4>
+
+
+		Python and C# are very different languages. This tutorial was made so you can make links between your existing Python knowledge and how C# works.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Overall Thingies</h4>
+
+		In Python, as you probably already know, pretty much everything (e.g. if statements, functions, classes) relies on indents, like this:
+		
+<pre><code class="language-python">def start_game():
+	started = True
+</code></pre>
+
+		But in C#, pretty much everything relies on curly brackets, <code>{</code> and <code>}</code>.
+		<br>And, unlike Python, C# was not made to be quick and compact (you can tell):
+
+<pre><code class="language-csharp">public void StartGame()
+{
+	bool started = true;
+}
+</code></pre>
+		And, like many other languages, you have to end every line with a semicolon, apart from a line that declares a body (if statements, functions, classes etc.).
+		<br><br>Here are some commonly-used methods in Python and their equivalents in C# (note: "using" is the C# equivalent of "import"):
+		<table style="width: 100%">
+			<thead>
+				<tr><td><b>Function</b></td><td><b>Python</b></td><td><b>C#</b></td></tr>
+			</thead>
+			<tbody>
+				<tr><td>Print the message x</td>
+					<td>
+						<code>print(x)</code>
+					</td>
+					<td>
+						<code>Console.WriteLine(x);</code>
+						(requires <code>using System;</code>)
+					</td>
+				</tr>
+				<tr><td>Set x to user input</td>
+					<td>
+						<code>x = input()</code>
+					</td>
+					<td>
+						<code>Console.Read();</code>
+						(requires <code>using System;</code>)
+					</td>
+				</tr>
+
+				<tr><td>Wait for x seconds</td>
+					<td>
+						<code>time.sleep(x)</code>
+						(requires <code>import time</code>)
+					</td>
+					<td>
+						<code>Thread.Sleep(x * 1000)</code>
+						(requires <code>using System.Threading;</code>)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Variables and Datatypes</h4>
+
+
+		C# is strong-typed (unlike Python) so, when creating a variable, you have to give it a type!
+<pre><code class="language-csharp">int x = 4;
+x = "Four";
+</code></pre>
+		results in
+		<div class="disclaimerBG code">Error CS0029: Cannot implicitly convert type 'string' to 'int'</div>
+
+
+		<br><br>The naming convention for variables is camelType (<code>var myVariable</code>), and for classes and methods, it is PascalCase
+		(<code>class MyClass</code>, <code>void MyFunction()</code>)
+		<br><br>Here is a list of some datatypes in Python and their equivalents in C#:
+		<table>
+			<thead>
+				<tr><td><b>C#</b></td><td><b>Python</b></td></tr>
+			</thead>
+			<tbody>
+				<tr><td><code>str</code></td><td><code>string</code> (<code>System.String</code>)</td></tr>
+				<tr><td><code>int</code></td><td><code>int</code> (<code>System.Int32</code>)</td></tr>
+				<tr><td><code>float</code></td><td><code>float</code> (<code>System.Single</code>)</td></tr>
+				<tr><td><code>any</code></td><td><code>object</code> (<code>System.Object</code>)</td></tr>
+				<tr><td><code>list</code></td><td><code>List&lt;T&gt;</code> (requires <code>using System.Collections.Generic;</code>)</td></tr>
+				<tr><td><code>list</code></td><td><code>datatype[]</code></td></tr>
+				<tr><td><code>dict</code></td><td><code>Dictionary&lt;TKey, TValue&gt;</code> (requires the same as List)</td></tr>
+				<tr><td><code>TextIOWrapper</code></td><td><code>FileStream</code> (requires <code>using System.IO;</code>)</td></tr>
+			</tbody>
+		</table>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Comparisons</h4>
+		<div class="left"><h5>Python</h5></div>
+		<div class="right"><h5>C#</h5></div>
+		<div class="clear"></div>
+
+
+		<h5>For Loop</h5>
+<pre><code class="language-python" style="float: left; width: 45%;">for i in range(whatever):
+	print(str(i))
+
+
+</code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;">for(int i = 0; i &lt; whatever; i++)
+{
+	Console.WriteLine(i.ToString());
+}
+</code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h5>For Loop In Array</h5>
+<pre><code class="language-python" style="float: left; width: 45%;">for number in numbers:
+	print(str(number))
+
+
+</code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;">foreach(int number in numbers)
+{
+	Console.WriteLine(number.ToString());
+}
+</code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h5>While Loop</h5>
+<pre><code class="language-python" style="float: left; width: 45%;">while condition:
+	print("This is true")
+
+
+</code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;">while(condition)
+{
+	Console.WriteLine("This is true");
+}
+</code></pre>
+		<div class="clear"></div>
+		
+
+		<h5>If Statement</h5>
+<pre><code class="language-python" style="float: left; width: 45%;">if condition1 and (condition2 or condition3):
+	print("¯\_(ツ)_/¯")
+
+
+</code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;">if(condition1 && (condition2 || condition3))
+{
+	Console.WriteLine("¯\_(ツ)_/¯");
+}
+</code></pre>
+		<div class="clear"></div>
+
+
+		<h5>Try/Catch</h5>
+<pre><code class="language-python" style="float: left; width: 45%;">try:
+	# Imagine there was a bug in here
+except ReferenceError:
+	#Caught
+
+
+
+
+
+
+
+</code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;">try
+{
+	// Are you still imagining
+}
+catch(Exception e)
+{
+	if(e is NullReferenceException)
+	{
+		// #Stillcaught
+	}
+}
+</code></pre>
+		<div class="clear"></div>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Functions and Classes</h4>
+
+
+
+		
+
+		This is a function in C#:
+<pre><code class="language-csharp">void FunkyFunction()
+{
+	Console.WriteLine("This is funky and swish!");
+}
+</code></pre>
+		The "void" is the return type - don't return anything.
+
+		<br>And this is a class in C#:
+
+
+<pre><code class="language-csharp">class CoolTerms
+{
+	string swish = "That's very swish!";
+
+	void FunkyFunction()
+	{
+		swish = "I prefer 'funky'"
+	}
+}
+</code></pre>
+
+		<br>To return a value from a function, you just change the "void" to the return type:
+<pre><code class="language-csharp">string FunkyFunction()
+{
+	return "I prefer 'funky'";
+}
+
+bool IsSwish(string str)
+{
+	if(str.ToLower().Contains("swish"))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+</code></pre>
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Other things</h4>
+
+		In C#, you inherit classes like this:
+<pre><code class="language-csharp">class Inherited : BaseClass
+{
+
+}
+</code></pre>
+
+		<br>
+		Most things in C# also have <b>access modifiers</b>, which means they can (or can't) be accessed from other classes.
+		<br>Here are some commonly-used ones:
+		<button class="collapsible"><code>public</code></button>
+		<div class="collapsible-content">
+			<b>When applied to classes</b>
+			<br>Allows for the class to be accessed from any assembly, as long as it has an assembly reference.
+			<br><br><b>When applied to methods and fields</b>
+			<br>Allows for the field to be accessed outside of the class.
+		</div>
+
+		<button class="collapsible"><code>private</code></button>
+		<div class="collapsible-content">
+			This is the default access modifier when nothing is added.
+			<br><br>
+			<b>Cannot be applied to classes</b>
+			<br><br><b>When applied to methods and fields</b>
+			<br>Prevents the field from being accessed outside of the class.
+		</div>
+		
+		<button class="collapsible"><code>static</code></button>
+		<div class="collapsible-content">
+			<b>When applied to classes</b>
+			<br>Prevents there from being more than 1 instance of the class - all members must be static as well.
+			<br><br><b>When applied to methods and fields</b>
+			<br>Prevents there from being more than 1 instance of the field, and allows it to be accessed anywhere without a reference to an instance of the class.
+		</div>
+		
+		<button class="collapsible"><code>abstract</code></button>
+		<div class="collapsible-content">
+			<b>When applied to classes</b>
+			<br>Makes the class only usable if it is inherited by another class - cannot be used like normal.
+			<br><br><b>When applied to methods and fields</b>
+			<br>The field or method has no value until it is inherited and then can be accessed.
+		</div>
+		
+		<button class="collapsible"><code>internal</code></button>
+		<div class="collapsible-content">
+			This is the default kind of class (when no other modifier is added), and it is only accessible from the same assembly.
+			<br>It can also be added to fields, causing roughly the same thing to happen.
+		</div>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Wow! Do you understand C# now?
+		<br><small>No</small>
+		<br>Be quiet.
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

@@ -81,6 +81,30 @@
 					}*/
 				}
 			}
+
+			function goToTutorial() {
+				var firstTutorial = document.getElementById("migration-from").value;
+				var secondTutorial = document.getElementById("migration-to").value;
+
+				if(firstTutorial == "Select an option!" || secondTutorial == "Select an option!") {
+					createPopup("Failed", String.raw`So you're telling me you're trying to move from "${firstTutorial}" to "${secondTutorial}"? That isn't even a language! Try again, and stop trying to find bugs.`, handleSound("bad"));
+					return;
+				}
+
+				if(firstTutorial == secondTutorial) {
+					createPopup("Really?", String.raw`So you're going to migrate to the same language as you're already working with?`, handleSound("bad"));
+					return;
+				}
+
+				hyperlink("/tutorial/migration-" + firstTutorial.toLowerCase() + "-" + secondTutorial.toLowerCase() + ".html");
+			}
+
+			/*function loadPoints() {
+				if(getCookie("knowledgePoints") == "") {
+					setCookie("knowledgePoints", "0", 365);
+				}
+				document.getElementById("points-display").innerHTML = "<b>" + getCookie("knowledgePoints") + "</b>";
+			}*/
 		</script>
 
 		<style>
@@ -88,7 +112,7 @@
 
 	</head>
 
-<body onload="CheckFormatting()">
+<body onload="CheckFormatting(); loadPoints()">
 	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 	<div id="title">tutorials</div>
@@ -103,15 +127,8 @@
 	<div class="smallSpace"></div>
 	<div class="mainParagraph">
 		<div class="moveIn">
-		I have been making games for 2 years (as of writing this in February 2022).
-	<br><br>
-	I want to pass on my skills of programming in C#, with Unity, to other people who need them.
-	<br>
-	<div class="imageDescription"><i>Oh, wow, you're so nice!</i></div>
-	Yes, I am.
-	<br><br>
-	Here, you can find all of my tutorials that I've made so far, apart from some of them that I have forgotten to add.
-	<br>You can either scroll through all the tutorials, or search in the corresponding box.
+	This is the homepage of EJGames tutorials! You can access all of my tutorials here, unless I have forgotten to add them.
+	<br><br>Your current knowledge points: <span id="points-display"></span>
 	<br><span id="suggestion">&nbsp;</span>
 	<div class="smallSpace"></div><div class="line"></div>
 	</div>
@@ -125,7 +142,7 @@
 	</ul>
 	</h5>-->
 	<h4 class="moveIn">Tutorials</h4>
-	<h5 class="moveIn">C#</h5>
+	<h3 class="moveIn">C#</h5>
 	<input type="text" id="csharp" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
 	<div class="moveIn"><small>You can also search by difficulty (Beginner, Intermediate, Advanced)</small></div>
 	<div class="cards" id="cards-csharp">
@@ -170,6 +187,41 @@
 			This is a tutorial about the "static" keyword, which might be difficult to get your head around.
 		</div>
 	</div>
+	<h3 class="moveIn">Migration</h3>
+	<p class="moveIn">
+		Wanting to migrate from one language to another, or just try it out? Here's a super-amazingly helpful tool for you, then! Just select your "departing from" language, and your
+		"arriving at" language, and then click "depart" to get tips on your new favourite language.
+	</p>
+	<div class="smallSpace"></div>
+	<table style="width: 100%" class="moveIn">
+		<thead>
+			<tr>
+				<td><b>Departing from</b></td>
+				<td><b>Arriving at</b></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<select id="migration-from">
+						<option>Select an option!</option>
+						<option>CSharp</option>
+						<option>Python</option>
+					</select>
+				</td>
+				<td>
+					<select id="migration-to">
+						<option>Select an option!</option>
+						<option>Python</option>
+						<option>CSharp</option>
+					</select>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="clear"></div>
+	<h3><button class="buttonURL" onclick="goToTutorial()">Depart</button></h3>
+	<!--
 	<h5 class="moveIn">Unity</h5>
 	<input type="text" id="unity" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
 	<div class="moveIn"><small>You can also search by difficulty (Beginner, Intermediate, Advanced)</small></div>
@@ -180,6 +232,7 @@
 			The first instalment in the C# basics course. Learn about functions, variables, datatypes and how C# works.
 		</div>
 	</div>
+	-->
 	<div class="smallSpace"></div>
 	</div>
 </html>

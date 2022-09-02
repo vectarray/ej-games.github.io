@@ -69,7 +69,7 @@
 		<br><code>public string name = "John Gold";</code>
 		<br><br>But, if you look at the class you're putting it in:
 <pre>
-<code>public class Person
+<code class="language-csharp">public class Person
 {
 	public string name = "John Gold";
 }
@@ -114,7 +114,7 @@
 		<br>Yes, that's a really bad example, but hopefully there's a better one coming soon:
 		<br><br>Imagine you have a class called <code>Car</code> (so original):
 
-<pre><code>public class Car
+<pre><code class="language-csharp">public class Car
 {
 	public string make;
 	public string model;
@@ -124,7 +124,7 @@
 
 		Hmm, what if you want to have a list of cars that are currently on the road? Well, you'd do something like this:
 
-<pre><code>public class Car
+<pre><code class="language-csharp">public class Car
 {
 	public string make;
 	public string model;
@@ -139,7 +139,7 @@
 		<br>Wow, is that Static-Man? The man who removes unnecessary instances of classes!?
 		<br><b>"Yes, that's me. Now let me help you out:"</b>
 
-<pre><code>public class Car
+<pre><code class="language-csharp">public class Car
 {
 	public string make;
 	public string model;
@@ -153,7 +153,7 @@
 		<br><br>Yes, yes, it's all well and good that we've got static variables to make everything easier, but...
 		<br>what about static functions and methods and whatever you want to call them?
 		<br><br>We don't need Static-Man for this one - I've got this all covered:
-<pre><code>public class Car
+<pre><code class="language-csharp">public class Car
 {
 	// Variables up here (removed for simplicity)
 
@@ -165,7 +165,7 @@
 </code></pre>
 		And there you go. That <code>CarThing</code> function is pretty useless. For static functions, you'd need to do something that isn't related to any specific car.
 		<br>How about <code>GetCar</code>? That would be a useful static method:
-<pre><code>public class Car
+<pre><code class="language-csharp">public class Car
 {
 	public string make;
 	public string model;
@@ -193,7 +193,7 @@
 
 		I almost forgot - how are you meant to access those lovely static methods? You can probably just access them like any other variable, right?
 		
-<pre><code>class Program
+<pre><code class="language-csharp">class Program
 {
 	static void Main(string[] args)
 	{
@@ -206,7 +206,7 @@
 		<br><br>
 		<div class="disclaimerBG">Error CS0176: Static member 'Car.carsOnRoad' cannot be accessed with an instance reference, qualify it with a type name instead.</div>
 		<br>You can now probably guess that instead of accessing it with an instance reference, you should qualify it with a type name instead:
-<pre><code>class Program
+<pre><code class="language-csharp">class Program
 {
 	static void Main(string[] args)
 	{
@@ -225,7 +225,7 @@
 		That got your attention, eh?
 		<br>If you're using Unity specifically, don't just be lazy and put static in front of everything to make it easier.
 		<br>Because then, like me, you'll end up with a really weird bug where you're accessing the same instance of a class when you think you aren't. Don't, for example, do this:
-<pre><code>public class Enemy : MonoBehaviour
+<pre><code class="language-csharp">public class Enemy : MonoBehaviour
 {
 	public static int health;
 	
@@ -236,7 +236,7 @@
 }
 </code></pre>
 		and then
-<pre><code>public class PlayerWeapon : MonoBehaviour
+<pre><code class="language-csharp">public class PlayerWeapon : MonoBehaviour
 {
 	public static int damage;
 	

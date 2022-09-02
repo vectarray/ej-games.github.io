@@ -8,6 +8,7 @@ colours = {
         "shadow": "#000000",
         "elementBG": "#0a2343",
         "elementHover": "#13396b",
+        "elementBrighter": "#1c55a0",
         "green": "rgb(69, 255, 69)"
     },
     "red": {
@@ -42,6 +43,7 @@ colours = {
         "shadow": "#000000",
         "elementBG": "#b2dbfb",
         "elementHover": "#85c9fc",
+        "elementBrighter": "rgb(19, 67, 129)",
         "green": "rgb(42, 171, 42)"
     }
 }

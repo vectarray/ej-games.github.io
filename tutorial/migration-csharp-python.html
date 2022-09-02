@@ -72,14 +72,38 @@
 		Python is also run <b>from top to bottom</b>. This is a small thing but very important to know, because it means that you can't invoke functions that are declared
 		below.
 		<br><br>Here are some commonly-used methods in C# and their equivalents in Python:
-		<table>
+		<table style="width: 100%">
 			<thead>
-				<tr><td><b>C#</b></td><td><b>Python</b></td></tr>
+				<tr><td><b>Function</b></td><td><b>C#</b></td><td><b>Python</b></td></tr>
 			</thead>
 			<tbody>
-				<tr><td><code>Console.WriteLine("Hi");</code></td><td><code>print("Hi")</code></td></tr>
-				<tr><td><code>Console.Read();</code></td><td><code>input()</code></td></tr>
-				<tr><td><code>Thread.Sleep(1000);</code> (Requires <code>using System.Threading;</code>)</td><td><code>time.sleep(1)</code> (Requires <code>import time</code>)</td></tr>
+				<tr><td>Print the message x</td>
+					<td>
+						<code>Console.WriteLine(x);</code>
+					</td>
+					<td>
+						<code>print(x)</code>
+					</td>
+				</tr>
+				<tr><td>Set x to user input</td>
+					<td>
+						<code>var x = Console.Read();</code>
+					</td>
+					<td>
+						<code>x = input()</code>
+					</td>
+				</tr>
+
+				<tr><td>Wait for x seconds</td>
+					<td>
+						<code>Thread.Sleep(x * 1000);</code>
+						(requires <code>System.Threading;</code>)
+					</td>
+					<td>
+						<code>time.sleep(x)</code>
+						(requires <code>import time</code>)
+					</td>
+				</tr>
 			</tbody>
 		</table>
 		
@@ -125,6 +149,10 @@ print(int(lovely_string_number))
 		
 		<div class="smallSpace"></div><div class="line"></div>
 		<h4>Comparisons</h4>
+
+		<div class="left"><h5>C#</h5></div>
+		<div class="right"><h5>Python</h5></div>
+		<div class="clear"></div>
 
 
 		<h5>For Loop</h5>
@@ -217,6 +245,7 @@ except ReferenceError:
 		
 		<div class="smallSpace"></div><div class="line"></div>
 		<h4>Functions and Classes</h4>
+
 
 
 		As shown earlier, this is a function in Python:
