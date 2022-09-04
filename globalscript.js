@@ -261,7 +261,7 @@ function confirm(heading, body, soundToPlay, buttonText, onConfirm) {
 function createPopupText(text, elementFor) {
 	var newText = document.createElement("div");
 	newText.classList.add("popup-text");
-	newText.innerHTML = text;
+	newText.innerHTML = "<div class='popup-text-container'>" + text + "</div>";
 	elementFor.appendChild(newText);
 	setTimeout(function() {
 		newText.remove();
