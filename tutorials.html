@@ -128,7 +128,6 @@
 	<div class="mainParagraph">
 		<div class="moveIn">
 	This is the homepage of EJGames tutorials! You can access all of my tutorials here, unless I have forgotten to add them.
-	<br><br>Your current knowledge points: <span id="points-display"></span>
 	<br><span id="suggestion">&nbsp;</span>
 	<div class="smallSpace"></div><div class="line"></div>
 	</div>
@@ -142,6 +141,8 @@
 	</ul>
 	</h5>-->
 	<h4 class="moveIn">Tutorials</h4>
+
+	
 	<h3 class="moveIn">C#</h5>
 	<input type="text" id="csharp" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
 	<div class="moveIn"><small>You can also search by difficulty (Beginner, Intermediate, Advanced)</small></div>
@@ -187,6 +188,20 @@
 			This is a tutorial about the "static" keyword, which might be difficult to get your head around.
 		</div>
 	</div>
+
+
+	<h3 class="moveIn">Unity</h3>
+	<input type="text" id="unity" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+	<div class="moveIn"><small>You can also search by difficulty (Beginner, Intermediate, Advanced)</small></div>
+	<div class="cards" id="cards-unity">
+		<div class="moveIn smaller-card active" onclick="hyperlink('tutorial/unity-scenechanges.html')" onmousewheel="">
+			<i class="fa-solid fa-gauge-high hover beginner" style="float:right;"><hide>Beginner</hide></i>
+			<h4>Changing Scene</h4>
+			This is OLD but still works. Ever wanted to switch between scenes, or just want to reset when someone loses? Follow this tutorial! If you said yes.
+		</div>
+	</div>
+
+
 	<h3 class="moveIn">Migration</h3>
 	<p class="moveIn">
 		Wanting to migrate from one language to another, or just try it out? Here's a super-amazingly helpful tool for you, then! Just select your "departing from" language, and your

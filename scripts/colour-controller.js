@@ -2,13 +2,17 @@ function setupColours() {
 
 	var newButton = document.createElement("b");
 	newButton.innerHTML = "Colour Scheme:";
-	document.getElementById("sidebar").appendChild(newButton);
+	if(document.getElementById("sidebar")) {
+		document.getElementById("sidebar").appendChild(newButton);
+	}
 
     ChangeColours(getCookie("colour"));
 
     var newDropdown = document.createElement("select");
 	newDropdown.id = "colour-dropdown";
-	document.getElementById("sidebar").appendChild(newDropdown);
+	if(document.getElementById("sidebar")) {
+		document.getElementById("sidebar").appendChild(newDropdown);
+	}
 	var colourArrangements = ["dark", "light"];
 	var colourDisplayNames = {
 		"default": "Default",

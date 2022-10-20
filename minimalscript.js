@@ -6,24 +6,10 @@ var KC = {backspace:8,tab:9,enter:13,shift:16,ctrl:17,alt:18,pausebreak:19,capsl
 
 function CheckFormatting()
 {
-	var sidebar = document.createElement("div");
-	sidebar.classList.add("sidebar");
-	sidebar.id = "sidebar";
-	sidebar.innerHTML = String.raw`
-		<h4 class="active" onclick="window.location.href='/index.html'" style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${document.getElementById("title").innerHTML.toUpperCase()}</h4>
-		<h4>Links</h4>
-		<a href="${getAbsLocation("index.html")}" class="URLbuttonText">Homepage</a><br>
-		<a href="${getAbsLocation("lockedin.html")}" class="URLbuttonText">Locked In</a><br>
-		<a href="${getAbsLocation("changelog.html")}" class="URLbuttonText">Changelog</a><br>
-		<a href="${getAbsLocation("tutorials.html")}" class="URLbuttonText">Tutorials</a><br>
-		<a href="${getAbsLocation("blog/index.html")}" class="URLbuttonText">Blog</a><br>
-		<a href="${getAbsLocation("music.html")}" class="URLbuttonText">Music</a><br>
-		<a href="${getAbsLocation("games/index.html")}" class="URLbuttonText">Games <green>(NEW)</green></a>`
-
-	document.body.insertBefore(sidebar, document.getElementById("title"));
 
 	// window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 	// Script initialisation
+	document.getElementById("loading").remove();
 	var newScript = document.createElement("script");
 	newScript.src = getAbsLocation("colours.jsonp")
 	document.body.appendChild(newScript);
@@ -85,39 +71,6 @@ function CheckFormatting()
 		}
 	}
 
-	/*if(window.location.href.indexOf("/tutorial/") > -1) {
-		createScript("/scripts/tutorial-manager.js");
-		retryTutorial();
-		function retryTutorial() {
-			try {
-				setupTutorial();
-			}
-			catch(ex) {
-				//console.warn(ex.message);
-				setTimeout(retryTutorial, 250);
-			}
-		}
-	}*/
-
-
-	// Cleaning up & inserting elements
-	document.getElementById("title").style.display = "none";
-	var newH4 = document.createElement("h4");
-	newH4.innerHTML = "Actions";
-	newH4.id = "sidebar-actions";
-	document.getElementById("sidebar").appendChild(newH4);
-
-	document.getElementById("loading").remove();
-
-	var newLogo = document.createElement("img");
-	newLogo.src = getAbsLocation("images/new-ej-logo.png");
-	newLogo.id = "logo";
-	newLogo.classList.add("active");
-	newLogo.onclick = function() {
-		window.location.href = "/index.html";
-	};
-	document.getElementById("sidebar").insertBefore(newLogo, document.getElementById("sidebar").firstChild);
-
 
 	// Formatting
 	var userAgent = navigator.userAgent.toLowerCase();
@@ -126,8 +79,6 @@ function CheckFormatting()
 	{
 		setMobile();
 	}
-
-	document.getElementById("sidebar").lastChild.innerHTML += "\n";
 
 	
 
@@ -176,33 +127,6 @@ function getAbsLocation(pathName) {
 
 function setMobile() {
 	document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
-	document.getElementById("sidebarbutton").style.display = "block";
-	document.getElementById("sidebar").style.left = "-100%";
-	document.getElementById("sidebar").style.top = "0";
-	document.getElementById("sidebar").style.width = "30%";
-
-	/*var sidebarColour;
-	try {
-		sidebarColour = colours[getCookie("colour")].sidebar;
-		document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
-	}
-	catch {
-		function setSidebar() {
-			try {
-				//sidebarColour = colours[getCookie("colour")].sidebar;
-				//document.getElementById("sidebar").style.backgroundColor = colours[getCookie("colour")].sidebar;
-			}
-			catch {
-				setTimeout(setSidebar, 100);
-			}
-		}
-		setTimeout(setSidebar, 100);
-	}
-	*/
-
-	for(var i = 0; i < document.getElementById("sidebar").getElementsByTagName("a").length; i++) {
-		document.getElementById("sidebar").getElementsByTagName("a")[i].classList.add("bigger");
-	}
 	document.body.style.fontSize = "2em";
 }
 
@@ -342,20 +266,6 @@ function CloseElement(elementId, buttonId, textWhenOpen, textWhenClosed) {
 	document.getElementById(elementId).style.display = "none";
 	document.getElementById(buttonId).onclick = function() {
 		OpenElement(elementId,buttonId, textWhenOpen, textWhenClosed);
-	}
-	document.getElementById(buttonId).innerHTML = textWhenClosed;
-}
-function MoveSidebarIn(buttonId, textWhenOpen, textWhenClosed) {
-	document.getElementById("sidebar").style.left = "0%";
-	document.getElementById(buttonId).onclick = function() {
-		MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed);
-	}
-	document.getElementById(buttonId).innerHTML = textWhenOpen;
-}
-function MoveSidebarOut(buttonId, textWhenOpen, textWhenClosed) {
-	document.getElementById("sidebar").style.left = "-50%";
-	document.getElementById(buttonId).onclick = function() {
-		MoveSidebarIn(buttonId, textWhenOpen, textWhenClosed);
 	}
 	document.getElementById(buttonId).innerHTML = textWhenClosed;
 }

@@ -1,0 +1,29 @@
+.bl {
+    position: fixed;
+    bottom: 1%;
+    left: 1%;
+}
+.br {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}
+.tl {
+    position: fixed;
+    top: 1%;
+    left: 1%;
+}
+.tr {
+    position: fixed;
+    top: 1%;
+    right: 1%;
+}
+.main-content {
+    position: fixed;
+    margin: 2%;
+}
+.centred {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}

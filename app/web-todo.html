@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>EJGames Todo</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	</style>
+    <link rel="stylesheet" href="styles/general-style.css">
+    <link rel="stylesheet" href="styles/todo-style.css">
+	<script src="/minimalscript.js"></script>
+	<script src="scripts/todo-script.js"></script>
+	<script src="/frequent-notifications.js"></script>
+	<script>
+	</script>
+	<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+
+</head>
+
+<body onload="CheckFormatting(); loadLists()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+
+	<div class="smallSpace"></div>
+	<br>
+
+    <button class="tl bigger" style="padding: 0.4em; z-index: 10;" onclick="window.location.href='index.html'">&#x2190</button>
+
+    <div id="lists">
+        <h4>Lists</h4>
+        <div id="list-content">
+
+            <div id="list-name" class="lists-item">
+                <i class="fa-regular fa-circle-check complete-icon"></i>
+                <button class="list-button">List name</button>
+            </div>
+
+            <div id="list-name" class="lists-item">
+                <i class="fa-regular fa-circle-play complete-icon"></i>
+                <button class="list-button">List name</button>
+            </div>
+
+            <div id="list-name" class="lists-item">
+                <i class="fa-regular fa-clock complete-icon"></i>
+                <button class="list-button">List name</button>
+            </div>
+
+            <div id="list-name" class="lists-item">
+                <i class="fa-regular fa-circle complete-icon"></i>
+                <button class="list-button">List name</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="list-view">
+        <h4 id="list-name-display">List name</h4>
+        <div id="list-progress" style="width: max-content;">Completed: <span id="list-progress-value">4/5</span><br><div id="list-progress-bar" style="width: 0%;"></div></div>
+        <div class="space"></div>
+
+        <div id="item-content">
+            <div id="item-name" class="todo-list-item">
+                <i class="fa-regular fa-circle complete-icon"></i>
+                <button class="view-item-button" onclick="showInfo(this.parentElement.id)">Item name</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="item-info">
+        <hide></hide>
+        <input type="text" id="name-input" value="Item name goes here!">
+        <br><br><br>Set status<br>
+        <button class="set-status-button status-completed" disabled onclick="setStatus('completed')"><i class="fa-regular fa-circle-check"></i> Completed</button>
+        <button class="set-status-button status-progress" onclick="setStatus('progress')"><i class="fa-regular fa-circle-play"></i> In progress</button>
+        <button class="set-status-button status-waiting" onclick="setStatus('waiting')"><i class="fa-regular fa-clock"></i> On hold</button>
+        <button class="set-status-button status-not-done" onclick="setStatus('not-done')"><i class="fa-regular fa-circle"></i> Not completed</button>
+        <br><br>
+        <button class="delete-button" onclick="deleteItem(this.parentElement.getElementsByTagName('hide')[0].innerText)"><i class="fa-regular fa-trash-can"></i></i> Delete</button>
+    </div>
+
+    <div id="list-info">
+        <hide></hide>
+        <input type="text" id="list-name-input" value="List name goes here!">
+        <br><br>
+        <button class="delete-button" onclick="deleteList(this.parentElement.getElementsByTagName('hide')[0].innerText)"><i class="fa-regular fa-trash-can"></i></i> Delete</button>
+    </div>
+    <div id="info-dimmer"></div>
+    <div id="list-dimmer"></div>
+
+	<div class="smallSpace"></div>
+
+</html>

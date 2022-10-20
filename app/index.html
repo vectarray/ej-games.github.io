@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Template page</title>
+	<title>Apps</title>
 	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
 	<link rel="stylesheet" href="/mainstyle.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,16 +25,24 @@
 	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 
-    <!--
-        What theme is this page? (e.g. games, tutorials, music)
-    -->
 	<div id="title">games</div>
 
-	<h2>Template</h2>
+	<h2>Apps</h2>
 	<div class="smallSpace"></div>
 	<br>
 	<div class="mainParagraph">
-        This page is just a template. Get off it.
+		Here are some web (and desktop) apps that I have made:
+		
+		<div class="cards">
+			<div class="card active" onclick="hyperlink('web-todo.html')">
+				<h4>Todo List</h4>
+				An app where you can tick off the things that you need to get done. You know what a todo list is. Just use it.
+			</div>
+			<div class="card active" onclick="hyperlink('web-todo.html')">
+				<h4>Todo List Download</h4>
+				Download the todo list app as an executable.
+			</div>
+		</div>
 	</div>
 	<div class="smallSpace"></div>
 

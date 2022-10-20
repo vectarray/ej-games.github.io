@@ -39,6 +39,11 @@
 /* Jetbrains Mono */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,400;0,700;0,800;1,200;1,400;1,700;1,800&display=swap');
 
+/* Figtree (Cool) */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Outfit (modern) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;700;900&display=swap');
 
 :root {
 	--background: #161c25;
@@ -51,6 +56,8 @@
 	--elementHover: #13396b;
 	--elementBrighter: #1c55a0;
 	--green: rgb(69, 255, 69);
+	--normalFont: 'Figtree', "Montserrat", sans-serif;
+	--codeFont: "JetBrains Mono", "Consolas", "Courier New", "Courier", monospace;
 }
 
 .bigger {
@@ -68,7 +75,7 @@ html {
 button {
 	background-color: var(--elementBG);
 	border: rgba(0, 0, 0, 0);
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: var(--normalFont);
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -91,7 +98,7 @@ button:hover {
 	border-radius: 0.5em;
 }
 body {
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: var(--normalFont), 'Montserrat', sans-serif;
 	font-weight: 400;
 	/*background: #161c25;*/
 	font-size: 1.25em;
@@ -425,7 +432,7 @@ input {
 }
 h1 {
 	font-size: 5em;
-	font-family: "Inter", "Montserrat", sans-serif;
+	font-family: 'Inter', "Montserrat", sans-serif;
 	font-weight: 900;
 	color: var(--body);
 	text-align: center;
@@ -436,7 +443,7 @@ h1 {
 	box-shadow: var(--background) 0px 0px 0.5em 0.5em;
 }
 h2 {
-	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
+	font-family: 'Inter', 'Montserrat', sans-serif;
 	/*font-weight: 900;*/
 	color: var(--body);
 	text-align: center;
@@ -466,13 +473,16 @@ h4 {
 	text-align: center;
 }
 h5 {
-	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
+	font-family: 'Inter', 'Montserrat', sans-serif;
 	font-size: 1.3em;
+	font-weight: 900;
+	margin: 2em 0em 1em 0em;
 }
 h6 {
-	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
+	font-family: 'Inter', 'Montserrat', sans-serif;
 	font-weight: 900;
 	font-size: 1.1em;
+	margin: 1.5em 0em 0.5em 0em;
 }
 .fredoka {
 	font-family: 'Fredoka', 'Montserrat', sans-serif;
@@ -861,7 +871,7 @@ hide {
 }
 #tooltip {
 	position: fixed;
-	font-family: "Inter", "Montserrat", sans-serif;
+	font-family: 'Inter', "Montserrat", sans-serif;
 	background: var(--elementBG);
 	color: var(--body);
 	border-radius: 0.2em;
@@ -922,4 +932,20 @@ body { padding: 0; margin: 0; }
 }
 .whole-width {
 	width: 100%;
+}
+.image-zoom:hover {
+	cursor: zoom-in;
+}
+.active:hover {
+	cursor: pointer;
+}
+.fixed {
+	position: fixed;
+}
+.disable-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
