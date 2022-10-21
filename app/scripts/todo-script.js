@@ -112,7 +112,7 @@ function hideInfoScreen() {
 
     item.displayName = handleDisplayName(document.getElementById("name-input").value);
     item.name = handleName(document.getElementById("name-input").value);
-    console.log(item.name + ", " + item.displayName);
+    //console.log(item.name + ", " + item.displayName);
 
     creatingItem = false;
     localStorage.setItem("todoLists", JSON.stringify(todoLists));
@@ -150,7 +150,7 @@ function loadLists() {
     }
     todoLists = newTodoLists;
     localStorage.setItem("todoLists", JSON.stringify(todoLists));*/
-    if(localStorage.getItem("todoLists") != "") {
+    if(localStorage.getItem("todoLists") != null) {
         try {
             todoLists = JSON.parse(localStorage.getItem("todoLists"));
         }
@@ -162,12 +162,12 @@ function loadLists() {
     else {
         localStorage.setItem("todoLists", JSON.stringify(todoLists));
     }
-    console.log(localStorage.getItem("todoLists"));
+    //console.log(localStorage.getItem("todoLists"));
     for(var item of todoLists.lists) {
         if(item.name == "template") {
             continue;
         }
-        console.log(item.name);
+        //console.log(item.name);
     }
     loadListDisplay();
 }
@@ -309,7 +309,7 @@ function stopEditingList() {
 
     var versionsFound = 1
     for(var list of todoLists.lists) {
-        console.log(list.name, "exists,", handleName(document.getElementById("list-name-input").value), "is being made.")
+        //console.log(list.name, "exists,", handleName(document.getElementById("list-name-input").value), "is being made.")
         if(list.name == handleName(document.getElementById("list-name-input").value)) {
             versionsFound++;
         }
@@ -321,7 +321,7 @@ function stopEditingList() {
 
     item.displayName = handleDisplayName(document.getElementById("list-name-input").value);
     item.name = handleName(document.getElementById("list-name-input").value);
-    console.log(item.name + ", " + item.displayName);
+    //console.log(item.name + ", " + item.displayName);
 
     creatingList = false;
     localStorage.setItem("todoLists", JSON.stringify(todoLists));
@@ -437,7 +437,7 @@ function showList(listId) {
         <i class="fa-regular fa-plus complete-icon" style="background-color: var(--elementBG); cursor: text;"></i>
         <button class="view-item-button" onclick="createItem(this.parentElement.id)">Add item</button>
     </div>`;
-    console.log(todoLists.lists);
+    //console.log(todoLists.lists);
 }
 
 function toggleComplete(itemName) {
