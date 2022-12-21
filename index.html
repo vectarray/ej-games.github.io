@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>EJGames Homepage</title>
+	<title>Vectarray Homepage</title>
 	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
 	<link rel="stylesheet" href="mainstyle.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,12 +14,99 @@
 		.whole-width-image .fade {
 			height: 650px;
 		}
+		.changing-cards {
+			width: 25%;
+			transform: translateX(0px);
+			transition: transform 0.3s cubic-bezier(0, 0, 0, 1), opacity 0.7s;
+			opacity: 100;
+		}
+		.changing-cards.moved {
+			width: 25%;
+			transform: translateY(-2.5em);
+			transition: transform 0.3s cubic-bezier(1, 0, 1, 1), opacity 0.3s;
+			opacity: 0;
+		}
+		.changing-cards.moved.moved-back {
+			width: 25%;
+			transform: translateY(2.5em);
+			transition: transform 0.7s cubic-bezier(0, 0, 0, 1), opacity 0.7s;
+			opacity: 0;
+		}
 	</style>
 	<script src="globalscript.js"></script>
 	<script src="frequent-notifications.js"></script>
 	<script>
+		let imageIds = {
+			"games": {
+				"prefix": "/images/c-",
+				"suffix": "",
+				"contents": ["lockedin-card.jpg", "connectmore-card.jpg", "connectcircle-card.jpg", "apolycalypse-card.png", "3dquiz-card.png", "obbyshowdown-card.jpg", "platformer-card.jpg"],
+				"currentIndex": 0
+			},
+			"tutorials": {
+				"prefix": "",
+				"suffix": "",
+//							  C# logo                   Python logo               JS Logo                   Lua Logo                  Roblox studio logo
+				"contents": ["https://bit.ly/3fHnRoW", "https://bit.ly/2VD8lvZ", "https://bit.ly/3FJB8YK", "https://bit.ly/3Uv3g6h", "https://bit.ly/3UdSphq"],
+				"currentIndex": 0
+			},
+			"apps": {
+				"prefix": "/images/c-",
+				"suffix": "",
+				"contents": ["todo-card.jpg", "planet-orbit-card.jpg"],
+				"currentIndex": 0
+			},
+			"web-games": {
+				"prefix": "/images/c-",
+				"suffix": "-card.jpg",
+				"contents": ["web-connect-more", "word-game"],
+				"currentIndex": 0
+			}
+		}
+		function changeCards(elementId, imageId) {
+			
+			if(imageIds[imageId] == undefined) {
+				return;
+			}
+
+			var icon = imageIds[imageId];
+
+			var element = document.getElementById(elementId);
+
+			icon.currentIndex += 1;
+			if(icon.currentIndex >= icon.contents.length) {
+				icon.currentIndex = 0;
+			}
+			element.src = icon.prefix + icon.contents[icon.currentIndex] + icon.suffix;
+
+			setTimeout(function() {
+				element.parentElement.classList.remove("moved");
+				element.parentElement.classList.remove("moved-back");
+			}, 700)
+
+			setTimeout(function() {
+				element.parentElement.classList.add("moved");
+			}, 3700)
+
+			setTimeout(function() {
+				changeCards(elementId, imageId);
+				element.parentElement.classList.add("moved-back");
+			}, 4000)
+		}
+		function tryAll() {
+			try {
+				changeCards("games-cards", "games");
+				changeCards("tutorials-cards", "tutorials");
+				changeCards("apps-cards", "apps");
+				changeCards("web-games-cards", "web-games");
+			}
+			catch {
+				setTimeout(tryAll, 500);
+			}
+		}
+		tryAll();
 	</script>
-	<link rel="icon" href="/images/new-ej-logo-shadow-bg.png" type="image/x-icon">
+	<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
 
 </head>
 
@@ -27,20 +114,16 @@
 	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
-	<div id="title">games</div>
+	<div id="title">vectarray</div>
 	<div class="large-space"></div>
-	<h1>EJGames</h1>
-	<div class="large-space"></div>
+	<h1>Vectarray</h1>
+	<div class="space"></div>
 	<div class="whole-width-image" id="heading-image">
 		<img src="/images/lockedin-zones.png">
 		<div class="fade"></div>
 	</div>
-	<div class="smallSpace"></div>
 	<br>
 	<div class="mainParagraph bigger">
-		Welcome to the EJGames homepage.
-		<div class="smallSpace"></div>
-		<div class="line"></div>
 		<!--
 		<h4 id="lockedin">Stickman Multiplayer (on pause)</h4>
 		<i>I'm not sure if this will ever be taken off pause.</i>
@@ -81,6 +164,62 @@
 
 		<div class="smallSpace"></div>
 		<div class="line"></div>
+		<div class="smallSpace"></div>
+		<div class="left moveInRightSlow" style="width: 65%;">
+			<h4 style="text-align: left; margin-left: 20%; margin-top: 0px">Unity</h4>
+
+			I have made many games using Unity, as well as some Xcode projects for iOS. These include arcade games, story games, mobile games and some early projects were just experiments, pretty much.
+		</div>
+		<div class="right changing-cards" id="games-cards-container">
+			<img id="games-cards" src="/images/c-lockedin-card.jpg" alt="A collection of my games" width="100%">
+		</div>
+		<div class="clear"></div>
+		
+
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<div class="smallSpace"></div>
+		<div class="right moveInRightSlow" style="width: 65%;">
+			<h4 style="text-align: right; margin-right: 20%; margin-top: 0px">Tutorials</h4>
+
+			By visiting <a href="/tutorials.html">this page</a>, you can find a vast range of tutorials, in a vast range of languages, including C#, Python and JavaScript. More languages will be added
+			soon, and I might even learn some more!
+		</div>
+		<div class="left changing-cards" id="tutorials-cards-container">
+			<img id="tutorials-cards" src="https://bit.ly/3fHnRoW" alt="Some of the languages of my tutorials" width="100%">
+		</div>
+		<div class="clear"></div>
+
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<div class="smallSpace"></div>
+		<div class="left moveInRightSlow" style="width: 65%;">
+			<h4 style="text-align: left; margin-left: 20%; margin-top: 0px">Apps</h4>
+
+			Using JavaScript, I have made some web apps, which are general-use apps and cool things that I'm making to learn some more JavaScript, HTML and CSS.
+		</div>
+		<div class="right changing-cards" id="apps-cards-container">
+			<img id="apps-cards" src="/images/c-todo-card.jpg" alt="A collection of my apps" width="100%">
+		</div>
+		<div class="clear"></div>
+
+		<div class="smallSpace"></div>
+		<div class="line"></div>
+		<div class="smallSpace"></div>
+		<div class="right moveInRightSlow" style="width: 65%;">
+			<h4 style="text-align: right; margin-right: 20%; margin-top: 0px">Web Games</h4>
+
+			I don't just make Unity games! I have also made some HTML and JavaScript games that you can play on any device! (Warning: they are much more basic than my Unity games!)
+		</div>
+		<div class="left changing-cards" id="web-games-cards-container">
+			<img id="web-games-cards" src="/images/c-web-connect-more-card.jpg" alt="A collection of my web games" width="100%">
+		</div>
+		<div class="clear"></div>
+		<div class="smallSpace"></div><div class="line"></div>
+		<div class="smallSpace"></div>
+		Do you want some more information about me, that nobody asked for? Is that a no? Because all I heard was <a href="/about.html">https://vectarray.com/about</a>
+
+			<!--
 		<h4 class="moveInRightSlow">Me</h4>
 		<div class="moveInRightSlow">
 			I'm EJGames.
@@ -200,7 +339,7 @@
 		<div class="moveInRightSlow card active" onclick="promptOldGame();">
 			<img src="https://bit.ly/3IDX8lS" class="cardIcon">
 			<h4>3D Quiz (Very Old)</h4>
-			<img src="/images/new-ej-logo-shadow-bg.png">
+			<img src="/images/vectarray-logo-shadow-bg.png">
 			I don't have a screenshot for this. Have my logo.
 			<br>This 3D Quiz was very linear and simple, but did teach me the basics of Unity. It was a humble beginning. It was also very easy because
 			the answers were always in the same place.
@@ -208,7 +347,7 @@
 			<div class="disclaimerBG">This game is no longer updated.</div>
 		</div>
 		</div>
-		<!--<h4 id="everythingelse">Everything else</h4>
+		<h4 id="everythingelse">Everything else</h4>
 		In case you're not here for Locked In, then congratulations! You're a unique individual! Why don't I introduce myself, so that you don't think that you'll download a virus?
 		<br>
 		<span class="imageDescription">What? Who said anything about a virus?</span>

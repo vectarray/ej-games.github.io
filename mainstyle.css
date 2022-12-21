@@ -4,7 +4,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap'); */
 
 /* Raleway (Headings) */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,900;1,900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,900;1,900&display=swap');*/
 
 /* League Spartan (Unused) */
 /*@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;700;900&display=swap");*/
@@ -43,7 +43,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Outfit (modern) */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;700;900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;700;900&display=swap');*/
+
+/* Maths */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
 
 :root {
 	--background: #161c25;
@@ -58,6 +61,7 @@
 	--green: rgb(69, 255, 69);
 	--normalFont: 'Figtree', "Montserrat", sans-serif;
 	--codeFont: "JetBrains Mono", "Consolas", "Courier New", "Courier", monospace;
+	--bottom: #000000;
 }
 
 .bigger {
@@ -110,7 +114,7 @@ select {
 	border-color: var(--elementBG);
 	border-radius: 1em;
 	color: var(--body);
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: var(--normalFont);
 	font-size: 1em;
 	transition: background-color 0.3s;
 }
@@ -152,6 +156,10 @@ option hide{
 	color: var(--body);
 	text-decoration: none;
 	background-color: rgb(12, 20, 36);
+}
+maths {
+	font-family: 'Libre Baskerville', serif;
+	font-style: italic;
 }
 .notAllowed:hover { cursor: no-drop; }
 li {
@@ -334,7 +342,7 @@ a:hover {
 .searchBar {
 	width: 100%;
 	font-size: 1.5em;
-	font-family: 'Kumbh Sans', 'Montserrat', sans-serif;
+	font-family: 'Inter', 'Montserrat', sans-serif;
 	font-weight: 600;
 	background-color: var(--elementBG);
 	border: none;
@@ -429,6 +437,16 @@ input {
 	color: var(--body);
 	text-decoration: none;
 	background-color: var(--elementBG);
+}
+be {
+	font-weight: 900;
+}
+light {
+	font-weight: 300;
+}
+sml {
+	font-weight: 300;
+	font-size: 0.8em;
 }
 h1 {
 	font-size: 5em;
@@ -525,7 +543,7 @@ h6 {
 	background-color: rgba(0, 0, 0, 0);
 	border: rgba(0, 0, 0, 0);
 	color: rgb(24, 126, 243);
-	font-family: 'Inter', 'Montserrat', sans-serif;
+	font-family: var(--normalFont);
 	text-decoration: none;
 	font-size: 1em;
 	cursor:pointer;
@@ -840,6 +858,11 @@ td {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	filter: drop-shadow(1px 3px 5px black);
+}
+#below-logo {
+	filter: drop-shadow(1px 3px 5px black);
+	color: white;
 }
 cursive {
 	font-family: "Dancing Script", "Fredoka", "Montserrat", sans-serif;
@@ -871,7 +894,7 @@ hide {
 }
 #tooltip {
 	position: fixed;
-	font-family: 'Inter', "Montserrat", sans-serif;
+	font-family: var(--normalFont);
 	background: var(--elementBG);
 	color: var(--body);
 	border-radius: 0.2em;
@@ -948,4 +971,35 @@ body { padding: 0; margin: 0; }
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+#bottom {
+	background-color: var(--bottom);
+	padding: 1em;
+}
+#bottom span {
+	padding: 1%;
+	margin: 0% 9%;
+	width: 13%;
+	float: left;
+}
+#bottom span a {
+	display: block;
+}
+#bottom h5 {
+	text-align: center;
+}
+.can-transition {
+	transform: translateX(0px);
+	transition: transform 0.3s cubic-bezier(0, 0, 0, 1), opacity 0.7s;
+	opacity: 100;
+}
+.can-transition.transition-moved {
+	transform: translateY(-2.5em);
+	transition: transform 0.3s cubic-bezier(1, 0, 1, 1), opacity 0.3s;
+	opacity: 0;
+}
+.can-transition.transition-moved.transition-moved-back {
+	transform: translateY(2.5em);
+	transition: transform 0.7s cubic-bezier(0, 0, 0, 1), opacity 0.7s;
+	opacity: 0;
 }

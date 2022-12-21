@@ -10,15 +10,14 @@ function CheckFormatting()
 	sidebar.classList.add("sidebar");
 	sidebar.id = "sidebar";
 	sidebar.innerHTML = String.raw`
-		<h4 class="active" onclick="window.location.href='/index.html'" style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${document.getElementById("title").innerHTML.toUpperCase()}</h4>
+		<h4 id="below-logo" class="active" onclick="window.location.href='/index.html'" style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${document.getElementById("title").innerHTML.toUpperCase()}</h4>
 		<h4>Links</h4>
 		<a href="${getAbsLocation("index.html")}" class="URLbuttonText">Homepage</a><br>
-		<a href="${getAbsLocation("lockedin.html")}" class="URLbuttonText">Locked In</a><br>
-		<a href="${getAbsLocation("changelog.html")}" class="URLbuttonText">Changelog</a><br>
-		<a href="${getAbsLocation("tutorials.html")}" class="URLbuttonText">Tutorials</a><br>
-		<a href="${getAbsLocation("blog/index.html")}" class="URLbuttonText">Blog</a><br>
+		<a href="${getAbsLocation("games/index.html")}" class="URLbuttonText">Games</a><br>
+		<a href="${getAbsLocation("app/index.html")}" class="URLbuttonText">Apps</a><br>
 		<a href="${getAbsLocation("music.html")}" class="URLbuttonText">Music</a><br>
-		<a href="${getAbsLocation("games/index.html")}" class="URLbuttonText">Games <green>(NEW)</green></a>`
+		<a href="${getAbsLocation("tutorials.html")}" class="URLbuttonText">Tutorials</a><br>
+		<a href="${getAbsLocation("blog/index.html")}" class="URLbuttonText">Blog</a>`
 
 	document.body.insertBefore(sidebar, document.getElementById("title"));
 
@@ -99,6 +98,37 @@ function CheckFormatting()
 		}
 	}*/
 
+	if(window.location.href.indexOf("planet-orbit") < 0) {
+		
+		var newBottom = document.createElement("div");
+		newBottom.id = "bottom";
+		newBottom.innerHTML = String.raw`
+		<span>
+			<h5>PC Games</h5>
+			<a class="URLbuttonText" href="/lockedin.html">Locked In</a>
+			<a class="URLbuttonText" href="/connectcircle.html">ConnectCircle</a>
+			<a class="URLbuttonText" href="/connectmore.html">ConnectMore</a>
+			<a class="URLbuttonText" href="/roblox-games.html">Roblox Games</a>
+			<a class="URLbuttonText" href="/index.html">Homepage</a>
+		</span>
+		<span>
+			<h5>Web games</h5>
+			<a class="URLbuttonText" href="/games/index.html">Web Games Home</a>
+			<a class="URLbuttonText" href="/games/word-game.html">Word Game</a>
+			<a class="URLbuttonText" href="/games/connect-more.html">ConnectMore</a>
+		</span>
+		<span>
+			<h5>Apps</h5>
+			<a class="URLbuttonText" href="/app/web-todo.html">Todo List</a>
+
+			<h5>Tutorials & Coding</h5>
+			<a class="URLbuttonText" href="/tutorials.html">Tutorials Home</a>
+		</span>
+		<div class="clear"/><div class="smallSpace">`;
+		document.body.appendChild(newBottom);
+
+	}
+
 
 	// Cleaning up & inserting elements
 	document.getElementById("title").style.display = "none";
@@ -110,7 +140,7 @@ function CheckFormatting()
 	document.getElementById("loading").remove();
 
 	var newLogo = document.createElement("img");
-	newLogo.src = getAbsLocation("images/new-ej-logo.png");
+	newLogo.src = getAbsLocation("images/vectarray-logo-white.png");
 	newLogo.id = "logo";
 	newLogo.classList.add("active");
 	newLogo.onclick = function() {
@@ -175,7 +205,9 @@ function getAbsLocation(pathName) {
 }
 
 function setMobile() {
-	document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
+	for(var item of document.getElementsByClassName("mainParagraph")) {
+		item.style.margin = "0% 5% 0% 5%";
+	}
 	document.getElementById("sidebarbutton").style.display = "block";
 	document.getElementById("sidebar").style.left = "-100%";
 	document.getElementById("sidebar").style.top = "0";

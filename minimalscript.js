@@ -126,7 +126,9 @@ function getAbsLocation(pathName) {
 }
 
 function setMobile() {
-	document.getElementsByClassName("mainParagraph")[0].style.margin = "0% 5% 0% 5%";
+	for(var item of document.getElementsByClassName("mainParagraph")) {
+		item.style.margin = "0% 5% 0% 5%";
+	}
 	document.body.style.fontSize = "2em";
 }
 

@@ -23,6 +23,25 @@ function moveInElement(element, slow) {
     }, 200)
 }
 
+function beginSwitch(elementId, onSwitch, onSwitchFinished) {
+
+    var element = document.getElementById(elementId);
+
+    element.classList.add("moved");
+
+    setTimeout(function() {
+        element.classList.add("moved-back");
+        onSwitch();
+    }, 300);
+
+    setTimeout(function() {
+        element.classList.remove("moved");
+        element.classList.remove("moved-back");
+        onSwitchFinished();
+    }, 1000);
+
+}
+
 function checkForVisibility(className, slow) {
     for(var item of this.document.getElementsByClassName(className)) {
         var element = item;

@@ -57,6 +57,7 @@ function UpdateColour() {
 			root.style.setProperty("--elementHover", colourScheme.elementHover);
 			root.style.setProperty("--elementBrighter", colourScheme.elementBrighter)
 			root.style.setProperty("--green", colourScheme.green);
+			root.style.setProperty("--bottom", colourScheme.bottom);
 
 			var ua = navigator.userAgent.toLowerCase();
 			if(ua.indexOf("iphone") > -1 || ua.indexOf("android") > -1 || ua.indexOf("windows phone") > -1) {

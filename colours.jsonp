@@ -1,5 +1,7 @@
 colours = {
     "dark": {
+        //"background": "#101e33",
+        //"background": "linear-gradient(135deg, #101e44 0%, #101e66 30%, #101e33 100%)",
         "background": "#101e33",
         "title": "#0a2343",
         "sidebar": "#00000000",
@@ -9,7 +11,8 @@ colours = {
         "elementBG": "#0a2343",
         "elementHover": "#13396b",
         "elementBrighter": "#1c55a0",
-        "green": "rgb(69, 255, 69)"
+        "green": "rgb(69, 255, 69)",
+        "bottom": "#000000"
     },
     "red": {
         "background": "#351a16",
@@ -44,6 +47,7 @@ colours = {
         "elementBG": "#b2dbfb",
         "elementHover": "#85c9fc",
         "elementBrighter": "rgb(19, 67, 129)",
-        "green": "rgb(42, 171, 42)"
+        "green": "rgb(42, 171, 42)",
+        "bottom": "#e1e1e1"
     }
 }

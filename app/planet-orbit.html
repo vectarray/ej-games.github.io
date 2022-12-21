@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Planet Orbits</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+        <link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+	<style>
+        #planets {
+            text-align: center;
+            align-content: center;
+            transform-origin: center;
+        }
+        #planet-circle {
+            width: 30%;
+            top: 30em;
+	        filter: drop-shadow(0px 0px 20px var(--body));
+            position: absolute;
+            left: 35%;
+            transform-origin: center;
+        }
+        .planet {
+            position: absolute;
+            width: 30%;
+            top: 30em;
+            left: 35%;
+            transform-origin: center;
+            transition: transform 0.1s;
+        }
+        #speed-input {
+            width: 3em;
+        }
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+    <script src="/suitable-words.jsonp"></script>
+	<script>
+        const rotationSpeeds = {
+            "mercury": 87.97,
+            "venus": 224.70,
+            "earth": 365.26,
+            "mars": 686.98,
+            "jupiter": 4332.82,
+            "saturn": 10755.70,
+            "uranus": 30687.15,
+            "neptune": 60190.03,
+            "sun": 0
+        }
+        let currentRotations = {
+            "mercury": 0,
+            "venus": 0,
+            "earth": 0,
+            "mars": 0,
+            "jupiter": 0,
+            "saturn": 0,
+            "uranus": 0,
+            "neptune": 0,
+            "sun": 0
+        }
+        const allMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let timeScale = 1
+        function update() {
+            for(var item of Object.keys(currentRotations)) {
+
+                currentRotations[item] += (rotationSpeeds[item] != 0 ? (1 / rotationSpeeds[item]) : 0) * rotationSpeeds["earth"] * 0.001 * document.getElementById("speed-input").value;
+            }
+            for(var item of document.getElementsByClassName("planet")) {
+                //console.log(currentRotations[item.id].toString() + ", " + item.style.transform);
+                item.style.transform = "rotate(" + (currentRotations[item.id] - currentRotations[document.getElementById("relative-to").value]).toString() + "turn)";
+            }
+            var months = Math.floor(12 * (currentRotations["earth"] % 1));
+             
+            document.getElementById("time").innerHTML = Math.floor(currentRotations["earth"]).toString() + " years, " + months.toString() + " months since last alignment<br>";
+        }
+	</script>
+
+</head>
+
+<body onload="CheckFormatting(); setInterval(update, 50);">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <!--
+        What theme is this page? (e.g. games, tutorials, music)
+    -->
+	<div id="title">apps</div>
+
+	<h2>Planet Orbits</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph">
+        This is an app you can use to view each planet's orbit! Just drag the slider and watch the planets turn! Haha! The planet's don't turn. They move around the sun.
+        <div class="smallSpace"></div>
+        Time:
+        <div id="time"></div>
+
+        <input type="number" id="speed-input"><br>
+        Relative to: 
+        <select id="relative-to">
+            <option>sun</option>
+            <option>mercury</option>
+            <option>venus</option>
+            <option>earth</option>
+            <option>mars</option>
+            <option>jupiter</option>
+            <option>saturn</option>
+            <option>uranus</option>
+            <option>neptune</option>
+        </select>
+
+        <div class="space"></div>
+        <div id="planets">
+            <img id="planet-circle" src="images/planet-orbit-circle.png">
+            <img id="mercury" class="planet" src="images/planet-orbit-mercury.png" style="transform: rotate(0turn); z-index: 1;">
+            <img id="venus" class="planet" src="images/planet-orbit-venus.png" style="transform: rotate(0turn); z-index: 2;">
+            <img id="earth" class="planet" src="images/planet-orbit-earth.png" style="transform: rotate(0turn); z-index: 3;">
+            <img id="mars" class="planet" src="images/planet-orbit-mars.png" style="transform: rotate(0turn); z-index: 4;">
+            <img id="jupiter" class="planet" src="images/planet-orbit-jupiter.png" style="transform: rotate(0turn); z-index: 5;">
+            <img id="saturn" class="planet" src="images/planet-orbit-saturn.png" style="transform: rotate(0turn); z-index: 6;">
+            <img id="uranus" class="planet" src="images/planet-orbit-uranus.png" style="transform: rotate(0turn); z-index: 7;">
+            <img id="neptune" class="planet" src="images/planet-orbit-neptune.png" style="transform: rotate(0turn); z-index: 8;">
+        </div>
+
+
+
+        <!--
+            Mercury: 87.97 days/turn
+            Venus: 224.70 d/t
+            Earth: 365.26 d/t
+            Mars: 686.98 d/t
+            Jupiter: 4,332.82 d/t
+            Saturn: 10,755.70 d/t
+            Uranus: 30,687.15 d/t
+            Neptune: 60,190.03 d/t
+        -->
+        
+    </div>
+	<div class="smallSpace"></div>
+</body>
+
+</html>
