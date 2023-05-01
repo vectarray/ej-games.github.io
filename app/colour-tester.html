@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>EJGames Todo</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+        .bottom {
+            position: fixed;
+            display: block;
+            text-align: center;
+            width: max-content;
+            left: 50%;
+            bottom: -3em;
+            transform: translateX(-50%);
+            padding: 0.7% 0.7% calc(2% + 3em) 0.7%;
+            border-radius: 10%;
+            background-color: var(--elementBG);
+        }
+        .bottom h4 {
+            font-size: 1.6em;
+            margin-top: 0px;
+        }
+
+        .box {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+        }
+
+        .box:hover {
+            cursor: default;
+        }
+	</style>
+    <link rel="stylesheet" href="styles/general-style.css">
+	<script src="/minimalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+	<script>
+        let html;
+        let mousePressed = false;
+        let xPercent = 0;
+        let yPercent = 0;
+
+        function onLoad() {
+            updateBoxes();
+            html = document.getElementsByTagName("html")[0];
+            html.addEventListener("mousemove", function(e) {
+                onClick(e);
+            });
+            html.addEventListener("mousedown", function() {
+                mousePressed = true;
+            });
+            html.addEventListener("mouseup", function() {
+                mousePressed = false;
+            });
+
+        }
+        function onClick(e) {
+            xPercent = e.clientX;
+            yPercent = e.clientY;
+            console.log(xPercent, yPercent);
+        }
+        function updateBoxes() {
+            for(var item of document.getElementsByClassName("box")) {
+                item.addEventListener("mousedown", function() {
+                    console.log("clicked");
+                    move();
+                    function move() {
+                        if((item.style.left + item.style.width) - xPercent > 50) {
+                            item.style.left = xPercent.toString() + "px";
+                            item.style.top = yPercent.toString() + "px";
+                            setTimeout(function () {
+                                if(mousePressed) {
+                                    setTimeout(move, 5);
+                                }
+                            }, 15);
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+	<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+
+</head>
+
+<body onload="CheckFormatting(); onLoad()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <textarea readonly class="box">
+        <div class="centre"></div>
+    </textarea>
+    <div class="bottom">
+        <h4>Controls</h4>
+        
+    </div>
+    
+
+	<div class="smallSpace"></div>
+
+</html>

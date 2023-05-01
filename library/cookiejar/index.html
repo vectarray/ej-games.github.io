@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Vectarray Game Installs</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="/mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<style>
+			
+		</style>
+		<script src="/globalscript.js"></script>
+		<script src="main.js"></script>
+		<script>
+			function copy(text, buttonId) {
+				var data = [new ClipboardItem({ "text/plain": new Blob([text], { type: "text/plain" }) })];
+					navigator.clipboard.write(data).then(function() {
+						document.getElementById(buttonId).innerHTML = "Copied! ✔"
+					},
+					function() {
+						createPopup("Error", "Unable to show popup :(", handleSound("bad"));
+					}
+				);
+			}
+		</script>
+
+	</head>
+
+<body onload="CheckFormatting()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">utilities</div>
+	<h2>Cookie Jar</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		
+		Welcome to the main page of Cookie Jar, a simple, lightweight library for vanilla JavaScript.
+		
+		<br><br>
+
+		Cookie Jar allows you to save data to LocalStorage or the document's cookie, with just a single function, and not much knowledge of how LocalStorage or cookies work.
+
+		<div class="smallSpace"></div><div class="line"></div>
+
+		<h4>Installing</h4>
+
+		<h5>Importing online</h5>
+		To import Cookie Jar into your HTML file, just add a <span class="code">script</span> tag and set the src to the Cookie Jar URL:<br><br>
+<pre style="display: inline;"><code style="display: inline;" class="language-html">&lt;script src='https://vectarray.com/library/cookiejar/main.js'&gt;&lt;/script&gt;
+</code></pre>
+		<br>
+		<button id="copy-first" onclick="copy(String.raw`<script src='https://vectarray.com/library/cookiejar/main.js'></script>`, 'copy-first')">Copy text</button>
+
+		<h5>Downloading</h5>
+		Just click <a href="https://vectarray.com/library/cookiejar/main.js">here</a> and drag it into your website's root folder.
+		<br><br>Then, add the following to your <span class="code">&lt;head&gt;</span> section:
+		<br><br>
+<pre style="display: inline;"><code style="display: inline;" class="language-html">&lt;script src='/main.js'&gt;&lt;/script&gt;
+</code></pre>
+
+		<div class="smallSpace"></div><div class="line"></div>
+
+
+	<div class="space"></div>
+	</div>
+</html>

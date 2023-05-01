@@ -12,7 +12,7 @@
 		rel="stylesheet">
 	<style>
 		.whole-width-image .fade {
-			height: 650px;
+			height: 100%;
 		}
 		.changing-cards {
 			width: 25%;
@@ -63,48 +63,7 @@
 				"currentIndex": 0
 			}
 		}
-		function changeCards(elementId, imageId) {
-			
-			if(imageIds[imageId] == undefined) {
-				return;
-			}
 
-			var icon = imageIds[imageId];
-
-			var element = document.getElementById(elementId);
-
-			icon.currentIndex += 1;
-			if(icon.currentIndex >= icon.contents.length) {
-				icon.currentIndex = 0;
-			}
-			element.src = icon.prefix + icon.contents[icon.currentIndex] + icon.suffix;
-
-			setTimeout(function() {
-				element.parentElement.classList.remove("moved");
-				element.parentElement.classList.remove("moved-back");
-			}, 700)
-
-			setTimeout(function() {
-				element.parentElement.classList.add("moved");
-			}, 3700)
-
-			setTimeout(function() {
-				changeCards(elementId, imageId);
-				element.parentElement.classList.add("moved-back");
-			}, 4000)
-		}
-		function tryAll() {
-			try {
-				changeCards("games-cards", "games");
-				changeCards("tutorials-cards", "tutorials");
-				changeCards("apps-cards", "apps");
-				changeCards("web-games-cards", "web-games");
-			}
-			catch {
-				setTimeout(tryAll, 500);
-			}
-		}
-		tryAll();
 	</script>
 	<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
 
@@ -119,7 +78,7 @@
 	<h1>Vectarray</h1>
 	<div class="space"></div>
 	<div class="whole-width-image" id="heading-image">
-		<img src="/images/lockedin-zones.png">
+		<img src="/images/c-main-banner.jpg">
 		<div class="fade"></div>
 	</div>
 	<br>
@@ -145,20 +104,16 @@
 
 		<div class="cards">
 			<div class="smaller-card active" onclick="hyperlink('games/index.html');">
-				<h4>Games Home</h4>
-				A few very poorly-written games made with JavaScript.
+				<h4 style="margin-bottom: 0px">Games Home</h4>
 			</div>
 			<div class="smaller-card active" onclick="hyperlink('tutorials.html');">
-				<h4>Tutorials Page</h4>
-				Need some help with programming? Just visit this page.
+				<h4 style="margin-bottom: 0px">Tutorials Page</h4>
 			</div>
 			<div class="smaller-card active" onclick="hyperlink('music.html');">
-				<h4>Music</h4>
-				A place where I can show off my very slowly-improving music.
+				<h4 style="margin-bottom: 0px">Music</h4>
 			</div>
 			<div class="smaller-card active" onclick="hyperlink('app/index.html');">
-				<h4>Apps</h4>
-				A few web apps along with a respective download page.
+				<h4 style="margin-bottom: 0px">Apps</h4>
 			</div>
 		</div>
 
