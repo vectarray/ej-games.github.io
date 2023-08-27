@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Unity Useful Things</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>Useful Things</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		This is a Unity tutorial about <b>basically everything</b>.
+		Vanilla C# users, you need to quickly leave. You can't stay for much longer.
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>What's going on?</h4>
+		I don't know what you mean, this seems pretty straightforward. Here are as many useful things in Unity
+		as I can think of. Copy the code if you want, but make sure you at least have a vague idea of what it does.
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>General Usefulness</h4>
+		<h3>Getting a component from an object</h3>
+<pre><code class="language-csharp">var variableToSet = objectReference.GetComponent&lt;T&gt;();
+// Replace T with the component type, e.g. AudioSource
+</code></pre>
+
+		<h3>Adding and removing components</h3>
+<pre><code class="language-csharp">// Adding
+objectReference.AddComponent&lt;T&gt;();
+
+// Removing (destroying)
+Destroy(objectReference.GetComponent&lt;T&gt;());
+</code></pre>
+
+		<h3>Moving an object</h3>
+<pre><code class="language-csharp">Vector3 position = new Vector3(1f, 2f, 3f);
+transform.position = position;
+</code></pre>
+
+		<h3>Finding an object by name</h3>
+<pre><code class="language-csharp">var obj = GameObject.Find("Blah Blah");
+</code></pre>
+		
+		<div class="smallSpace"></div><div class="line"></div>
+
+		<h4>Movement</h4>
+		<h3>Simple movement (3D)</h3>
+<pre><code class="language-csharp">void Update()
+{
+	float horizontal = Input.GetAxis("Horizontal"); // Ranges from -1 to 1
+	float vertical = Input.GetAxis("Vertical"); // Ranges from -1 to 1
+
+	Vector3 vector = new Vector3(horizontal, 0f, vertical);
+
+	transform.Translate(vector * Time.deltaTime);
+	// Time.deltaTime stops the movement from being affected by framerate
+}
+</code></pre>
+
+		<h3>Simple movement (2D)</h3>
+<pre><code class="language-csharp">void Update()
+{
+	float horizontal = Input.GetAxis("Horizontal"); // Ranges from -1 to 1
+	float vertical = Input.GetAxis("Vertical"); // Ranges from -1 to 1
+
+	Vector2 vector = new Vector2(horizontal, vertical);
+
+	transform.Translate(vector * Time.deltaTime);
+	// Time.deltaTime stops the movement from being affected by framerate
+}
+</code></pre>
+
+		<h3>Jumping (3D)</h3>
+		You should also see the section "checking whether grounded" so the player can't jump while already midair.
+<pre><code class="language-csharp">void Update()
+{
+	// This will only fire on the frame that the spacebar is pressed
+	if(Input.GetKeyDown(KeyCode.Space))
+	{
+		GetComponent&lt;Rigidbody&gt;().AddForce(Vector3.up);
+	}
+}
+</code></pre>
+
+		<h3>Jumping (2D)</h3>
+		You should also see the section "checking whether grounded" so the player can't jump while already midair.
+<pre><code class="language-csharp">void Update()
+{
+	// This will only fire on the frame that the spacebar is pressed
+	if(Input.GetKeyDown(KeyCode.Space))
+	{
+		GetComponent&lt;Rigidbody2D&gt;().AddForce(Vector2.up);
+	}
+}
+</code></pre>
+
+		<h3>Checking whether grounded (3D)</h3>
+		
+<pre><code class="language-csharp">public bool grounded = false;
+
+// FixedUpdate runs at a constant 50fps
+void FixedUpdate()
+{
+	RaycastHit[] hits = new RaycastHit[] {};
+	hits = Physics.RaycastAll(transform.position, Vector3.down, 1f);
+	/*
+		Note: the raycast will always detect the player, so
+		the array will never be empty.
+	*/
+
+	if(hits.length > 1)
+	{
+		grounded = true;
+	}
+	else {
+		grounded = false;
+	}
+}
+</code></pre>
+
+		<h3>Checking whether grounded (2D)</h3>
+		
+<pre><code class="language-csharp">public bool grounded = false;
+
+// FixedUpdate runs at a constant 50fps
+void FixedUpdate()
+{
+	RaycastHit2D[] hits = new RaycastHit2D[] {};
+	hits = Physics2D.RaycastAll(transform.position, Vector3.down, 1f);
+	/*
+		Note: the raycast will always detect the player, so
+		the array will never be empty.
+	*/
+
+	if(hits.length > 1)
+	{
+		grounded = true;
+	}
+	else {
+		grounded = false;
+	}
+}
+</code></pre>
+
+		<h3>Flipping based on movement (2D)</h3>
+		
+<pre><code class="language-csharp">public bool facingRight = true;
+
+void Update()
+{
+	if(Input.GetAxis("Horizontal") &gt; 0) {
+		facingRight = true;
+	}
+	else if(Input.GetAxis("Horizontal") &lt; 0) {
+		facingRight = false;
+	}
+	// No need to switch direction if not moving.
+}
+</code></pre>
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Hopefully anyone reading this now knows the basics of how to make a game with Unity 😉
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

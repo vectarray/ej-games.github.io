@@ -283,16 +283,22 @@
                 var pointsToAdd = attemptsLeft;
             
                 pointsToAdd *= Math.pow(0.6, numberOfWords);
-                pointsToAdd *= Math.pow(1.7, numberOfLetters);
+                pointsToAdd *= Math.pow(1.6, numberOfLetters);
 
-                pointsToAdd = Math.round(pointsToAdd);
+                pointsToAdd = Math.ceil(pointsToAdd);
 
-                if(pointsToAdd > 1) { pointsToAdd = 1; }
+                //if(pointsToAdd > 1) { pointsToAdd = 1; }
 
                 points = (Number(points) + pointsToAdd).toString();
                 setCookie("wordGamePoints", points, 730);
                 createPopupText("+" + attemptsLeft.toString() + " points", document.getElementById("points-display"));
-                createConfirm("Correct!", "You have won this round, earning <b class='bigger'>" + pointsToAdd.toString() + "</b> point(s)! Click the button to play again.",
+
+                var plural = "point"
+                if(pointsToAdd > 1) {
+                    plural = "points";
+                }
+                
+                createConfirm("Correct!", "You have won this round, earning <b class='bigger'>"+pointsToAdd.toString()+"</b> "+plural+"! Click the button to play again.",
                         "/sounds/complete.wav", "Play again!", function() {
                     hideConfirm();
                     resetWords();

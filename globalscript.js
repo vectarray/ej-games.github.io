@@ -102,6 +102,7 @@ function CheckFormatting()
 		
 		var newBottom = document.createElement("div");
 		newBottom.id = "bottom";
+		newBottom.style.zIndex = "15";
 		newBottom.innerHTML = String.raw`
 		<span>
 			<h5>PC Games</h5>
@@ -126,6 +127,13 @@ function CheckFormatting()
 		</span>
 		<div class="clear"/><div class="smallSpace">`;
 		document.body.appendChild(newBottom);
+
+		if (navigator.userAgent.indexOf("iphone") == -1 && navigator.userAgent.indexOf("android") == -1 && navigator.userAgent.indexOf("windows phone") == -1)
+		{
+			document.getElementById("sidebar").style.minHeight = "70%";
+		}
+
+
 
 	}
 
