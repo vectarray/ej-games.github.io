@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Vectarray Clock</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,900;1,900&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;700;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,400;0,500;0,600;0,800;0,900;1,200;1,400;1,500;1,600;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;700;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;400;500;600;800;900&display=swap'); 
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100;0,200;0,400;0,500;0,700;0,900;1,100;1,200;1,400;1,500;1,700;1,900&display=swap');
+
+
+        
+        
+        
+        .slider {
+            height: 1.5em;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 0.5em;
+            width: 50%;
+        }
+        .slider::-moz-range-thumb {
+            background:var(--elementHover);
+            height: 1.5em;
+            width: 5em;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background:var(--elementHover);
+            height: 1.5em;
+            opacity: 100;
+            border-radius: 0.5em;
+            width: 5em;
+        }
+        #size-input::-moz-range-thumb {
+            width: 10%;
+        }
+        #size-input::-webkit-slider-thumb {
+            width: 10%;
+        }
+
+        #clock-display {
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            background-color: rgba(0, 0, 0, 0);
+        }
+        #date-display {
+            padding-top: 0px;
+            margin-top: 0px;
+        }
+
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        html::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            transition: background-color 0.5s ease 0s;
+        }
+
+        :root {
+            --bg: #101e33;
+        }
+	</style>
+    <link rel="stylesheet" href="styles/general-style.css">
+	<script src="/minimalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+	<script>
+
+        const daysWithSt = [1, 21, 31];
+        const daysWithNd = [2, 22];
+        const daysWithRd = [3, 23];
+
+        function options() {
+            if(document.getElementById("options").style.display == "block") {
+                document.getElementById("options").style.display = "none";
+            }
+            else {
+                document.getElementById("options").style.display = "block";
+            }
+
+
+
+            //console.log(document.getElementById("font-select").options[document.getElementById("font-select").options.selectedIndex].value)
+        }
+
+        function changeFont() {
+            var fontSelection = document.getElementById("font-select");
+            var alignSelection = document.getElementById("align-select");
+
+            var fontName = fontSelection.options[fontSelection.options.selectedIndex].value;
+            var fontSize = document.getElementById("size-input").value;
+            var align = "center";
+            try {
+                var align = alignSelection.options[alignSelection.options.selectedIndex].value || "center";
+            }
+            catch {}
+            
+            var clock = document.getElementById("clock-display");
+            var date = document.getElementById("date-display");
+            
+            //var fontName = localStorage.getItem("fontFamily") || "var(--normalFont)";
+            //var fontSize = localStorage.getItem("fontSize") || "5";
+
+            clock.setAttribute("style", `font-family: ${fontName}, Montserrat, sans-serif; font-size: ${fontSize}em; text-align: ${align}`);
+            date.setAttribute("style", `font-family: ${fontName}, Montserrat, sans-serif; font-size: ${Number.parseFloat(fontSize) / 4}em; text-align: ${align}`);
+
+            //document.getElementById("clock-display").setAttribute("style", `font-family: ${fontName}, Montserrat, sans-serif; font-size: ${fontSize}em;`)   
+            localStorage.setItem("fontFamily", fontName);
+            localStorage.setItem("fontSize", fontSize);
+            localStorage.setItem("align", "left")
+        }
+
+        function updateClock() {
+            var now = new Date();
+
+
+            var hours = now.getHours().toString().padStart(2, "0");
+            var mins = now.getMinutes().toString().padStart(2, "0");
+
+            document.getElementById("clock-display").textContent = (`${hours}:${mins}`);
+
+
+            var dayName = now.toLocaleDateString("en-GB", {weekday: "long"});
+            var day = now.getDate();
+            var ending = "th";
+            if(daysWithSt.indexOf(day) > -1) {
+                ending = "st";
+            }
+            else if(daysWithNd.indexOf(day) > -1) {
+                ending = "nd";
+            }
+            else if(daysWithRd.indexOf(day) > -1) {
+                ending = "rd";
+            }
+            var month = now.toLocaleDateString("en-GB", {month:"long"});
+            var year = now.getFullYear();
+            
+            document.getElementById("date-display").textContent = `${dayName}, ${day}${ending} ${month} ${year}`
+        }
+
+        function start() {
+            var now = new Date();
+
+
+            var hours = now.getHours().toString().padStart(2, "0");
+            var mins = now.getMinutes().toString().padStart(2, "0");
+
+            document.getElementById("clock-display").textContent = (`${hours}:${mins}`);
+
+
+            var dayName = now.toLocaleDateString("en-GB", {weekday: "long"});
+            var day = now.getDate();
+            var ending = "th";
+            if(daysWithSt.indexOf(day) > -1) {
+                ending = "st";
+            }
+            else if(daysWithNd.indexOf(day) > -1) {
+                ending = "nd";
+            }
+            else if(daysWithRd.indexOf(day) > -1) {
+                ending = "rd";
+            }
+            var month = now.toLocaleDateString("en-GB", {month:"long"});
+            var year = now.getFullYear();
+            
+            document.getElementById("date-display").textContent = `${dayName}, ${day}${ending} ${month} ${year}`
+
+            
+            var clock = document.getElementById("clock-display");
+            var date = document.getElementById("date-display");
+            var fontName = localStorage.getItem("fontFamily") || "var(--normalFont)";
+            var fontSize = localStorage.getItem("fontSize") || "5";
+
+            clock.setAttribute("style", `font-family: ${fontName}, Montserrat, sans-serif; font-size: ${fontSize}em;`);
+            date.setAttribute("style", `font-family: ${fontName}, Montserrat, sans-serif; font-size: ${Number.parseFloat(fontSize) / 4}em;`);
+
+            document.getElementById("font-select").value = fontName;
+            document.getElementById("size-input").value = Number.parseInt(fontSize) || 5;
+        }
+	</script>
+	<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+
+</head>
+
+<body onload="CheckFormatting(); setInterval(updateClock, 2500); start()" style="background-color: var(--bg);">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+
+	<div class="smallSpace"></div>
+	<br>
+
+    <h1 id="clock-display" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;">123456789</h1>
+    <h4 id="date-display" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;">Monday, 1st January 1970</h4>
+
+    <div style="min-height: 100em;"></div>
+    <button onclick="options()" style="left: 50%; transform: translateX(-50%); position: relative;">Options</button>
+    <div id="options" style="display:none; text-align: center;">
+        Font family: 
+        <select id="font-select" onchange="changeFont()">
+            <option value="Inter">Inter (Default)</option>
+            <option value="Figtree">Figtree</option>
+            <option value="Raleway">Uneven</option>
+            <option value="League Spartan">Tall</option>
+            <option value="Lato">Lato</option>
+            <option value="Fredoka">Bouncy</option>
+            <option value="Jost">Wide</option>
+            <option value="Lexend">Blocky</option>
+            <option value="Dancing Script">Cursive</option>
+            <option value="Libre Baskerville">Fancy</option>
+            <option value="Hanken Grotesk">Clean</option>
+        </select>
+        <div class="smallSpace"></div>
+        Font size:
+        <input type="range" min="1" max="10" id="size-input" class="slider" oninput="changeFont()">
+        <div class="smallSpace"></div>
+        <button onclick="document.getElementById('date-display').toggleAttribute('hidden');">Toggle Date</button>
+        <div class="smallSpace"></div>
+        Background colour (hex): <input type="text" value="101e33" maxlength="6" minlength="1" onkeyup="document.querySelector(':root').style.setProperty('--bg', '#' + this.value)">
+    </div>
+
+	<div class="smallSpace"></div>
+
+</html>
