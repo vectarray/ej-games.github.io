@@ -307,6 +307,38 @@ function collapsible() {
 	}
 }
 
+function changeSelection(selectionElement, isNext = true) {
+	for(var child of selectionElement.getElementsByClassName("option")) {
+		child.style.display = "none";
+	}
+
+	var numberOfChildren = selectionElement.getElementsByClassName("option").length;
+	var counterElement = selectionElement.getElementsByTagName("hide")[0];
+	var counter = Number.parseInt(counterElement.innerHTML);
+
+	if(isNext) {
+		counter += 1;
+		if(counter >= numberOfChildren) {
+			counter = 0
+		}
+	}
+	else {
+		counter -= 1;
+		if(counter < 0) {
+			counter = numberOfChildren - 1
+		}
+	}
+	//console.log(counter);
+	counterElement.innerHTML = counter.toString();
+
+	for(var child of selectionElement.getElementsByClassName("option")) {
+		if(child.classList.contains(counter.toString())) {
+			child.style.display = "block";
+		}
+	}
+
+}
+
 function hyperlink(url) {
 	window.open(url);
 }

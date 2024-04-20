@@ -18,19 +18,48 @@
 			rel="stylesheet">
 		<script src="globalscript.js"></script>
 		<script>
+			let playingId = "";
+
+			function setupAudio() {
+				for (var setElement of document.getElementsByTagName("audio")) {
+					setElement.onplay = function () {
+						playingId = this.getElementsByTagName("source")[0].src.toString();
+						for (var stopElement of document.getElementsByTagName("audio")) {
+							if (stopElement.getElementsByTagName("source")[0].src.toString() != playingId) {
+								stopElement.pause();
+							}
+						}
+					}
+				}
+			}
+
+			function showThings() {
+				console.log(playingId);
+			}
 		</script>
 
 		<style>
-			.card audio {
-				width: 95%;
-				padding-left: 2.5%;
-				padding-right: 2.5%;
+			.selection .option audio {
+				width: 100%;
+			}
+
+			.selection .option .hover {
+				margin-right: 0.1em;
+			}
+
+			.option h4 {
+				margin-bottom: 0.1em;
+				padding-bottom: 0em;
+			}
+			
+			.selection h4 {
+				font-size: 2.2em;
 			}
 		</style>
 
 	</head>
 
-<body onload="CheckFormatting()">
+<body onload="CheckFormatting(); setupAudio(); setInterval(showThings, 50)">
 	<div id="loading"><br><br><br><br>
 		<h4>Loading...</h4>
 	</div>
@@ -38,525 +67,968 @@
 	<div id="title">music</div>
 	<h2>My Music</h2>
 	<div class="smallSpace"></div>
-	<div class="mainParagraph bigger">
+	<div class="mainParagraph">
 		<div class="moveInRightSlow">
 			My music career has lasted a lot longer than my game-making career, to put it simply.
 			<br><br>
-			I started making songs in 2017 (first uploaded in 2018), which is about 3 years before I started making games!
+			I started making songs in 2017 (first uploaded in 2018), which is about 3 years before I started making
+			games!
 			<br>You can find my music YouTube channel (EJMusic) by clicking <a
 				href="https://www.youtube.com/channel/UC2Frnwv3NJZ2BQqWJhLeLhw">here</a>.
 			<br>I may or may not have made the logo in about 5 minutes, and (at that time) did not think a background
 			was needed.
-			<br><br>Here, you can find all of the songs I haven't uploaded to my YouTube channel - including the Locked In Soundtrack.
-			<br><br><b>To any professional music-based employers reading this: yes, I will make professional song names eventually 😊</b>
+			<br><br>Here, you can find all of the songs I haven't uploaded to my YouTube channel - including the Locked
+			In Soundtrack.
+			<br><br><b>To any professional music-based employers reading this: yes, I will make professional song names
+				eventually 😊</b>
 
+
+			<h5>Update to the music page</h5>
+			This music page never used to be artistic - how am I going to get people to listen to my music without
+			abstract concepts and really weird album covers?
+			<br><br>Hopefully the new navigation system works well
 		</div>
-			<div class="smallSpace"></div>
-			<div class="line moveInRightSlow"></div>
+		<div class="smallSpace"></div>
+		<div class="line moveInRightSlow"></div>
 		<div class="moveInRightSlow">
-			<h4 class="moveInRightSlow">Songs</h4>
-
-			<h5 class="moveInRight">Unreleased</h5>
-
-			<div class="cards">
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-ban"><hide>Won't be uploaded</hide></i>
-				<h4>Lounge music (January 2020)</h4>
-				<audio controls>
-					<source src="sounds/music/a-lounge.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				An electric piano + drums, that's it. My first song with Ableton Live.
-				<br><br>
-				<a href="sounds/music/a-lounge.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-question"><hide>MAY be uploaded</hide></i>
-				<h4>"Chill out" (February 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/c-chill.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				It didn't need many 𝓶𝓾𝓼𝓲𝓬𝓪𝓵 𝓵𝓪𝔂𝓮𝓻𝓼, because it was a chilled song. So I didn't add many.
-				<br><br>
-				<a href="sounds/music/c-chill.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-ban"><hide>Nonono, this one is staying just here.</hide></i>
-				<h4>"Sad Hannah" (April 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/sad-hannah.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				I don't know why I called it that, but this song served as an early version of "Inside World" (from the new album)
-				<br><br>
-				<a href="sounds/music/sad-hannah.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-question"><hide>MAY be uploaded</hide></i>
-				<h4>Rock song (June 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/rock-song.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				One of my first steps outside of my electronic music comfort zone. I think it went quite well.
-				<br><br>
-				<a href="sounds/music/rock-song.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-ban"><hide>Won't be uploaded</hide></i>
-				<h4>"Synth Man" (June 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/u-synth-man.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Something about synthwave. I don't really like synthwave, but I tried to make a song of that genre anyway.
-				<br><br>
-				<a href="sounds/music/u-synth-man.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-pause"><hide>Waiting to upload</hide></i>
-				<h4>Forage Game Menu (June 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/v-forage-game-menu.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				For an unreleased 3D game I was going to make (and still might). It doesn't matter that I'm uploading it here before I release the game - it's just the menu music.
-				<br><br>
-				<a href="sounds/music/v-forage-game-menu.mp3" download>Download</a>
-			</div>
 
 
-			</div>
 
-			<h5 class="moveInRightSlow">&nbsp;</h5>	
+			<div class="selection" id="unreleased-selection">
+				<h4 class="moveInRight">
+					<button
+						onclick="changeSelection(document.getElementById('unreleased-selection'), false);">&lt;</button>
+					Unreleased
+					<button
+						onclick="changeSelection(document.getElementById('unreleased-selection'), true);">&gt;</button>
+				</h4>
+				<hide class="selection-number">
+					0
+				</hide>
 
-			<h5 class="moveInRight">Studio Florida</h5>
-			Guess how I came up with the name.
-
-			<div class="cards">
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"Final" (September 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/2a-final.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				A lovely song that is basically a remake of "Empty Light" from my last album. Much better. Came to me in a dream.
-				<br><br>
-				<a href="sounds/music/2a-final.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"Transitions" (January 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2b-transitioning.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Mm, love it. Made the day I changed music program. Goodbye young Live 11 Intro.
-				<br><br>
-				<a href="sounds/music/2b-transitioning.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"New Horizons" (January 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2c-new-horizons.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				This is a lovely song, first one made in new program. The new program is the reason why I called the album Studio Florida.
-				<br><br>
-				<a href="sounds/music/2c-new-horizons.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"Broken In" (February 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2d-broken-in.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				80s style, amazing song, took me a shamefully short amount of time - that only means one thing: that it's not as good as you'd think.
-				<br><br>
-				<a href="sounds/music/2d-broken-in.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"Left Behind" (February 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2e-left-behind.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				A very lovely song that sounds like Autumn. Funny, because February isn't even <b>in</b> Autumn! What am I like!
-				<br><br>
-				<a href="sounds/music/2e-left-behind.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"New Ride" (April 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2f-new-ride.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Don't ask what the sound at the start was. I don't even know. Sounds disgusting though.
+				<div class="option 0">
+					<h4><i class="hover fa-solid fa-ban">
+							<hide>Won't be uploaded</hide>
+						</i>
+						Lounge music</h4>
+					<div class="centre">January 2020</div>
 					<br><br>
-					<a href="sounds/music/2f-new-ride.mp3" download>Download</a>
+					<audio controls>
+						<source src="sounds/music/a-lounge.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					An electric piano + drums, that's it. My first song with Ableton Live.
+					<br><br>
+					<a href="sounds/music/a-lounge.mp3" download>Download</a>
+				</div>
+
+				<div class="option 1">
+					<h4><i class="hover fa-solid fa-question">
+							<hide>MAY be uploaded</hide>
+						</i>
+						Chill out</h4>
+					<div class="centre">February 2021</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/c-chill.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					It didn't need many 𝓶𝓾𝓼𝓲𝓬𝓪𝓵 𝓵𝓪𝔂𝓮𝓻𝓼, because it was a chilled song. So I didn't add
+					many.
+					<br><br>
+					<a href="sounds/music/c-chill.mp3" download>Download</a>
+				</div>
+
+				<div class="option 2">
+					<h4><i class="hover fa-solid fa-ban">
+							<hide>Nonono, this one is staying just here.</hide>
+						</i>
+						Sad Hannah</h4>
+					<div class="centre">April 2021</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/sad-hannah.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					I don't know why I called it that, but this song served as an early version of "Inside World" (from
+					the new album)
+					<br><br>
+					<a href="sounds/music/sad-hannah.mp3" download>Download</a>
+				</div>
+
+				<div class="option 3">
+					<h4><i class="hover fa-solid fa-question">
+							<hide>MAY be uploaded</hide>
+						</i>
+						Rock Song</h4>
+					<div class="centre">June 2022</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/rock-song.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					One of my first steps outside of my electronic music comfort zone. I think it went quite well.
+					<br><br>
+					<a href="sounds/music/rock-song.mp3" download>Download</a>
+				</div>
+
+				<div class="option 4">
+					<h4><i class="hover fa-solid fa-ban">
+							<hide>Won't be uploaded</hide>
+						</i>
+						Synth Man</h4>
+					<div class="centre">June 2022</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/u-synth-man.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Something about synthwave. I don't really like synthwave, but I tried to make a song of that genre
+					anyway.
+					<br><br>
+					<a href="sounds/music/u-synth-man.mp3" download>Download</a>
+				</div>
+
+				<div class="option 5">
+					<h4><i class="hover fa-solid fa-ban">
+							<hide>Won't be uploaded</hide>
+						</i>
+						Forage Game Menu</h4>
+					<div class="centre">June 2022</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/v-forage-game-menu.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					For an unreleased 3D game I was going to make (and still might). It doesn't matter that I'm
+					uploading it here before I release the game - it's just the menu music.
+					<br><br>
+					<a href="sounds/music/v-forage-game-menu.mp3" download>Download</a>
+				</div>
+
+
 			</div>
 
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"Off Days" (April 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2g-off-days.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				It's called Off Days because, well, it's not the best song that I've made recently. The bridge is OK, but not much else.
-				<br><br>
-				<a href="sounds/music/2g-off-days.mp3" download>Download</a>
+			<div class="space"></div>
+
+			<div class="line"></div>
+
+			<div class="selection" id="studio-florida-selection">
+
+				<h4 class="moveInRight">
+					<button
+						onclick="changeSelection(document.getElementById('studio-florida-selection'), false)">&lt;</button>
+					Studio Florida
+					<button
+						onclick="changeSelection(document.getElementById('studio-florida-selection'), true)">&gt;</button>
+				</h4>
+				<hide class="selection-number">
+					0
+				</hide>
+
+				<div class="option 0">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						1. Reloaded</h4>
+					<div class="centre">September 2022</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2a-reloaded.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					A lovely song that is basically a remake of "Empty Light" from my last album. Much better. Came to
+					me in a dream.
+					<br><br>Quite a few improvements over the original, like the actual BRIDGE which gives you a bit of
+					a break
+					from the boring riff.
+					<br><br>
+					<a href="sounds/music/2a-reloaded.mp3" download>Download</a>
+				</div>
+
+				<div class="option 1">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						2. Look to the Future</h4>
+					<div class="centre">January 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2b-look-to-the-future.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Switched from Ableton Live after I made this song. It was a sort of farewell. It serves as
+					a very good last song I made with it.
+					<br><br>
+					<a href="sounds/music/2b-look-to-the-future.mp3" download>Download</a>
+				</div>
+
+				<div class="option 2">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						3. New Horizons</h4>
+					<div class="centre">January 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2c-new-horizons.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					This is a lovely song, first one made in new program.
+					The new program is the reason why I called the album Studio Florida.
+					<br>I made it in about 2 hours. It has about 5 tracks. I spent most of that day figuring out
+					the bizarre controls of the program.
+					<br><br>
+					<a href="sounds/music/2c-new-horizons.mp3" download>Download</a>
+				</div>
+
+				<div class="option 3">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						4. Finally</h4>
+					<div class="centre">February 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2d-finally.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					80s style, amazing song, took me a shamefully short amount of time - that only means one thing: that
+					it's not as good as you'd think.
+					<br>I was absolutely buzzin' when I made this song. I would say mostly rightfully, but I don't think
+					it
+					deserves tooo much praise.
+					<small>Message courtesy of <i>How to be Humble When You're Just Above Everyone Else</i></small>
+					<br><br>
+					<a href="sounds/music/2d-finally.mp3" download>Download</a>
+				</div>
+
+				<div class="option 4">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						5. Safer Outside</h4>
+					<div class="centre">February 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2e-safer-outside.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					A very lovely song that sounds like Autumn. Funny, because February isn't even <b>in</b> Autumn!
+					What am I like!
+					<br>I trialled making a song based on a picture (as in, I just took a picture from Google Images and
+					made a song about it). Worked quite well, but again, just the lazy 808 drums.
+					<br><br>
+					<a href="sounds/music/2e-safer-outside.mp3" download>Download</a>
+				</div>
+
+				<div class="option 5">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						6. Studio Florida</h4>
+					<div class="centre">April 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2f-studio-florida.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Don't ask what the sound at the start was. I don't even know. Sounds disgusting though. Another
+					experiment with adding more effects and strange sounds. Still not quite sure why I kicked off this
+					experiment with the sound of someone's flesh bubbling.
+					<br><br>
+					<a href="sounds/music/2f-studio-florida.mp3" download>Download</a>
+				</div>
+
+				<div class="option 6">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						7. Not As Good</h4>
+					<div class="centre">April 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2g-not-as-good.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					It's called Not As Good because, well, it's not the best song that I've made recently. The bridge is
+					OK, but not much else.
+					<br>Although now I think about it, the bridge is also kind of hard to listen to.
+					<br><br>
+					<a href="sounds/music/2g-not-as-good.mp3" download>Download</a>
+				</div>
+
+				<div class="option 7">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						8. Garage Band</h4>
+					<div class="centre">May 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2h-garage-band.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					I don't know what the name could be alluding to. Garage Band? That's a phrase I've never heard in my
+					life.
+					<br>It could not at all be related to Studio Florida, could it?
+					<br><br>
+					<a href="sounds/music/2h-garage-band.mp3" download>Download</a>
+				</div>
+
+				<div class="option 8">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						9. Project Gegevensmap</h4>
+					<div class="centre">May 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2i-project-gegevensmap.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Recreated in another music program, based on a draft I made in Ableton Live 😢. Rest in Peace.
+					<br>Fun fact: Project Gegevensmap just means Project Data Folder, as in the Data Folder for the FL
+					Studio project I had for it. The number of times I had the popup that says "Project Data Folder is
+					missing"
+					inspired the name.
+					<br><br>
+					<a href="sounds/music/2i-project-gegevensmap.mp3" download>Download</a>
+				</div>
+
+				<div class="option 9">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						10. Wipe and Restart</h4>
+					<div class="centre">June 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2j-wipe-and-restart.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Originally made for a YouTube video that was never made. Was supposed to be some time-lapse progress
+					music, or something like that.
+					<br>You can tell when it's a lazy song because I'll just slap an 808 for the
+					drums and shove the volume all the way up. "Let the limiter do the talking." Nobody said that.
+					<br><br>
+					<a href="sounds/music/2j-wipe-and-restart.mp3" download>Download</a>
+				</div>
+
+				<div class="option 10">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						11. False Inspiration</h4>
+					<div class="centre">July 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2k-false-inspiration.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Come and get me Alan!!!! You can't reclaim the chord sequence I stole from you to make an
+					objectively worse song!!!
+					<br><br>
+					<a href="sounds/music/2k-false-inspiration.mp3" download>Download</a>
+				</div>
+
+				<div class="option 11">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						12. Six Letters</h4>
+					<div class="centre">June 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2l-six-letters.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					"The MG ZS EV has six letters, and the same number of wheels, if it had six wheels"
+					<br>A song I made for a video review of a car (the MG ZS EV). Quite a good song that took
+					around 1.5 hours. I especially like the little pinging notes once the drums start.
+					<br><br>
+					<a href="sounds/music/2l-six-letters.mp3" download>Download</a>
+				</div>
+
+				<div class="option 12">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						13. Thank the Miles</h4>
+					<div class="centre">August 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2m-thank-the-miles.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					I have a bone to pick with Mr Miles. If you are going to make a game and ask someone to make
+					music for it, then you should PROBABLY just out of courtesy ACTUALLY START MAKING THE GAME!!!!
+					<br>It's such a good song compared to my other acoustic ones.
+					<br><br>
+					<a href="sounds/music/2m-thank-the-miles.mp3" download>Download</a>
+				</div>
+
+				<div class="option 13">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						14. Mutant Superweapon</h4>
+					<div class="centre">August 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2n-mutant-superweapon.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Mutant Superweapon... that sounds like it <i>could</i> be the subject of a game... oh wait, it's the
+					SAME GAME which NEVER EXISTED.
+					<br>It is an epic song which was meant to play at the climactic end of the game, and I was soooo
+					pleased with it, but it was never used.
+					<br><br>
+					<a href="sounds/music/2n-mutant-superweapon.mp3" download>Download</a>
+				</div>
+
+				<div class="option 14">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						15. What's the Sound</h4>
+					<div class="centre">August 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2o-whats-the-sound.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Another song from the non-existent video game. This one was meant to sound "robotic" so I chose some
+					dissonant chords and harsh-sounding synths. Oh, the knowledge and music theory I put into this. GIVE
+					ME
+					THE HOURS OF MY LIFE BACK!!!!
+					<br><br>
+					<a href="sounds/music/2o-whats-the-sound.mp3" download>Download</a>
+				</div>
+
+				<div class="option 15">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						16. Back to the Start</h4>
+					<div class="centre">October 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2p-back-to-the-start.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Quite similar to one of the first songs in this album. Also using the pitched-down Linn snare that I
+					was obsessed with for way too long. Hopefully you can ignore that and get into the groove of my
+					amazing
+					songs 🎵
+					<br><br>
+					<a href="sounds/music/2p-back-to-the-start.mp3" download>Download</a>
+				</div>
+
+				<div class="option 16">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						17. A Long Song</h4>
+					<div class="centre">October 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2q-a-long-song.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Thank you to C418 for letting me "magpie" your song format. For those of you who are interested:
+					please stop being interested. Do not look for the song format I copied.
+					<br><br>
+					<a href="sounds/music/2q-a-long-song.mp3" download>Download</a>
+				</div>
+
+				<div class="option 17">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						18. Remember This</h4>
+					<div class="centre">October 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2r-remember-this.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					A (arguably much better) recreation of "Always There" from my <a
+						href="https://github.com/ej-games/EJMusic/tree/main/songs">
+						old music GitHub page.</a>
+					I am much happier with this one than the original, for some reason, despite using roughly the same
+					methods as the original.
+					Who cares though?
+					<br><br>
+					<a href="sounds/music/2r-remember-this.mp3" download>Download</a>
+				</div>
+
+				<div class="option 18">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						19. The Studio Lives On</h4>
+					<div class="centre">October 2023</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2s-the-studio-lives-on.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Forgive me if this song is slightly worse than some of the others. It was basically a "filler" in
+					order to get
+					to 20 songs in the album. I tend to do that a bit too often.
+					<br><br>
+					<a href="sounds/music/2s-the-studio-lives-on.mp3" download>Download</a>
+				</div>
+
+				<div class="option 19">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						20. The Real 3D Pool</h4>
+					<div class="centre">October 2022</div>
+					<br><br>
+					<audio controls>
+						<source src="sounds/music/2t-the-real-3d-pool.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					GREAT SONG #POOLIANS #IHEARTTERRIEN <a href="https://poolians.com/">CLICK HERE NOW</a>
+					<br><br>
+					<a href="sounds/music/2t-the-real-3d-pool.mp3" download>Download</a>
+				</div>
+
 			</div>
 
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"Journey" (May 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2h-journey.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				I like this one, almost all acoustic, which is an achievement that has taken way too long to make.
-				<br><br>
-				<a href="sounds/music/2h-journey.mp3" download>Download</a>
-			</div>
+			<div class="space"></div>
+			<div class="line"></div>
 
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"Remembering" (May 2023)</h4>
-				<audio controls>
-					<source src="sounds/music/2i-remembering.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Recreated in another music program, based on a draft I made in Ableton Live 😢. Rest in Peace.
-				<br><br>
-				<a href="sounds/music/2i-remembering.mp3" download>Download</a>
-			</div>
+			<div class="selection" id="developments-sunshine-selection">
 
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Will upload</hide></i>
-				<h4>"POOLIANS" (October 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/2j-poolians.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				GREAT SONG #POOLIANS #IHEARTTERRIEN <a href="https://poolians.com/">CLICK HERE NOW</a>
-				<br><br>
-				<a href="sounds/music/2j-poolians.mp3" download>Download</a>
-			</div>
+				<h4 class="moveInRight">
+					<button
+						onclick="changeSelection(document.getElementById('developments-sunshine-selection'), false)">&lt;</button>
+					Development's Sunshine
+					<button
+						onclick="changeSelection(document.getElementById('developments-sunshine-selection'), true)">&gt;</button>
+				</h4>
+				<hide class="selection-number">
+					0
+				</hide>
 
+				<div class="option 0">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						1. Kickstart</h4>
+						<div class="centre">February 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/b-faster.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					For my second song made with Ableton Live, it's a big step up from the first.
+					<br>For reference, my first song made with Ableton Live was an electric piano and a drum kit,
+					playing the exact same thing, for two and a half minutes.
+					<br><br>
+					<a href="sounds/music/b-faster.mp3" download>Download</a>
+				</div>
 
-			</div>
+				<div class="option 1">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						2. Chase</h4>
+						<div class="centre">March 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/d-chase.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Features an electric guitar, some synth choirs and sounds quite empty (not much going on).
+					<br>I would say this is ALMOST a step up from the last one. Although it's got a similar
+					number of tracks going at once, it still has a more interesting beat and is less repetitive.
+					<br><br>
+					<a href="sounds/music/d-chase.mp3" download>Download</a>
+				</div>
 
-			<h5 class="moveInRightSlow">&nbsp;</h5>	
+				<div class="option 2">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						3. The Inside World</h4>
+						<div class="centre">April 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/e-inside-world.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					More of a chilled kind of song, but a bit more upbeat than "Chill out". Features a few more effects
+					which I just clicked and dragged to the song.
+					<br>I made it just after the weird Sad Hannah one. At this point I was just proving to myself
+					that I hadn't ruined my career in music.
+					<br><br>
+					<a href="sounds/music/e-inside-world.mp3" download>Download</a>
+				</div>
 
-			<h5 class="moveInRight">Development's Sunshine</h5>
-			You can find my album in lots of places! Just search EJMusic Development's Sunshine on:
-			<ul>
-				<li>Spotify</li>
-				<li>YouTube</li>
-				<li>YouTube Music</li>
-				<li>Amazon Music</li>
-				<li>iTunes</li>
-				<li>Apple Music</li>
-			</ul>
+				<div class="option 3">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						4. Midday Sunshine</h4>
+						<div class="centre">April 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/f-midday-sun.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Another chilled song - at that time, I really wanted to make a kind of relaxed song with kind of
+					jazzy chords.
+					<br>Inspired by some songs off the YouTube audio library. Yes, I'm aware that it's an incredibly
+					low bar.
+					<br><br>
+					<a href="sounds/music/f-midday-sun.mp3" download>Download</a>
+				</div>
 
-			<div class="cards">
+				<div class="option 4">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						5. Burnout</h4>
+						<div class="centre">April 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/g-empty.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					This was based off a random dream I had that was all about Subnautica, because I played too much
+					Subnautica.
+					<br>Honestly, it's too repetitive for even me to listen to. Listen to the first song in Studio Florida,
+					it's so much better! -EJMusic Official
+					<br><br>
+					<a href="sounds/music/g-empty.mp3" download>Download</a>
+				</div>
 
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Faster" (February 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/b-faster.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				For my second song made with Ableton Live, it's a big step up from the first.
-				<br><br>
-				<a href="sounds/music/b-faster.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Chase" (March 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/d-chase.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Features an electric guitar, some synth choirs and sounds quite empty (not much going on).
-				<br><br>
-				<a href="sounds/music/d-chase.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Inside World" (April 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/e-inside-world.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				More of a chilled kind of song, but a bit more upbeat than "Chill out". Features a few more effects which I just clicked and dragged to the song.
-				<br><br>
-				<a href="sounds/music/e-inside-world.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Midday Sun" (April 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/f-midday-sun.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Another chilled song - at that time, I really wanted to make a kind of relaxed song with kind of jazzy chords.
-				<br><br>
-				<a href="sounds/music/f-midday-sun.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Empty / Empty Light" (April 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/g-empty.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				This was based off a random dream I had that was all about Subnautica, because I played too much Subnautica.
-				<br><br>
-				<a href="sounds/music/g-empty.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Bright Night 2" (April 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/h-bright-night-two.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				This was named after another <span class="hover"><hide>Visit song page on GitHub</hide><a href="https://github.com/ej-games/EJMusic/blob/main/songs/Bright%20Night.m4a">song I made on
-					Garageband</a></span> called Bright Night.
+				<div class="option 5">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						6. Heating Up</h4>
+						<div class="centre">April 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/h-bright-night-two.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					This is a ... song. Not my best work. But at the time, yes, very much my best work. I had only
+					recently figured out what a synthesiser was.
 					<br><br>
 					<a href="sounds/music/h-bright-night-two.mp3" download>Download</a>
+				</div>
+
+				<div class="option 6">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						7. Late Night Drive</h4>
+						<div class="centre">April 2021</div>
+						<br><br>
+
+					<audio controls>
+						<source src="sounds/music/i-late-night-drive.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					A song that I randomly came up with the drums for, and then built on.
+					<br>This was, in my opinion, the best song I had made so far. Mainly because I created
+					the snare sound, something which I thought I was never capable of doing!! Dream big, people. Maybe
+					one day you can make your own snare.
+					<br><br>
+					<a href="sounds/music/i-late-night-drive.mp3" download>Download</a>
+				</div>
+
+				<div class="option 7">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						8. Dark Stars</h4>
+						<div class="centre">May 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/j-dark-night.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Another chilled (kind of) song, probably the closest I have come to actual chill-genre music.
+					<br>The last installment of my "I need to make a chill genre song" phase, featuring tracks 3 and 4!!
+					<br><br>
+					<a href="sounds/music/j-dark-night.mp3" download>Download</a>
+				</div>
+
+				<div class="option 8">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						9. Disco Nights</h4>
+						<div class="centre">May 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/k-disco-pursuit.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					A song that has a riff based off 2 drum sounds. I changed the pitch of them to make it sound cooler.
+					😎
+					<br>Other than that, a fairly alright song with a lovely major twist in the middle 😊
+					<br><br>
+					<a href="sounds/music/k-disco-pursuit.mp3" download>Download</a>
+				</div>
+
+				<div class="option 9">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						10. Neon Roads</h4>
+						<div class="centre">July 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/l-neon-roads.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					There's not much to say about this song, apart from the fact it was made in a newer version of Live.
+					<br>It does have a nice kind of 80s rock/pop style but that's kind of let down by how generic that genre
+					is these days !!
+					<br><br>
+					<a href="sounds/music/l-neon-roads.mp3" download>Download</a>
+				</div>
+
+				<div class="option 10">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						11. Hit at Dawn</h4>
+						<div class="centre">December 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/m-disco-drama.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					This song was my first song in a long time, and did not sound very good until recently (July 2022)
+					when I re-arranged some stuff and other stuff, you know? Like the old "adding reverb" trick
+					to make your drums and stuff sound less horrible!
+					<br><br>
+					<a href="sounds/music/m-disco-drama.mp3" download>Download</a>
+				</div>
+
+				<div class="option 11">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						12. Get Back</h4>
+						<div class="centre">December 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/n-disco-dance.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					I made this one with a freshly-installed Ableton Live pack, 1 day after I made "Hit at Dawn".
+					<br>The pack was called something like Synthwave by Mode Audio. Don't know the specifics.
+					<br>Have also uninstalled Ableton Live at the time of writing.
+					<br><br>
+					<a href="sounds/music/n-disco-dance.mp3" download>Download</a>
+				</div>
+
+				<div class="option 12">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						13. Nothing Left</h4>
+						<div class="centre">December 2021</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/o-alone.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					I created this 1 day after "Get Back", using the new Ableton Live 11 Intro (not Lite)!
+					<br>As I do with a lot of songs, this was just a way to prove to myself that the new version
+					was <i>not</i> a waste of money.
+					<br><br>
+					<a href="sounds/music/o-alone.mp3" download>Download</a>
+				</div>
+
+				<div class="option 13">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						How it Was</h4>
+						<div class="centre">March 2022</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/p-epic-new-song.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Wondering why this is so long after "Alone"? It's because I was making the Locked In OST at that
+					time.
+					<br>Locked In (if I remove it from this website) was a game that I made for about 6 months and
+					then gave up on. Like most projects.
+					<br><br>
+					<a href="sounds/music/p-epic-new-song.mp3" download>Download</a>
+				</div>
+
+				<div class="option 14">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						Pain is Gain</h4>
+						<div class="centre">April 2022</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/q-sunshine.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Now <i>this</i> is a song that I enjoyed making, and enjoy listening to. Don't like it? Well, that's
+					your opinion, but you can still just leave. Now. Off you go.
+					<br>Update 2 years on: it's still an alright song, but I won't be offended if you don't like it.
+					Because then I would be offended at myself. WHAAAT!!!
+					<br><br>
+					<a href="sounds/music/q-sunshine.mp3" download>Download</a>
+				</div>
+
+				<div class="option 15">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						Get to Work</h4>
+						<div class="centre">April 2022</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/r-first-motange.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					Get to Work! What a good name for a slightly motivational song that doesn't have many (if any)
+					major or happy sections!!
+					<br><br>
+					<a href="sounds/music/r-first-motange.mp3" download>Download</a>
+				</div>
+
+				<div class="option 16">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						Shining Sun</h4>
+						<div class="centre">May 2022</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/s-kool-kids-song.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					I'm not sure how much I like this song. It's upbeat, which is nice, but it gets a bit repetitive.
+					I also leaned a bit too far on the synth brass sounds, as I did with most songs I made with Live.
+					<br><br>
+					<a href="sounds/music/s-kool-kids-song.mp3" download>Download</a>
+				</div>
+
+				<div class="option 17">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						Contemplation</h4>
+						<div class="centre">May 2022</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/t-good-song-v4.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					I made many different improvements to this song, and in the end there were 5 versions. I really
+					didn't like the 5th one, so here is the next best.
+					<br>One of my better songs, in my opinion. And that's not because I'm a manic depressive and can
+					only listen to sad songs.
+					<br><br>
+					<a href="sounds/music/t-good-song-v4.mp3" download>Download</a>
+				</div>
+
+				<div class="option 18">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						All is not Lost</h4>
+						<div class="centre">July 2022</div>
+						<br><br>
+					<audio controls>
+						<source src="sounds/music/w-good-upbeat.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					This is a song that I really enjoyed making and listening to, and even considered submitting it
+					for a music "thing". If my memory serves me correctly, I did submit it, but then sent another
+					song as backup. No I don't have dementia.
+					<br><br>
+					<a href="sounds/music/w-good-upbeat.mp3" download>Download</a>
+				</div>
+
+				<div class="option 19">
+					<h4><i class="hover fa-solid fa-check">
+							<hide>Uploaded!</hide>
+						</i>
+						Cruising Along</h4>
+						<div class="centre">August 2022</div>
+					<audio controls>
+						<source src="sounds/music/x-summer-wind.mp3" type="audio/mp3">
+						Your browser does not currently support this audio.
+					</audio>
+					<br><br>
+					An 80s-style song that was, surprisingly, not made in the 80s. I was slightly inspired by
+					Posy (the Dutch man who makes completely random videos!!!!!) and his 80s songs, but mine
+					is more general and upbeat. With no vocals obviously.
+					<br><br>
+					<a href="sounds/music/x-summer-wind.mp3" download>Download</a>
+				</div>
+
 			</div>
 
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Late Night Drive" (April 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/i-late-night-drive.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				A song that I randomly came up with the drums for, and then built on.
-				<br><br>
-				<a href="sounds/music/i-late-night-drive.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Dark Night" (May 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/j-dark-night.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Another chilled (kind of) song, probably the closest I have come to actual chill-genre music.
-				<br><br>
-				<a href="sounds/music/j-dark-night.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Disco Pursuit" (May 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/k-disco-pursuit.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				A song that has a riff based off 2 drum sounds. I changed the pitch of them to make it sound cooler. 😎
-				<br><br>
-				<a href="sounds/music/k-disco-pursuit.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Neon Roads" (July 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/l-neon-roads.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				There's not much to say about this song, apart from the fact it was made in a newer version of Live.
-				<br><br>
-				<a href="sounds/music/l-neon-roads.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Disco Drama" (December 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/m-disco-drama.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				This song was my first song in a long time, and did not sound very good until recently (July 2022) when I re-arranged some stuff and other stuff, you know?
-				<br><br>
-				<a href="sounds/music/m-disco-drama.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Sunset Racer" (December 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/n-disco-dance.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				I made this one with a freshly-installed Ableton Live pack, 1 day after I made "Disco Drama".
-				<br><br>
-				<a href="sounds/music/n-disco-dance.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Alone" (December 2021)</h4>
-				<audio controls>
-					<source src="sounds/music/o-alone.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				I created this 1 day after "Disco Dance", using the new Ableton Live 11 Intro (not Lite)!
-				<br><br>
-				<a href="sounds/music/o-alone.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Epic New Song" (March 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/p-epic-new-song.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Wondering why this is so long after "Alone"? It's because I was making the Locked In OST at that time.
-				<br><br>
-				<a href="sounds/music/p-epic-new-song.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Sunshine" (April 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/q-sunshine.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				Now <i>this</i> is a song that I enjoyed making, and enjoy listening to. Don't like it? Well, that's your opinion, but you can still just leave. Now. Off you go.
-				<br><br>
-				<a href="sounds/music/q-sunshine.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"First Motange" (April 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/r-first-motange.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				I don't know why I called it that. Probably because it would suit a montage video or something. Those are all rap songs though, aren't they?
-				<br><br>
-				<a href="sounds/music/r-first-motange.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Kool Kids Song" (May 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/s-kool-kids-song.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				As I said above, yes, I will make more professional names.
-				<br><br>
-				<a href="sounds/music/s-kool-kids-song.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Sad / Good Song V4" (May 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/t-good-song-v4.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				I made many different improvements to this song, and in the end there were 5 versions. I really didn't like the 5th one, so here is the next best.
-				<br><br>
-				<a href="sounds/music/t-good-song-v4.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Good upbeat but minor" (July 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/w-good-upbeat.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				After I've made a song, I don't exactly come up with a creative name straight away. You can tell.
-				<br><br>
-				<a href="sounds/music/w-good-upbeat.mp3" download>Download</a>
-			</div>
-
-			<div class="card moveInRight">
-				<i class="hover fa-solid fa-check"><hide>Uploaded!</hide></i>
-				<h4>"Summer Wind" (August 2022)</h4>
-				<audio controls>
-					<source src="sounds/music/x-summer-wind.mp3" type="audio/mp3">
-					Your browser does not currently support this audio.
-				</audio>
-				<br><br>
-				An 80s-style song that was, surprisingly, not made in the 80s.
-				<br><br>
-				<a href="sounds/music/x-summer-wind.mp3" download>Download</a>
-			</div>
-
-		</div>
+			<div class="space"></div>
+			<div class="space"></div>
+			<div class="space"></div>
 		</div>
 	</div>
 
