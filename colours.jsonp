@@ -14,6 +14,19 @@ colours = {
         "green": "rgb(69, 255, 69)",
         "bottom": "#000000"
     },
+    "focused": {
+        "background": "#181818",
+        "title": "#0a2343",
+        "sidebar": "#00000000",
+        "h2": "#ffffff",
+        "body": "#ffffff",
+        "shadow": "#000000",
+        "elementBG": "#0a83a360",
+        "elementHover": "#0a83a390",
+        "elementBrighter": "#0a83a3a0",
+        "green": "rgb(69, 255, 69)",
+        "bottom": "#000000"
+    },
     "red": {
         "background": "#351a16",
         "title": "#6b3126",

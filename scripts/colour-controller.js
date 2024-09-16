@@ -1,25 +1,29 @@
 function setupColours() {
 
+	var newDiv = document.createElement("div");
+	newDiv.id = "colour-picker";
+
 	var newButton = document.createElement("b");
-	newButton.innerHTML = "Colour Scheme:";
-	if(document.getElementById("sidebar")) {
-		document.getElementById("sidebar").appendChild(newButton);
-	}
+	newButton.innerHTML = "Colour Scheme: &nbsp;&nbsp;";
+	newDiv.appendChild(newButton);
 
     ChangeColours(getCookie("colour"));
 
     var newDropdown = document.createElement("select");
 	newDropdown.id = "colour-dropdown";
-	if(document.getElementById("sidebar")) {
-		document.getElementById("sidebar").appendChild(newDropdown);
+	newDiv.appendChild(newDropdown);
+
+	if(document.getElementById("navbar")) {
+		document.getElementById("navbar").appendChild(newDiv);
 	}
-	var colourArrangements = ["dark", "light"];
+	var colourArrangements = ["dark", "light", "focused"];
 	var colourDisplayNames = {
 		"default": "Default",
 		"dark": "Dark",
 		"red": "Red",
 		"aqua": "Aqua",
-		"light": "Light"
+		"light": "Light",
+		"focused": "Focused"
 	}
 	for(var item of colourArrangements) {
 		var newOption = document.createElement("option");

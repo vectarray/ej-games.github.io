@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Electric Fields</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+        <link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+	<style>
+        canvas {
+            border: 1px solid grey;
+            border-radius: 5px;
+        }
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+    <script src="/suitable-words.jsonp"></script>
+	<script>
+        var ctx;
+
+        let constant = 9 * Math.pow(10, 4);
+
+        function c(coord, isX = true) { // Centre around the origin
+            if(isX) {
+                return (coord + 200);
+            }
+            else {
+                return 200 - coord;
+            }
+        }
+        function m(x, y) { // ctx.moveTo();
+            ctx.moveTo(c(x), c(y));
+        }
+
+        function lineToAngle(startX, startY, distance, angle) {
+            ctx.beginPath();
+
+            ctx.moveTo(c(startX), c(startY, false));
+            var x = distance * Math.sin(angle * (Math.PI / 180));
+            var y = distance * Math.cos(angle * (Math.PI / 180));
+            ctx.lineTo(c(Math.round(startX + x)), c(Math.round(startY + y), false));
+            ctx.stroke();
+        }
+        function addAngle(startX, startY, distance, angle) {
+
+            var xMovement = distance * Math.sin(angle * (Math.PI / 180));
+            var yMovement = distance * Math.cos(angle * (Math.PI / 180));
+            return {
+                x: startX + xMovement,
+                y: startY + yMovement
+            }
+        }
+
+        function l(x, y) {
+            ctx.lineTo(c(x), c(y, false));
+        }
+        function update() {
+
+        }
+        function start() {
+            var canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            ctx.strokeStyle = "green";
+            ctx.lineWidth = 2;
+
+            
+            //lineToAngle(0, 0, 50, 0);
+        }
+        function between(number, a, b, inclusive = false) {
+            if(a > b) {
+                if(inclusive) {
+                    if(number > a) {
+                        return false;
+                    }
+                    return true;
+                }
+                else {
+                    if(number >= a) {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            else {
+                if(inclusive) {
+                    if(number > b) {
+                        return false;
+                    }
+                    return true;
+                }
+                else {
+                    if(number >= b) {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        }
+
+        function angleBetween(thisX, thisY, thatX, thatY) {
+            var angle;
+            if(thisX > thatX) {
+                if(thisY > thatY) {
+                    angle = Math.atan((thisX - thatX) / (thisY - thatY)) * 180 / Math.PI;
+                    angle += 180;
+                }
+                else if (thisY < thatY) {
+                    angle = Math.atan((thisX - thatX) / (thatY - thisY)) * 180 / Math.PI;
+                    angle = 360 - angle;
+                }
+                else {
+                    angle = 90;
+                }
+            }
+            else if(thisX < thatX) {
+                if(thisY > thatY) {
+                    angle = Math.atan((thatX - thisX) / (thisY - thatY)) * 180 / Math.PI;
+                    angle = 180 - angle;
+                }
+                else if(thisY < thatY) {
+                    angle = Math.atan((thatX - thisX) / (thatY - thisY)) * 180 / Math.PI;
+                }
+                else {
+                    angle = 270;
+                }
+            }
+            else {
+                if(thisY >= thatY) {
+                    angle = 0;
+                }
+                else {
+                    angle = 180;
+                }
+            }
+            return angle;
+        }
+
+        function distanceBetween(thisX, thisY, thatX, thatY) {
+            return Math.sqrt(Math.pow(thisX - thatX, 2) + Math.pow(thisY - thatY, 2));
+        }
+
+        function calculate() {
+
+            ctx.clearRect(0, 0, 400, 400);
+
+            var charge1x = Number.parseInt(document.getElementById("charge1-x").value);
+            var charge1y = Number.parseInt(document.getElementById("charge1-y").value);
+            var charge1charge = Number.parseInt(document.getElementById("charge1-charge").value);
+
+            
+
+            var charge2x = Number.parseInt(document.getElementById("charge2-x").value);
+            var charge2y = Number.parseInt(document.getElementById("charge2-y").value);
+            var charge2charge = Number.parseInt(document.getElementById("charge2-charge").value);
+
+
+            var currentX = 0;
+            var currentY = 0;
+            for (var j = 0; j < 2; j++) {
+                var startingX = charge1x;
+                var startingY = charge1y;
+
+                if(j == 1) {
+                    startingX = charge2x;
+                    startingY = charge2y;
+                    console.log(j);
+                }
+
+                for (var i = 0; i < 16; i++) {
+                    var testPosition = addAngle(startingX, startingY, 5, 22.5 * i);
+                    currentX = testPosition.x;
+                    currentY = testPosition.y;
+                    //console.log(currentX, currentY);
+
+                    var trials = 0;
+
+                    while (between(currentX, -200, 200) && between(currentY, -200, 200) && trials < 60) {
+                        var angleTo1 = angleBetween(currentX, currentY, charge1x, charge1y);
+                        var distanceTo1 = distanceBetween(currentX, currentY, charge1x, charge1y);
+
+                        //console.log(distanceTo1);
+
+                        var strengthFrom1 = constant * -charge1charge / Math.pow(distanceTo1, 2);
+
+                        //lineToAngle(currentX, currentY, strengthFrom1, angleTo1);
+
+                        //console.log(strengthFrom1);
+
+                        var angleTo2 = angleBetween(currentX, currentY, charge2x, charge2y);
+                        var distanceTo2 = distanceBetween(currentX, currentY, charge2x, charge2y);
+                        var strengthFrom2 = constant * -charge2charge / Math.pow(distanceTo2, 2);
+
+                        //console.log(angleTo1);
+
+                        //lineToAngle(currentX, currentY, strengthFrom2, angleTo2);
+
+                        var force1Location = addAngle(currentX, currentY, strengthFrom1, angleTo1);
+                        //console.log(force1Location);
+                        var force2Location = addAngle(currentX, currentY, strengthFrom2, angleTo2);
+                        //console.log(force2Location);
+
+                        var resultantPosition = addAngle(force1Location.x, force1Location.y, strengthFrom2, angleTo2);
+                        //var overallForce = distanceBetween(resultantPosition.x, resultantPosition.y, currentX, currentY);
+                        var overallAngle = angleBetween(currentX, currentY, resultantPosition.x, resultantPosition.y);
+
+                        //console.log(overallAngle);
+
+                        //var resultant = distanceBetween(force1Location.x, force1Location.y, force2Location.x, force2Location.y);
+                        //lineToAngle()
+
+                        //var lengthC = resultant;
+                        //var lengthA = distanceBetween(force1Location.x, force1Location.y, currentX, currentY);
+                        //var lengthB = distanceBetween(force2Location.x, force2Location.y, currentX, currentY);
+
+                        //var resultantAngle = (Math.pow(lengthB, 2) + Math.pow(lengthC, 2) - Math.pow(lengthA, 2)) / 2 * lengthB * lengthC;
+                        //console.log(resultantAngle);
+
+                        lineToAngle(currentX, currentY, 10, overallAngle);
+
+                        if(trials % 10 == 0) {
+                            var perpendicular = overallAngle + 90;
+                            lineToAngle(currentX, currentY, 10, perpendicular + 50);
+                            perpendicular = overallAngle - 90;
+                            lineToAngle(currentX, currentY, 10, perpendicular - 50);
+                        }
+
+                        var moved10m = addAngle(currentX, currentY, 10, overallAngle);
+
+                        currentX = moved10m.x;
+                        currentY = moved10m.y;
+
+                        //trials = 99;
+
+                        trials++;
+                    }
+                }
+            }
+
+            ctx.fillStyle = "red";
+
+            if (charge1charge > 0) {
+                ctx.strokeStyle = "blue";
+                ctx.fillStyle = "blue";
+            }
+
+            ctx.beginPath();
+            ctx.arc(c(charge1x), c(charge1y, false), 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+
+            if (charge2charge > 0) {
+                ctx.strokeStyle = "blue";
+                ctx.fillStyle = "blue";
+            }
+
+            ctx.beginPath();
+            ctx.arc(c(charge2x), c(charge2y, false), 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.strokeStyle = "green";
+
+            
+        }
+	</script>
+
+</head>
+
+<body onload="CheckFormatting(); setInterval(update, 50); start()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <!--
+        What theme is this page? (e.g. games, tutorials, music)
+    -->
+	<div id="title">apps</div>
+
+	<h2>Electric Fields</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph">
+        An electric field simulator, thanks!
+        <h5>Charge 1</h5>
+        Charge: <input id="charge1-charge" type="number" value="1" oninput="calculate()">
+        <br>
+        X pos: <input id="charge1-x" type="number" value="-100" oninput="calculate()">
+        &nbsp;&nbsp;&nbsp;
+        Y pos: <input id="charge1-y" type="number" value="0" oninput="calculate()">
+        <h5>Charge 2</h5>
+        Charge: <input id="charge2-charge" type="number" value="-1" oninput="calculate()">
+        <br>
+        X pos: <input id="charge2-x" type="number" value="100" oninput="calculate()">
+        &nbsp;&nbsp;&nbsp;
+        Y pos: <input id="charge2-y" type="number" value="0" oninput="calculate()">
+        <br><br><button class="buttonURL" onclick="calculate()">Evaluate</button>
+        <div class="smallSpace"></div>
+        <canvas id="canvas" width="400" height="400"></canvas>
+    </div>
+	<div class="smallSpace"></div>
+</body>
+
+</html>

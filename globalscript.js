@@ -2,10 +2,13 @@ var KC = {backspace:8,tab:9,enter:13,shift:16,ctrl:17,alt:18,pausebreak:19,capsl
 
 
 
-
+var allowNavbarHiding = false;
 
 function CheckFormatting()
 {
+	if(window.location.href.endsWith("/index.html")) {
+		window.location.href = window.location.href.replace("/index.html", "");
+	}
 	var sidebar = document.createElement("div");
 	sidebar.classList.add("sidebar");
 	sidebar.id = "sidebar";
@@ -20,6 +23,15 @@ function CheckFormatting()
 		<a href="${getAbsLocation("blog/index.html")}" class="URLbuttonText">Blog</a>`
 
 	document.body.insertBefore(sidebar, document.getElementById("title"));
+	sidebar.style.left = "-50%";
+
+	// How can I get comments to show up, son?
+
+	//#region Navbar
+
+	createNavbar();
+
+	//#endregion
 
 	// window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 	// Script initialisation
@@ -100,33 +112,7 @@ function CheckFormatting()
 
 	if(window.location.href.indexOf("planet-orbit") < 0) {
 		
-		var newBottom = document.createElement("div");
-		newBottom.id = "bottom";
-		newBottom.style.zIndex = "15";
-		newBottom.innerHTML = String.raw`
-		<span>
-			<h5>PC Games</h5>
-			<a class="URLbuttonText" href="/lockedin.html">Locked In</a>
-			<a class="URLbuttonText" href="/connectcircle.html">ConnectCircle</a>
-			<a class="URLbuttonText" href="/connectmore.html">ConnectMore</a>
-			<a class="URLbuttonText" href="/roblox-games.html">Roblox Games</a>
-			<a class="URLbuttonText" href="/index.html">Homepage</a>
-		</span>
-		<span>
-			<h5>Web games</h5>
-			<a class="URLbuttonText" href="/games/index.html">Web Games Home</a>
-			<a class="URLbuttonText" href="/games/word-game.html">Word Game</a>
-			<a class="URLbuttonText" href="/games/connect-more.html">ConnectMore</a>
-		</span>
-		<span>
-			<h5>Apps</h5>
-			<a class="URLbuttonText" href="/app/web-todo.html">Todo List</a>
-
-			<h5>Tutorials & Coding</h5>
-			<a class="URLbuttonText" href="/tutorials.html">Tutorials Home</a>
-		</span>
-		<div class="clear"/><div class="smallSpace">`;
-		document.body.appendChild(newBottom);
+		
 
 		if (navigator.userAgent.indexOf("iphone") == -1 && navigator.userAgent.indexOf("android") == -1 && navigator.userAgent.indexOf("windows phone") == -1)
 		{
@@ -181,12 +167,138 @@ function CheckFormatting()
 			thisPopup.style.maxHeight = "min-content";
 			thisPopup.style.cursor = "zoom-out";
 			thisPopup.style.zIndex = 100;
+			thisPopup.getElementsByTagName("img")[0].style.maxWidth = (screen.width / 1.5).toString() + "px";
+			thisPopup.getElementsByTagName("img")[0].style.maxHeight = (screen.height / 1.5).toString() + "px";
 			thisPopup.addEventListener("click", function() {
 				hidePopup();
 			});
 		});
 	}
 
+	setTimeout(function() {
+		allowNavbarHiding = true;
+	}, 1500);
+
+}
+
+function createNavbar() {
+
+	// Create and set up element
+	var navbar = document.createElement("div");
+	navbar.id = "navbar";
+	navbar.classList.add("navbar");
+
+	// Set top left text
+	var navbarText = document.getElementById("title").innerHTML.toUpperCase();
+	
+	// Selected items: remove all unused letters and symbols
+	// Cleaned items: ready to show
+	var selectedItems = []
+	var cleanedItems = []
+	
+	// Show all directories as separate words
+	var urlItems = window.location.href.split("/");
+
+
+	for(var item of urlItems) {
+		// Ignore https://, 127.0.0.1, and vectarray.com
+		if(item.indexOf("http") <= -1 && item.indexOf(".") == item.lastIndexOf(".") && item != "" && item.indexOf("vectarray.com" <= -1)) {
+			selectedItems.push(item)
+		}
+	}
+
+	// Put Homepage at the start to allow for easy access
+	cleanedItems.push("Homepage");
+	
+	for(var item of selectedItems) {
+
+		var words = item.replace(".html", "").split("-"); // Split URL into words, and remove .html ending
+		var newPhrase = ""; // Set up new phrase
+
+		// Clean each word in words
+		for(var word of words) {
+			newPhrase = newPhrase + word[0].toUpperCase() + word.substring(1) + " "; // Capitalise first letter
+		}
+
+		// If it's a blog page, turn the filename into a date
+		if(window.location.href.indexOf("blog") > -1 && Number.parseInt(item) > 100000) {
+			newPhrase = convertDate(item, false);
+		}
+
+		// If it's index.html, write "home" instead of "index"
+		if(item.indexOf("index") > -1) {
+			newPhrase = "Home"
+		}
+
+		// Remove trailing spaces and add
+		newPhrase = newPhrase.trimEnd();
+		cleanedItems.push(newPhrase);
+	}
+	console.log(cleanedItems);
+	navbar.innerHTML = `
+	<h4>VECTARRAY ${navbarText}</h4>
+	<!--<img src="/images/vectarray-logo-shadow.png" class="navbar-img">-->
+	`
+
+	for(var i = 0; i <= selectedItems.length; i++) {
+		var href = window.location.href;
+		var toSlice = "/" + selectedItems[i];
+		var newURL = href.slice(0, href.indexOf(toSlice));
+		if(i == selectedItems.length) {
+			navbar.innerHTML += ` / <a href="${newURL}" class="URLbuttonText" style="font-weight: bold;">${cleanedItems[i]}</a>`;
+		}
+		else {
+			navbar.innerHTML += ` / <a href="${newURL}" class="URLbuttonText">${cleanedItems[i]}</a>`;
+		}
+	}
+
+		var newBottom = document.createElement("div");
+		newBottom.id = "bottom";
+		newBottom.innerHTML = String.raw`
+		<span>
+			<h5>PC Games</h5>
+			<a class="URLbuttonText" href="/lockedin.html">Locked In</a>
+			<a class="URLbuttonText" href="/connectcircle.html">ConnectCircle</a>
+			<a class="URLbuttonText" href="/connectmore.html">ConnectMore</a>
+			<a class="URLbuttonText" href="/roblox-games.html">Roblox Games</a>
+			<a class="URLbuttonText" href="/index.html">Homepage</a>
+		</span>
+		<span>
+			<h5>Web Apps & Games</h5>
+			<a class="URLbuttonText" href="/games/index.html">Web Games Home</a>
+			<a class="URLbuttonText" href="/games/word-game.html">Word Game</a>
+			<a class="URLbuttonText" href="/games/connect-more.html">ConnectMore</a>
+			<a class="URLbuttonText" href="/app/">Apps Home</a>
+			<a class="URLbuttonText" href="/app/web-todo.html">Todo List</a>
+		</span>
+		<span>
+			<h5>Articles</h5>
+			<a class="URLbuttonText" href="/tutorials.html">Tutorials Home</a>
+			<a class="URLbuttonText" href="/blog/index.html">Blog Home</a>
+		</span>
+		<div class="clear"/>`;
+		navbar.appendChild(newBottom);
+
+	document.body.insertBefore(navbar, document.getElementById("title"));
+
+	navbar.addEventListener("mouseover", function() {
+		navbar.style.height = "20.4em"
+	});
+	navbar.addEventListener("mouseleave", function() {
+		navbar.style.height = "1.4em"
+	});
+
+	var prevScrollpos = window.scrollY;
+	window.onscroll = function () {
+		var currentScrollPos = window.scrollY;
+		if (prevScrollpos > currentScrollPos) {
+			document.getElementById("navbar").style.top = "0";
+		} else {
+			document.getElementById("navbar").style.top = "-50px";
+			navbar.style.height = "1.4em"
+		}
+		prevScrollpos = currentScrollPos;
+	}
 }
 
 function keepTrying(toTry, delay) {
@@ -340,7 +452,7 @@ function changeSelection(selectionElement, isNext = true) {
 }
 
 function hyperlink(url) {
-	window.open(url);
+	window.location = url;
 }
 
 function popup(heading, body, soundToPlay) {

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Vectarray Blogs</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="icon" type="image/x-icon" href="/images/vectarray-logo-shadow-bg.png">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+	<style>
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/blog/blogscript.js"></script>
+	<script>
+		function OnNewSearchCards() {
+			for(var input of document.getElementsByClassName("searchBar"))
+			{
+				var filter = input.value.toUpperCase();
+				var cards = document.getElementById("cards-" + input.id);
+				var divs = cards.getElementsByTagName("div");
+				for(var div of divs) {
+					if(div.getElementsByTagName("h4").length < 1) continue;
+					//console.log(div.getElementsByTagName("h4")[0].innerHTML);
+					if(div.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						div.style.display = "";
+					}
+					else {
+						div.style.display = "none";
+					}
+				}
+				/*if(filter.length > 1) {
+					var suggestionFound = false;
+					for(var item of words) {
+						if(item.toUpperCase().startsWith(filter) && ul.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+							suggestionFound = true;
+							break;
+						}
+						if(item.toUpperCase().startsWith(filter) && !suggestionFound) {
+							document.getElementById("suggestion").innerHTML = "Did you mean: " + item + "?";
+							suggestionFound = true;
+						}
+					}
+				}*/
+			}
+		}
+		function loadCards() {
+            window.location.href = window.location.href.replace("/updates", "");
+			document.getElementById("cards-posts").innerHTML = "";
+			for(var item of Object.keys(posts).reverse()) {
+				var post = posts[item];
+                if(post.type != "updates") {
+                    continue;
+                }
+				//console.log(post.title);
+				var newCard = document.createElement("div");
+				document.getElementById("cards-posts").appendChild(newCard);
+				newCard.outerHTML = `<div class="moveIn smaller-card active" onclick="hyperlink('/blog/${post.type}/${post.date}')" onmousewheel="">
+					<i class="fa-solid ${post.icon} hover" style="float:right;"><hide>${types[post.type]}</hide></i>
+					<h4>${post.title}</h4>
+					<div class="centre">${convertDate(post.date)}</div>
+				</div>`;
+			}
+		}
+	</script>
+
+</head>
+
+<body onload="CheckFormatting(); loadCards();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">blogs</div>
+	<h2>Blogs</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph">
+		<div class="moveIn">
+		Welcome to the blog homepage of Vectarray!
+		<br><br>This is where most of the blog stuff will be. There will just be different pages for <b>large</b> articles.
+		
+		<!--
+			Update
+			<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+
+			Project
+			<i class="fa-solid fa-screwdriver-wrench hover" style="float:right;"><hide>Project</hide></i>
+
+			Review
+			<i class="fa-solid fa-pen-clip" style="float:right;"><hide>Review</hide></i>
+		-->
+
+		<div class="divider"></div><div class="smallSpace"></div>
+			<input type="text" id="csharp" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+			<div class="moveIn"><small>You can also search by type (Update, Project, Review), or long date</small></div>
+			<div class="cards" id="cards-posts">
+				<div class="moveIn smaller-card active" onclick="hyperlink('updates/240715')" onmousewheel=""></div>
+					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+					<h4>Summer Plsssans</h4>
+					<div class="centre">15th wffwfJuly 2024</div>
+				</div>
+				<div class="moveIn smaller-card active" onclick="hyperlink('updates/240715')" onmousewheel="">
+					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+					<h4>Summer Plans</h4>
+					<div class="centre">15th July 2024</div>
+				</div>
+				<div class="moveIn smaller-card active" onclick="hyperlink('updates/231219')" onmousewheel="">
+					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+					<h4>Have I Returned?</h4>
+					<div class="centre">19th December 2023</div>
+				</div>
+				<div class="moveIn smaller-card active" onclick="hyperlink('updates/230530')" onmousewheel="">
+					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+					<h4>Where has he been.</h4>
+					<div class="centre">30th May 2023</div>
+				</div>
+				<div class="moveIn smaller-card active" onclick="hyperlink('updates/221022')" onmousewheel="">
+					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+					<h4>New Name, Same Game</h4>
+					<div class="centre">22nd October 2022</div>
+				</div>
+				<div class="moveIn smaller-card active" onclick="hyperlink('updates/221020')" onmousewheel="">
+					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+					<h4>Todo List & More</h4>
+					<div class="centre">20th October 2022</div>
+				</div>
+				<div class="moveIn smaller-card active" onclick="hyperlink('updates/220407')" onmousewheel="">
+					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
+					<h4>Controversial Colours Cleared</h4>
+					<div class="centre">7th April 2022</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="divider"></div>
+
+		<h4 class="moveIn">Note</h4>
+		<div class="moveIn">
+			The new blog system is very clunky still, I agree! Thanks for being so honest. But if it's still relatively usable, then use it, otherwise
+			why are you even here?
+		</div>
+
+		<div class="smallSpace"></div><div class="line"></div>
+	<div class="smallSpace"></div>
+
+</html>

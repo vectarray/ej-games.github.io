@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Planet Orbits</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+        <link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+	<style>
+        
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+    <script src="/suitable-words.jsonp"></script>
+	<script>
+        let previousUpdate = Date.now()
+        let deltaTime = 0;
+
+        let oldRotation = 0;
+        let rotation = 45;
+        let angularVelocity = 5;
+        let angularAcceleration = 0;
+        let linearVelocity = 0;
+        let linearAcceleration = 0;
+        let displacement = 0;
+
+        let stringLength = 1;
+
+        let amplitude = 1;
+
+        let angleLabel = document.getElementById("angle")
+        let angularVelocityLabel = document.getElementById("angular-velocity")
+        let angularAccelerationLabel = document.getElementById("angular-acceleration")
+        let displacementLabel = document.getElementById("linear-velocity")
+        let linearVelocityLabel = document.getElementById("linear-velocity")
+
+        function update() {
+            deltaTime = Date.now() - previousUpdate;
+
+            let pendulum = document.getElementById("pendulum-image");
+            
+            amplitude = document.getElementById("amplitude-input").value;
+
+            
+
+            angularAcceleration = -rotation * amplitude * deltaTime * 0.02;
+            angularVelocity += angularAcceleration * (deltaTime * 0.002);
+
+            rotation += angularVelocity * deltaTime * 0.02;
+
+            angleLabel.innerText = Math.round(rotation).toString();
+            angularVelocityLabel.innerHTML = Math.round(angularVelocity);
+            angularAccelerationLabel.innerHTML = Math.round(angularAcceleration);
+
+
+            stringLength = document.getElementById("length-input").value;
+
+            displacement = (rotation / 360) * (2 * Math.PI * stringLength);
+            linearVelocity = angularVelocity * (Math.PI / 180) * stringLength;
+
+            displacementLabel.innerText = Math.round(displacement * 10) / 10;
+            linearVelocityLabel.innerText = Math.round(linearVelocity * 10) / 10;
+
+            if(rotation < -90) { rotation = -90 }
+            if(rotation > 90) { rotation = 90 }
+            //pendulum.setAttribute("style", `position: relative; transition: 0.5s; transform: rotate(${rotation.toString()});`);
+            pendulum.style.transform = "rotate(" + rotation.toString() + "deg)";
+
+            previousUpdate = Date.now()
+
+            oldRotation = rotation;
+        }
+
+        function start() {
+            previousUpdate = Date.now();
+
+            angleLabel = document.getElementById("angle")
+            angularVelocityLabel = document.getElementById("angular-velocity")
+            angularAccelerationLabel = document.getElementById("angular-acceleration")
+            displacementLabel = document.getElementById("displacement")
+            linearVelocityLabel = document.getElementById("linear-velocity")
+        }
+	</script>
+
+</head>
+
+<body onload="CheckFormatting(); setInterval(update, 20); start();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <!--
+        What theme is this page? (e.g. games, tutorials, music)
+    -->
+	<div id="title">apps</div>
+
+	<h2>Pendulum</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph">
+        Amplitude: <input type="number" id="amplitude-input" value="2"><br>
+        String length (m): <input type="number" id="length-input" value="1"><br>
+        <br>
+
+        Angle: <span id="angle">0</span> &deg;<br>
+        Angular Velocity: <span id="angular-velocity">0</span> &deg;/s<br>
+        Angular Acceleration: <span id="angular-acceleration">0</span> &deg;/s&sup2;<br>
+        Displacement: <span id="displacement">0</span> m<br>
+        Linear Velocity: <span id="linear-velocity">0</span> m/s<br>
+
+        <img src="images/pendulum.png" width="100%" id="pendulum-image">
+
+
+
+
+        <!--
+            Mercury: 87.97 days/turn
+            Venus: 224.70 d/t
+            Earth: 365.26 d/t
+            Mars: 686.98 d/t
+            Jupiter: 4,332.82 d/t
+            Saturn: 10,755.70 d/t
+            Uranus: 30,687.15 d/t
+            Neptune: 60,190.03 d/t
+        -->
+        
+    </div>
+	<div class="smallSpace"></div>
+</body>
+
+</html>
