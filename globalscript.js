@@ -198,17 +198,22 @@ function createNavbar() {
 	
 	// Show all directories as separate words
 	var urlItems = window.location.href.split("/");
+	//urlItems = "https://vectarray.com/app/electric-fields.html".split("/");
+	//console.log(urlItems.indexOf("vectarray.com"));
 
 
 	for(var item of urlItems) {
 		// Ignore https://, 127.0.0.1, and vectarray.com
-		if(item.indexOf("http") <= -1 && item.indexOf(".") == item.lastIndexOf(".") && item != "" && item.indexOf("vectarray.com" <= -1)) {
+		//console.log(item, item.indexOf("vectarray.com"));
+		if(item.indexOf("http") <= -1 && item.indexOf(".") == item.lastIndexOf(".") && item != "" && item.indexOf("vectarray.com") <= -1) {
 			selectedItems.push(item)
 		}
 	}
 
 	// Put Homepage at the start to allow for easy access
-	cleanedItems.push("Homepage");
+	//cleanedItems.push("Homepage");
+
+	//console.log(selectedItems);
 	
 	for(var item of selectedItems) {
 
@@ -234,16 +239,19 @@ function createNavbar() {
 		newPhrase = newPhrase.trimEnd();
 		cleanedItems.push(newPhrase);
 	}
-	console.log(cleanedItems);
+	//console.log(cleanedItems);
 	navbar.innerHTML = `
-	<h4>VECTARRAY ${navbarText}</h4>
+	<h4 id="vectarray-logo" onclick="hyperlink('/index.html')">VECTARRAY ${navbarText}</h4>
 	<!--<img src="/images/vectarray-logo-shadow.png" class="navbar-img">-->
 	`
 
-	for(var i = 0; i <= selectedItems.length; i++) {
+	console.log(selectedItems);
+	console.log(cleanedItems);
+
+	for(var i = 0; i < selectedItems.length; i++) {
 		var href = window.location.href;
 		var toSlice = "/" + selectedItems[i];
-		var newURL = href.slice(0, href.indexOf(toSlice));
+		var newURL = href.slice(0, href.indexOf(toSlice) + toSlice.length);
 		if(i == selectedItems.length) {
 			navbar.innerHTML += ` / <a href="${newURL}" class="URLbuttonText" style="font-weight: bold;">${cleanedItems[i]}</a>`;
 		}

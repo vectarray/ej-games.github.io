@@ -59,7 +59,7 @@ colours = {
         "shadow": "#000000",
         "elementBG": "#b2dbfb",
         "elementHover": "#85c9fc",
-        "elementBrighter": "rgb(19, 67, 129)",
+        "elementBrighter": "rgb(78, 160, 200)",
         "green": "rgb(42, 171, 42)",
         "bottom": "#e1e1e1"
     }

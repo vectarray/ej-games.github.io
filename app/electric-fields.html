@@ -161,14 +161,14 @@
 
             var currentX = 0;
             var currentY = 0;
-            for (var j = 0; j < 2; j++) {
+            for (var j = -1; j < 2; j+= 2) {
+                console.log(j);
                 var startingX = charge1x;
                 var startingY = charge1y;
 
                 if(j == 1) {
                     startingX = charge2x;
                     startingY = charge2y;
-                    console.log(j);
                 }
 
                 for (var i = 0; i < 16; i++) {

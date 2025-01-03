@@ -39,7 +39,9 @@ const posts = {
     "230530": new Post("230530", "Where has he been.", "updates"),
     "231219": new Post("231219", "Have I returned?", "updates"),
     "240715": new Post("240715", "Summer Plans", "updates"),
-    "240903": new Post("240903", "Nikon Coolpix L340", "reviews")
+    "240903": new Post("240903", "Nikon Coolpix L340", "reviews"),
+    "240923": new Post("240923", "Canon IXUS 185", "reviews"),
+    "241231": new Post("241231", "2025? More like 45²!!", "updates")
 }
 
 function setTitle() {
@@ -72,7 +74,7 @@ function setTitle() {
         
         //let subtitle = `${days[writtenDate.getDay()]} ${writtenDate.getDate()}${suffix} ${months[writtenDate.getMonth()]} ${writtenDate.getFullYear()}`;
         let subtitle = convertDate(dateStr, false);
-        document.getElementsByTagName("h5")[0].innerText = subtitle;
+        document.getElementsByClassName("subtitle")[0].innerText = subtitle;
 
         //console.log(subtitle);
 

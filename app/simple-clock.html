@@ -79,6 +79,8 @@
         #date-display {
             padding-top: 0px;
             margin-top: 0px;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
         }
 
         html {
@@ -96,6 +98,34 @@
         :root {
             --bg: #101e33;
         }
+
+        #main-display {
+            width: max-content;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: white;
+            border-radius: 0.3em;
+            height: 0.5em;
+            margin-bottom: 0.6em;
+            margin-top: 0.4em;
+            color: black;
+
+            padding-bottom: 0.8em;
+            padding-left: 0.5em;
+
+            transition: width 1s ease;
+
+            overflow: hidden;
+        }
+
+        .progress-bar span {
+            font-size: 0.6em;
+        }
 	</style>
     <link rel="stylesheet" href="styles/general-style.css">
 	<script src="/minimalscript.js"></script>
@@ -105,6 +135,8 @@
         const daysWithSt = [1, 21, 31];
         const daysWithNd = [2, 22];
         const daysWithRd = [3, 23];
+
+        const monthDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
         function options() {
             if(document.getElementById("options").style.display == "block") {
@@ -172,34 +204,43 @@
             var year = now.getFullYear();
             
             document.getElementById("date-display").textContent = `${dayName}, ${day}${ending} ${month} ${year}`
+
+            for(var i = 1; i < 3; i++) {
+                var progressBar = document.getElementById("progress" + i.toString());
+                //console.log(i);
+                var selectedValue = document.getElementById(`bar${i}-select`).value;
+                console.log(selectedValue);
+
+                var valueToSet = 0;
+                progressBar.style.backgroundColor = "white";
+                progressBar.style.display = "block";
+
+                if(selectedValue == "Minute") valueToSet = now.getSeconds() / 60;
+                if(selectedValue == "Hour") valueToSet = now.getMinutes() / 60;
+                if(selectedValue == "Day") valueToSet = now.getHours() / 24;
+                if(selectedValue == "Full Week") valueToSet = now.getDay() / 7;
+                if(selectedValue == "Month") valueToSet = now.getDate() / monthDays[now.getMonth() - 1];
+                if(selectedValue == "Year") valueToSet = now.getMonth() / 12;
+                if(selectedValue == "Week") {
+                    valueToSet = now.getDay() / 5;
+                    if(now.getDay() > 5) {
+                        progressBar.style.backgroundColor = "#57A1EB";
+                    }
+                }
+                if(selectedValue == "None") {
+                    progressBar.style.display = "none";
+
+                }
+
+                progressBar.getElementsByTagName("span")[0].innerHTML = selectedValue.toUpperCase();
+
+                progressBar.style.width = `${valueToSet * 100}%`
+            }
         }
 
         function start() {
-            var now = new Date();
 
-
-            var hours = now.getHours().toString().padStart(2, "0");
-            var mins = now.getMinutes().toString().padStart(2, "0");
-
-            document.getElementById("clock-display").textContent = (`${hours}:${mins}`);
-
-
-            var dayName = now.toLocaleDateString("en-GB", {weekday: "long"});
-            var day = now.getDate();
-            var ending = "th";
-            if(daysWithSt.indexOf(day) > -1) {
-                ending = "st";
-            }
-            else if(daysWithNd.indexOf(day) > -1) {
-                ending = "nd";
-            }
-            else if(daysWithRd.indexOf(day) > -1) {
-                ending = "rd";
-            }
-            var month = now.toLocaleDateString("en-GB", {month:"long"});
-            var year = now.getFullYear();
-            
-            document.getElementById("date-display").textContent = `${dayName}, ${day}${ending} ${month} ${year}`
+            updateClock();
 
             
             var clock = document.getElementById("clock-display");
@@ -218,7 +259,7 @@
 
 </head>
 
-<body onload="CheckFormatting(); setInterval(updateClock, 2500); start()" style="background-color: var(--bg);">
+<body onload="CheckFormatting(); setInterval(updateClock, 1000); start()" style="background-color: var(--bg);">
 	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
@@ -227,8 +268,18 @@
 	<div class="smallSpace"></div>
 	<br>
 
-    <h1 id="clock-display" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;">123456789</h1>
-    <h4 id="date-display" style="margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;">Monday, 1st January 1970</h4>
+    <div id="main-display">
+
+    <h1 id="clock-display" style="margin: 0; padding: 0;">123456789</h1>
+    <h4 id="date-display" style="margin: 0; padding: 0;">Monday, 1st January 1970</h4>
+    <div id="progress1" class="progress-bar">
+        <span></span>
+    </div>
+    <div id="progress2" class="progress-bar">
+        <span></span>
+    </div>
+
+    </div>
 
     <div style="min-height: 100em;"></div>
     <button onclick="options()" style="left: 50%; transform: translateX(-50%); position: relative;">Options</button>
@@ -246,6 +297,30 @@
             <option value="Dancing Script">Cursive</option>
             <option value="Libre Baskerville">Fancy</option>
             <option value="Hanken Grotesk">Clean</option>
+        </select>
+        <div class="smallSpace"></div>
+        Bar 1 Value:
+        <select id="bar1-select">
+            <option value="None">None</option>
+            <option value="Minute">Minute</option>
+            <option value="Hour" selected>Hour</option>
+            <option value="Day">Day</option>
+            <option value="Week">Week</option>
+            <option value="Full Week">Full Week</option>
+            <option value="Month">Month</option>
+            <option value="Year">Year</option>
+        </select>
+        <div class="smallSpace"></div>
+        Bar 2 Value
+        <select id="bar2-select">
+            <option value="None">None</option>
+            <option value="Minute" selected>Minute</option>
+            <option value="Hour">Hour</option>
+            <option value="Day">Day</option>
+            <option value="Week">Week</option>
+            <option value="Full Week">Full Week</option>
+            <option value="Month">Month</option>
+            <option value="Year">Year</option>
         </select>
         <div class="smallSpace"></div>
         Font size:

@@ -15,12 +15,17 @@
 	<script src="/globalscript.js"></script>
 	<script src="/frequent-notifications.js"></script>
 	<script>
+		function begin() {
+			for(var item of document.getElementsByTagName("embed")) {
+				console.log("Bah");
+			}
+		}
 	</script>
 	<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
 
 </head>
 
-<body onload="CheckFormatting()">
+<body onload="CheckFormatting(); begin();">
 	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<div id="cookie" style="display: none;"></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>

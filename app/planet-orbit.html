@@ -31,7 +31,7 @@
             top: 30em;
             left: 35%;
             transform-origin: center;
-            transition: transform 0.1s;
+            /* transition: transform 0.1s; */
         }
         #speed-input {
             width: 3em;
@@ -65,18 +65,22 @@
         }
         const allMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let timeScale = 1
+        var totalTimeSpent = 0;
         function update() {
             for(var item of Object.keys(currentRotations)) {
 
                 currentRotations[item] += (rotationSpeeds[item] != 0 ? (1 / rotationSpeeds[item]) : 0) * rotationSpeeds["earth"] * 0.001 * document.getElementById("speed-input").value;
+                currentRotations[item] = currentRotations[item] % 1;
             }
             for(var item of document.getElementsByClassName("planet")) {
                 //console.log(currentRotations[item.id].toString() + ", " + item.style.transform);
                 item.style.transform = "rotate(" + (currentRotations[item.id] - currentRotations[document.getElementById("relative-to").value]).toString() + "turn)";
             }
             var months = Math.floor(12 * (currentRotations["earth"] % 1));
+
+            totalTimeSpent += (rotationSpeeds["earth"] != 0 ? (1 / rotationSpeeds["earth"]) : 0) * rotationSpeeds["earth"] * 0.001 * document.getElementById("speed-input").value;
              
-            document.getElementById("time").innerHTML = Math.floor(currentRotations["earth"]).toString() + " years, " + months.toString() + " months since last alignment<br>";
+            document.getElementById("time").innerHTML = Math.floor(totalTimeSpent).toString() + " years, " + months.toString() + " months since last alignment<br>";
         }
 	</script>
 
