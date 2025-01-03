@@ -22,6 +22,12 @@ var futureHour1 = 12;
 var futureIcon1 = "https://openweathermap.org/img/wn/03d@4x.png";
 var futureCondition1 = 801;
 
+var tomorrowTemp = 8;
+var tomorrowFeelsLike = 6;
+var tomorrowCondition = 801;
+var tomorrowIcon = "https://openweathermap.org/img/wn/03d@4x.png";
+
+
 // %d is time of day
 // %t is temperature
 // %f is feels like
@@ -97,11 +103,11 @@ const nowTexts = {
     },
     803: {
         short: "It's mostly cloudy",
-        long: "Typical British weather."
+        long: "Not much sky to be seen."
     },
     804: {
         short: "It's overcast",
-        long: "How joyous."
+        long: "The sky has disappeared!"
     }
 };
 
@@ -257,6 +263,16 @@ const futureTexts = {
     }
 }
 
+const tomorrowTexts = {
+    200: "Stormy",
+    300: "Rainy",
+    500: "Rainy",
+    600: "Snowy",
+    700: "Misty",
+    800: "Clear",
+    802: "Cloudy"
+}
+
 function options() {
     if (document.getElementById("options").style.display == "block") {
         document.getElementById("options").style.display = "none";
@@ -308,6 +324,10 @@ function updateClock() {
 
     for(var item of document.getElementsByClassName("clock")) {
         item.textContent = (`${hours}:${mins}`);
+    }
+
+    if(now.getMinutes() % 5 == 0 && now.getSeconds() == 0) {
+        getWeatherURL(document.getElementById("city-input").value);
     }
 
 
@@ -365,9 +385,9 @@ function updateClock() {
 }
 
 function start() {
-    getWeatherURL(document.getElementById("city-input").value);
 
     updateClock();
+    getWeatherURL(document.getElementById("city-input").value);
 
     document.getElementById("main-display").style.transition = "transform 1s, opacity 0.25s";
 
@@ -384,10 +404,9 @@ function start() {
 
     document.getElementById("font-select").value = fontName;
     document.getElementById("size-input").value = Number.parseInt(fontSize) || 5;
+}
 
-    setInterval(function() {
-        getWeatherURL(document.getElementById("city-input").value);
-    }, 300000)
+function checkTime() {
 }
 
 async function getWeatherURL(name) {
@@ -411,7 +430,7 @@ async function getWeatherURL(name) {
 
 async function getWeather(params) {
     const nowURL = `https://api.openweathermap.org/data/2.5/weather?${params}&appid=${apiKey}&units=metric`;
-    const futureURL = `https://api.openweathermap.org/data/2.5/forecast?${params}&cnt=2&appid=${apiKey}&units=metric`;
+    const futureURL = `https://api.openweathermap.org/data/2.5/forecast?${params}&cnt=9&appid=${apiKey}&units=metric`;
     try {
         const nowResponse = await fetch(nowURL);
         if(!nowResponse.ok) {
@@ -426,10 +445,6 @@ async function getWeather(params) {
         nowIcon = getWeatherIcon(nowData);
 
         const nowTextsKeys = Array.from(Object.keys(nowTexts));
-
-        nowCondition = "803";
-
-
 
         for(var i = 0; i < nowTextsKeys.length; i++) {
             if(i >= nowTextsKeys.length - 1 || (nowCondition >= nowTextsKeys[i] && nowCondition < nowTextsKeys[i + 1])) {
@@ -454,7 +469,6 @@ async function getWeather(params) {
         futureFeelsLike1 = Math.round(futureData.list[0].main.feels_like);
         futureHour1 = new Date(futureData.list[0].dt * 1000).getHours();
         futureCondition1 = futureData.list[0].weather[0].id;
-        futureCondition1 = "802";
 
         futureIcon1 = getWeatherIcon(futureData.list[0]);
 
@@ -508,6 +522,66 @@ async function getWeather(params) {
         var futureClock = document.getElementById("future-clock-display");
         futureClock.innerHTML = `At ${(futureHour1 % 12 == 0) ? 12 : futureHour1 % 12} ${futureHour1 >= 12 ? "PM" : "AM"}:`
         document.getElementById("future-weather-img").src = futureIcon1;
+
+
+        var isToday = false;
+        var index = 1;
+
+        for(var i = 0; i < Array.from(futureData.list).length; i++) {
+            console.log(futureData.list[i]);
+
+            var date = new Date(futureData.list[i].dt * 1000);
+
+            if(date.getHours() == 12) { 
+                if(date.getDate() == new Date().getDate()) {
+                    isToday = true;
+                }
+                index = i;
+                break;
+            }
+        }
+        tomorrowTemp = Math.round(futureData.list[index].main.temp);
+        tomorrowFeelsLike = Math.round(futureData.list[index].main.feels_like);
+        tomorrowCondition = futureData.list[index].weather[0].id;
+
+        tomorrowIcon = getWeatherIcon(futureData.list[index]);
+
+        if(isToday) {
+            document.getElementById("tomorrow-clock-display").innerHTML = "Today will be:";
+        }
+        else {
+            document.getElementById("tomorrow-clock-display").innerHTML = "Tomorrow will be:";
+        }
+
+
+        const tomorrowTextsKeys = Array.from(Object.keys(tomorrowTexts));
+        if(tomorrowTemp > 27) {
+            document.getElementById("tomorrow-weather-short-display").textContent = "Hot";
+        }
+        else if(tomorrowTemp > 24) {
+            document.getElementById("tomorrow-weather-short-display").textContent = "Warm";
+        }
+        else if(tomorrowTemp < 0) {
+            document.getElementById("tomorrow-weather-short-display").textContent = "Freezing";
+        }
+        else if(tomorrowTemp < 5) {
+            document.getElementById("tomorrow-weather-short-display").textContent = "Cold";
+        }
+        else {
+            for(var i = 0; i < tomorrowTextsKeys.length; i++) {
+                if(i >= tomorrowTextsKeys.length - 1 || (nowCondition >= tomorrowTextsKeys[i] && nowCondition < tomorrowTextsKeys[i + 1])) {
+                    //console.log(i, nowTextsKeys.length - 1, nowCondition, nowTextsKeys[i], nowTextsKeys[i + 1]);
+                    //console.log(nowCondition);
+                    document.getElementById("tomorrow-weather-short-display").textContent = tomorrowTexts[tomorrowTextsKeys[i]];
+                    break;
+                }
+            }
+        }
+        var longContent = `It will be ${tomorrowTemp} °C at midday.<br><small>(Feels like ${tomorrowFeelsLike} °C.)</small>` 
+        document.getElementById("tomorrow-weather-long-display").innerHTML = longContent;
+        document.getElementById("tomorrow-weather-img").src = nowIcon;
+
+        futureIcon1 = getWeatherIcon(futureData.list[0]);
 
 
 

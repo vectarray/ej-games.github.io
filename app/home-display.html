@@ -100,6 +100,11 @@
             margin: auto;
         }
 
+        #display3 {
+            width: 70%;
+            margin: auto;
+        }
+
         .mini-clock-display {
             padding-bottom: 0px;
             margin-bottom: 0px;
@@ -166,6 +171,34 @@
             font-weight: 400;
         }
 
+        #tomorrow-weather-short-display {
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            background-color: rgba(0, 0, 0, 0);
+            text-align: center;
+            font-size: 3.7em;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #tomorrow-weather-long-display {
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            background-color: rgba(0, 0, 0, 0);
+            text-align: left;
+            font-size: 1.5em;
+            font-weight: 400;
+        }
+
+        #tomorrow-clock-display {
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            max-width: 100%;
+        }
+
         html {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -188,9 +221,6 @@
             left: 50%;
             transform: translateX(-50%);
             position: absolute;
-            align-items: center;
-            align-content: center;
-            align-self: center;
         }
 
         #main-display h1 {
@@ -249,7 +279,7 @@
 
     <div id="main-display" onclick="changeDisplay()">
     
-        <div id="display0" style="display:block;">
+        <div id="display0" style="display:none;">
     
             <h1 id="clock-display" style="margin: 0; padding: 0;" class="clock">123456789</h1>
             <h4 id="date-display" style="margin: 0; padding: 0;" class="date">Monday, 1st January 1970</h4>
@@ -289,6 +319,22 @@
             </div>
             <div style="float:right; display:inline; width: 30%;">
                 <img id="future-weather-img" src="https://openweathermap.org/img/wn/02d@4x.png" style="width: 100%;">
+            </div>
+    
+        </div>
+    
+        <div id="display3" style="display: block;">
+    
+            <h4 class="mini-clock-display clock" style="margin: 0; padding: 0;">12:34</h4>
+            <h4 class="mini-clock-display" id="tomorrow-clock-display" style="margin: 0; padding: 0;">Tomorrow will be:</h4>
+            <h1 id="tomorrow-weather-short-display" style="margin: 0; padding: 0;">Hot</h1>
+            <div style="float:left; display:inline; width: 70%;">
+                <h4 id="tomorrow-weather-long-display" style="margin: 0; padding: 0;">
+                    Around 55 &deg;C at midday.<br><small>Feels like 26 &deg;C</small>
+                </h4>
+            </div>
+            <div style="float:right; display:inline; width: 30%;">
+                <img id="tomorrow-weather-img" src="https://openweathermap.org/img/wn/02d@4x.png" style="width: 100%;">
             </div>
     
         </div>
