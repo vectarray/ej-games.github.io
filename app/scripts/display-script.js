@@ -579,13 +579,7 @@ async function getWeather(params) {
         }
         var longContent = `It will be ${tomorrowTemp} °C at midday.<br><small>(Feels like ${tomorrowFeelsLike} °C.)</small>` 
         document.getElementById("tomorrow-weather-long-display").innerHTML = longContent;
-        document.getElementById("tomorrow-weather-img").src = nowIcon;
-
-        futureIcon1 = getWeatherIcon(futureData.list[0]);
-
-
-
-        futureIcon1 = getWeatherIcon(futureData.list[0]);
+        document.getElementById("tomorrow-weather-img").src = tomorrowIcon;
     }
     catch(error) {
         alert("Failed to get weather: " + error.message);
