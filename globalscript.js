@@ -12,14 +12,18 @@ function CheckFormatting()
 	var sidebar = document.createElement("div");
 	sidebar.classList.add("sidebar");
 	sidebar.id = "sidebar";
+	var title = "";
+	if(document.getElementById("title") != null) {
+		title = document.getElementById("title").innerHTML.toUpperCase();
+	}
 	sidebar.innerHTML = String.raw`
-		<h4 id="below-logo" class="active" onclick="window.location.href='/index.html'" style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${document.getElementById("title").innerHTML.toUpperCase()}</h4>
+		<h4 id="below-logo" class="active" onclick="window.location.href='/index.html'" style="margin-top: -0.5em; text-align: center; font-size: 1.4em;">${title}</h4>
 		<h4>Links</h4>
 		<a href="${getAbsLocation("index.html")}" class="URLbuttonText">Homepage</a><br>
 		<a href="${getAbsLocation("games/index.html")}" class="URLbuttonText">Games</a><br>
 		<a href="${getAbsLocation("app/index.html")}" class="URLbuttonText">Apps</a><br>
 		<a href="${getAbsLocation("music.html")}" class="URLbuttonText">Music</a><br>
-		<a href="${getAbsLocation("tutorials.html")}" class="URLbuttonText">Tutorials</a><br>
+		<a href="${getAbsLocation("tutorial/index.html")}" class="URLbuttonText">Tutorials</a><br>
 		<a href="${getAbsLocation("blog/index.html")}" class="URLbuttonText">Blog</a>`
 
 	document.body.insertBefore(sidebar, document.getElementById("title"));
@@ -125,7 +129,12 @@ function CheckFormatting()
 
 
 	// Cleaning up & inserting elements
-	document.getElementById("title").style.display = "none";
+	try {
+		document.getElementById("title").style.display = "none";
+	}
+	catch(ex) {
+		console.log(ex.message);
+	}
 	var newH4 = document.createElement("h4");
 	newH4.innerHTML = "Actions";
 	newH4.id = "sidebar-actions";
@@ -189,7 +198,10 @@ function createNavbar() {
 	navbar.classList.add("navbar");
 
 	// Set top left text
-	var navbarText = document.getElementById("title").innerHTML.toUpperCase();
+	var navbarText = "";
+	if(document.getElementById("title") != null) {
+		navbarText = document.getElementById("title").innerHTML.toUpperCase();
+	}
 	
 	// Selected items: remove all unused letters and symbols
 	// Cleaned items: ready to show
@@ -281,7 +293,7 @@ function createNavbar() {
 		</span>
 		<span>
 			<h5>Articles</h5>
-			<a class="URLbuttonText" href="/tutorials.html">Tutorials Home</a>
+			<a class="URLbuttonText" href="/tutorial/index.html">Tutorials Home</a>
 			<a class="URLbuttonText" href="/blog/index.html">Blog Home</a>
 		</span>
 		<div class="clear"/>`;

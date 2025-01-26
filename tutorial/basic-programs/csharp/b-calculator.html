@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>C# Calculator</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="/mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="/globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+			function ChangeTitle() {
+				
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>C# Calculator</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+
+		This is how you make a rudimentary calculator with C#. Obviously there are many ways to make a calculator, and this is just one of them.
+		<br>In this tutorial, you will learn how to take input and perform basic operations. As much as it pains me to say this, there will be a
+		link to the full project at the end, as well as the full program.
+		
+		<div class="divider"></div>
+		<h4>Asking the big questions</h4>
+		The first thing you want to do when making a calculator program is, well, prompt the user for a number. Easy:
+<pre><code class="language-csharp">Console.WriteLine("What's the first number?");
+</code></pre>
+		and yes, it is that easy. Make sure to include the semicolon, or VSCode will complain.
+		<br><br>But the possibly confusing part comes when you ask for input.
+<pre><code class="language-csharp">string firstInput = Console.ReadLine();
+</code></pre>
+		What's effectively going on here is:
+		<ol>
+			<li>
+				Create a variable of a "string" type, which is basically text
+			</li>
+			<li>
+				Call it "firstInput"
+			</li>
+			<li>
+				Set it to the result of checking the console
+			</li>
+		</ol>
+		Apologies if you already knew how that worked. But also, at the same time, no apologies. You're the one reading it.
+		<br><br>Depending on your version of .NET, there could be a complaint from VSCode underneath <code>Console.ReadLine()</code>.
+		<br>It'll be complaining that the <code>Console.ReadLine()</code> could give you a bad value. But in this case, the value will
+		always be fine.
+		<br>
+		For the time being, especially when working in VSCode, you can shut it up by putting an exclamation mark after the <code>()</code>. This
+		effectively tells VSCode: "I'm sure that the result will always be fine, but just in case it isn't, stop the program."
+		<br><br>Now, if you run the program, it should give the following output:
+<pre><code class="language-txt">What's the first number?
+&gt;
+</code></pre>
+		If you type anything, then press enter, the program will stop.
+
+		<div class="divider"></div>
+		<h4>Turning it into a number</h4>
+		Right now, the variable <code>firstInput</code> is a string, or a piece of text. If you input "7", the computer
+		will treat it like any other piece of text, so you can't perform any mathematical operations on it.
+		<br><br>What you need to do is turn it into an integer, also called an <code>int</code>.
+		<br><br>Turning text into an integer is easy:
+<pre><code class="language-csharp">int firstNumber = int.Parse(firstInput);	
+</code></pre>
+
+		This creates a new integer variable called <code>firstNumber</code>, then sets it to the result of converting
+		<code>firstInput</code> to an integer.
+		<br><br><code>int.Parse()</code> effectively allows you to convert anything you want into an integer, provided there's
+		a straightforward way for the computer to do it. Obviously you can't convert the word "apple" to an integer, but you can
+		convert the number "4".
+
+		<h3>Problem 1</h3>
+		Right now, if you run the program, and type in a number, it works as expected - just stops the program after pressing Enter.
+		<br>But if you run it again, and instead of typing a number, type in a word, the program will instead say something like:
+		<br><br>
+<div class="code">Exception thrown: 'System.FormatException' in System.Private.CoreLib.dll</div>
+		<br>Which just means that there's a formatting error in your input, that originates from a file called System.Private.CoreLib (basically,
+		you've spoiled the party by typing a word).
+		<br><br>There are of course many ways to fix this.
+
+		<h5>Solution 1</h5>
+		Add a <code>try</code> and <code>catch</code> block to prevent the errors.
+		<br><br>A 'try' block is run normally, until there is an error, in which case, the 'try' block is aborted and the program skips straight
+		to the catch block. To implement it in our program, you can do:
+<pre><code class="language-csharp">int firstNumber = 0;
+
+try {
+	firstNumber = int.Parse(firstInput);
+}
+catch {
+	firstNumber = 1;
+	// Set a default value to stop the program from ending.
+}
+</code></pre>
+		and that does solve the problem of the program ending.
+
+		<h5>Solution 2</h5>
+		C# has a special function you can use instead of <code>int.Parse()</code>, called <code>int.TryParse()</code>. Instead of
+		returning a number, it returns either 'true' or 'false'. If you pass it a valid number, it returns true. If not, it returns false.
+		In this case, you would use it as follows:
+<pre><code class="language-csharp">int firstNumber = 0;
+if(int.TryParse(firstInput, out int parsedValue)) {
+	// Code in here will only run if the input is a number
+	firstNumber = parsedValue;
+}
+else {
+	firstNumber = 1;
+}
+</code></pre>
+		The <code>out int parsedValue</code> effectively creates an integer variable inside the function, which is quite useful especially
+		when you make your own functions.
+		<br><br>
+		This code is slightly cleaner than the other solution, but has basically the same effect.
+
+
+		<div class="divider"></div>
+		<h4>Selecting the operation</h4>
+		After you take the integer, you'll need the user to select the operation they want to perform.
+		I would recommend only including adding, subtracting, multiplying and dividing, but it's fairly easy to add more.
+
+		<br><br>
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

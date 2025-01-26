@@ -947,6 +947,46 @@ green-bg {
 	border: 0.1em solid rgb(53, 234, 101);
 	border-radius: 0.5em;
 }
+blue-bg {
+	background-color: rgba(69, 128, 255, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(53, 125, 234);
+	border-radius: 0.5em;
+}
+orange-bg {
+	background-color: rgba(255, 156, 69, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(234, 122, 53);
+	border-radius: 0.5em;
+}
+red-callout {
+	background-color: rgba(255, 69, 69, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(234, 53, 53);
+	border-radius: 0.5em;
+	display: block;
+}
+green-callout {
+	background-color: rgba(69, 255, 116, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(53, 234, 101);
+	border-radius: 0.5em;
+	display: block;
+}
+blue-callout {
+	background-color: rgba(69, 128, 255, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(53, 125, 234);
+	border-radius: 0.5em;
+	display: block;
+}
+orange-callout {
+	background-color: rgba(255, 156, 69, 0.5);
+	padding: 0.3em 0.3em 0.3em 0.3em;
+	border: 0.1em solid rgb(234, 122, 53);
+	border-radius: 0.5em;
+	display: block;
+}
 hide {
 	display: none;
 }

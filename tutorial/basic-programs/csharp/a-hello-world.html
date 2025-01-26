@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>C# Hello World</title>
+		<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+		<link rel="stylesheet" href="/mainstyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="/globalscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+			function Tabs() {
+				tabs = document.getElementsByClassName("tab");
+				for(var i = 0; i < tabs.length; i++) {
+					tabs[i].innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;"
+				}
+			}
+			function ChangeTitle() {
+				
+			}
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); Tabs();">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>C# Hello World</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+
+		This is an introduction to how you can, and/or should, set up a C# working environment. This is just one way you can do it.
+		If this way doesn't work for you, don't burst into tears, because you can follow another tutorial and come back later. I've got nothing to lose,
+		this website brings in exactly £0 per year.
+		
+		<div class="divider"></div>
+		<h4>C#? .NET? What?</h4>
+		When you look up "how to install C#", you're probably met with a bunch of ".NET" nonsense.
+		<br><br>Unless C just so happens to be your least favourite letter (F is also available), C# and .NET are practically the same thing.
+		If you install .NET, you'll be able to program in C#, because .NET is just the voodoo magic which allows the computer to understand C#.
+		<br><br>
+		<orange-callout>
+			<i class="fa-solid fa-warning"></i><b>But .NET Framework is not the same</b>
+			<br>.NET Framework is a version of .NET which is effectively "refreshed" but never updated. You should probably not substitute
+			.NET Framework for any other version of .NET, but you can if you read up on what that entails.
+		</orange-callout>
+		
+		<div class="divider"></div>
+		<h4>Installing .NET</h4>
+		You can install .NET by clicking <a href="https://dotnet.microsoft.com/en-us/download">here</a>. I don't get any money from that link or anything,
+		I just like subtle hyperlinks...
+		<br>To follow any of these "basic programs" C# tutorials, download any .NET version above 6.0. My other tutorials have 
+		archaic code that wasn't even correct when I wrote it, because I didn't program in C# properly at that time.
+		<br><br>
+		After following the installation steps, looking up anything you need to install .NET, you can also install <b>Visual Studio Code</b>,
+		which makes C# development much easier.
+		<br><br>
+		Once that is installed following the steps and also looking stuff up, make sure you restart your computer.
+		"Wah, wah, can't be bothered". Well, maybe for once, <i>be</i> bothered. You might not be able to program in C# without it!!
+
+		<div class="divider"></div>
+		<h4>Setting up a project</h4>
+		After restarting, you can now open your fresh copy of Visual Studio Code (I will call it VSCode because I'm lazy). Once you load
+		in, do what it says until you reach some Copilot or Customisation page. Ignore that, and instead, go to the left side of the window
+		and select the picture of the four squares that opens the "extensions" menu.
+		<br><br>Search for "C# Dev Kit", then find and install it.
+		<br><br>Once that's installed, go into your File Explorer or Finder or WhatEverOnLinux and create a folder where you want to store your project.
+		Call it something suitable, or unsuitable if you want. I'm not your mum. Although if she ever sees <i>that</i> project name, she's going
+		to be ashamed.
+		<br><br>Go back into VSCode and press <b>Ctrl+K</b>, THEN <b>Ctrl+O</b>, with a pause in between where you're not touching any keys.
+		Now select the folder you just tirelessly created.
+		<br><br>To finally create your C# project, press <b>Ctrl+Shift+P</b>, then search for ".NET: New Project..." and select it. Select 'Console App'
+		from the list, then put in your preferred horrible project name, then if you want to be really careful, you can check the project folder
+		is the correct one.
+		<br><br>Wait for it to do its thing, then click the "Explorer" button on the left-hand side, with the picture of two pieces of paper.
+		Then open whatever folders you need to find "Program.cs" in the list.
+
+		<div class="divider"></div>
+		<h4>Running the Program</h4>
+		I'm sorry, I can't help you if this next step doesn't go to plan, because I don't know the innards of VSCode very well. But luckily,
+		there are 8 billion other people on the planet, and I'm sure at least one of them has posted their knowledge about VSCode which you 
+		can use to help you.
+		<br><br>In Program.cs, press <b>F5</b>, then select 'C#' or '.NET Core' or something along those lines. If all goes well, there should be
+		a short wait, then you should get the following output:
+<pre><code class="language-txt">&gt; Hello, World!</code></pre>
+		underneath a bunch of gibberish and unimportant stuff. Well done, you have now C-sharped.
+
+		<div class="divider"></div>
+		<h4>Showing your imaginary friends</h4>
+
+		Picture this: your imaginary friend Short Shaun (what a great lad he is) wants to check out your cool program. But he doesn't have Visual 
+		Studio installed, nor does he want to download it! Well, don't worry Shaun, you'll be able to see the code soon enough.
+
+		<br><br>In your project folder, find a subfolder called "bin". Then open "Debug", then open "net8.0", or "net" plus whatever version you
+		installed. Inside there is all of the stuff required to run your program, which is updated whenever you run it with VSCode.
+		<br><br>Open the EXE file and you should have a window pop-up for a split second. That's your program running and then immediately
+		quitting, because after the Hello World! statement, the program ends. But if you sent that to Shaun, he could open it, and usually see the 
+		exact same result as you. We all know what his reaction would be: "Yeah that's exactly what I expected". Classic Shaun.
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>
