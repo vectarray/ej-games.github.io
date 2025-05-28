@@ -12,7 +12,8 @@ colours = {
         "elementHover": "#13396b",
         "elementBrighter": "#1c55a0",
         "green": "rgb(69, 255, 69)",
-        "bottom": "#000000"
+        "bottom": "#000000",
+        "globalInvert": "0%"
     },
     "focused": {
         "background": "#181818",
@@ -21,11 +22,12 @@ colours = {
         "h2": "#ffffff",
         "body": "#ffffff",
         "shadow": "#000000",
-        "elementBG": "#0a83a360",
-        "elementHover": "#0a83a390",
-        "elementBrighter": "#0a83a3a0",
+        "elementBG": "#0a93a380",
+        "elementHover": "#0a93a3a0",
+        "elementBrighter": "#0a93a3c0",
         "green": "rgb(69, 255, 69)",
-        "bottom": "#000000"
+        "bottom": "#000000",
+        "globalInvert": "0%"
     },
     "red": {
         "background": "#351a16",
@@ -61,6 +63,7 @@ colours = {
         "elementHover": "#85c9fc",
         "elementBrighter": "rgb(78, 160, 200)",
         "green": "rgb(42, 171, 42)",
-        "bottom": "#e1e1e1"
+        "bottom": "#e1e1e1",
+        "globalInvert": "100%"
     }
 }

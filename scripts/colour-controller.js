@@ -62,6 +62,7 @@ function UpdateColour() {
 			root.style.setProperty("--elementBrighter", colourScheme.elementBrighter)
 			root.style.setProperty("--green", colourScheme.green);
 			root.style.setProperty("--bottom", colourScheme.bottom);
+			root.style.setProperty("--globalInvert", colourScheme.globalInvert);
 
 			var ua = navigator.userAgent.toLowerCase();
 			if(ua.indexOf("iphone") > -1 || ua.indexOf("android") > -1 || ua.indexOf("windows phone") > -1) {
@@ -99,7 +100,7 @@ function UpdateColour() {
 				]
 				for(var item of changeToTitle) {
 					for(var toChange of item) {
-						toChange.style.transition = "background-color 0.5s";
+						//toChange.style.transition = "background-color 0.5s";
 					}
 				}
 				for(var item of document.getElementsByClassName("searchBar")) {

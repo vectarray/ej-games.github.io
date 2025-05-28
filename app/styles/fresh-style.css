@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(71, 83, 92);
+    color: white;
+    margin: 1% 10% 1% 10%;
+    font-family: 'Special Gothic', sans-serif;
+}
+h1 {
+    font-size: 4em;
+    text-align: center;
+    font-family: 'Special Gothic Expanded One', sans-serif;
+}
+h1#main-title {
+    
+}

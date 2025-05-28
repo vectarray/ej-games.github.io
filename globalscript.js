@@ -4,6 +4,8 @@ var KC = {backspace:8,tab:9,enter:13,shift:16,ctrl:17,alt:18,pausebreak:19,capsl
 
 var allowNavbarHiding = false;
 
+const _months = ["Error", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 function CheckFormatting()
 {
 	if(window.location.href.endsWith("/index.html")) {

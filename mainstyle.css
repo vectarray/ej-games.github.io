@@ -82,6 +82,15 @@
 /* Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/* Special Gothic (nice headings) */
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap');
+
+/* Manrope, Generally Nice */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+/* Special Gothic Condensed One */
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
+
 
 :root {
 	--background: #181818;
@@ -94,10 +103,11 @@
 	--elementHover: #13396b;
 	--elementBrighter: #1c55a0;
 	--green: rgb(69, 255, 69);
-	--normalFont: "Roboto", "Montserrat", sans-serif;
-	--heading: "Roboto", "Montserrat", sans-serif;
+	--normalFont: "Manrope", "Montserrat", sans-serif;
+	--heading: "Special Gothic Expanded One", "Montserrat", sans-serif;
 	--codeFont: "JetBrains Mono", "Consolas", "Courier New", "Courier", monospace;
 	--bottom: #000000;
+	--globalInvert: 0%;
 }
 #navbar {
 	background-color: var(--bottom);
@@ -141,14 +151,12 @@ button {
 	cursor:pointer;
 	margin: 0% 0% 0% 0%;
 	color: var(--body);
-	text-decoration: none;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding: 0.1em;
 	border-radius: 0.5em;
 }
 button:hover {
-	text-decoration: underline;
 	font-size: 1em;
 	margin: 0% 0% 0% 0%;
 	color: var(--body);
@@ -159,7 +167,7 @@ button:hover {
 }
 body {
 	font-family: var(--normalFont), 'Montserrat', sans-serif;
-	font-weight: 400;
+	font-weight: 500;
 	/*background: #161c25;*/
 	font-size: 1.1em;
 	color: var(--body);
@@ -181,7 +189,7 @@ option hide{
 	display: none;
 }
 .mainParagraph {
-	margin: 0px 27% 0px 27%;
+	margin: 0px 25% 0px 25%;
 }
 #title {
 	text-align: center;
@@ -291,6 +299,8 @@ a:hover {
 	float: left;
 	outline: 0em solid grey;
 	box-shadow: 0.5em 0.5em 2em black;
+	transform: scale(1);
+	transition: transform 0.2s, background-color 0.2s;
 }
 @media (max-width: 750px) {
 	.card {
@@ -299,7 +309,8 @@ a:hover {
 }
 .card.active:hover {
 	cursor: pointer;
-	outline: 0.2em solid grey;
+	transform: scale(1.04);
+	background-color: var(--elementBG);
 }
 .card h4 {
 	font-size: 1.3em;
@@ -331,6 +342,8 @@ a:hover {
 	float: left;
 	outline: 0em solid grey;
 	box-shadow: 0.5em 0.5em 2em black;
+	transform: scale(1);
+	transition: transform 0.2s, background-color 0.2s;
 }
 @media (max-width: 1100px) {
 	.small-card {
@@ -339,7 +352,8 @@ a:hover {
 }
 .small-card.active:hover {
 	cursor: pointer;
-	outline: 0.2em solid grey;
+	transform: scale(1.04);
+	background-color: var(--elementBG);
 }
 .small-card h4 {
 	font-size: 1.3em;
@@ -367,8 +381,9 @@ a:hover {
 	margin: 2%;
 	font-size: 0.8em;
 	float: left;
-	outline: 0em solid grey;
 	box-shadow: 0.5em 0.5em 2em black;
+	transform: scale(1);
+	transition: transform 0.2s, background-color 0.2s;
 }
 @media (max-width: 1690px) {
 	.smaller-card {
@@ -377,7 +392,8 @@ a:hover {
 }
 .smaller-card.active:hover {
 	cursor: pointer;
-	outline: 0.2em solid grey;
+	transform: scale(1.04);
+	background-color: var(--elementBG);
 }
 .smaller-card h4 {
 	font-size: 1.3em;
@@ -505,16 +521,21 @@ sml {
 	font-size: 0.8em;
 }
 h1 {
-	font-size: 5em;
+	font-size: 8em;
 	font-family: var(--heading), "Montserrat", sans-serif;
 	font-weight: 900;
 	color: var(--body);
 	text-align: center;
-	background-color: var(--background);
+	/*
+	background-color: var(--background);*/
 	width: min-content;
 	margin: auto;
 	padding: 0.1em;
-	box-shadow: var(--background) 0px 0px 0.5em 0.5em;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	/*box-shadow: var(--background) 0px 0px 0.5em 0.5em;*/
+	mix-blend-mode: overlay;
 }
 h2 {
 	font-family: var(--heading), 'Montserrat', sans-serif;
@@ -996,7 +1017,7 @@ hide {
 #tooltip {
 	position: fixed;
 	font-family: var(--normalFont);
-	background: var(--elementBG);
+	background: var(--elementBrighter);
 	color: var(--body);
 	border-radius: 0.2em;
 	padding: 0.2em 0.2em;
@@ -1013,6 +1034,8 @@ body { padding: 0; margin: 0; }
 	position: absolute;
 	left: 0px;
 	right: 0px;
+	filter: invert(var(--globalInvert));
+	transition: filter 0.3s;
 }
 .whole-width-image img {
     display: block;
@@ -1033,6 +1056,15 @@ body { padding: 0; margin: 0; }
 			var(--background) 80%
 		)
 		repeat scroll 0 0;
+	filter: invert(var(--globalInvert));
+}
+#heading-image {
+	background-image: url("/images/c-main-banner.jpg");
+	height: 100%;
+	z-index: -5;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .parallax {
 	background-attachment: fixed;

@@ -1,0 +1,349 @@
+[
+    {
+        "name": "unreleased",
+        "displayName": "Unreleased",
+        "icon": "/images/vectarray-logo-shadow-bg.png",
+        "tracks": [
+            {
+                "name": "Lounge Music",
+                "date": "2001",
+                "src": "a-lounge.mp3",
+                "desc": "An electric piano + drums, that's it. My first song with Ableton Live."
+            },
+            {
+                "name": "Chill Out",
+                "project-name": "chilloutman",
+                "date": "2102",
+                "src": "c-chill.mp3",
+                "desc": "It didn't need many \"musical layers\", because it was a chilled song. So I didn't add many."
+            },
+            {
+                "name": "Sad Hannah",
+                "date": "2104",
+                "src": "sad-hannah.mp3",
+                "desc": "Not sure where the name came from, but this song was an earlier version of \"Inside World\", from Development's Sunshine, obviously before I got the whole chord sequence thing going."
+            },
+            {
+                "name": "Rock Song",
+                "date": "2206",
+                "src": "rock-song.mp3",
+                "desc": "One of my first proper steps outside the purely electronic genre. Went quite well, but could be better, obviously."
+            },
+            {
+                "name": "Synth Man",
+                "date": "2206",
+                "src": "u-synth-man.mp3",
+                "desc": "This song came about from me obsessing over the 80s drum kit style, the whole tuned-down Linn snare, and stuff. Doesn't have much of a structure, which makes it a bit boring to listen to, but still worth making."
+            },
+            {
+                "name": "Forage Game Menu",
+                "date": "2206",
+                "src": "v-forage-game-menu.mp3",
+                "desc": "Made this song while developing a 3D forest foragey game, where it rained all the time. Never got very far with the game, I got too tied up with the whole perlin noise, procedural generation faff. The music basically acted as a way to procrastinate continuing with the game."
+            }
+        ]
+    },
+    {
+        "name": "touchdown",
+        "displayName": "Touchdown (2024)",
+        "icon": "https://bit.ly/4dzvMy9",
+        "tracks": [
+            {
+                "name": "Just a Photo",
+                "date": "2310",
+                "src": "3a-just-a-photo.mp3",
+                "desc": "I don't think there was any proper inspiration behind this one. I just had the echoey sound effects and thought it was quite nice, and went with it."
+            },
+            {
+                "name": "Load Them On",
+                "date": "2312",
+                "src": "3b-load-them-on.mp3",
+                "desc": "I was very happy with this song just after I made it. Then I ended up using it in one of my Planet Coaster worlds for a sci-fi zone."
+            },
+            {
+                "name": "Start Again",
+                "date": "2401",
+                "src": "3c-start-again.mp3",
+                "desc": "The first song that I've ever made that was comprised completely of synthesisers that I created. Obviously apart from the strings. Until this song, I'd just been using FL Studio FLEX presets. For a whole year."
+            },
+            {
+                "name": "Disconnected",
+                "date": "2402",
+                "src": "3d-disconnected.mp3",
+                "desc": "I started making this song way earlier, in April 2023, and disregarded it as a song to be ignored, because the main drum part had no bass. I didn't know that the lack of bass was the problem at the time, I just though the song was a bad idea. Wowie!!"
+            },
+            {
+                "name": "Touchdown",
+                "date": "2402",
+                "src": "3e-touchdown.mp3",
+                "desc": "This was another song which I started a lot earlier, probably late 2023, and only really started working on in February. Unfortunately, I went back to using FLEX presets, which happened for the rest of this album. Doesn't mean it's a bad song though."
+            },
+            {
+                "name": "Put it Online",
+                "date": "2404",
+                "src": "3f-put-it-online.mp3",
+                "desc": "This project started as a little ringtone thing that I wanted to make, which is why there is effectively a 'left hand' in the main melody. Just ended up going with it. It also features the only lyrics in any of my songs. Just a robot voice saying 'Put it Online'"
+            },
+            {
+                "name": "Higher",
+                "date": "2406",
+                "src": "3g-higher.mp3",
+                "desc": "I used an online chord sequence generator to create the chords for this. Not an AI one, just one where you picked through some options. It was also another sort of departure from my usual electronic genre, but keeping the rhythms and melodies in the same style."
+            }
+        ]
+    },
+    {
+        "name": "studio-florida",
+        "displayName": "Studio Florida (2023)",
+        "icon": "http://bit.ly/3UAPDDY",
+        "tracks": [
+            {
+                "name": "Reloaded",
+                "date": "2209",
+                "src": "2a-reloaded.mp3",
+                "desc": "A remake of 'Burnout', from my last album (Development's Sunshine). This one is much more diverse, and just all-round better, probably because it's over a year later. What!"
+            },
+            {
+                "name": "Look to the Future",
+                "date": "2301",
+                "src": "2b-look-to-the-future.mp3",
+                "desc": "This was the last song I made with Ableton Live. In fact, the day I got FL Studio, I was waiting for it to install when I came up with this idea."
+            },
+            {
+                "name": "New Horizons",
+                "date": "2301",
+                "src": "2c-new-horizons.mp3",
+                "desc": "Wow, what a surprise - the next song after 'look to the future' is called 'new horizons'. This was the 'first' (second) song I made in FL Studio, and it had about 5 tracks."
+            },
+            {
+                "name": "Finally",
+                "date": "2302",
+                "src": "2d-finally.mp3",
+                "desc": "80s style, I thought it was 'amazing' at the time - I mean it's definitely not hard to listen to, but I have definitely improved since then."
+            },
+            {
+                "name": "Safer Outside",
+                "date": "2302",
+                "src": "2e-safer-outside.mp3",
+                "desc": "Came up with this song when I deliberately looked at photos for inspiration. The problem with doing that is you get one initial burst of ideas, and then it dissipates fairly quickly, so you're stuck with 4 minutes of the same old loop."
+            },
+            {
+                "name": "Studio Florida",
+                "date": "2304",
+                "src": "2f-studio-florida.mp3",
+                "desc": "I can't remember the exact reason why I made this song, but you can tell it was sunny when I did."
+            },
+            {
+                "name": "Not As Good",
+                "date": "2304",
+                "src": "2g-not-as-good.mp3",
+                "desc": "As the name suggests, I much prefer the other songs in the album to this. One thing I had definitely not learnt at this point was mixing properly. 'Fruity Limiter' was probably working overtime on this one."
+            },
+            {
+                "name": "Garage Band",
+                "date": "2305",
+                "src": "2h-garage-band.mp3",
+                "desc": "Don't know what the name could be alluding to. Garage Band? Never heard that phrase spoken before.<br>This song originated from an idea I had on GarageBand, which featured an awful electric piano and some noisy drums."
+            },
+            {
+                "name": "Project Gegevensmap",
+                "date": "2305",
+                "src": "2i-project-gegevensmap.mp3",
+                "desc": "Title courtesy of Google Translate. Dutch, if I remember correctly.<br>Was a recreation of a song I made in Ableton about a year earlier, which I knew still had some potential left in it, so I went back and remade it. This was my first big song with lots of tracks and attention to detail."
+            },
+            {
+                "name": "Wipe and Restart",
+                "date": "2306",
+                "src": "2j-wipe-and-restart.mp3",
+                "desc": "Named because I once completed the whole song, lost it, then had to make it again. Not sure why I went through the effort, it wasn't a phenomenal song before I remade it."
+            },
+            {
+                "name": "False Inspiration",
+                "date": "2307",
+                "src": "2k-false-inspiration.mp3",
+                "desc": "Got this inspiration from a different song. Can't remember now. Apparently it had something to do with someone called Alan, according to the note I added to it."
+            },
+            {
+                "name": "Six Letters",
+                "date": "2306",
+                "src": "2l-six-letters.mp3",
+                "desc": "A song I made on a summer evening, which I then later used in a video review of the MG ZS EV. Six letters, and six wheels, if it had six wheels."
+            },
+            {
+                "name": "Thank the Miles",
+                "date": "2308",
+                "src": "2m-thank-the-miles.mp3",
+                "desc": "Another song I made that has no actual synthesisers in it. Would be even better if it actually APPEARED in the game it was made for. Oh wait, what game? Ah, yes, it never existed in the first place."
+            },
+            {
+                "name": "Mutant Superweapon",
+                "date": "2308",
+                "src": "2n-mutant-superweapon.mp3",
+                "desc": "Picture this: an epic explosion scene with this epic music behind it. Well done for picturing it! Because it will never be real, and never was. I was so happy with this song until the 'game' just disappeared into thin air."
+            },
+            {
+                "name": "What's the Sound",
+                "date": "2308",
+                "src": "2o-whats-the-sound.mp3",
+                "desc": "Another song from the non-existent game. I created it specifically to sound robotic, so I put some jaunty notes in there and a weird chord sequence. Would go even better with an actual finished product."
+            },
+            {
+                "name": "Back to the Start",
+                "date": "2310",
+                "src": "2p-back-to-the-start.mp3",
+                "desc": "Quite similar to one of the first songs in this album, also using the pitched down Linn snare that I obsessed with for about two years. Other than that, it's catchy, kind of."
+            },
+            {
+                "name": "A Long Song",
+                "date": "2310",
+                "src": "2q-a-long-song.mp3",
+                "desc": "A long song, at just over five minutes? Wow, that's pretty long! But wait until you see the final song of my next next album."
+            },
+            {
+                "name": "Remember This",
+                "date": "2310",
+                "src": "2r-remember-this.mp3",
+                "desc": "Originally made this song on GarageBand, which you can find on <a href='https://github.com/ej-games/EJMusic/tree/main/songs'>GitHub</a> (look for 'Always There'). Much happier with this one, despite it being basically the same."
+            },
+            {
+                "name": "The Studio Lives On",
+                "date": "2310",
+                "src": "2s-the-studio-lives-on.mp3",
+                "desc": "Not entirely sure what the title means. It sounds sort of sentimental, but this was just a collection of my songs. It's still quite a nice song to listen to, though."
+            },
+            {
+                "name": "The Real 3D Pool",
+                "date": "2210",
+                "src": "2t-the-real-3d-pool.mp3",
+                "desc": "Not exactly thrilled that this is on Spotify as well. It was basically a joke song based on some Pool sound effects. I uploaded while the joke was still in its prime, which it very much is not any more."
+            }
+        ]
+    },
+    {
+        "name": "developments-sunshine",
+        "displayName": "Development's Sunshine (2022)",
+        "icon": "https://bit.ly/3WwWyRe",
+        "tracks": [
+            {
+                "name": "Kickstart",
+                "date": "2102",
+                "src": "b-faster.mp3",
+                "desc": "My second full song that I made with Ableton Live. Of course I'd played around quite a bit on Garageband, but this was the first \"big boy\" software song."
+            },
+            {
+                "name": "Chase",
+                "date": "2103",
+                "src": "d-chase.mp3",
+                "desc": "I was very happy when I made this song - it was the first one I'd made that actually had some substance to it. Looking back, though, I have definitely learned to layer voices a lot more, even within this album."
+            },
+            {
+                "name": "The Inside World",
+                "date": "2104",
+                "src": "e-inside-world.mp3",
+                "desc": "Created just after 'Sad Hannah', which is unreleased. If you go and listen to Sad Hannah, you will probably hear why I wanted to retry it completely."
+            },
+            {
+                "name": "Midday Sunshine",
+                "date": "2104",
+                "src": "f-midday-sun.mp3",
+                "desc": "Another chilled song like The Inside World, using the exact same drum kit - however, this was the first song that I had to really put in effort to keep the voices matching the genre."
+            },
+            {
+                "name": "Burnout",
+                "date": "2104",
+                "src": "g-empty.mp3",
+                "desc": "Based off a really dramatic dream I had that was related to Subnautica. I was playing too much Subnautica at the time. It's also a bit of a shame, because at the time, I had taken one riff and repeated it for about 280 seconds straight, which is about 70 loops of that one riff."
+            },
+            {
+                "name": "Heating Up",
+                "date": "2104",
+                "src": "h-bright-night-two.mp3",
+                "desc": "This is a ... song. Not my best work. But neither was Burnout."
+            },
+            {
+                "name": "Late Night Drive",
+                "date": "2104",
+                "src": "i-late-night-drive.mp3",
+                "desc": "I randomly came up with the drums for this one, after taking ages to install a drum sample pack. I then finished it and considered it the best song I had made in my entire life, until about 2 months later."
+            },
+            {
+                "name": "Dark Stars",
+                "date": "2105",
+                "src": "j-dark-night.mp3",
+                "desc": "Another chilled-genre song, probably the closest I have come to actual chill music. At least, that's how I considered it, because I didn't really try again."
+            },
+            {
+                "name": "Disco Nights",
+                "date": "2105",
+                "src": "k-disco-pursuit.mp3",
+                "desc": "A song that has a riff based on two different drum sounds. I remember just playing about with them and eventually coming up with a song. Clearly."
+            },
+            {
+                "name": "Neon Roads",
+                "date": "2107",
+                "src": "l-neon-roads.mp3",
+                "desc": "Not much to say about this song, other than it was made in a newer version of Ableton Live, so I tried out some of the 'MPE' sounds or whatever they were called."
+            },
+            {
+                "name": "Hit at Dawn",
+                "date": "2112",
+                "src": "m-disco-drama.mp3",
+                "desc": "This was my first song in a long time, shown by the date being 5 months later. I completely redid the drums in July 2022, apparently, but I don't remember it being that big of a deal."
+            },
+            {
+                "name": "Get Back",
+                "date": "2112",
+                "src": "n-disco-dance.mp3",
+                "desc": "I made this one with a freshly installed Ableton pack, called Synthwave, if I'm remembering correctly. I was so chuffed with it, that I was pretty disappointed with my next song, despite it being fairly good."
+            },
+            {
+                "name": "Nothing Left",
+                "date": "2112",
+                "src": "o-alone.mp3",
+                "desc": "Using a new upgraded version of Ableton Live (Intro, not Lite!) I took advantage of the 8 extra tracks I was allowed before being severely scolded."
+            },
+            {
+                "name": "How it Was",
+                "date": "2203",
+                "src": "p-epic-new-song.mp3",
+                "desc": "I was busy making the Locked In soundtrack at this time, and this song was meant to be one of them, but because I effectively scrapped Locked In a few weeks before, I just decided to add it into this album."
+            },
+            {
+                "name": "Pain is Gain",
+                "date": "2204",
+                "src": "q-sunshine.mp3",
+                "desc": "I used to love listening to this song. Until I started using FL Studio, and got more of the dry-sounding voices, it was the closest to actual dance music that I had made. Apart from 'Get Back'."
+            },
+            {
+                "name": "Get to Work",
+                "date": "2204",
+                "src": "r-first-motange.mp3",
+                "desc": "I reworked the drums of this one as well, about 6 months after I originally made it. I was also very happy with the way I used a bridge in the song effectively."
+            },
+            {
+                "name": "Shining Sun",
+                "date": "2205",
+                "src": "s-kool-kids-song.mp3",
+                "desc": "It's quite upbeat, and I remember enjoying making it, but in the end it's a pretty repetitive song. Perfect for using a short clip in some sort of video. Hint."
+            },
+            {
+                "name": "Contemplation",
+                "date": "2205",
+                "src": "t-good-song-v4.mp3",
+                "desc": "I redid this song a total of 5 times. In fact, if you download it, you'll see this one is V4, because I messed up the fifth one really badly. The ending was horrible."
+            },
+            {
+                "name": "All is not Lost",
+                "date": "2207",
+                "src": "w-good-upbeat.mp3",
+                "desc": "I enjoyed making this one, especially the weird chord progression into the ending section. I also submitted it into a music thingy, and it got a top score, which is lovely! Well done me."
+            },
+            {
+                "name": "Cruising Along",
+                "date": "2208",
+                "src": "x-summer-wind.mp3",
+                "desc": "Created this song after hearing a recent 80s-style song which I can't exactly remember. But I definitely remember it not being completetely my idea."
+            }
+        ]
+    }
+]

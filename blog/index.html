@@ -55,7 +55,7 @@
 				//console.log(post.title);
 				var newCard = document.createElement("div");
 				document.getElementById("cards-posts").appendChild(newCard);
-				newCard.outerHTML = `<div class="moveIn smaller-card active" onclick="hyperlink('/blog/${post.type}/${post.date}')" onmousewheel="">
+				newCard.outerHTML = `<div class="moveIn small-card active" onclick="hyperlink('/blog/${post.type}/${post.date}')" onmousewheel="">
 					<i class="fa-solid ${post.icon} hover" style="float:right;"><hide>${types[post.type]}</hide></i>
 					<h4>${post.title}</h4>
 					<div class="centre">${convertDate(post.date)}</div>
@@ -76,7 +76,6 @@
 	<div class="mainParagraph">
 		<div class="moveIn">
 		Welcome to the blog homepage of Vectarray!
-		<br><br>This is where most of the blog stuff will be. There will just be different pages for <b>large</b> articles.
 		
 		<!--
 			Update
@@ -90,36 +89,35 @@
 		-->
 
 		<div class="divider"></div><div class="smallSpace"></div>
-			<input type="text" id="csharp" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
+			<input type="text" id="posts" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
 			<div class="moveIn"><small>You can also search by type (Update, Project, Review), or long date</small></div>
 			<div class="cards" id="cards-posts">
-				
-				<div class="moveIn smaller-card active" onclick="hyperlink('updates/240715')" onmousewheel="">
+				<div class="moveIn small-card active" onclick="hyperlink('updates/240715')" onmousewheel="">
 					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
 					<h4>Summer Plans</h4>
 					<div class="centre">15th July 2024</div>
 				</div>
-				<div class="moveIn smaller-card active" onclick="hyperlink('updates/231219')" onmousewheel="">
+				<div class="moveIn small-card active" onclick="hyperlink('updates/231219')" onmousewheel="">
 					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
 					<h4>Have I Returned?</h4>
 					<div class="centre">19th December 2023</div>
 				</div>
-				<div class="moveIn smaller-card active" onclick="hyperlink('updates/230530')" onmousewheel="">
+				<div class="moveIn small-card active" onclick="hyperlink('updates/230530')" onmousewheel="">
 					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
 					<h4>Where has he been.</h4>
 					<div class="centre">30th May 2023</div>
 				</div>
-				<div class="moveIn smaller-card active" onclick="hyperlink('updates/221022')" onmousewheel="">
+				<div class="moveIn small-card active" onclick="hyperlink('updates/221022')" onmousewheel="">
 					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
 					<h4>New Name, Same Game</h4>
 					<div class="centre">22nd October 2022</div>
 				</div>
-				<div class="moveIn smaller-card active" onclick="hyperlink('updates/221020')" onmousewheel="">
+				<div class="moveIn small-card active" onclick="hyperlink('updates/221020')" onmousewheel="">
 					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
 					<h4>Todo List & More</h4>
 					<div class="centre">20th October 2022</div>
 				</div>
-				<div class="moveIn smaller-card active" onclick="hyperlink('updates/220407')" onmousewheel="">
+				<div class="moveIn small-card active" onclick="hyperlink('updates/220407')" onmousewheel="">
 					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
 					<h4>Controversial Colours Cleared</h4>
 					<div class="centre">7th April 2022</div>
