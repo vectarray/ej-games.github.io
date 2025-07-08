@@ -44,7 +44,7 @@
 				var songId = buttonId.target.id;
 
 				var audioPlayer = document.getElementById("audio-player");
-				audioPlayer.getElementsByTagName("source")[0].src = `/sounds/music/${songId.replace("song-button-", "")}`
+				audioPlayer.getElementsByTagName("source")[0].src = `/sounds/compressed-music/${songId.replace("song-button-", "")}`
 				audioPlayer.load();
 				audioPlayer.play();
 
@@ -297,6 +297,11 @@
 
 			<h5>How to use this page</h5>
 			Select an album from the left, and select a song from the right part. Should play automatically.
+			<br><br>
+			<red-callout>
+				<b>I sincerely apologise for the low quality.</b>
+				<br>It just stops people from recording and downloading the songs without permission.
+			</red-callout>
 		</div>
 		<div class="smallSpace"></div>
 		<div class="line moveInRightSlow"></div>
@@ -309,7 +314,7 @@
 			</b>
 			<br><br>
 			<audio controls id="audio-player">
-				<source src="sounds/music/w-good-upbeat.mp3" type="audio/mp3">
+				<source src="sounds/compressed-music/w-good-upbeat.mp3" type="audio/mp3">
 				Your browser does not currently support this audio. Fix it, or deal with the fact you're missing out.
 			</audio>
 
