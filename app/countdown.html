@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Vectarray Clock</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,900;1,900&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;700;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,400;0,500;0,600;0,800;0,900;1,200;1,400;1,500;1,600;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;700;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;400;500;600;800;900&display=swap'); 
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100;0,200;0,400;0,500;0,700;0,900;1,100;1,200;1,400;1,500;1,700;1,900&display=swap');
+
+
+        
+        
+        
+        .slider {
+            height: 1.5em;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 0.5em;
+            width: 50%;
+        }
+        .slider::-moz-range-thumb {
+            background:var(--elementHover);
+            height: 1.5em;
+            width: 5em;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background:var(--elementHover);
+            height: 1.5em;
+            opacity: 100;
+            border-radius: 0.5em;
+            width: 5em;
+        }
+        #size-input::-moz-range-thumb {
+            width: 10%;
+        }
+        #size-input::-webkit-slider-thumb {
+            width: 10%;
+        }
+
+        #clock-display {
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            background-color: rgba(0, 0, 0, 0);
+        }
+        #date-display {
+            padding-top: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        html::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            transition: background-color 0.5s ease 0s;
+        }
+
+        #main-display {
+            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            background: radial-gradient(#ff802c, #553309);
+            min-height: 100%;
+        }
+
+        #progress-cards {
+            width: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: white;
+            border-radius: 0.3em;
+            height: 0.5em;
+            margin-bottom: 0.6em;
+            margin-top: 0.4em;
+            color: black;
+
+            padding-bottom: 0.8em;
+            padding-left: 0.5em;
+
+            transition: width 1s ease;
+
+            overflow: hidden;
+        }
+
+        .progress-bar span {
+            font-size: 0.6em;
+            height: 100%;
+
+        }
+
+        svg {
+            transform: rotate(-90deg);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        circle {
+            stroke: white;
+            stroke-width: 8px;
+            stroke-linecap: round;
+            fill: none;
+            stroke-dasharray: calc(2 * 3.14159 * 90); /* equal to circumference of circle 2 * 3.14 * 50 */
+            animation: wipe 2s linear infinite;
+        }
+
+        .percentage {
+            text-align: center;
+            display: block;
+            margin: auto;
+            position:relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .circle-container {
+            height: calc(100% - 2em);
+            position: relative;
+        }
+        
+        .progress-card {
+            background-color: #000000aa;
+        }
+
+	</style>
+    <link rel="stylesheet" href="styles/general-style.css">
+	<script src="/minimalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+	<script>
+
+        let data;
+
+        function start() {
+            var dataExists = true;
+            
+            try {
+                data = JSON.parse(getCookie("countdown-clocks"));
+
+                console.log(1 / data.countdowns.length); // Cleverly checks that A. Countdowns exists, and B. It's not empty.
+            }
+            catch(e) {
+                if(e.message.indexOf("Unexpected EOF") > -1) {
+                    console.log("Fake");
+                    dataExists = false;
+                }
+            }
+
+            if(dataExists) {
+                data = {
+                    "countdowns": [
+                        {
+                            "name": "Term",
+                            "start": "2026-01-12-9-00",
+                            "end": "2026-03-21-13-00",
+                            "main": true
+                        },
+                        {
+                            "name": "End of year",
+                            "start": "2025-09-27",
+                            "end": "2026-06-29",
+                            "main": false
+                        },
+                        {
+                            "name": "2026",
+                            "start": "2026-01-01",
+                            "end": "2026-12-31",
+                            "main": false
+                        },
+                        {
+                            "name": "Life",
+                            "start": "2007-04-11",
+                            "end": "2097-04-11",
+                            "main": false
+                        },
+                        {
+                            "name": "This week",
+                            "start": "2026-01-26-00-00",
+                            "end": "2026-02-01-23-59",
+                            "main": false
+                        },
+                        {
+                            "name": "Graduation",
+                            "start": "2025-10-06",
+                            "end": "2028-07-31",
+                            "main": false
+                        },
+                        {
+                            "name": "Today",
+                            "start": "2026-01-26",
+                            "end": "2026-01-27",
+                            "main": false
+                        }
+                    ]
+                }
+                setLocalCookie("countdown-clocks", JSON.stringify(data), 730)
+            }
+
+            console.log(data);
+
+            for(var item of data.countdowns) {
+                console.log(item.name);
+                console.log(item.start);
+                console.log(item.end);
+                console.log(item.main);
+
+                var newTimer = document.createElement("div");
+                newTimer.id = item.name.replace(" ", "-");
+                if(item.main)
+                    newTimer.classList.add("card", "progress-card");
+                else newTimer.classList.add("card", "progress-card");
+                newTimer.innerHTML = String.raw`<h4>${item.name}</h4>
+                <div class="circle-container">
+                    <svg viewBox="0 0 100% 100%">
+                        <circle r="90" cx="50%" cy="50%">
+                        </circle>
+                    </svg>
+                    <div class="percentage">-1%</div>
+                </div>
+                `;
+
+                document.getElementById("progress-cards").appendChild(newTimer);
+            }
+            
+            update();
+            setInterval(update, 10000);
+        }
+
+        function rnd(num, digits) {
+            return Math.round(num * Math.pow(10, digits)) / Math.pow(10, digits);
+        }
+
+        function millisecondsToMeaningful(msToGo) {
+            let ms = Math.abs(msToGo);
+            let secs = ms / 1000;
+            let mins = secs / 60;
+            let hrs = mins / 60;
+            let days = hrs / 24;
+            let wks = days / 7;
+            let months = days / (365 / 12);
+            let yrs = days / 365;
+            if(ms < 1000) { // Milliseconds (0-1000ms)
+                return ms.toString() + "ms";
+            } else if (ms < 1000 * 60) { // Seconds (1-60s)
+                return `${rnd(secs, 0)}s`;
+            } else if (ms < 1000 * 3600) { // Minutes (1-60m)
+                return `${rnd(mins, 0)}min`;
+            } else if (ms < 1000 * 3600 * 24) { // Hours (1-24h)
+                return `${Math.floor(hrs)}h ${Math.ceil(hrs % 1 * 60)}m`;
+            } else if (ms < 1000 * 3600 * 24 * 7) { // Days (1-7d)
+                return `${Math.floor(days)}d ${Math.ceil(days % 1 * 24)}h`;
+            } else if (ms < 1000 * 3600 * 24 * 30) { // Weeks (7-30d)
+                return `${Math.floor(wks)}w ${Math.ceil(wks % 1 * 7)}d`;
+            } else if (ms < 1000 * 3600 * 24 * 365) { // Months (30-365d)
+                return `${rnd(months, 1)}mo`;
+            } else if (ms < 1000 * 3600 * 24 * 365 * 10) {
+                return `${Math.floor(yrs)}y ${Math.round(yrs % 1 * 12)}mo`;
+            } else {
+                return rnd(ms / 1000 / 3600 / 24 / 365, 1).toString() + "y";
+            }
+        }
+
+        function millisecondsToMeaningfulSmaller(msToGo) {
+            let ms = Math.abs(msToGo);
+            let secs = ms / 1000;
+            let mins = secs / 60;
+            let hrs = mins / 60;
+            let days = hrs / 24;
+            let wks = days / 7;
+            let months = days / (365 / 12);
+            let yrs = days / 365;
+            if(ms < 1000 * 60) { // Milliseconds (0-1000ms)
+                return ms.toString() + "ms";
+            } else if (ms < 1000 * 3600) { // Seconds (1-60s)
+                return `${rnd(secs, 0)}s`;
+            } else if (ms < 1000 * 3600 * 24) { // Minutes (1-60m)
+                return `${rnd(mins, 0)}min`;
+            } else if (ms < 1000 * 3600 * 24 * 7) { // Hours (1-24h)
+                return `${Math.floor(hrs)}h ${Math.ceil(hrs % 1 * 60)}m`;
+            } else if (ms < 1000 * 3600 * 24 * 30) { // Days (1-7d)
+                return `${Math.floor(days)}d ${Math.ceil(days % 1 * 24)}h`;
+            } else if (ms < 1000 * 3600 * 24 * 365) { // Weeks (7-30d)
+                return `${Math.floor(wks)}w ${Math.ceil(wks % 1 * 7)}d`;
+            } else if (ms < 1000 * 3600 * 24 * 365 * 10) { // Months (30-365d)
+                return `${rnd(months, 1)}mo`;
+            } else {
+                return rnd(ms / 1000 / 3600 / 24 / 365, 1).toString() + "y";
+            }
+        }
+
+        function update() {
+            for(var countdown of data.countdowns) {
+                let newName = countdown.name.replace(" ", "-");
+
+                let card = document.getElementById(newName);
+                let circle = card.getElementsByTagName("circle")[0];
+
+                let betweenDates = parseDate(countdown.end) - parseDate(countdown.start);
+                let betweenNow = Date.now() - parseDate(countdown.start);
+
+                console.log(betweenDates, betweenNow);
+
+                console.log(betweenNow / betweenDates);
+
+                let percentage = betweenNow / betweenDates;
+
+                circle.style.strokeDashoffset = (1 - percentage) * 565.49;
+
+                let daysBetweenDates = Math.round(betweenDates / 1000 / 3600 / 24);
+                let daysBetweenNow = Math.round(betweenNow / 1000 / 3600 / 24);
+
+                card.getElementsByClassName("percentage")[0].innerHTML = `${Math.round(percentage * 1000) / 10}%
+                <br><span class="hover">
+                    <hide>${millisecondsToMeaningfulSmaller(betweenDates - betweenNow)}</hide>
+                    ${millisecondsToMeaningful(betweenDates - betweenNow)} ${betweenDates > betweenNow ? "left" : "ago"}
+                </span>`; 
+
+                setupTooltips();
+                
+            }
+        }
+
+        function parseDate(str) {
+            var mdy = str.split('-');
+            if(mdy.length > 3) {
+                return new Date(mdy[0], mdy[1] - 1, mdy[2], mdy[3], mdy[4]);
+            }
+            else {
+                return new Date(mdy[0], mdy[1] - 1, mdy[2])
+            }
+        }
+	</script>
+    <script src="/scripts/tooltip-controller.js"></script>
+	<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+
+</head>
+
+<body onload="CheckFormatting(); start();" style="background-color: var(--bg);">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    
+
+    <div id="main-display">
+
+
+    <div class="cards" id="progress-cards" style="font-size: 1.5em;">
+
+    </div>
+
+    <div class="clear"></div>
+
+	<div class="smallSpace"></div>
+
+    </div>
+
+</html>

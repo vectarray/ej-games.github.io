@@ -241,7 +241,7 @@ function createNavbar() {
 
 		// If it's a blog page, turn the filename into a date
 		if(window.location.href.indexOf("blog") > -1 && Number.parseInt(item) > 100000) {
-			newPhrase = convertDate(item, false);
+			newPhrase = convertDate(item, false, true);
 		}
 
 		// If it's index.html, write "home" instead of "index"
@@ -313,9 +313,10 @@ function createNavbar() {
 	var prevScrollpos = window.scrollY;
 	window.onscroll = function () {
 		var currentScrollPos = window.scrollY;
-		if (prevScrollpos > currentScrollPos) {
+		console.log(currentScrollPos);
+		if (currentScrollPos < prevScrollpos) {
 			document.getElementById("navbar").style.top = "0";
-		} else {
+		} else if(currentScrollPos > prevScrollpos && currentScrollPos > 100) {
 			document.getElementById("navbar").style.top = "-50px";
 			navbar.style.height = "1.4em"
 		}

@@ -8,6 +8,7 @@
 	<head>
 		<title>Python -> C#</title>
 		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="stylesheet" href="/tutorial/tutorial-style.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
@@ -15,6 +16,7 @@
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 			rel="stylesheet">
 		<script src="../globalscript.js"></script>
+		<script src="/tutorial/migration-script.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script>
 		</script>
@@ -24,7 +26,7 @@
 
 	</head>
 
-<body onload="CheckFormatting();">
+<body onload="CheckFormatting(); onLoadSnippets()">
 	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
 	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
 	<div id="title">tutorials</div>
@@ -70,30 +72,30 @@
 			<tbody>
 				<tr><td>Print the message x</td>
 					<td>
-						<code>print(x)</code>
+						<code id="snippet-python-methods-print">print(x)</code>
 					</td>
 					<td>
-						<code>Console.WriteLine(x);</code>
+						<code id="snippet-csharp-methods-print">Console.WriteLine(x);</code>
 						(requires <code>using System;</code>)
 					</td>
 				</tr>
 				<tr><td>Set x to user input</td>
 					<td>
-						<code>x = input()</code>
+						<code id="snippet-python-methods-input">x = input()</code>
 					</td>
 					<td>
-						<code>Console.Read();</code>
+						<code id="snippet-csharp-methods-input">Console.Read();</code>
 						(requires <code>using System;</code>)
 					</td>
 				</tr>
 
 				<tr><td>Wait for x seconds</td>
 					<td>
-						<code>time.sleep(x)</code>
+						<code id="snippet-python-methods-wait">time.sleep(x)</code>
 						(requires <code>import time</code>)
 					</td>
 					<td>
-						<code>Thread.Sleep(x * 1000)</code>
+						<code id="snippet-csharp-methods-wait">Thread.Sleep(x * 1000)</code>
 						(requires <code>using System.Threading;</code>)
 					</td>
 				</tr>
@@ -118,17 +120,17 @@ x = "Four";
 		<br><br>Here is a list of some datatypes in Python and their equivalents in C#:
 		<table>
 			<thead>
-				<tr><td><b>C#</b></td><td><b>Python</b></td></tr>
+				<tr><td><b>Python</b></td><td><b>C#</b></td></tr>
 			</thead>
 			<tbody>
-				<tr><td><code>str</code></td><td><code>string</code> (<code>System.String</code>)</td></tr>
-				<tr><td><code>int</code></td><td><code>int</code> (<code>System.Int32</code>)</td></tr>
-				<tr><td><code>float</code></td><td><code>float</code> (<code>System.Single</code>)</td></tr>
-				<tr><td><code>any</code></td><td><code>object</code> (<code>System.Object</code>)</td></tr>
-				<tr><td><code>list</code></td><td><code>List&lt;T&gt;</code> (requires <code>using System.Collections.Generic;</code>)</td></tr>
-				<tr><td><code>list</code></td><td><code>datatype[]</code></td></tr>
-				<tr><td><code>dict</code></td><td><code>Dictionary&lt;TKey, TValue&gt;</code> (requires the same as List)</td></tr>
-				<tr><td><code>TextIOWrapper</code></td><td><code>FileStream</code> (requires <code>using System.IO;</code>)</td></tr>
+				<tr><td><code id="snippet-python-datatypes-string">str</code></td><td><code id="snippet-csharp-datatypes-string">string</code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-integer">int</code></td><td><code id="snippet-csharp-datatypes-integer">int</code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-float">float</code></td><td><code id="snippet-csharp-datatypes-float">float</code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-any">any</code></td><td><code id="snippet-csharp-datatypes-any">object</code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-list">list</code></td><td><code id="snippet-csharp-datatypes-list">List&lt;T&gt;</code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-array">list</code></td><td><code id="snippet-csharp-datatypes-array">datatype[]</code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-dictionary">dict</code></td><td><code id="snippet-csharp-datatypes-dictionary">Dictionary&lt;TKey, TValue&gt;</code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-file">TextIOWrapper</code></td><td><code id="snippet-csharp-datatypes-file">FileStream</code></td></tr>
 			</tbody>
 		</table>
 
@@ -140,91 +142,37 @@ x = "Four";
 		<div class="clear"></div>
 
 
-		<h5>For Loop</h5>
-<pre><code class="language-python" style="float: left; width: 45%;">for i in range(whatever):
-	print(str(i))
-
-
-</code></pre>
-<pre><code class="language-csharp" style="float: right; width: 45%;">for(int i = 0; i &lt; whatever; i++)
-{
-	Console.WriteLine(i.ToString());
-}
-</code></pre>
+		<h3>For Loop</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-for"></code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;" id="snippet-csharp-statements-for"></code></pre>
 
 
 		<div class="clear"></div>
 
 
-		<h5>For Loop In Array</h5>
-<pre><code class="language-python" style="float: left; width: 45%;">for number in numbers:
-	print(str(number))
-
-
-</code></pre>
-<pre><code class="language-csharp" style="float: right; width: 45%;">foreach(int number in numbers)
-{
-	Console.WriteLine(number.ToString());
-}
-</code></pre>
+		<h3>For Loop In Array</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-foreach"></code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;" id="snippet-csharp-statements-foreach"></code></pre>
 
 
 		<div class="clear"></div>
 
 
-		<h5>While Loop</h5>
-<pre><code class="language-python" style="float: left; width: 45%;">while condition:
-	print("This is true")
-
-
-</code></pre>
-<pre><code class="language-csharp" style="float: right; width: 45%;">while(condition)
-{
-	Console.WriteLine("This is true");
-}
-</code></pre>
+		<h3>While Loop</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-while"></code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;" id="snippet-csharp-statements-while"></code></pre>
 		<div class="clear"></div>
 		
 
-		<h5>If Statement</h5>
-<pre><code class="language-python" style="float: left; width: 45%;">if condition1 and (condition2 or condition3):
-	print("¯\_(ツ)_/¯")
-
-
-</code></pre>
-<pre><code class="language-csharp" style="float: right; width: 45%;">if(condition1 && (condition2 || condition3))
-{
-	Console.WriteLine("¯\_(ツ)_/¯");
-}
-</code></pre>
+		<h3>If Statement</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-if"></code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;" id="snippet-csharp-statements-if"></code></pre>
 		<div class="clear"></div>
 
 
-		<h5>Try/Catch</h5>
-<pre><code class="language-python" style="float: left; width: 45%;">try:
-	# Imagine there was a bug in here
-except ReferenceError:
-	#Caught
-
-
-
-
-
-
-
-</code></pre>
-<pre><code class="language-csharp" style="float: right; width: 45%;">try
-{
-	// Are you still imagining
-}
-catch(Exception e)
-{
-	if(e is NullReferenceException)
-	{
-		// #Stillcaught
-	}
-}
-</code></pre>
+		<h3>Try/Catch</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-try"></code></pre>
+<pre><code class="language-csharp" style="float: right; width: 45%;" id="snippet-csharp-statements-try"></code></pre>
 		<div class="clear"></div>
 
 		

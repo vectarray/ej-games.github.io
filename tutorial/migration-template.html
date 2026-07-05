@@ -8,6 +8,7 @@
 	<head>
 		<title>X1 -> X2</title>
 		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="stylesheet" href="/tutorial/tutorial-style.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
@@ -15,6 +16,7 @@
 			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
 			rel="stylesheet">
 		<script src="../globalscript.js"></script>
+		<script src="/tutorial/migration-script.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script>
 		</script>
@@ -99,15 +101,15 @@
 
 
 		<h5>For Loop</h5>
-<pre><code class="language-c1" style="float: left; width: 45%;">for(int i = 0; i &lt; whatever; i++)
+<pre><code class="language-c1" style="float: left; width: 45%;">for(i = 0 to whatever)
 {
-	Console.WriteLine(i.ToString());
+	print(i.toString())
 }
 </code></pre>
-<pre><code class="language-c2" style="float: right; width: 45%;">for i in range(whatever):
-	print(str(i))
-
-
+<pre><code class="language-c2" style="float: right; width: 45%;">for(i = 0 to whatever)
+{
+	print(i.toString())
+}
 </code></pre>
 
 
@@ -115,15 +117,15 @@
 
 
 		<h5>For Loop In Array</h5>
-<pre><code class="language-c1" style="float: left; width: 45%;">foreach(int number in numbers)
+<pre><code class="language-c1" style="float: left; width: 45%;">foreach(number in numbers)
 {
-	Console.WriteLine(number.ToString());
+	print(number.toString());
 }
 </code></pre>
-<pre><code class="language-c2" style="float: right; width: 45%;">for number in numbers:
-	print(str(number))
-
-
+<pre><code class="language-c2" style="float: right; width: 45%;">foreach(number in numbers)
+{
+	print(number.toString());
+}
 </code></pre>
 
 
@@ -133,27 +135,27 @@
 		<h5>While Loop</h5>
 <pre><code class="language-c1" style="float: left; width: 45%;">while(condition)
 {
-	Console.WriteLine("This condition is true");
+	print("This condition is true");
 }
 </code></pre>
-<pre><code class="language-c2" style="float: right; width: 45%;">while condition:
-	print("This condition is true")
-
-
+<pre><code class="language-c2" style="float: right; width: 45%;">while(condition)
+{
+	print("This condition is true");
+}
 </code></pre>
 		<div class="clear"></div>
 		
 
 		<h5>If Statement</h5>
-<pre><code class="language-c1" style="float: left; width: 45%;">if(condition1 && (condition2 || condition3))
+<pre><code class="language-c1" style="float: left; width: 45%;">if(condition1 and (condition2 or condition3))
 {
-	Console.WriteLine("¯\_(ツ)_/¯");
+	print("¯\_(ツ)_/¯");
 }
 </code></pre>
-<pre><code class="language-c2" style="float: right; width: 45%;">if condition1 and (condition2 or condition3):
-	print("¯\_(ツ)_/¯")
-
-
+<pre><code class="language-c2" style="float: right; width: 45%;">if(condition1 and (condition2 or condition3))
+{
+	print("¯\_(ツ)_/¯");
+}
 </code></pre>
 		<div class="clear"></div>
 
@@ -163,7 +165,7 @@
 {
 	// Imagine there was a bug in here
 }
-catch(Exception e)
+catch(Error e)
 {
 	if(e is NullReferenceException)
 	{
@@ -171,17 +173,17 @@ catch(Exception e)
 	}
 }
 </code></pre>
-<pre><code class="language-c2" style="float: right; width: 45%;">try:
-	# Are you still imagining
-except ReferenceError:
-	# Still caught
-#There
-#isn't
-#much
-#going
-#on
-#down
-#here
+<pre><code class="language-c2" style="float: right; width: 45%;">try
+{
+	// Imagine there was a bug in here
+}
+catch(Error e)
+{
+	if(e is NullReferenceException)
+	{
+		// #Caught
+	}
+}
 </code></pre>
 		<div class="clear"></div>
 
@@ -191,23 +193,27 @@ except ReferenceError:
 
 
 		This is a function in X2:
-<pre><code class="language-c2">def funky_function():
+<pre><code class="language-c2">function funkyFunction():
 	print("This is funky and swish!")
 </code></pre>
 		<br>But, not as shown earlier, this is a class in X2:
 
 
-<pre><code class="language-c2">class CoolTerms:
+<pre><code class="language-c2">class CoolTerms
+{
 
 	swish = "That's very swish!"
 
-	def funky_function(self)
-		self.swish = "I prefer 'funky'"
+	function funkyFunction()
+		swish = "I prefer 'funky'"
+}
 </code></pre>
 
 		<br>To return a value from a function, you can do this:
-<pre><code class="language-c2">def funky_function() -> str:
+<pre><code class="language-c2">string funkyFunction()
+{
 	return "I prefer 'funky'"
+}
 </code></pre>
 
 

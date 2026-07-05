@@ -16,9 +16,9 @@
 */
 
 /* Lato (Unused) */
-/*
+
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-*/
+
 
 /* Fredoka (Unused) */
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap");
@@ -77,7 +77,9 @@
 */
 
 /* IBM Plex Serif */
+/*
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+*/
 
 /* Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -91,6 +93,8 @@
 /* Special Gothic Condensed One */
 @import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
 
+/* Google Sans Code */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
 	--background: #181818;
@@ -103,9 +107,9 @@
 	--elementHover: #13396b;
 	--elementBrighter: #1c55a0;
 	--green: rgb(69, 255, 69);
-	--normalFont: "Manrope", "Montserrat", sans-serif;
+	--normalFont: "Lato", "Montserrat", sans-serif;
 	--heading: "Special Gothic Expanded One", "Montserrat", sans-serif;
-	--codeFont: "JetBrains Mono", "Consolas", "Courier New", "Courier", monospace;
+	--codeFont: "Google Sans Code", "Consolas", "Courier New", "Courier", monospace;
 	--bottom: #000000;
 	--globalInvert: 0%;
 }
@@ -169,7 +173,7 @@ body {
 	font-family: var(--normalFont), 'Montserrat', sans-serif;
 	font-weight: 500;
 	/*background: #161c25;*/
-	font-size: 1.1em;
+	font-size: 1em;
 	color: var(--body);
 	margin: 0px 0px 0px 0px;
 }
@@ -189,7 +193,7 @@ option hide{
 	display: none;
 }
 .mainParagraph {
-	margin: 0px 25% 0px 25%;
+	margin: 0px 22% 0px 22%;
 }
 #title {
 	text-align: center;
@@ -349,6 +353,9 @@ a:hover {
 	.small-card {
 		width: 100%;
 	}
+	.mainParagraph {
+		margin: 0px 5% 0px 5% !important;
+	}
 }
 .small-card.active:hover {
 	cursor: pointer;
@@ -385,9 +392,12 @@ a:hover {
 	transform: scale(1);
 	transition: transform 0.2s, background-color 0.2s;
 }
-@media (max-width: 1690px) {
+@media (max-width: 1400px) {
 	.smaller-card {
 		width: 100%;
+	}
+	.mainParagraph {
+		margin: 0px 10% 0px 10%;
 	}
 }
 .smaller-card.active:hover {
@@ -672,16 +682,16 @@ h6 {
 }
 
 .code {
-	font-family: 'JetBrains Mono', 'Consolas', Courier, monospace;
+	font-family: var(--codeFont), 'Consolas', Courier, monospace;
 	background-color: var(--elementBG);
 	font-size: 0.9em;
 	font-style: normal;
 	border-radius: 0.2em;
 }
 code {
-	font-family: 'JetBrains Mono', 'Consolas', Courier, monospace;
+	font-family: var(--codeFont), 'Consolas', Courier, monospace;
 	background-color: var(--elementBG);
-	font-size: 0.75em;
+	font-size: 0.8em;
 	font-style: normal;
 	border-radius: 0.2em;
 }
@@ -724,7 +734,7 @@ html { scroll-behavior: smooth; }
 pre {
 	word-wrap: break-word;
 	white-space: pre-wrap;
-	font-family: 'JetBrains Mono', 'Consolas', Courier, monospace;
+	font-family: var(--codeFont), 'Consolas', Courier, monospace;
 }
 .disclaimer { color: rgb(163, 61, 61); }
 .disclaimerBG {
@@ -919,12 +929,15 @@ pre {
 	z-index: 4;
 }
 th {
-	background-color: var(--elementHover);
+	background-color: var(--elementBrighter);
 	padding: 0.3em;
 }
 td {
 	background-color: var(--elementHover);
 	padding: 0.3em;
+}
+thead {
+	font-weight: bold;
 }
 #loading {
 	background-color: rgba(0, 0, 0, 0.2);
@@ -1097,6 +1110,12 @@ body { padding: 0; margin: 0; }
 }
 .fixed {
 	position: fixed;
+}
+.block {
+	display: block !important;
+}
+.inline {
+	display: inline !important;
 }
 .disable-select {
     -webkit-touch-callout: none;

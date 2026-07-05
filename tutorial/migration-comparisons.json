@@ -1,0 +1,210 @@
+{
+    "python": {
+        "methods": {
+            "print": {
+                "lines": [
+                    "print(x)"
+                ]
+            },
+            "input": {
+                "lines": [
+                    "x = input()"
+                ]
+            },
+            "wait": {
+                "lines": [
+                    "time.sleep(x)"
+                ],
+                "requirements": "Requires <code>import time</code>"
+            }
+        },
+        "statements": {
+            "for": {
+                "lines": [
+                    "for i in range(whatever):",
+                    "    print(str(i)"
+                ]
+            },
+            "foreach": {
+                "lines": [
+                    "for number in numbers:",
+                    "    print(str(number))"
+                ]
+            },
+            "while": {
+                "lines": [
+                    "while condition == true:",
+                    "    print(\"No way the condition is true\")"
+                ]
+            },
+            "if": {
+                "lines": [
+                    "if condition1 and (condition2 or condition3):",
+                    "    print(\"¯\\_(ツ)_/¯\")"
+                ]
+            },
+            "try": {
+                "lines": [
+                    "try:",
+                    "    # Imagine there's a bug in here",
+                    "except ReferenceError:",
+                    "    # Oooh caught it mate"
+                ]
+            }
+        },
+        "datatypes": {
+            "string": "str",
+            "integer": "int",
+            "float": "float",
+            "any": "any",
+            "list": "list",
+            "array": "list",
+            "dictionary": "dict",
+            "file": "TextIOWrapper"
+        }
+    },
+    "csharp": {
+        "methods": {
+            "print": {
+                "lines": [
+                    "Console.WriteLine(x)"
+                ]
+            },
+            "input": {
+                "lines": [
+                    "var x = Console.Read()"
+                ]
+            },
+            "wait": {
+                "lines": [
+                    "Thread.Sleep(x * 1000)"
+                ],
+                "requirements": "Requires <code>using System.Threading;</code>"
+            }
+        },
+        "statements": {
+            "for": {
+                "lines": [
+                    "for(int i = 0; i &lt; whatever; i++) {",
+                    "    Console.WriteLine(i.ToString());",
+                    "}"
+                ]
+            },
+            "foreach": {
+                "lines": [
+                    "foreach(int number in numbers) {",
+                    "    Console.WriteLine(number.ToString());",
+                    "}"
+                ]
+            },
+            "while": {
+                "lines": [
+                    "while (condition == true) {",
+                    "    Console.WriteLine(\"No way the condition is true\");",
+                    "}"
+                ]
+            },
+            "if": {
+                "lines": [
+                    "if (condition1 && (condition2 || condition3)) {",
+                    "    Console.WriteLine(\"¯\\_(ツ)_/¯\")",
+                    "}"
+                ]
+            },
+            "try": {
+                "lines": [
+                    "try {",
+                    "    // Imagine there's a bug in here",
+                    "}",
+                    "catch(Exception e) {",
+                    "    if (e is NullReferenceException) {",
+                    "        // Oooh caught it mate",
+                    "    }",
+                    "}"
+                ]
+            }
+        },
+        "datatypes": {
+            "string": "string",
+            "integer": "int",
+            "float": "float",
+            "any": "object",
+            "list": "List&lt;T&gt;",
+            "array": "something[]",
+            "dictionary": "Dictionary&lt;TKey, TValue&gt;",
+            "file": "FileStream"
+        }
+    },
+    "java": {
+        "methods": {
+            "print": {
+                "lines": [
+                    "System.out.println(x)"
+                ]
+            },
+            "input": {
+                "lines": [
+                    "string x = scanner.NextLine()"
+                ],
+                "requirements": "Requires <code>using java.util.Scanner;</code> and <code>Scanner scanner = new Scanner(System.in);</code>"
+            },
+            "wait": {
+                "lines": [
+                    "Thread.sleep(x * 1000)"
+                ]
+            }
+        },
+        "statements": {
+            "for": {
+                "lines": [
+                    "for(int i = 0; i &lt; whatever; i++) {",
+                    "    System.out.println(i.toString());",
+                    "}"
+                ]
+            },
+            "foreach": {
+                "lines": [
+                    "foreach(int number in numbers) {",
+                    "    System.out.println(number.toString());",
+                    "}"
+                ]
+            },
+            "while": {
+                "lines": [
+                    "while (condition == true) {",
+                    "    System.out.println(\"No way the condition is true\");",
+                    "}"
+                ]
+            },
+            "if": {
+                "lines": [
+                    "if (condition1 && (condition2 || condition3)) {",
+                    "    System.out.println(\"¯\\_(ツ)_/¯\")",
+                    "}"
+                ]
+            },
+            "try": {
+                "lines": [
+                    "try {",
+                    "    // Imagine there's a bug in here",
+                    "}",
+                    "catch(Exception e) {",
+                    "    if (e instanceof NullReferenceException) {",
+                    "        // Oooh caught it mate",
+                    "    }",
+                    "}"
+                ]
+            }
+        },
+        "datatypes": {
+            "string": "String",
+            "integer": "int",
+            "float": "Float",
+            "any": "Object",
+            "list": "ArrayList&lt;T&gt;",
+            "array": "something[]",
+            "dictionary": "Map&lt;TKey, TValue&gt;",
+            "file": "File"
+        }
+    }
+}

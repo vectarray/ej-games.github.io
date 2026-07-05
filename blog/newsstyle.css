@@ -3,6 +3,22 @@
 .mainParagraph {
     font-family: "Source Serif 4", serif;
     font-size: 1.1em;
+    margin: 0 35% 0 15%
+}
+.timeline {
+    /*background-color: red;*/
+    width: 25%;
+    position: sticky;
+    float:right;
+    top: 15%;
+    right: 5%;
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+@media (max-width: 1100px) {
+	.timeline {
+        display: none;
+	}
 }
 a {
     color: var(--body);
@@ -29,4 +45,10 @@ h2 {
 h5.subtitle {
     margin-top: 0px;
     text-align: center;
+}
+.review-brand {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 2em;
 }

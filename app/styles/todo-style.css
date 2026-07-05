@@ -81,7 +81,7 @@
 }
 .todo-list-item .view-item-button {
     padding: 0.4em;
-    background-color: var(--elementBG);
+    background-color: #ffffff00;
     text-align: left;
 }
 .todo-list-item .view-item-button:hover {

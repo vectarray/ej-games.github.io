@@ -57,7 +57,7 @@
 				document.getElementById("cards-posts").appendChild(newCard);
 				newCard.outerHTML = `<div class="moveIn small-card active" onclick="hyperlink('/blog/${post.type}/${post.date}')" onmousewheel="">
 					<i class="fa-solid ${post.icon} hover" style="float:right;"><hide>${types[post.type]}</hide></i>
-					<h4>${post.title}</h4>
+					<h4>${post.title.replace(";","")}</h4>
 					<div class="centre">${convertDate(post.date)}</div>
 				</div>`;
 			}
@@ -92,36 +92,6 @@
 			<input type="text" id="posts" class="searchBar moveIn" onkeyup="OnNewSearchCards()" placeholder="Search tutorials" title="Type in the box to filter tutorials" maxlength="25">
 			<div class="moveIn"><small>You can also search by type (Update, Project, Review), or long date</small></div>
 			<div class="cards" id="cards-posts">
-				<div class="moveIn small-card active" onclick="hyperlink('updates/240715')" onmousewheel="">
-					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
-					<h4>Summer Plans</h4>
-					<div class="centre">15th July 2024</div>
-				</div>
-				<div class="moveIn small-card active" onclick="hyperlink('updates/231219')" onmousewheel="">
-					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
-					<h4>Have I Returned?</h4>
-					<div class="centre">19th December 2023</div>
-				</div>
-				<div class="moveIn small-card active" onclick="hyperlink('updates/230530')" onmousewheel="">
-					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
-					<h4>Where has he been.</h4>
-					<div class="centre">30th May 2023</div>
-				</div>
-				<div class="moveIn small-card active" onclick="hyperlink('updates/221022')" onmousewheel="">
-					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
-					<h4>New Name, Same Game</h4>
-					<div class="centre">22nd October 2022</div>
-				</div>
-				<div class="moveIn small-card active" onclick="hyperlink('updates/221020')" onmousewheel="">
-					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
-					<h4>Todo List & More</h4>
-					<div class="centre">20th October 2022</div>
-				</div>
-				<div class="moveIn small-card active" onclick="hyperlink('updates/220407')" onmousewheel="">
-					<i class="fa-solid fa-newspaper hover" style="float:right;"><hide>Update</hide></i>
-					<h4>Controversial Colours Cleared</h4>
-					<div class="centre">7th April 2022</div>
-				</div>
 			</div>
 		</div>
 

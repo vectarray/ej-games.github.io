@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<title>Python -> Java</title>
+		<link rel="stylesheet" href="../mainstyle.css">
+		<link rel="stylesheet" href="/tutorial/tutorial-style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet">
+		<script src="../globalscript.js"></script>
+		<script src="/tutorial/migration-script.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+		</script>
+
+		<style>
+		</style>
+
+	</head>
+
+<body onload="CheckFormatting(); onLoadSnippets()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+	<div id="title">tutorials</div>
+	<h2>Python -> Java</h2>
+	<div class="smallSpace"></div>
+	<div class="mainParagraph">
+		<!--
+			Note: python and java are for the non-display names (i.e. csharp, python, cpp) and Python and Java are for the display names (i.e. C#, Python, C++)
+		-->
+		This is a tutorial that is designed to help you migrate from Python to Java, or just find out the differences.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Intro</h4>
+
+		Python and Java are vastly different languages, but have the same premise: being able to run on any device, anywhere.
+
+		<br><br>Python is also an interpreted language, whereas Java is sort of compiled as well as interpreted, because the Java Virtual Machine is an interpreter that reads the compiled Java file.
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Overall Thingies</h4>
+
+		<br><br>Here are some commonly-used methods in Python and their equivalents in Java:
+		<table style="width: 100%">
+			<thead>
+				<tr><td><b>Function</b></td><td><b>Python</b></td><td><b>Java</b></td></tr>
+			</thead>
+			<tbody>
+				<tr><td>Print the message x</td>
+					<td>
+						<code id="snippet-python-methods-print"></code>
+					</td>
+					<td>
+						<code id="snippet-java-methods-print"></code>
+						(requires <code>using System;</code>)
+					</td>
+				</tr>
+				<tr><td>Set x to user input</td>
+					<td>
+						<code id="snippet-python-methods-input"></code>
+					</td>
+					<td>
+						<code id="snippet-java-methods-input"></code>
+						(requires <code>using System;</code>)
+					</td>
+				</tr>
+
+				<tr><td>Wait for x seconds</td>
+					<td>
+						<code id="snippet-python-methods-wait"></code>
+						(requires <code>import time</code>)
+					</td>
+					<td>
+						<code id="snippet-java-methods-wait"></code>
+						(requires <code>using System.Threading;</code>)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Variables and Datatypes</h4>
+
+
+		Java is strong-typed, unlike Python. For example, if you make an <code>int</code> in Java, and then change your mind about what datatype it should be, then tough luck, it's always an <code>int</code>.
+		<br><br>If you make an <code>int</code> in Python, for reference, that variable can become whatever you want it to be.
+
+
+		<br><br>The naming convention for variables and methods is camelType (<code>var myVariable</code>), and for classes, it is PascalCase (<code>class HelloEveryone</code>)
+		<br><br>Here is a list of some datatypes in Python and their equivalents in C#:
+		<table>
+			<thead>
+				<tr><td><b>Python</b></td><td><b>Java</b></td></tr>
+			</thead>
+			<tbody>
+				<tr><td><code id="snippet-python-datatypes-string"></code></td><td><code id="snippet-java-datatypes-string"></code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-integer"></code></td><td><code id="snippet-java-datatypes-integer"></code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-float"></code></td><td><code id="snippet-java-datatypes-float"></code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-any"></code></td><td><code id="snippet-java-datatypes-any"></code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-list"></code></td><td><code id="snippet-java-datatypes-list"></code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-array"></code></td><td><code id="snippet-java-datatypes-array"></code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-dictionary"></code></td><td><code id="snippet-java-datatypes-dictionary"></code></td></tr>
+				<tr><td><code id="snippet-python-datatypes-file"></code></td><td><code id="snippet-java-datatypes-file"></code></td></tr>
+			</tbody>
+		</table>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Comparisons</h4>
+
+		<div class="left"><h5>Python</h5></div>
+		<div class="right"><h5>Java</h5></div>
+		<div class="clear"></div>
+
+
+		<h3>For Loop</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-for"></code></pre>
+<pre><code class="language-java" style="float: right; width: 45%;" id="snippet-java-statements-for"></code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h3>For Loop In Array</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-foreach"></code></pre>
+<pre><code class="language-java" style="float: right; width: 45%;" id="snippet-java-statements-foreach"></code></pre>
+
+
+		<div class="clear"></div>
+
+
+		<h3>While Loop</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-while"></code></pre>
+<pre><code class="language-java" style="float: right; width: 45%;" id="snippet-java-statements-while"></code></pre>
+		<div class="clear"></div>
+		
+
+		<h3>If Statement</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-if"></code></pre>
+<pre><code class="language-java" style="float: right; width: 45%;" id="snippet-java-statements-if"></code></pre>
+		<div class="clear"></div>
+
+
+		<h3>Try/Catch</h3>
+<pre><code class="language-python" style="float: left; width: 45%;" id="snippet-python-statements-try"></code></pre>
+<pre><code class="language-java" style="float: right; width: 45%;" id="snippet-java-statements-try"></code></pre>
+
+
+		<div class="clear"></div>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Functions and Classes</h4>
+
+
+		This is a function in Java:
+<pre><code class="language-java">function funkyFunction():
+	print("This is funky and swish!")
+</code></pre>
+		<br>But, not as shown earlier, this is a class in Java:
+
+
+<pre><code class="language-java">class CoolTerms
+{
+
+	swish = "That's very swish!"
+
+	function funkyFunction()
+		swish = "I prefer 'funky'"
+}
+</code></pre>
+
+		<br>To return a value from a function, you can do this:
+<pre><code class="language-java">string funkyFunction()
+{
+	return "I prefer 'funky'"
+}
+</code></pre>
+
+
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Other things</h4>
+
+
+		Other things that you either
+		<ul>
+			<li>Might not know about the language already</li>
+			<li>Cannot figure out from common sense (i.e. self in Python)</li>
+			<li>Are explaining in more detail</li>
+		</ul>
+
+		
+		<div class="smallSpace"></div><div class="line"></div>
+		<h4>Post-note</h4>
+		Wow! Do you understand Java now?
+		<br><small>No</small>
+		<br>Be quiet.
+		<br><br>You can leave feedback for my tutorials by clicking <a href="https://docs.google.com/forms/d/1agleVh20iPAnGdrxVF1lbJR5QgVpMncg2VzLReDsqUE/edit?usp=sharing">here</a>.
+		<br>Thanks for reading!
+	</div>
+	<div class="space"></div>
+
+</html>

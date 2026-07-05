@@ -1,6 +1,7 @@
 function htt() { // Short for "Hide ToolTip"
-        tooltip.style.opacity = "0";
-    }
+    var tooltip = document.getElementById("tooltip");
+    tooltip.style.opacity = "0";
+}
     
 function stt(text) { // Short for "Show ToolTip"
     var tooltip = document.getElementById("tooltip");

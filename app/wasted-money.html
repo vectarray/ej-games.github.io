@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>How Much Have I Spent</title>
+	<link rel="stylesheet" href="https://use.typekit.net/dpi8bkg.css">
+	<link rel="stylesheet" href="/mainstyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,900;1,200;1,400;1,500;1,700;1,900&display=swap"
+		rel="stylesheet">
+        <link rel="icon" href="/images/vectarray-logo-shadow-bg.png" type="image/x-icon">
+	<style>
+        input[type="checkbox"] {
+            transform: scale(1.3);
+            transition: transform 0.3s;
+        }
+        input[type="checkbox"]:hover {
+            cursor: pointer;
+            transform: scale(1.5);
+            border: 0px;
+            outline: 0px;
+        }
+        .small-card {
+            background-color: var(--elementHover);
+            cursor: pointer;
+        }
+        .small-card[highlighted] {
+            background-color: var(--elementBrighter);
+        }
+        .small-card > * {
+            pointer-events: none;
+        }
+	</style>
+	<script src="/globalscript.js"></script>
+	<script src="/frequent-notifications.js"></script>
+	<script>
+        const items = {
+            "big-mac": {
+                name: "Big Macs",
+                price: 5.09
+            },
+            "nutella": {
+                name: "Nutella 1kg jars",
+                price: 6.89
+            },
+            "iphone-17-pro": {
+                name: "iPhone 17 Pros",
+                price: 1099
+            },
+            "macbook-pro-14": {
+                name: "Macbook Pro 14\" 2025",
+                price: 1599
+            },
+            "macbook-pro-16": {
+                name: "Macbook Pro 16\" 2025",
+                price: 2499
+            },
+            "hyundai-i10": {
+                name: "2014 Hyundai i10 SEs",
+                price: 4000
+            },
+            "ford-fiesta": {
+                name: "2024 Ford Fiestas",
+                price: 13000
+            }
+        }
+        const weeklyPrices = {
+            "arthur-vick": {
+                name: "Arthur Vick",
+                price: 246,
+                enabled: false
+            },
+            "bluebell": {
+                name: "Bluebell",
+                price: 250,
+                enabled: false
+            },
+            "claycroft": {
+                name: "Claycroft",
+                price: 170,
+                enabled: false
+            },
+            "cryfield-a": {
+                name: "Cryfield Apartments",
+                price: 235,
+                enabled: false
+            },
+            "cryfield-s": {
+                name: "Cryfield Standard",
+                price: 134,
+                enabled: false
+            },
+            "cryfield-t": {
+                name: "Cryfield Townhouses",
+                price: 230,
+                enabled: false
+            },
+            "heronbank": {
+                name: "Heronbank",
+                price: 199,
+                enabled: false
+            },
+            "jack-martin": {
+                name: "Jack Martin",
+                price: 216,
+                enabled: false
+            },
+            "lakeside": {
+                name: "Lakeside",
+                price: 214,
+                enabled: false
+            },
+            "rootes": {
+                name: "Rootes",
+                price: 123,
+                enabled: false
+            },
+            "sherbourne": {
+                name: "Sherbourne",
+                price: 207,
+                enabled: false
+            },
+            "tocil": {
+                name: "Tocil",
+                price: 131,
+                enabled: false
+            },
+            "westwood": {
+                name: "Westwood En Suite",
+                price: 200,
+                enabled: false
+            },
+            "tuition-uk": {
+                name: "Tuition Fees (UK)",
+                price: 317.83,
+                enabled: false
+            },
+            "tuition-int1": {
+                name: "Tuition Fees (International Band 1)",
+                price: 876.33,
+                enabled: false
+            },
+            "tuition-int2": {
+                name: "Tuition Fees (International Band 2)",
+                price: 1117.33,
+                enabled: false
+            }
+        }
+
+        let total = 0;
+
+        function loadPrices() {
+            for(var item of Object.keys(weeklyPrices)) {
+                var newCard = document.createElement("div");
+                document.getElementById("spending-cards").appendChild(newCard);
+                newCard.outerHTML = `<div class="small-card" id="${item}-card" onclick="changeValue()">
+                    <h4 id="${item}-title">${weeklyPrices[item].name}</h4>
+                    £<span id="${item}-price" class="much-bigger">${weeklyPrices[item].price}</span> / week
+                    <br><br>
+                    <span id="${item}-enabled-label">No, I'm a cheapskate</span>
+                </div>`;
+            }
+        }
+        function changeValue() {
+            var id = window.event.target.id.replace("-card", "");
+            weeklyPrices[id].enabled = !weeklyPrices[id].enabled;
+
+            document.getElementById(id + "-card").toggleAttribute("highlighted");
+
+            document.getElementById(`${id}-enabled-label`).innerHTML = weeklyPrices[id].enabled ? "Yes, I'm wasting my money" : "No, I'm a cheapskate";
+
+            total = 0;
+
+            for(var item of Object.keys(weeklyPrices)) {
+                if(weeklyPrices[item].enabled) {
+                    total += weeklyPrices[item].price;
+                }
+            }
+
+            for(var display of document.getElementsByClassName("total-price-display")) {
+                display.innerHTML = (Math.round(total * 100) / 100);
+            }
+            
+        }
+
+        function openMenu(menuId) {
+            for(var item of document.getElementsByClassName("menu-toggleable")) {
+                item.style.display = "none";
+            }
+            document.getElementById(menuId).style.display = "block";
+
+            if(menuId == "spending-overview") showOverview();
+        }
+
+        var leftSide = false;
+
+        function showOverview() {
+            var totalSpent = total * weeks(Date.now(), new Date(2025, 8, 29));
+            var rounded10Total = rnd10(totalSpent);
+            var rounded2dpTotal = rnd2dp(totalSpent);
+            let container = document.getElementById("spending-overview");
+
+            document.getElementById("total-price-so-far").innerHTML = rounded10Total;
+
+            let count = container.getElementsByClassName("spending-overview-card").length;
+            for(let i = 0; i < count; i++) {
+                container.lastElementChild.remove();
+            }
+
+            for(var item of Object.keys(items)) {
+                leftSide = !leftSide;
+                var classList = leftSide ? "left moveInSlow" : "right moveInRightSlow"
+                var newShowcase = document.createElement("div");
+                document.getElementById("spending-overview").appendChild(newShowcase);
+                newShowcase.outerHTML = `<div class="spending-overview-card ${classList}" style="width: 65%; opacity: 0">
+                    <h4 style="text-align: center; margin-top: 0px; margin-bottom: 0px;">${Math.round(totalSpent / items[item].price)}</h4>
+                    <h5 style="text-align: center; margin-top: 0px;">${items[item].name} (£${rnd2dp(items[item].price)})</h5>
+                </div>`;
+                if(leftSide) {
+                    newShowcase.classList.add("left");
+                    newShowcase.classList.add("moveInSlow");
+                }
+                else {
+                    newShowcase.classList.add("right");
+                    newShowcase.classList.add("moveInRightSlow");
+                }
+            }
+        }
+
+        function weeks(date1, date2) {
+            return Math.round((date1 - date2) / (7 * 24 * 60 * 60 * 1000));
+        }
+
+        function rnd2dp(originalNumber) {
+            return Math.round(originalNumber * 100) / 100;
+        }
+
+        function rnd10(originalNumber) {
+            return Math.round(originalNumber / 10) * 10;
+        }
+    </script>
+
+</head>
+
+<body onload="CheckFormatting(); loadPrices()">
+	<div id="loading"><br><br><br><br><h4>Loading...</h4></div>
+	<div id="cookie" style="display: none;"></div>
+	<button id="sidebarbutton" onclick="MoveSidebarIn('sidebarbutton', 'Close', 'Menu')">Menu</button>
+
+    <!--
+        What theme is this page? (e.g. games, tutorials, music)
+    -->
+	<div id="title">apps</div>
+
+	<h2>Spent Money</h2>
+	<div class="smallSpace"></div>
+	<br>
+	<div class="mainParagraph">
+        Let's see how much you could have bought if you didn't go to University at all.
+
+        <br><br><button class="buttonURL" onclick="openMenu('spending-overview')">View spending overview</button>
+        <br><button class="buttonURL" onclick="openMenu('spending-selection')">Change what I spend my money on</button>
+
+        <div id="spending-overview" class="menu-toggleable" style="display: block;">
+            <h5>You are spending £<span class="bigger total-price-display">0</span> / week</h5>
+
+            That means so far you have spent (based on the standard 40 week contract):
+
+            <small><h4>£<span class="much-bigger" id="total-price-so-far">100</span> so far</h4></small>
+
+            <h5>Which means you could have bought:</h5>
+
+		    <!--<div class="smallSpace"></div>
+            <div class="right moveInRightSlow spending-overview-card" style="width: 65%;">
+                <h4 style="text-align: center; margin-top: 0px; margin-bottom: 0px;">1000</h4>
+                <h5 style="text-align: center; margin-top: 0px;">MacBook Pro 16" 2025</h5>
+            </div>
+            <div class="clear"></div>
+            <div class="smallSpace"></div>
+            <div class="left moveInSlow spending-overview-card" style="width: 65%;">
+                <h4 style="text-align: center; margin-top: 0px; margin-bottom: 0px;">1000</h4>
+                <h5 style="text-align: center; margin-top: 0px;">MacBook Pro 16" 2025</h5>
+            </div>
+            <div class="clear"></div>
+            <div class="smallSpace"></div>
+            <div class="right moveInRightSlow spending-overview-card" style="width: 65%;">
+                <h4 style="text-align: center; margin-top: 0px; margin-bottom: 0px;">1000</h4>
+                <h5 style="text-align: center; margin-top: 0px;">MacBook Pro 16" 2025</h5>
+            </div>
+            <div class="clear"></div>
+            <div class="smallSpace"></div> -->
+        </div>
+
+
+        <div id="spending-selection" class="menu-toggleable" style="display: none">
+
+            <br><br>Select all of the most appropriate outgoings from this list:
+
+            <br><br>Total £<span class="much-bigger total-price-display">0</span> / week
+
+            
+            <div class="small-cards" id="spending-cards">
+                <!-- <div class="small-card highlighted">
+                    <h4 id="[x]-title">Bluebell</h4>
+                    £<span id="[x]-price" class="much-bigger">243</span> / week
+                    <br><br>
+                    <input type="checkbox" name="Enable spending" id="[x]-enabled-checkmark" onchange="changeValue()">
+                    <span id="[x]-enabled-label">Yes, I'm wasting my money on this</span>
+                </div> -->
+            </div>
+
+        </div>
+       
+        <div class="clear"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        
+    </div>
+	<div class="smallSpace"></div>
+</body>
+
+</html>

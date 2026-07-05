@@ -44,6 +44,79 @@
         ]
     },
     {
+        "name": "islands",
+        "displayName": "Islands (2025)",
+        "icon": "https://bit.ly/3IBMv8J",
+        "tracks": [
+            {
+                "name": "Stained",
+                "date": "2407",
+                "src": "4a-stained.mp3",
+                "desc": "I made this song about a week after releasing Touchdown. I got the inspiration for it fairly quickly and then just built on it. For a while it sat unused in the same state."
+            },
+            {
+                "name": "Alter",
+                "date": "2407",
+                "src": "4b-alter.mp3",
+                "desc": "This song came about after I discovered Spitfire Labs, and messed around with it for a solid 2 weeks. I found the 80s guitar pad sound, and then came up with quite a nice chord sequence and went from there."
+            },
+            {
+                "name": "Same as Ever",
+                "date": "2408",
+                "src": "4c-same-as-ever.mp3",
+                "desc": "I wanted to create a sort of 'epic battle' song, and I wanted to make it as powerful as possible, which is why the main parts are just the bassline playing the same notes, to build tension, or something."
+            },
+            {
+                "name": "Floating",
+                "date": "2408",
+                "src": "4d-floating.mp3",
+                "desc": "Not much I can say, I just chopped up the FL Studio woman singing then turned it into a song that I don't know what the genre is."
+            },
+            {
+                "name": "Just Before",
+                "date": "2409",
+                "src": "4e-just-before.mp3",
+                "desc": "I was very happy after I made this one, because it was the first actual 'dance' sort of song I'd made. It was around this time I actually learned what sidechaining was, so that was probably a large contributor."
+            },
+            {
+                "name": "Resurfaced",
+                "date": "2411",
+                "src": "4f-resurfaced.mp3",
+                "desc": "Not my favourite song from this album, it's just a bit basic, and I couldn't think of any way to change that. It was using an old idea I had about 2 years ago now."
+            },
+            {
+                "name": "Whatever Happened",
+                "date": "2412",
+                "src": "4g-whatever-happened.mp3",
+                "desc": "I got the idea for the intro chords, and then really wanted to turn it into something funky or groovy or whatever. I definitely succeeded at that, but it could still have some more 'bounce' to it."
+            },
+            {
+                "name": "Sphere Turn",
+                "date": "2501",
+                "src": "4h-sphere-turn.mp3",
+                "desc": "I sort of see this song as a follow-up to 'Load Them On' from Touchdown. It has that sort of sci-fi, spacey, optimistic sound to it, using those chords that I can't stop using."
+            },
+            {
+                "name": "Expressions",
+                "date": "2502",
+                "src": "4i-expressions.mp3",
+                "desc": "A sort of 90s dance club music thingamajig, but with chords that sort of change the style. I also added the default FL Studio woman singing to this one too."
+            },
+            {
+                "name": "Fusion",
+                "date": "2502",
+                "src": "4j-fusion.mp3",
+                "desc": "I wanted to make a song that encompassed all of the songs of the album, also including the little melody from 'Higher' which is sort of cheating. But I don't care."
+            },
+            {
+                "name": "Expressions Relaxed Mix",
+                "date": "2504",
+                "src": "4k-expressions-relaxed-mix.mp3",
+                "desc": "I slowed down the Expressions song in the editor and pitched it down like all of those stupid 'slowed + reverb' songs, but I also added some stuff to make it slightly different and cleaner. Not the highest effort song but who cares?"
+            }
+        ]
+    },
+    {
         "name": "touchdown",
         "displayName": "Touchdown (2024)",
         "icon": "https://bit.ly/4dzvMy9",
