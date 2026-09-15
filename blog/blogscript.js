@@ -47,8 +47,8 @@ const posts = {
     "250722": new Post("250722", "Canon; Powershot SX70HS", "reviews"),
     "250726": new Post("250726", "Samsung Galaxy; Book4 Pro 360", "reviews"),
     "260705": new Post("260705", "A Year On", "updates"),
-    "260709": new Post("260709", "Samsung Galaxy; S21 FE", "reviews"),
-    "260726": new Post("260726", "Panasonic; Lumix FZ-82", "reviews")
+    "260709": new Post("260709", "Samsung Galaxy; S21 FE", "reviews")//,
+    //"260726": new Post("260726", "Panasonic; Lumix FZ-82", "reviews")
 }
 
 function createTimeline() {
