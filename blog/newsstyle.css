@@ -8,7 +8,7 @@
 .timeline {
     /*background-color: red;*/
     width: 25%;
-    position: sticky;
+    position: fixed;
     float:right;
     top: 15%;
     right: 5%;
@@ -17,10 +17,25 @@
 }
 @media (max-width: 1100px) {
 	.timeline {
-        display: none;
+        display: block;
+        position: static;
+        width: 80%;
+        margin: 0 10% 0 10%;
+        max-height: none;
+        overflow-y: auto;
+        text-align: center;
 	}
+    h2 {
+        margin-right: 0px !important;
+    }
+    h5.subtitle {
+        margin-right: 0px !important;
+    }
+    .review-brand {
+        margin-right: 0px !important;
+    }
 }
-a {
+.timeline a {
     color: var(--body);
     opacity: 85%;
     transition: opacity 0.2s;
@@ -29,7 +44,7 @@ a {
     text-decoration-thickness: 1px;
     text-decoration-skip-ink: all;
 }
-a:hover {
+.timeline a:hover {
     color: var(--body);
     opacity: 100%;
     transition: opacity 0.2s;
@@ -41,14 +56,24 @@ a:hover {
 h2 {
     margin-bottom: 0px;
     margin-top: 1.5em;
+    margin-left: 15%;
+    width: 50%;
 }
+
 h5.subtitle {
     margin-top: 0px;
     text-align: center;
+    margin-left: 15%;
+    width: 50%;
 }
 .review-brand {
     padding: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 2em;
+    margin-left: 15%;
+    width: 50%;
+}
+#heading-image {
+    filter: blur(10px);
 }

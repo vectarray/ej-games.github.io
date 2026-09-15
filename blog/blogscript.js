@@ -46,15 +46,17 @@ const posts = {
     "250708": new Post("250708", "EJMusic Channel", "updates"),
     "250722": new Post("250722", "Canon; Powershot SX70HS", "reviews"),
     "250726": new Post("250726", "Samsung Galaxy; Book4 Pro 360", "reviews"),
-    "260705": new Post("260705", "A Year On", "updates")
+    "260705": new Post("260705", "A Year On", "updates"),
+    "260709": new Post("260709", "Samsung Galaxy; S21 FE", "reviews"),
+    "260726": new Post("260726", "Panasonic; Lumix FZ-82", "reviews")
 }
 
 function createTimeline() {
-
+    
     let timeline = document.createElement("div");
     timeline.classList.add("timeline");
     timeline.innerHTML = String.raw`<h5 style="font-size: 1.8em">Blog Timeline</h5>`;
-
+    
     let curYear = -1;
     let curMonth = -1;
     let oldYear = -2;
@@ -87,7 +89,8 @@ function createTimeline() {
         oldYear = curYear;
         oldMonth = curMonth;
     }
-    document.body.insertBefore(timeline, document.getElementsByClassName("mainParagraph")[0]);
+    //document.body.insertBefore(timeline, document.getElementsByClassName("mainParagraph")[0]);
+    document.body.appendChild(timeline);
 }
 
 function setTitle() {
@@ -121,7 +124,7 @@ function setTitle() {
         }
         
         //let subtitle = `${days[writtenDate.getDay()]} ${writtenDate.getDate()}${suffix} ${months[writtenDate.getMonth()]} ${writtenDate.getFullYear()}`;
-        let subtitle = convertDate(dateStr, false);
+        let subtitle = convertDate(yearStr + monthStr + dayStr, false);
         document.getElementsByClassName("subtitle")[0].innerText = subtitle;
 
         var initialSpace = document.createElement("div");
@@ -132,7 +135,7 @@ function setTitle() {
 
         //console.log(subtitle);
 
-        let post = posts[dateStr];
+        let post = posts[yearStr + monthStr + dayStr];
 
         var title = post.title.replace(";", "");
         var brand = "";

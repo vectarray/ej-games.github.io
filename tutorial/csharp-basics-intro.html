@@ -99,7 +99,7 @@
 		<br>If that's you, it's absolutely fine. Bool is short for boolean.
 		<br><br>If you want to create a variable with a specific datatype, you can write:
 		<br>
-		<div class="code"><b>int</b> number = 4;</div>
+<pre><code class="language-csharp">int number = 4;</code></pre>
 		<br><br>
 		Here's a lovely table to show you a delicious sample of datatypes.
 		<br><br>
@@ -143,9 +143,7 @@
 		<br>You wouldn't want to repeat multiple steps over and over again.
 		<br><br>For example, take when you start your car. Instead of performing the car-starting multiple times, you can just create a function, let's call it <span class="code">StartCar</span>,
 		and invoke (call) it multiple times.
-		<div class="code">
-			<pre>
-public class Example
+<pre><code class="language-csharp">public class Example
 {
 	static void Main(string[] args)
 	{
@@ -160,16 +158,11 @@ public class Example
 		Console.WriteLine("The car is now on!");
 		// Extra car-starting fun goes here!
 	}
-}
-</pre>
-		</div>
+}</code></pre>
 		Instead of repeatedly running:
-		<div class="code">
-			<pre>
-Console.WriteLine("The car is now on!");
+<pre><code class="language-csharp">Console.WriteLine("The car is now on!");
 // Extra car-starting fun goes here!
-</pre>
-		</div>
+</code></pre>
 		you can just call <span class="code">StartCar()</span> every time you want the car to start.
 		<br><br>
 		Now that the reason for creating functions is clearer, we can now dive deeper into the more advanced stuff.
@@ -181,9 +174,7 @@ Console.WriteLine("The car is now on!");
 		but each time you call the function, you give it a different value.
 		<br><br>
 		It's done like this:
-		<div class="code">
-			<pre>
-public class Example
+<pre><code class="language-csharp">public class Example
 {
 	static void Main(string[] args)
 	{
@@ -194,9 +185,7 @@ public class Example
 	{
 		Console.WriteLine("You've bought " + itemName);
 	}
-}
-</pre>
-		</div>
+}</code></pre>
 		The output would be:
 		<br><span class="code">> You've bought Ice cream cone 4pk £3.49 on sale</span>
 		<br><br>
@@ -212,9 +201,7 @@ public class Example
 		<br><br>If you want to have a <span class="code">BuyItem</span> function that also takes an integer, holding the value of how many you want to buy, then you could just
 		make a new function. Or, you could copy <span class="code">BuyItem</span> and add an int parameter to it.
 		<br><br>Observe:
-		<div class="code">
-			<pre>
-public class Example
+<pre><code class="language-csharp">public class Example
 {
 	static void Main(string[] args)
 	{
@@ -231,9 +218,7 @@ public class Example
 	{
 		Console.WriteLine("You've bought " + amount.ToString() + " of " + itemName);
 	}
-}
-</pre>
-		</div>
+}</code></pre>
 		The output would be:
 		<br><span class="code">> You've bought Ice cream cone 4pk £3.49 on sale
 			<br>> You've bought 5 of Chocolate bar £0.49 on sale

@@ -236,7 +236,8 @@ function createNavbar() {
 
 		// Clean each word in words
 		for(var word of words) {
-			newPhrase = newPhrase + word[0].toUpperCase() + word.substring(1) + " "; // Capitalise first letter
+			if(word == "csharp") newPhrase = newPhrase + "C# ";
+			else newPhrase = newPhrase + word[0].toUpperCase() + word.substring(1) + " "; // Capitalise first letter
 		}
 
 		// If it's a blog page, turn the filename into a date
@@ -310,7 +311,7 @@ function createNavbar() {
 		navbar.style.height = "1.4em"
 	});
 
-	var prevScrollpos = window.scrollY;
+	/*var prevScrollpos = window.scrollY;
 	window.onscroll = function () {
 		var currentScrollPos = window.scrollY;
 		console.log(currentScrollPos);
@@ -321,7 +322,7 @@ function createNavbar() {
 			navbar.style.height = "1.4em"
 		}
 		prevScrollpos = currentScrollPos;
-	}
+	}*/
 }
 
 function keepTrying(toTry, delay) {

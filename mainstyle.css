@@ -97,7 +97,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
-	--background: #181818;
+	--background: #000e23;
 	--title: #0a2343;
 	--sidebar: #0e1626;
 	--h2: #ffffff;
@@ -1069,7 +1069,6 @@ body { padding: 0; margin: 0; }
 			var(--background) 80%
 		)
 		repeat scroll 0 0;
-	filter: invert(var(--globalInvert));
 }
 #heading-image {
 	background-image: url("/images/c-main-banner.jpg");

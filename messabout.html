@@ -20,7 +20,7 @@
 		function encryptData() {
 			var toEncrypt = document.getElementById("encrypt-input").value;
 			var encryptedA = "";
-			for(var item of toEncrypt.split("")) {
+			for(var item of toEncrypt.split()) {
 				encryptedA += item.charCodeAt(0) + ";";
 				console.log(item + ": " + item.charCodeAt(0));
 			}
@@ -76,14 +76,6 @@
 		tutorial on how to create an entire multiplayer game. I used all of it. Apart from the part about VR or something.
 		<div class="smallSpace"></div><div class="line"></div>-->
 		<h4 class="moveIn">Me</h4>
-		<div class="moveIn">
-			I'm EJGames.
-			<br>
-			Thanks for reading.
-			<br><br>I'm a programmer. I have made many games in the past, and a couple of Python utility apps. And a website (this one you're looking at right now).
-			<br>I started developing games in early 2020, and, well, let's just say I've learnt a lot since.
-			<div class="smallSpace"></div><div class="line"></div>
-		</div>
 		<h4 class="moveIn">This is a cool bar (Coming soon):</h4>
 		<div class="moveIn">
 			This is not a cool bar, but will encrypt what you type in it:
